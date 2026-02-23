@@ -2,6 +2,40 @@
    Home Page — Plurality
    ============================================================ */
 
+/* ---- Home language bar ---- */
+.home-lang-bar {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 8px;
+  flex-wrap: wrap;
+  padding: 12px var(--section-pad-h);
+  background: rgba(255, 255, 255, 0.04);
+  font-family: var(--sans);
+  font-size: 0.85rem;
+}
+
+.home-lang-bar__current {
+  color: #fff;
+  font-weight: 600;
+  padding: 4px 14px;
+  background: rgba(255, 255, 255, 0.12);
+  border-radius: 100px;
+}
+
+.home-lang-bar__link {
+  color: rgba(255, 255, 255, 0.55);
+  text-decoration: none;
+  padding: 4px 14px;
+  border-radius: 100px;
+  transition: color 0.2s, background 0.2s;
+}
+
+.home-lang-bar__link:hover {
+  color: #fff;
+  background: rgba(255, 255, 255, 0.08);
+}
+
 /* ---- Hero ---- */
 .hero {
   min-height: 100vh;

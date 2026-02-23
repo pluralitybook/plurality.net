@@ -136,6 +136,20 @@ html[lang="zh"] blockquote {
   font-family: 'Kaiti TC', 'DFKai-SB', 'BiauKai', 'STKaiti', cursive;
 }
 
+html[lang="ja"] {
+  --serif: 'Noto Serif JP', 'Yu Mincho', 'Hiragino Mincho ProN', Georgia, serif;
+  --sans: 'Noto Sans JP', 'Hiragino Kaku Gothic ProN', 'Meiryo', system-ui, sans-serif;
+}
+
+html[lang="th"] {
+  --serif: 'Sarabun', 'Noto Serif Thai', Georgia, serif;
+  --sans: 'Sarabun', 'Noto Sans Thai', system-ui, sans-serif;
+}
+
+html[lang="el"] {
+  --serif: 'Cormorant Garamond', 'GFS Didot', Georgia, serif;
+}
+
 /* ---- Section label pattern ---- */
 .section-label {
   font-family: var(--sans);

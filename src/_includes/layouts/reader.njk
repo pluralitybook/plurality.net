@@ -1,47 +1,86 @@
 ---
 layout: base.njk
 ---
-<div class="reader">
-  {% include "partials/toc.njk" %}
+<div class="book" id="book">
+  {# ── TOC drawer (collapsible on mobile) ── #}
+  <aside class="book__toc" aria-label="Table of contents" id="book-toc">
+    <button class="book__toc-toggle" aria-expanded="false" id="toc-toggle">
+      <span class="book__toc-toggle-icon"></span>
+      {{ i18n[lang or "en"].toc or "Contents" }}
+    </button>
+    <nav class="book__toc-nav" id="toc-nav">
+      <p class="book__toc-heading">{{ i18n[lang or "en"].toc or "Contents" }}</p>
+      <ul class="book__toc-list">
+        {% if tocItems %}
+          {% for item in tocItems %}
+            <li><a href="#{{ item.id }}">{{ item.text }}</a></li>
+          {% endfor %}
+        {% endif %}
+      </ul>
+    </nav>
+  </aside>
 
-  <article class="reader__content">
-    <header class="reader__header">
+  {# ── Book page ── #}
+  <article class="book__page" id="book-page">
+    {# Page curl decoration #}
+    <div class="book__page-curl" aria-hidden="true"></div>
+
+    {# Chapter header #}
+    <header class="book__header">
       {% if chapterLabel %}
-        <p class="reader__chapter-label">{{ chapterLabel }}</p>
+        <p class="book__section-label">{{ chapterLabel }}</p>
       {% endif %}
-      <h1 class="reader__title">{{ title }}</h1>
+      <h1 class="book__title">{{ title }}</h1>
       {% if meta %}
-        <p class="reader__meta">{{ meta }}</p>
+        <p class="book__meta">{{ meta }}</p>
       {% endif %}
       {% if chapter and chapter.altLangs | length %}
-        <nav class="reader__lang-switch" aria-label="Language versions">
-          <span class="reader__lang-current">{{ chapter.langLabel }}</span>
+        <nav class="book__lang-switch" aria-label="Language versions">
+          <span class="book__lang-current">{{ chapter.langLabel }}</span>
           {% for alt in chapter.altLangs %}
-            <a href="{{ alt.url }}" class="reader__lang-link" lang="{{ alt.lang }}">{{ alt.label }}</a>
+            <a href="{{ alt.url }}" class="book__lang-link" lang="{{ alt.lang }}">{{ alt.label }}</a>
           {% endfor %}
         </nav>
       {% endif %}
+      <div class="book__header-ornament" aria-hidden="true">
+        <span></span><span></span><span></span>
+      </div>
     </header>
 
-    <div class="reader__body">
+    {# Chapter body #}
+    <div class="book__body">
       {{ content | safe }}
     </div>
 
+    {# Chapter navigation #}
     {% if prevUrl or nextUrl %}
-    <nav class="reader__nav" aria-label="Chapter navigation">
+    <nav class="book__nav" aria-label="Chapter navigation">
       {% if prevUrl %}
-        <a href="{{ prevUrl }}" class="reader__nav-link reader__nav-link--prev">
-          <span class="reader__nav-label">&larr; Previous</span>
-          <span class="reader__nav-title">{{ prevTitle }}</span>
+        <a href="{{ prevUrl }}" class="book__nav-link book__nav-link--prev" data-page-dir="prev">
+          <span class="book__nav-arrow">&larr;</span>
+          <span class="book__nav-info">
+            <span class="book__nav-label">{{ i18n[lang or "en"].prev_chapter or "Previous" }}</span>
+            <span class="book__nav-title">{{ prevTitle }}</span>
+          </span>
         </a>
       {% endif %}
       {% if nextUrl %}
-        <a href="{{ nextUrl }}" class="reader__nav-link reader__nav-link--next">
-          <span class="reader__nav-label">Next &rarr;</span>
-          <span class="reader__nav-title">{{ nextTitle }}</span>
+        <a href="{{ nextUrl }}" class="book__nav-link book__nav-link--next" data-page-dir="next">
+          <span class="book__nav-info">
+            <span class="book__nav-label">{{ i18n[lang or "en"].next_chapter or "Next" }}</span>
+            <span class="book__nav-title">{{ nextTitle }}</span>
+          </span>
+          <span class="book__nav-arrow">&rarr;</span>
         </a>
       {% endif %}
     </nav>
     {% endif %}
+
+    {# Page number decoration #}
+    <div class="book__page-number" aria-hidden="true">
+      {% if chapter %}{{ chapter.number }}{% endif %}
+    </div>
   </article>
 </div>
+
+<script src="/assets/js/book.js"></script>

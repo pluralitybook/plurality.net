@@ -1,66 +1,34 @@
 /* ============================================================
-   Reader Layout — Plurality
+   Book Reader — Plurality
+   A physical-book–inspired reading experience
    ============================================================ */
 
-.reader {
+/* ── Book container: the "desk" ── */
+.book {
   display: flex;
-  gap: 60px;
-  max-width: calc(var(--reading-max) + 300px + 60px);
+  gap: 0;
+  max-width: 1200px;
   margin: 0 auto;
-  padding: calc(var(--nav-height) + 40px) var(--section-pad-h) 80px;
+  padding: calc(var(--nav-height) + 32px) 24px 60px;
+  min-height: 100vh;
+  position: relative;
 }
 
-/* ---- TOC Sidebar ---- */
-.reader__toc {
+/* ── TOC sidebar: book's edge tabs ── */
+.book__toc {
   position: sticky;
-  top: calc(var(--nav-height) + 40px);
-  width: 240px;
-  min-width: 240px;
-  max-height: calc(100vh - var(--nav-height) - 80px);
+  top: calc(var(--nav-height) + 32px);
+  width: 220px;
+  min-width: 220px;
+  max-height: calc(100vh - var(--nav-height) - 64px);
   overflow-y: auto;
-  padding-right: 20px;
   align-self: flex-start;
+  padding-right: 24px;
+  scrollbar-width: thin;
+  scrollbar-color: var(--border) transparent;
 }
 
-.reader__toc-title {
-  font-family: var(--sans);
-  font-size: 0.7rem;
-  font-weight: 600;
-  text-transform: uppercase;
-  letter-spacing: 0.2em;
-  color: var(--gold);
-  margin-bottom: 16px;
-}
-
-.reader__toc-list {
-  list-style: none;
-  padding: 0;
-}
-
-.reader__toc-list li {
-  margin-bottom: 0;
-}
-
-.reader__toc-list a {
-  display: block;
-  padding: 6px 0;
-  font-family: var(--sans);
-  font-size: 0.85rem;
-  color: var(--muted);
-  text-decoration: none;
-  border-left: 2px solid transparent;
-  padding-left: 12px;
-  transition: color 0.2s, border-color 0.2s;
-}
-
-.reader__toc-list a:hover,
-.reader__toc-list a.active {
-  color: var(--teal);
-  border-left-color: var(--teal);
-}
-
-/* Mobile TOC toggle */
-.reader__toc-toggle {
+.book__toc-toggle {
   display: none;
   width: 100%;
   padding: 12px 16px;
@@ -73,210 +41,575 @@
   color: var(--heading);
   cursor: pointer;
   text-align: left;
-  margin-bottom: 24px;
+  align-items: center;
+  gap: 10px;
 }
 
-/* ---- Main content ---- */
-.reader__content {
-  flex: 1;
-  max-width: var(--reading-max);
-  min-width: 0;
+.book__toc-toggle-icon {
+  display: inline-block;
+  width: 16px;
+  height: 12px;
+  position: relative;
 }
 
-.reader__header {
-  margin-bottom: 3rem;
-  padding-bottom: 2rem;
-  border-bottom: 1px solid var(--border);
+.book__toc-toggle-icon::before,
+.book__toc-toggle-icon::after {
+  content: '';
+  position: absolute;
+  left: 0;
+  right: 0;
+  height: 2px;
+  background: var(--muted);
+  border-radius: 1px;
 }
 
-.reader__chapter-label {
+.book__toc-toggle-icon::before { top: 0; }
+.book__toc-toggle-icon::after { top: 5px; }
+
+.book__toc-heading {
   font-family: var(--sans);
-  font-size: 0.7rem;
+  font-size: 0.65rem;
   font-weight: 600;
   text-transform: uppercase;
   letter-spacing: 0.2em;
   color: var(--gold);
-  margin-bottom: 0.5rem;
+  margin-bottom: 16px;
 }
 
-.reader__title {
-  font-family: var(--serif);
-  font-size: clamp(2rem, 4vw, 3rem);
-  font-weight: 400;
-  line-height: 1.15;
-  color: var(--heading);
-  margin-bottom: 0.5rem;
+.book__toc-list {
+  list-style: none;
+  padding: 0;
 }
 
-.reader__meta {
+.book__toc-list li {
+  margin-bottom: 0;
+}
+
+.book__toc-list a {
+  display: block;
+  padding: 5px 0 5px 14px;
   font-family: var(--sans);
-  font-size: 0.85rem;
+  font-size: 0.82rem;
+  line-height: 1.4;
   color: var(--muted);
+  text-decoration: none;
+  border-left: 2px solid transparent;
+  transition: color 0.2s, border-color 0.2s;
 }
 
-.reader__lang-switch {
-  display: flex;
-  align-items: center;
-  gap: 12px;
-  margin-top: 12px;
+.book__toc-list a:hover,
+.book__toc-list a.active {
+  color: var(--teal);
+  border-left-color: var(--teal);
+}
+
+/* ── The Book Page ── */
+.book__page {
+  flex: 1;
+  min-width: 0;
+  max-width: var(--reading-max);
+  margin: 0 auto;
+  position: relative;
+
+  /* Book "page" styling */
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: 2px 6px 6px 2px;
+  padding: 56px 56px 48px;
+
+  /* Realistic book shadow */
+  box-shadow:
+    /* Spine shadow on the left */
+    -4px 0 8px rgba(0, 0, 0, 0.04),
+    /* Page thickness on the right */
+    2px 0 0 var(--border),
+    4px 0 0 color-mix(in srgb, var(--surface) 90%, var(--border)),
+    5px 0 0 var(--border),
+    7px 0 0 color-mix(in srgb, var(--surface) 85%, var(--border)),
+    8px 0 0 var(--border),
+    /* Drop shadow */
+    12px 8px 32px rgba(0, 0, 0, 0.08),
+    0 2px 8px rgba(0, 0, 0, 0.04);
+
+  /* Page flip animation setup */
+  transform-origin: left center;
+  transition: transform 0.4s var(--ease-out), opacity 0.4s ease;
+}
+
+/* Page curl in corner */
+.book__page-curl {
+  position: absolute;
+  bottom: 0;
+  right: 0;
+  width: 40px;
+  height: 40px;
+  background: linear-gradient(
+    -135deg,
+    var(--warm) 0%,
+    var(--warm) 38%,
+    var(--border) 40%,
+    var(--surface) 42%,
+    var(--surface) 100%
+  );
+  border-radius: 0 0 6px 0;
+  pointer-events: none;
+  opacity: 0.7;
+  transition: opacity 0.3s, width 0.3s, height 0.3s;
+}
+
+.book__page:hover .book__page-curl {
+  opacity: 1;
+  width: 50px;
+  height: 50px;
+}
+
+/* ── Page flip animation states ── */
+.book__page--flip-out-next {
+  animation: pageFlipOutNext 0.35s var(--ease-out) forwards;
+}
+
+.book__page--flip-in-next {
+  animation: pageFlipInNext 0.35s var(--ease-out) forwards;
+}
+
+.book__page--flip-out-prev {
+  animation: pageFlipOutPrev 0.35s var(--ease-out) forwards;
+}
+
+.book__page--flip-in-prev {
+  animation: pageFlipInPrev 0.35s var(--ease-out) forwards;
+}
+
+@keyframes pageFlipOutNext {
+  0% {
+    transform: perspective(1200px) rotateY(0deg);
+    opacity: 1;
+  }
+  100% {
+    transform: perspective(1200px) rotateY(-15deg) translateX(-30px);
+    opacity: 0;
+  }
+}
+
+@keyframes pageFlipInNext {
+  0% {
+    transform: perspective(1200px) rotateY(15deg) translateX(30px);
+    opacity: 0;
+  }
+  100% {
+    transform: perspective(1200px) rotateY(0deg);
+    opacity: 1;
+  }
+}
+
+@keyframes pageFlipOutPrev {
+  0% {
+    transform: perspective(1200px) rotateY(0deg);
+    opacity: 1;
+  }
+  100% {
+    transform: perspective(1200px) rotateY(15deg) translateX(30px);
+    opacity: 0;
+  }
+}
+
+@keyframes pageFlipInPrev {
+  0% {
+    transform: perspective(1200px) rotateY(-15deg) translateX(-30px);
+    opacity: 0;
+  }
+  100% {
+    transform: perspective(1200px) rotateY(0deg);
+    opacity: 1;
+  }
+}
+
+/* ── Chapter Header ── */
+.book__header {
+  margin-bottom: 3rem;
+  padding-bottom: 2rem;
+  text-align: center;
+}
+
+.book__section-label {
+  font-family: var(--sans);
+  font-size: 0.65rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.25em;
+  color: var(--gold);
+  margin-bottom: 1rem;
+}
+
+.book__title {
+  font-family: var(--serif);
+  font-size: clamp(2rem, 4.5vw, 2.8rem);
+  font-weight: 400;
+  line-height: 1.2;
+  color: var(--heading);
+  margin-bottom: 0.75rem;
+}
+
+.book__meta {
   font-family: var(--sans);
   font-size: 0.8rem;
+  color: var(--muted);
+  letter-spacing: 0.04em;
 }
 
-.reader__lang-current {
+.book__lang-switch {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  margin-top: 14px;
+  font-family: var(--sans);
+  font-size: 0.78rem;
+}
+
+.book__lang-current {
   color: var(--heading);
   font-weight: 600;
-  padding: 4px 10px;
+  padding: 3px 10px;
   background: var(--warm);
   border-radius: var(--radius);
 }
 
-.reader__lang-link {
+.book__lang-link {
   color: var(--teal);
   text-decoration: none;
-  padding: 4px 10px;
+  padding: 3px 10px;
   border: 1px solid var(--border);
   border-radius: var(--radius);
   transition: border-color 0.2s, background 0.2s;
 }
 
-.reader__lang-link:hover {
+.book__lang-link:hover {
   border-color: var(--teal);
   background: var(--warm);
 }
 
-/* Reader prose styling */
-.reader__body {
-  font-family: var(--serif);
-  font-size: 1.1rem;
-  line-height: 1.8;
-  color: var(--text);
+/* Header ornament — three small dots/diamond */
+.book__header-ornament {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 8px;
+  margin-top: 2rem;
 }
 
-.reader__body h2 {
-  font-size: clamp(1.6rem, 3vw, 2rem);
+.book__header-ornament span {
+  display: block;
+  width: 4px;
+  height: 4px;
+  background: var(--gold-light);
+  border-radius: 1px;
+  transform: rotate(45deg);
+}
+
+.book__header-ornament span:nth-child(2) {
+  width: 6px;
+  height: 6px;
+}
+
+/* ── Chapter Body — Book-quality typography ── */
+.book__body {
+  font-family: var(--serif);
+  font-size: 1.12rem;
+  line-height: 1.85;
+  color: var(--text);
+  text-align: justify;
+  hyphens: auto;
+  -webkit-hyphens: auto;
+}
+
+/* Drop cap on first paragraph */
+.book__body > p:first-of-type::first-letter {
+  float: left;
+  font-family: var(--serif);
+  font-size: 3.6em;
+  font-weight: 400;
+  line-height: 0.8;
+  padding-right: 10px;
+  padding-top: 6px;
+  color: var(--gold);
+}
+
+.book__body h2 {
+  font-size: clamp(1.5rem, 3vw, 1.9rem);
   margin-top: 3em;
   margin-bottom: 0.8em;
-  padding-bottom: 12px;
-  border-bottom: 2px solid var(--gold);
+  padding-bottom: 10px;
+  text-align: left;
+  border-bottom: 1px solid var(--gold-light);
+  color: var(--heading);
 }
 
-.reader__body h3 {
-  font-size: 1.35rem;
+.book__body h3 {
+  font-size: 1.3rem;
   margin-top: 2.5em;
   margin-bottom: 0.6em;
-  padding-top: 1.5em;
-  border-top: 1px solid var(--border);
+  text-align: left;
+  color: var(--heading);
 }
 
-.reader__body h4 {
+.book__body h4 {
   font-size: 1.05rem;
   margin-top: 1.8em;
   margin-bottom: 0.4em;
+  text-align: left;
 }
 
-.reader__body p {
+.book__body p {
+  margin: 0 0 0.3em;
+  text-indent: 1.5em;
+}
+
+/* No indent on first paragraph or after headings/lists/blockquotes */
+.book__body > p:first-of-type,
+.book__body h2 + p,
+.book__body h3 + p,
+.book__body h4 + p,
+.book__body blockquote + p,
+.book__body ul + p,
+.book__body ol + p,
+.book__body .footnotes + p {
+  text-indent: 0;
+}
+
+.book__body blockquote {
+  border-left: 2px solid var(--gold);
+  margin: 2em 0 2em 1em;
+  padding: 0.5em 0 0.5em 1.5em;
+  font-style: italic;
+  color: var(--muted);
+  text-align: left;
+  text-indent: 0;
+}
+
+.book__body blockquote p {
+  text-indent: 0;
+}
+
+.book__body img {
+  border-radius: var(--radius);
+  border: 1px solid var(--border);
+  margin: 2em auto;
+  display: block;
+}
+
+.book__body ul, .book__body ol {
+  text-align: left;
   margin: 1em 0;
 }
 
-/* Links, blockquotes, lists inherit from base.css */
-
-.reader__body img {
-  border-radius: var(--radius);
-  border: 1px solid var(--border);
-  margin: 2em 0;
+.book__body li {
+  text-indent: 0;
 }
 
-/* ---- Chapter nav ---- */
-.reader__nav {
+/* Footnotes styling */
+.book__body .footnotes {
+  margin-top: 4em;
+  padding-top: 2em;
+  border-top: 1px solid var(--border);
+  font-size: 0.88rem;
+  line-height: 1.6;
+}
+
+.book__body .footnotes ol {
+  padding-left: 1.5em;
+}
+
+.book__body .footnotes p {
+  text-indent: 0;
+  margin-bottom: 0.5em;
+}
+
+/* ── Chapter Navigation ── */
+.book__nav {
   display: flex;
   justify-content: space-between;
-  align-items: center;
+  align-items: stretch;
   margin-top: 4rem;
   padding-top: 2rem;
   border-top: 1px solid var(--border);
   gap: 16px;
 }
 
-.reader__nav-link {
+.book__nav-link {
   display: flex;
-  flex-direction: column;
-  gap: 4px;
-  padding: 16px 24px;
+  align-items: center;
+  gap: 16px;
+  padding: 20px 24px;
+  background: var(--warm);
   border: 1px solid var(--border);
   border-radius: var(--radius);
   text-decoration: none;
-  transition: all 0.3s;
-  max-width: 50%;
+  transition: all 0.3s var(--ease-out);
+  max-width: 48%;
+  cursor: pointer;
 }
 
-.reader__nav-link:hover {
-  border-color: var(--teal);
-  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.06);
+.book__nav-link:hover {
+  border-color: var(--gold-light);
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.06);
+  transform: translateY(-1px);
 }
 
-.reader__nav-link--next {
-  text-align: right;
+.book__nav-link--next {
   margin-left: auto;
+  text-align: right;
+  flex-direction: row;
 }
 
-.reader__nav-label {
+.book__nav-arrow {
+  font-size: 1.5rem;
+  color: var(--gold);
+  line-height: 1;
+  flex-shrink: 0;
+  transition: transform 0.3s var(--ease-out);
+}
+
+.book__nav-link--prev:hover .book__nav-arrow { transform: translateX(-4px); }
+.book__nav-link--next:hover .book__nav-arrow { transform: translateX(4px); }
+
+.book__nav-info {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+
+.book__nav-label {
   font-family: var(--sans);
-  font-size: 0.7rem;
+  font-size: 0.65rem;
   font-weight: 600;
   text-transform: uppercase;
-  letter-spacing: 0.1em;
+  letter-spacing: 0.15em;
   color: var(--muted);
 }
 
-.reader__nav-title {
+.book__nav-title {
   font-family: var(--serif);
-  font-size: 1rem;
+  font-size: 0.95rem;
   color: var(--heading);
+  line-height: 1.3;
 }
 
-/* ---- Responsive ---- */
+/* ── Page Number ── */
+.book__page-number {
+  text-align: center;
+  margin-top: 3rem;
+  font-family: var(--serif);
+  font-size: 0.85rem;
+  color: var(--muted);
+  letter-spacing: 0.05em;
+  opacity: 0.6;
+}
+
+/* ── Responsive ── */
 @media (max-width: 1024px) {
-  .reader {
+  .book {
     flex-direction: column;
     gap: 0;
-    padding-top: calc(var(--nav-height) + 24px);
+    padding: calc(var(--nav-height) + 16px) 16px 40px;
   }
 
-  .reader__toc {
+  .book__toc {
     position: static;
     width: 100%;
     min-width: 0;
     max-height: none;
     padding-right: 0;
-    margin-bottom: 2rem;
+    margin-bottom: 16px;
   }
 
-  .reader__toc-toggle {
-    display: block;
+  .book__toc-toggle {
+    display: flex;
   }
 
-  .reader__toc-list {
+  .book__toc-nav {
     display: none;
     margin-top: 12px;
+    padding: 16px;
+    background: var(--warm);
+    border-radius: var(--radius);
   }
 
-  .reader__toc.open .reader__toc-list {
+  .book__toc.open .book__toc-nav {
     display: block;
+  }
+
+  .book__page {
+    padding: 40px 32px 36px;
+    border-radius: var(--radius);
+    box-shadow:
+      0 2px 16px rgba(0, 0, 0, 0.06),
+      0 1px 4px rgba(0, 0, 0, 0.04);
+  }
+
+  .book__page-curl {
+    display: none;
   }
 }
 
 @media (max-width: 768px) {
-  .reader__nav {
+  .book__page {
+    padding: 32px 20px 28px;
+  }
+
+  .book__body {
+    font-size: 1.05rem;
+    text-align: left;
+    hyphens: none;
+  }
+
+  .book__body p {
+    text-indent: 0;
+    margin-bottom: 1em;
+  }
+
+  .book__body > p:first-of-type::first-letter {
+    float: none;
+    font-size: inherit;
+    padding: 0;
+    color: inherit;
+  }
+
+  .book__nav {
     flex-direction: column;
   }
 
-  .reader__nav-link {
+  .book__nav-link {
     max-width: 100%;
-    width: 100%;
   }
 
-  .reader__nav-link--next {
+  .book__nav-link--next {
     text-align: left;
+    flex-direction: row-reverse;
+  }
+}
+
+/* ── Dark mode adjustments ── */
+[data-theme="dark"] .book__page,
+:root:not([data-theme="light"]) .book__page {
+  box-shadow:
+    -4px 0 12px rgba(0, 0, 0, 0.15),
+    2px 0 0 var(--border),
+    4px 0 0 color-mix(in srgb, var(--surface) 90%, var(--border)),
+    5px 0 0 var(--border),
+    12px 8px 40px rgba(0, 0, 0, 0.2),
+    0 2px 8px rgba(0, 0, 0, 0.12);
+}
+
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) .book__page-curl {
+    background: linear-gradient(
+      -135deg,
+      var(--warm) 0%,
+      var(--warm) 38%,
+      var(--border) 40%,
+      var(--surface) 42%,
+      var(--surface) 100%
+    );
   }
 }

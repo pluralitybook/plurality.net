@@ -32,6 +32,16 @@ export default function (eleventyConfig) {
     return arr.slice(start, end);
   });
 
+  eleventyConfig.addFilter("first", (arr) => {
+    if (!arr || !arr.length) return null;
+    return arr[0];
+  });
+
+  eleventyConfig.addFilter("attr", (obj, key) => {
+    if (!obj) return "";
+    return obj[key] || "";
+  });
+
   eleventyConfig.addFilter("renderMarkdown", (content) => {
     if (!content) return "";
     return md.render(content);

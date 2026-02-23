@@ -1,3 +1,8 @@
+{% set navLang = lang or "en" %}
+{% set ft = i18n[navLang] or i18n.en %}
+{% set footerPrefix = "" %}
+{% if translations[navLang] %}{% set footerPrefix = translations[navLang].prefix %}{% endif %}
+
 <footer class="footer" role="contentinfo">
   <div class="footer__inner">
     <div class="footer__brand" aria-hidden="true">
@@ -5,16 +10,16 @@
     </div>
 
     <ul class="footer__links">
-      <li><a href="/read/" class="footer__link">Read</a></li>
-      <li><a href="/endorsements/" class="footer__link">Endorsements</a></li>
-      <li><a href="/about/" class="footer__link">About</a></li>
+      <li><a href="{{ footerPrefix }}/read/" class="footer__link">{{ ft.nav_read }}</a></li>
+      <li><a href="/endorsements/" class="footer__link">{{ ft.nav_endorsements }}</a></li>
+      <li><a href="/about/" class="footer__link">{{ ft.nav_about }}</a></li>
       <li><a href="{{ site.github }}" class="footer__link" target="_blank" rel="noopener">GitHub</a></li>
       <li><a href="{{ site.discord }}" class="footer__link" target="_blank" rel="noopener">Discord</a></li>
     </ul>
 
     <div class="footer__sep"></div>
 
-    <p class="footer__authors">{{ site.authors | join(" & ") }}</p>
-    <p class="footer__license">{{ i18n.en.cc0_notice }}</p>
+    <p class="footer__authors">{{ ft.authors }}</p>
+    <p class="footer__license">{{ ft.cc0_notice }}</p>
   </div>
 </footer>

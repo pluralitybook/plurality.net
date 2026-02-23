@@ -1,7 +1,33 @@
 ---
+pagination:
+  data: homeLangs
+  size: 1
+  alias: pageLang
 layout: home.njk
-title: ""
+eleventyComputed:
+  lang: "{{ pageLang }}"
+  title: ""
+permalink: "{% if pageLang == 'en' %}/{% else %}/{{ pageLang }}/{% endif %}"
 ---
+
+{% set t = i18n[pageLang] %}
+{% set readPrefix = "" %}
+{% if translations[pageLang] %}
+  {% set readPrefix = translations[pageLang].prefix %}
+{% endif %}
+
+{# ═══════ LANG PICKER (non-English pages link home, all pages show switcher) ═══════ #}
+{% if homeLangs | length > 1 %}
+<nav class="home-lang-bar" aria-label="Language">
+  {% for hl in homeLangs %}
+    {% if hl == pageLang %}
+      <span class="home-lang-bar__current">{{ i18n[hl].lang_name }}</span>
+    {% else %}
+      <a href="{% if hl == 'en' %}/{% else %}/{{ hl }}/{% endif %}" class="home-lang-bar__link">{{ i18n[hl].lang_name }}</a>
+    {% endif %}
+  {% endfor %}
+</nav>
+{% endif %}
 
 {# ═══════ HERO ═══════ #}
 <section class="hero" aria-labelledby="hero-title">
@@ -23,18 +49,18 @@ title: ""
     <span class="hero__brand-line-r"></span>
   </div>
 
-  <p class="hero__subtitle">The Future of Collaborative Technology and Democracy</p>
+  <p class="hero__subtitle">{{ t.subtitle }}</p>
 
-  <p class="hero__authors">E. Glen Weyl, Audrey Tang and the Plurality Community</p>
+  <p class="hero__authors">{{ t.authors }}</p>
 
   <div class="hero__sep"></div>
 
-  <a href="/read/" class="hero__cta">
-    Read the Book <span class="hero__cta-arrow">&rarr;</span>
+  <a href="{{ readPrefix }}/read/" class="hero__cta">
+    {{ t.read_book }} <span class="hero__cta-arrow">&rarr;</span>
   </a>
 
   <div class="hero__scroll" aria-hidden="true" tabindex="-1">
-    <span>Scroll</span>
+    <span>{{ t.hero_scroll }}</span>
     <span class="hero__scroll-line"></span>
   </div>
 </section>
@@ -42,17 +68,11 @@ title: ""
 {# ═══════ ABOUT ═══════ #}
 <section id="about" class="about-section section">
   <div class="about-section__inner">
-    <p class="section-label reveal">About the Book</p>
-    <h2 class="reveal">Technology for Collaborative Diversity</h2>
-    <p class="reveal">
-      Plurality describes an emerging technological paradigm that recognizes and harnesses the power of collaboration across social differences. Instead of allowing technology to tear apart the social fabric, Plurality shows how digital tools can strengthen democracy, bridge divides, and unlock the potential of human cooperation.
-    </p>
-    <p class="reveal">
-      Written collaboratively by Audrey Tang, Taiwan's first Digital Minister, and E. Glen Weyl, political economist and technologist, this book charts a path between the extremes of techno-libertarianism and centralized AI governance. It draws on Taiwan's experience as a global leader in digital democracy to show how technology can be designed to serve the public good.
-    </p>
-    <p class="reveal">
-      The book itself embodies its principles: written openly on GitHub, translated by a global community of volunteers into more than a dozen languages, and released into the public domain under CC0.
-    </p>
+    <p class="section-label reveal">{{ t.section_about }}</p>
+    <h2 class="reveal">{{ t.about_heading }}</h2>
+    <p class="reveal">{{ t.about_p1 }}</p>
+    <p class="reveal">{{ t.about_p2 }}</p>
+    <p class="reveal">{{ t.about_p3 }}</p>
   </div>
 </section>
 
@@ -66,13 +86,13 @@ title: ""
         <img src="/assets/images/bookcover_small.png" alt="Plurality book cover" class="get-book__img">
       </div>
       <div class="get-book__info">
-        <p class="section-label">Get the Book</p>
-        <h2>Read, Download, or Purchase</h2>
-        <p>Plurality is available for free online, as a downloadable PDF and ePub, and as a physical book from major retailers.</p>
+        <p class="section-label">{{ t.get_book }}</p>
+        <h2>{{ t.get_book_heading }}</h2>
+        <p>{{ t.get_book_desc }}</p>
         <div class="get-book__links">
-          <a href="/read/preface/" class="involved-link">Read Online &rarr;</a>
-          <a href="https://github.com/pluralitybook/plurality/releases" class="involved-link" target="_blank" rel="noopener">Download PDF &rarr;</a>
-          <a href="https://www.amazon.com/dp/B0DSHVHMF2" class="involved-link" target="_blank" rel="noopener">Buy on Amazon &rarr;</a>
+          <a href="{{ readPrefix }}/read/1/" class="involved-link">{{ t.read_online }} &rarr;</a>
+          <a href="https://github.com/pluralitybook/plurality/releases" class="involved-link" target="_blank" rel="noopener">{{ t.download_pdf }} &rarr;</a>
+          <a href="https://www.amazon.com/dp/B0DSHVHMF2" class="involved-link" target="_blank" rel="noopener">{{ t.buy_amazon }} &rarr;</a>
         </div>
       </div>
     </div>
@@ -84,8 +104,8 @@ title: ""
 {# ═══════ LANGUAGES ═══════ #}
 <section class="lang-section section">
   <div class="content-wrap">
-    <p class="section-label reveal">Available Translations</p>
-    <h2 class="reveal">Read in Your Language</h2>
+    <p class="section-label reveal">{{ t.section_languages }}</p>
+    <h2 class="reveal">{{ t.languages_heading }}</h2>
 
     <div class="lang-grid">
       {% for lang in languages %}
@@ -99,7 +119,6 @@ title: ""
         <a href="{{ langHref }}" class="lang-card reveal" lang="{{ lang.code }}">
           <p class="lang-card__native">{{ lang.nativeName }}</p>
           <p class="lang-card__name" lang="en">{{ lang.name }}</p>
-          <span class="lang-card__read" lang="en">Read &rarr;</span>
         </a>
       {% endfor %}
     </div>
@@ -111,8 +130,8 @@ title: ""
 {# ═══════ CHAPTERS ═══════ #}
 <section class="chapters-section section">
   <div class="content-wrap">
-    <p class="section-label reveal">Chapters</p>
-    <h2 class="reveal">Explore the Book</h2>
+    <p class="section-label reveal">{{ t.section_chapters }}</p>
+    <h2 class="reveal">{{ t.chapters_heading }}</h2>
 
     <div class="chapter-groups">
       {% for section in chapters.sections %}
@@ -123,10 +142,17 @@ title: ""
           </h3>
           <div class="chapter-list">
             {% for ch in section.chapters %}
-              <a href="/read/{{ ch.id }}/" class="chapter-card reveal" style="border-top-color:{{ section.color }}">
-                <span class="chapter-card__number">{{ ch.number }}</span>
-                <span class="chapter-card__title">{{ ch.title }}</span>
-              </a>
+              {% if pageLang != "en" and translations[pageLang] and translations[pageLang].files[ch.id] %}
+                <a href="{{ readPrefix }}/read/{{ ch.id }}/" class="chapter-card reveal" style="border-top-color:{{ section.color }}">
+                  <span class="chapter-card__number">{{ ch.number }}</span>
+                  <span class="chapter-card__title">{{ translations[pageLang].files[ch.id].title }}</span>
+                </a>
+              {% else %}
+                <a href="{{ readPrefix }}/read/{{ ch.id }}/" class="chapter-card reveal" style="border-top-color:{{ section.color }}">
+                  <span class="chapter-card__number">{{ ch.number }}</span>
+                  <span class="chapter-card__title">{{ ch.title }}</span>
+                </a>
+              {% endif %}
             {% endfor %}
           </div>
         </div>
@@ -140,8 +166,8 @@ title: ""
 {# ═══════ ENDORSEMENTS ═══════ #}
 <section class="endorsements-section section">
   <div class="content-wrap">
-    <p class="section-label reveal">Endorsements</p>
-    <h2 class="reveal">What People Are Saying</h2>
+    <p class="section-label reveal">{{ t.section_endorsements }}</p>
+    <h2 class="reveal">{{ t.endorsements_heading }}</h2>
 
     <div class="endorsement-grid">
       {% for item in endorsements | slice(0, 3) %}
@@ -156,7 +182,7 @@ title: ""
 
     <div class="section__view-all">
       <a href="/endorsements/" class="involved-link reveal">
-        View All Endorsements &rarr;
+        {{ t.view_all_endorsements }} &rarr;
       </a>
     </div>
   </div>
@@ -167,19 +193,19 @@ title: ""
 {# ═══════ GET INVOLVED ═══════ #}
 <section class="involved-section section">
   <div class="content-wrap">
-    <p class="section-label reveal">Get Involved</p>
-    <h2 class="reveal">Join the Community</h2>
-    <p class="reveal">Plurality is an open, collaborative project. There are many ways to contribute.</p>
+    <p class="section-label reveal">{{ t.section_get_involved }}</p>
+    <h2 class="reveal">{{ t.involved_heading }}</h2>
+    <p class="reveal">{{ t.involved_desc }}</p>
 
     <div class="involved-links">
       <a href="{{ site.github }}" class="involved-link reveal" target="_blank" rel="noopener">
-        Contribute on GitHub &rarr;
+        {{ t.contribute }} &rarr;
       </a>
       <a href="{{ site.discord }}" class="involved-link reveal" target="_blank" rel="noopener">
-        Join the Discord &rarr;
+        {{ t.join_discord }} &rarr;
       </a>
-      <a href="/read/" class="involved-link reveal">
-        Start Reading &rarr;
+      <a href="{{ readPrefix }}/read/" class="involved-link reveal">
+        {{ t.start_reading }} &rarr;
       </a>
     </div>
   </div>
