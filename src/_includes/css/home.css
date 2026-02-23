@@ -9,12 +9,13 @@
   align-items: center;
   gap: 8px;
   flex-wrap: wrap;
-  padding: 12px var(--section-pad-h);
-  background: rgba(255, 255, 255, 0.04);
+  padding: 10px 20px;
+  background: rgba(255, 255, 255, 0.06);
+  border-radius: 100px;
   font-family: var(--sans);
   font-size: 0.85rem;
-  position: relative;
-  z-index: 10;
+  margin-bottom: 2rem;
+  animation: fadeUp 0.8s ease 0.5s both;
 }
 
 .home-lang-bar__current {

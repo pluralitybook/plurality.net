@@ -16,22 +16,22 @@ permalink: "{% if pageLang == 'en' %}/{% else %}/{{ pageLang }}/{% endif %}"
   {% set readPrefix = translations[pageLang].prefix %}
 {% endif %}
 
-{# ═══════ LANG PICKER (non-English pages link home, all pages show switcher) ═══════ #}
-{% if homeLangs | length > 1 %}
-<nav class="home-lang-bar" aria-label="Language">
-  {% for hl in homeLangs %}
-    {% if hl == pageLang %}
-      <span class="home-lang-bar__current">{{ i18n[hl].lang_name }}</span>
-    {% else %}
-      <a href="{% if hl == 'en' %}/{% else %}/{{ hl }}/{% endif %}" class="home-lang-bar__link">{{ i18n[hl].lang_name }}</a>
-    {% endif %}
-  {% endfor %}
-</nav>
-{% endif %}
-
 {# ═══════ HERO ═══════ #}
 <section class="hero" aria-labelledby="hero-title">
   <img src="/assets/images/logo-plurality.png" alt="Plurality logo" class="hero__logo" width="319" height="97">
+
+  {# ═══════ LANG PICKER ═══════ #}
+  {% if homeLangs | length > 1 %}
+  <nav class="home-lang-bar" aria-label="Language">
+    {% for hl in homeLangs %}
+      {% if hl == pageLang %}
+        <span class="home-lang-bar__current">{{ i18n[hl].lang_name }}</span>
+      {% else %}
+        <a href="{% if hl == 'en' %}/{% else %}/{{ hl }}/{% endif %}" class="home-lang-bar__link">{{ i18n[hl].lang_name }}</a>
+      {% endif %}
+    {% endfor %}
+  </nav>
+  {% endif %}
 
   <h1 id="hero-title" class="hero__title">
     <span class="c-r">P</span><span class="c-o">l</span><span class="c-g">u</span><span class="c-c">r</span><span class="c-w">a</span><span class="c-c">l</span><span class="c-g">i</span><span class="c-o">t</span><span class="c-r">y</span>
