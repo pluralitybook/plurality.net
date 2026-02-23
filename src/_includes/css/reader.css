@@ -337,8 +337,8 @@
 
 .book__body h2 {
   font-size: clamp(1.5rem, 3vw, 1.9rem);
-  margin-top: 3em;
-  margin-bottom: 0.8em;
+  margin-top: 2em;
+  margin-bottom: 0.6em;
   padding-bottom: 10px;
   text-align: left;
   border-bottom: 1px solid var(--gold-light);
@@ -347,16 +347,16 @@
 
 .book__body h3 {
   font-size: 1.3rem;
-  margin-top: 2.5em;
-  margin-bottom: 0.6em;
+  margin-top: 1.8em;
+  margin-bottom: 0.5em;
   text-align: left;
   color: var(--heading);
 }
 
 .book__body h4 {
   font-size: 1.05rem;
-  margin-top: 1.8em;
-  margin-bottom: 0.4em;
+  margin-top: 1.4em;
+  margin-bottom: 0.3em;
   text-align: left;
 }
 
@@ -377,10 +377,14 @@
   text-indent: 0;
 }
 
+.book__body hr {
+  margin: 1.5em 0;
+}
+
 .book__body blockquote {
   border-left: 2px solid var(--gold);
-  margin: 2em 0 2em 1em;
-  padding: 0.5em 0 0.5em 1.5em;
+  margin: 1em 0 1em 1em;
+  padding: 0.3em 0 0.3em 1.5em;
   font-style: italic;
   color: var(--muted);
   text-align: left;
@@ -389,6 +393,7 @@
 
 .book__body blockquote p {
   text-indent: 0;
+  margin-bottom: 0.4em;
 }
 
 .book__body img {
