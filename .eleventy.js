@@ -47,6 +47,18 @@ export default function (eleventyConfig) {
     return md.render(content);
   });
 
+  // Clean fetched markdown: strip leading # title and translation front matter
+  function cleanMarkdown(raw) {
+    let s = String(raw);
+    // Remove leading # Title line (already rendered by template)
+    s = s.replace(/^\s*#\s+.+\n+/, "");
+    // Remove 原文/作者/譯者 block (Chinese translation metadata up to ---)
+    s = s.replace(/^原文[：:][\s\S]*?(?=\n---)/m, "");
+    // Remove any leading --- separator left behind
+    s = s.replace(/^\s*---\s*\n/, "");
+    return s;
+  }
+
   // Shortcode: Fetch remote markdown content from GitHub
   // Usage: {% fetchcontent "https://raw.githubusercontent.com/..." %}
   eleventyConfig.addAsyncShortcode("fetchcontent", async function (url, fallbackUrl) {
@@ -55,7 +67,7 @@ export default function (eleventyConfig) {
         duration: "1d",
         type: "text",
       });
-      return md.render(String(content));
+      return md.render(cleanMarkdown(content));
     } catch (e) {
       if (fallbackUrl) {
         try {
@@ -63,7 +75,7 @@ export default function (eleventyConfig) {
             duration: "1d",
             type: "text",
           });
-          return md.render(String(content));
+          return md.render(cleanMarkdown(content));
         } catch (e2) {
           return `<p class="muted"><em>Content is temporarily unavailable. Please revisit this page later.</em></p>`;
         }
