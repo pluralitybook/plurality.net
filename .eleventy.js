@@ -4,7 +4,7 @@ import markdownItFootnote from "markdown-it-footnote";
 import EleventyFetch from "@11ty/eleventy-fetch";
 
 export default function (eleventyConfig) {
-  const md = markdownIt({ html: true, typographer: true })
+  const md = markdownIt({ html: true, typographer: true, linkify: true })
     .use(markdownItAnchor, {
       permalink: false,
       level: [2, 3, 4],
