@@ -101,32 +101,6 @@ permalink: "{% if pageLang == 'en' %}/{% else %}/{{ pageLang }}/{% endif %}"
 
 <div class="gold-sep"></div>
 
-{# ═══════ LANGUAGES ═══════ #}
-<section class="lang-section section">
-  <div class="content-wrap">
-    <p class="section-label reveal">{{ t.section_languages }}</p>
-    <h2 class="reveal">{{ t.languages_heading }}</h2>
-
-    <div class="lang-grid">
-      {% for lang in languages %}
-        {% if lang.code == "en" %}
-          {% set langHref = "/read/" %}
-        {% elif translations[lang.code] %}
-          {% set langHref = translations[lang.code].prefix + "/read/" %}
-        {% else %}
-          {% set langHref = "/read/" %}
-        {% endif %}
-        <a href="{{ langHref }}" class="lang-card reveal" lang="{{ lang.code }}">
-          <p class="lang-card__native">{{ lang.nativeName }}</p>
-          <p class="lang-card__name" lang="en">{{ lang.name }}</p>
-        </a>
-      {% endfor %}
-    </div>
-  </div>
-</section>
-
-<div class="gold-sep"></div>
-
 {# ═══════ CHAPTERS ═══════ #}
 <section class="chapters-section section">
   <div class="content-wrap">
