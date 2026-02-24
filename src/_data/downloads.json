@@ -1,0 +1,39 @@
+{
+  "en": {
+    "pdf": "https://github.com/pluralitybook/plurality/releases/latest/download/Plurality-english.pdf",
+    "epub": "https://github.com/pluralitybook/plurality/releases/latest/download/Plurality-english.epub",
+    "audiobook": {
+      "full": "https://github.com/pluralitybook/plurality/releases/download/latest/Plurality-english.mp3",
+      "parts": [
+        { "label": "Part 0", "url": "https://github.com/akinorioyama/plurality_tentative/releases/download/latest/Plurality.V1.2.Part.0.11L.mp3" },
+        { "label": "Part 1", "url": "https://github.com/akinorioyama/plurality_tentative/releases/download/latest/Plurality.V1.2.Part.1.11L.mp3" },
+        { "label": "Part 2", "url": "https://github.com/akinorioyama/plurality_tentative/releases/download/latest/Plurality.V1.2.Part.2.11L.mp3" },
+        { "label": "Part 3", "url": "https://github.com/akinorioyama/plurality_tentative/releases/download/latest/Plurality.V1.2.Part.3.11L.mp3" },
+        { "label": "Part 4", "url": "https://github.com/akinorioyama/plurality_tentative/releases/download/latest/Plurality.V1.2.Part.4.11L.mp3" },
+        { "label": "Part 5", "url": "https://github.com/akinorioyama/plurality_tentative/releases/download/latest/Plurality.V1.2.Part.5.11L.mp3" },
+        { "label": "Part 6", "url": "https://github.com/akinorioyama/plurality_tentative/releases/download/latest/Plurality.V1.2.1.Part.6.11L.mp3" },
+        { "label": "Part 7", "url": "https://github.com/akinorioyama/plurality_tentative/releases/download/latest/Plurality.V1.2.Part.7.11L.mp3" },
+        { "label": "Credits", "url": "https://github.com/akinorioyama/plurality_tentative/releases/download/latest/Plurality.V1.2.Credits.11L.mp3" }
+      ]
+    },
+    "purchase": [
+      { "label": "Buy on Amazon", "url": "https://www.amazon.com/dp/B0DSHVHMF2" },
+      { "label": "Listen on Audible", "url": "https://www.amazon.com/dp/B0D98RPKCK/" }
+    ]
+  },
+  "zh": {
+    "pdf": "https://github.com/pluralitybook/plurality/releases/latest/download/Plurality-traditional-mandarin.pdf",
+    "epub": "https://github.com/pluralitybook/plurality/releases/latest/download/Plurality-traditional-mandarin.epub",
+    "purchase": [
+      { "label": "讀書共和國", "url": "https://www.bookrep.com.tw/?md=gwindex&cl=book&at=bookcontent&id=18790" },
+      { "label": "博客來（簽名版）", "url": "https://www.books.com.tw/products/0010992482" },
+      { "label": "LikerLand NFT", "url": "https://liker.land/en/nft/class/likenft1cxcpmtg7wz7xu7pnlpmxvfj82c44j3uc8634rgz6zddpew8fkx7smut5cl" }
+    ]
+  },
+  "ja": {
+    "pdf": "https://github.com/akinorioyama/plurality_tentative/releases/download/latest/PLURALITY_Japanese.pdf",
+    "purchase": [
+      { "label": "ネット書店で購入", "url": "https://cybozushiki.cybozu.co.jp/books/plurality/#onlineshop" }
+    ]
+  }
+}

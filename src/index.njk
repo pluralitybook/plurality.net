@@ -79,6 +79,7 @@ permalink: "{% if pageLang == 'en' %}/{% else %}/{{ pageLang }}/{% endif %}"
 <div class="gold-sep"></div>
 
 {# ═══════ GET THE BOOK ═══════ #}
+{% set dl = downloads[pageLang] %}
 <section class="get-book-section section section--warm">
   <div class="content-wrap">
     <div class="get-book reveal">
@@ -89,15 +90,57 @@ permalink: "{% if pageLang == 'en' %}/{% else %}/{{ pageLang }}/{% endif %}"
         <p class="section-label">{{ t.get_book }}</p>
         <h2>{{ t.get_book_heading }}</h2>
         <p>{{ t.get_book_desc }}</p>
+
+        {# ── Primary links: Read / PDF / ePub ── #}
         <div class="get-book__links">
           <a href="{{ readPrefix }}/read/1/" class="involved-link">{{ t.read_online }} &rarr;</a>
-          <a href="{{ t.pdf_url or 'https://github.com/pluralitybook/plurality/releases' }}" class="involved-link" target="_blank" rel="noopener">{{ t.download_pdf }} &rarr;</a>
-          {% if t.buy_url %}
-            <a href="{{ t.buy_url }}" class="involved-link" target="_blank" rel="noopener">{{ t.buy_label }} &rarr;</a>
-          {% else %}
-            <a href="https://www.amazon.com/dp/B0DSHVHMF2" class="involved-link" target="_blank" rel="noopener">{{ t.buy_amazon }} &rarr;</a>
+          {% if dl and dl.pdf %}
+            <a href="{{ dl.pdf }}" class="involved-link" target="_blank" rel="noopener">{{ t.download_pdf }} &rarr;</a>
+          {% endif %}
+          {% if dl and dl.epub %}
+            <a href="{{ dl.epub }}" class="involved-link" target="_blank" rel="noopener">{{ t.download_epub }} &rarr;</a>
           {% endif %}
         </div>
+
+        {# ── Purchase links (from downloads.json if available, else generic Amazon) ── #}
+        {% if dl and dl.purchase and dl.purchase | length %}
+        <div class="get-book__links get-book__links--purchase">
+          {% for item in dl.purchase %}
+            <a href="{{ item.url }}" class="involved-link" target="_blank" rel="noopener">{{ item.label }} &rarr;</a>
+          {% endfor %}
+        </div>
+        {% else %}
+        <div class="get-book__links get-book__links--purchase">
+          <a href="https://www.amazon.com/dp/B0DSHVHMF2" class="involved-link" target="_blank" rel="noopener">{{ t.buy_amazon }} &rarr;</a>
+        </div>
+        {% endif %}
+
+        {# ── Audiobook (progressive disclosure) ── #}
+        {% if dl and dl.audiobook %}
+        <details class="get-book__audiobook">
+          <summary class="get-book__audiobook-toggle">
+            <span>{{ t.audiobook }}</span>
+            <span class="get-book__audiobook-arrow"></span>
+          </summary>
+          <div class="get-book__audiobook-body">
+            {% if dl.audiobook.full %}
+            <a href="{{ dl.audiobook.full }}" class="get-book__audiobook-full involved-link" target="_blank" rel="noopener">
+              {{ t.audiobook_full }} &rarr;
+            </a>
+            {% endif %}
+            {% if dl.audiobook.parts and dl.audiobook.parts | length %}
+            <p class="get-book__audiobook-parts-label">{{ t.audiobook_parts }}</p>
+            <div class="get-book__audiobook-parts">
+              {% for part in dl.audiobook.parts %}
+                <a href="{{ part.url }}" class="get-book__audiobook-part" target="_blank" rel="noopener">{{ part.label }}</a>
+              {% endfor %}
+            </div>
+            {% endif %}
+          </div>
+        </details>
+        {% endif %}
+
+        {# ── Extra resources (e.g. Japanese special site) ── #}
         {% if t.extra_resources %}
         <div class="get-book__extra">
           {% for res in t.extra_resources %}

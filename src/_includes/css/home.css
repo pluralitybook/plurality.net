@@ -245,6 +245,101 @@
   gap: 12px;
 }
 
+.get-book__links + .get-book__links {
+  margin-top: 12px;
+}
+
+/* ---- Audiobook disclosure ---- */
+.get-book__audiobook {
+  margin-top: 1.5rem;
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  background: var(--surface);
+}
+
+.get-book__audiobook-toggle {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 14px 20px;
+  font-family: var(--sans);
+  font-size: 0.95rem;
+  font-weight: 500;
+  color: var(--heading);
+  cursor: pointer;
+  list-style: none;
+  user-select: none;
+  transition: color 0.2s;
+}
+
+.get-book__audiobook-toggle::-webkit-details-marker {
+  display: none;
+}
+
+.get-book__audiobook-toggle:hover {
+  color: var(--teal);
+}
+
+.get-book__audiobook-arrow {
+  display: inline-block;
+  width: 8px;
+  height: 8px;
+  border-right: 2px solid var(--muted);
+  border-bottom: 2px solid var(--muted);
+  transform: rotate(45deg);
+  transition: transform 0.25s var(--ease-out);
+  flex-shrink: 0;
+  margin-left: 12px;
+}
+
+.get-book__audiobook[open] .get-book__audiobook-arrow {
+  transform: rotate(-135deg);
+}
+
+.get-book__audiobook-body {
+  padding: 0 20px 20px;
+}
+
+.get-book__audiobook-full {
+  margin-bottom: 1rem;
+}
+
+.get-book__audiobook-parts-label {
+  font-family: var(--sans);
+  font-size: 0.75rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.15em;
+  color: var(--muted);
+  margin-bottom: 8px;
+  margin-top: 1rem;
+}
+
+.get-book__audiobook-parts {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+
+.get-book__audiobook-part {
+  display: inline-flex;
+  align-items: center;
+  padding: 6px 14px;
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  font-family: var(--sans);
+  font-size: 0.8rem;
+  color: var(--text);
+  text-decoration: none;
+  transition: all 0.2s;
+}
+
+.get-book__audiobook-part:hover {
+  border-color: var(--teal);
+  color: var(--teal);
+}
+
+/* ---- Extra resources ---- */
 .get-book__extra {
   margin-top: 1.5rem;
   display: flex;
