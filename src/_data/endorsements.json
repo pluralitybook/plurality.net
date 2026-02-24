@@ -94,18 +94,38 @@
   ],
   "ja": [
     {
-      "quote": "In a technologically advanced, politically challenging, and rapidly evolving 21st century, what does a free and open future look like? Glen, Audrey and their coauthors offer a compelling view of a way forward.",
-      "author": "Vitalik Buterin",
-      "title": "Ethereum創設者"
+      "quote": "多元性という広大で無限の広がりの中で、それぞれの生命は唯一無二の尊い存在である...外部の状況がいかに危ういものであろうとも...分かち合う善の種が大地を突き破り、共感、喜び、調和の花へと開花するよう、積極的に行動しよう。",
+      "author": "ダライ・ラマ14世法王",
+      "title": ""
     },
     {
-      "quote": "They offer us a portal into a future where technology supports democracy, pluralism, and broad human flourishing. We know this future is possible because Tang has been building it in Taiwan.",
-      "author": "Danielle S. Allen",
-      "title": "政治哲学者、ハーバード大学James Bryan Conant教授、MacArthur Fellow"
+      "quote": "技術的に進歩し、政治的に挑戦的で、急速に進化する21世紀において、自由で開かれた未来とはどのようなものだろうか？グレン、オードリー、そして共著者たちは、説得力のある展望を提示している。",
+      "author": "ヴィタリック・ブテリン",
+      "title": "イーサリアム・ファウンダー"
     },
     {
-      "quote": "Plurality reads like optimistic sci-fi, already happening in real life! Can democracies around the world follow in Taiwan's footsteps to upgrade free society for the digital age?",
-      "author": "Joseph Gordon-Levitt",
+      "quote": "民主主義は相反する価値観の対立であった。しかし台湾では、民主主義は多様な価値観の対話となっている。オードリー・タンは、イデオロギーの制約を超越した「デジタル・デモクラシー」を創造する方法を示してくれた。",
+      "author": "蔡英文",
+      "title": "中華民国総統（台湾）"
+    },
+    {
+      "quote": "オードリー・タンとグレン・ワイルのプロジェクトは、台湾（そして他の国々）が新たな社会民主主義の方向へと進む上で、効果的かつ有意義なものとなるだろう。",
+      "author": "柄谷行人",
+      "title": "『世界史の構造』著者、ベルクグリューン文化哲学賞受賞者"
+    },
+    {
+      "quote": "インターネット技術が分断を加速したのであれば、心地よい共存も実現できるはず。Pluralityには、そのためのヒントがあふれています。",
+      "author": "青野慶久",
+      "title": "サイボウズ共同創業者兼CEO"
+    },
+    {
+      "quote": "新しいゲームのルールを読んだり、そのゲームが構築する世界を想像したりするのは、とてもワクワクする。しかもこのゲームはグローバルな問題であり、コミュニティが協力し合う方法なのだ。素晴らしい！",
+      "author": "リチャード・ガーフィールド",
+      "title": "マジック：ザ・ギャザリングのクリエイター"
+    },
+    {
+      "quote": "Pluralityは、まるで楽観的なSF小説のようだが、すでに現実に起こっている！世界中の民主主義国家は、台湾の足跡をたどってデジタル時代の自由社会をアップグレードできるのだろうか？ハッピーエンドを祈る。",
+      "author": "ジョセフ・ゴードン＝レヴィット",
       "title": "エミー賞受賞アーティスト、HITRECORD創設者"
     }
   ]
