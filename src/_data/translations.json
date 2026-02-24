@@ -151,7 +151,7 @@
     "prefix": "/de",
     "githubBase": "https://raw.githubusercontent.com/GermanPluralityBook/pluralitaet/main/contents/",
     "files": {
-      "0-0": { "file": "0-0-endorsements", "title": "Stimmen zum Buch" },
+      "0-0": { "file": "00-00 Stimmen zum Buch", "title": "Stimmen zum Buch" },
       "0-1": { "file": "00-01 Über die Autoren", "title": "Über die Autoren" },
       "0-2": { "file": "00-02 Finden Sie ihr Dao", "title": "Finden Sie Ihr Dao" },
       "0-3": { "file": "00-03 Danksagungen", "title": "Danksagungen" },
