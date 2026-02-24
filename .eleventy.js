@@ -53,7 +53,8 @@ export default function (eleventyConfig) {
     // Remove leading # Title line (already rendered by template)
     s = s.replace(/^\s*#\s+.+\n+/, "");
     // Remove 原文/作者/譯者 block (Chinese translation metadata up to ---)
-    s = s.replace(/^原文[：:][\s\S]*?(?=\n---)/m, "");
+    // Handles both "原文：..." and "| 原文：..." pipe-prefixed formats
+    s = s.replace(/^\|?\s*原文[：:][\s\S]*?(?=\n---)/m, "");
     // Remove any leading --- separator left behind
     s = s.replace(/^\s*---\s*\n/, "");
     return s;

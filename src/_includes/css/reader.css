@@ -350,6 +350,13 @@
   margin-bottom: 0.4em;
 }
 
+/* Endorsements chapter (0-0): no left border, tighter spacing */
+.book__body--endorsements blockquote {
+  border-left: none;
+  margin: 0.5em 0;
+  padding-left: 0;
+}
+
 .book__body img {
   border-radius: var(--radius);
   border: 1px solid var(--border);
