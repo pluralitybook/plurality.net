@@ -360,6 +360,63 @@
   padding-left: 0;
 }
 
+/* Credits chapter (0-3) */
+.book__body--credits {
+  text-align: left;
+}
+
+.book__body--credits > p:first-of-type::first-letter {
+  float: none;
+  font-size: inherit;
+  padding: 0;
+  color: inherit;
+}
+
+.credits__intro {
+  text-indent: 0;
+  font-size: 0.95rem;
+  line-height: 1.7;
+  color: var(--muted);
+  margin-bottom: 2.5em;
+}
+
+.credits__category {
+  margin-bottom: 2em;
+}
+
+.credits__category-name {
+  font-family: var(--serif);
+  font-style: italic;
+  font-weight: 400;
+  font-size: 1rem;
+  color: var(--muted);
+  margin-bottom: 0.3em;
+  border-bottom: none;
+  padding-bottom: 0;
+}
+
+.credits__list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.credits__name {
+  font-family: var(--display-serif);
+  font-weight: 400;
+  color: var(--heading);
+  line-height: 1.3;
+  text-indent: 0;
+  padding: 0.05em 0;
+}
+
+@media (max-width: 768px) {
+  .credits__list {
+    transform-origin: top left;
+    scale: 0.82;
+  }
+}
+
 .book__body img {
   border-radius: var(--radius);
   border: 1px solid var(--border);

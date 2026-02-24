@@ -24,6 +24,18 @@ eleventyComputed:
       <p>— {{ item.author }}{% if item.title %}, {{ item.title }}{% endif %}</p>
     </blockquote>
   {% endfor %}
+{% elif chapter.localCredits %}
+  <p class="credits__intro">{{ credits.intro }}</p>
+  {% for cat in credits.categories %}
+    <div class="credits__category">
+      <h3 class="credits__category-name">{{ cat.name }}</h3>
+      <ul class="credits__list">
+        {% for person in cat.contributors %}
+          <li class="credits__name" style="font-size: {{ (person.pt / 12) | round(3) }}rem">{{ person.name }}</li>
+        {% endfor %}
+      </ul>
+    </div>
+  {% endfor %}
 {% else %}
   {% fetchcontent chapter.githubUrl %}
 {% endif %}

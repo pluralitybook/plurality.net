@@ -44,6 +44,9 @@ export default function () {
           && endorsements[lang]
           && file === "0-0-endorsements";
 
+        // For 0-3 (Credits), use local data for all languages
+        const localCredits = ch.id === "0-3";
+
         flat.push({
           id: ch.id,
           number: ch.number,
@@ -58,6 +61,7 @@ export default function () {
           url: `${prefix}/read/${ch.id}/`,
           githubUrl: `${base}${langData.dir}/${encodedFile}`,
           localEndorsements: localEndorsements,
+          localCredits: localCredits,
           altLangs: [],
         });
       }

@@ -60,7 +60,7 @@ layout: base.njk
     </header>
 
     {# Chapter body #}
-    <div class="book__body{% if chapter and chapter.id == '0-0' %} book__body--endorsements{% endif %}">
+    <div class="book__body{% if chapter and chapter.id == '0-0' %} book__body--endorsements{% endif %}{% if chapter and chapter.id == '0-3' %} book__body--credits{% endif %}">
       {{ content | safe }}
     </div>
 
