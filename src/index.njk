@@ -135,8 +135,8 @@ permalink: "{% if pageLang == 'en' %}/{% else %}/{{ pageLang }}/{% endif %}"
   </div>
 </section>
 
-{# ═══════ ENDORSEMENTS (only if language has 0-0 chapter) ═══════ #}
-{% set hasEndorsements = (pageLang == "en") or (translations[pageLang] and translations[pageLang].files["0-0"]) %}
+{# ═══════ ENDORSEMENTS (if language has endorsements data or 0-0 chapter) ═══════ #}
+{% set hasEndorsements = (pageLang == "en") or endorsements[pageLang] or (translations[pageLang] and translations[pageLang].files["0-0"]) %}
 {% if hasEndorsements %}
 <div class="gold-sep"></div>
 
@@ -157,11 +157,19 @@ permalink: "{% if pageLang == 'en' %}/{% else %}/{{ pageLang }}/{% endif %}"
       {% endfor %}
     </div>
 
+    {% if translations[pageLang] and translations[pageLang].files["0-0"] %}
     <div class="section__view-all">
       <a href="{{ readPrefix }}/read/0-0/" class="involved-link reveal">
         {{ t.view_all_endorsements }} &rarr;
       </a>
     </div>
+    {% elif pageLang == "en" %}
+    <div class="section__view-all">
+      <a href="/read/0-0/" class="involved-link reveal">
+        {{ t.view_all_endorsements }} &rarr;
+      </a>
+    </div>
+    {% endif %}
   </div>
 </section>
 {% endif %}

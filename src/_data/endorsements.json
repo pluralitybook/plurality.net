@@ -57,5 +57,56 @@
       "author": "蔡英文總統",
       "title": ""
     }
+  ],
+  "th": [
+    {
+      "quote": "ในศตวรรษที่ 21 ที่ก้าวหน้าทางเทคโนโลยี ท้าทายทางการเมือง และเปลี่ยนแปลงอย่างรวดเร็ว อนาคตที่เสรีและเปิดกว้างมีลักษณะอย่างไร? Glen, Audrey และผู้เขียนร่วมของพวกเขาเสนอมุมมองที่น่าสนใจเกี่ยวกับเส้นทางข้างหน้า",
+      "author": "วิตาลิก บูเทริน",
+      "title": "ผู้ก่อตั้ง Ethereum"
+    },
+    {
+      "quote": "พวกเขาเสนอทางเข้าสู่อนาคตที่เทคโนโลยีสนับสนุนประชาธิปไตย ความหลากหลาย และการเจริญเติบโตของมนุษย์ในวงกว้าง เรารู้ว่าอนาคตนี้เป็นไปได้เพราะ Tang ได้สร้างมันขึ้นในไต้หวัน",
+      "author": "แดเนียล เอส. อัลเลน",
+      "title": "นักปรัชญาการเมือง, ศาสตราจารย์ James Bryan Conant ที่มหาวิทยาลัยฮาร์วาร์ด, MacArthur Fellow"
+    },
+    {
+      "quote": "Plurality อ่านแล้วเหมือนกับนิยายวิทยาศาสตร์เชิงบวกที่เกิดขึ้นจริงในชีวิตจริง! ประชาธิปไตยทั่วโลกสามารถเดินตามรอยเท้าของไต้หวันเพื่อยกระดับสังคมเสรีสำหรับยุคดิจิทัลได้หรือไม่?",
+      "author": "โจเซฟ กอร์ดอน-เลวิตต์",
+      "title": "ศิลปินผู้ชนะรางวัลเอ็มมี่และผู้ก่อตั้ง HITRECORD"
+    }
+  ],
+  "el": [
+    {
+      "quote": "Σε έναν τεχνολογικά προχωρημένο, με πολιτικές προκλήσεις και ταχέως εξελισσόμενο 21ο αιώνα, πώς μοιάζει ένα ελεύθερο και ανοιχτό μέλλον; Ο Glen, η Audrey και οι συνδημιουργοί τους προσφέρουν μια πειστική πρόταση για το μέλλον.",
+      "author": "Vitalik Buterin",
+      "title": "Ιδρυτής του Ethereum"
+    },
+    {
+      "quote": "Μας προσφέρουν ένα πέρασμα σε ένα μέλλον όπου η τεχνολογία στηρίζει τη δημοκρατία, τον πλουραλισμό και την πλατιά ευημερία του ανθρώπου. Γνωρίζουμε ότι αυτό το μέλλον είναι εφικτό επειδή η Tang το χτίζει στην Ταϊβάν.",
+      "author": "Danielle S. Allen",
+      "title": "Πολιτική φιλόσοφος, Καθηγήτρια στην έδρα James Bryan Conant στο Harvard, MacArthur Fellow"
+    },
+    {
+      "quote": "H Πληθυντικότητα διαβάζεται σαν αισιόδοξη επιστημονική φαντασία που ήδη συμβαίνει στην πραγματικότητα! Μπορούν οι δημοκρατίες ανά τον κόσμο να ακολουθήσουν το παράδειγμα της Ταϊβάν και να αναβαθμίσουν τις ελεύθερες κοινωνίες στην ψηφιακή εποχή;",
+      "author": "Joseph Gordon-Levitt",
+      "title": "Βραβευμένος με Emmy καλλιτέχνης και Ιδρυτής του HITRECORD"
+    }
+  ],
+  "ja": [
+    {
+      "quote": "In a technologically advanced, politically challenging, and rapidly evolving 21st century, what does a free and open future look like? Glen, Audrey and their coauthors offer a compelling view of a way forward.",
+      "author": "Vitalik Buterin",
+      "title": "Ethereum創設者"
+    },
+    {
+      "quote": "They offer us a portal into a future where technology supports democracy, pluralism, and broad human flourishing. We know this future is possible because Tang has been building it in Taiwan.",
+      "author": "Danielle S. Allen",
+      "title": "政治哲学者、ハーバード大学James Bryan Conant教授、MacArthur Fellow"
+    },
+    {
+      "quote": "Plurality reads like optimistic sci-fi, already happening in real life! Can democracies around the world follow in Taiwan's footsteps to upgrade free society for the digital age?",
+      "author": "Joseph Gordon-Levitt",
+      "title": "エミー賞受賞アーティスト、HITRECORD創設者"
+    }
   ]
 }
