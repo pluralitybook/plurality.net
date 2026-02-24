@@ -8,7 +8,7 @@
   },
   "zh": {
     "dir": "traditional-mandarin",
-    "label": "繁體中文",
+    "label": "華文",
     "prefix": "/zh",
     "githubBase": "https://raw.githubusercontent.com/pluralitybook/plurality/main/contents/",
     "files": {
