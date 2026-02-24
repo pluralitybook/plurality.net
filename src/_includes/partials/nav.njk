@@ -37,3 +37,11 @@
     <div id="search-container"></div>
   </div>
 </div>
+
+{% set indexTerms = bookIndex[navLang] or bookIndex.en %}
+{% if indexTerms | length %}
+<datalist id="search-suggestions">
+  {% for term in indexTerms %}<option value="{{ term }}">
+  {% endfor %}
+</datalist>
+{% endif %}

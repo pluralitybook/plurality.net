@@ -54,20 +54,28 @@
 
 .search-overlay__close {
   position: absolute;
-  top: 12px;
-  right: 16px;
-  background: none;
-  border: none;
-  font-size: 1.5rem;
+  top: -12px;
+  right: -12px;
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: 50%;
+  width: 28px;
+  height: 28px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.1rem;
   color: var(--muted);
   cursor: pointer;
   line-height: 1;
   z-index: 1;
-  transition: color 0.2s;
+  transition: color 0.2s, border-color 0.2s;
+  box-shadow: var(--shadow-sm);
 }
 
 .search-overlay__close:hover {
   color: var(--heading);
+  border-color: var(--gold-light);
 }
 
 /* ── Pagefind UI theme overrides ── */
@@ -112,8 +120,63 @@
   color: var(--heading) !important;
 }
 
+/* Clear button */
+.pagefind-ui__search-clear {
+  background: var(--warm) !important;
+  color: var(--muted) !important;
+  border: 1px solid var(--border) !important;
+  border-radius: var(--radius) !important;
+  font-family: var(--sans) !important;
+  font-size: 0.75rem !important;
+  padding: 4px 10px !important;
+  cursor: pointer;
+  transition: all 0.2s;
+}
+
+.pagefind-ui__search-clear:hover {
+  color: var(--heading) !important;
+  border-color: var(--gold-light) !important;
+}
+
 /* Hide the powered-by footer inside our overlay */
 .pagefind-ui__drawer .pagefind-ui__message {
   font-family: var(--sans) !important;
   color: var(--muted) !important;
+}
+
+/* ── Custom autocomplete suggestions ── */
+.search-suggest {
+  position: absolute;
+  z-index: 3000;
+  list-style: none;
+  margin: 4px 0 0;
+  padding: 4px 0;
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  box-shadow: var(--shadow-md);
+  max-height: 240px;
+  overflow-y: auto;
+  scrollbar-width: thin;
+  scrollbar-color: var(--border) transparent;
+}
+
+.search-suggest__item {
+  padding: 8px 14px;
+  font-family: var(--sans);
+  font-size: 0.85rem;
+  color: var(--text);
+  cursor: pointer;
+  transition: background 0.1s, color 0.1s;
+}
+
+.search-suggest__item:hover,
+.search-suggest__item--active {
+  background: var(--warm);
+  color: var(--heading);
+}
+
+.search-suggest__item--active {
+  outline: 2px solid var(--teal);
+  outline-offset: -2px;
 }
