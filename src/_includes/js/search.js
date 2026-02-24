@@ -1,7 +1,6 @@
 (function () {
   var overlay = document.getElementById('search-overlay');
   var container = document.getElementById('search-container');
-  var closeBtn = document.getElementById('search-close');
   if (!overlay || !container) return;
 
   var instance = null;
@@ -165,14 +164,67 @@
     overlay.setAttribute('aria-hidden', 'false');
     document.body.style.overflow = 'hidden';
     if (!instance) {
+      var uiTranslations = {
+        en: {
+          placeholder: "Search the book\u2026",
+          zero_results: "No results for [SEARCH_TERM]"
+        },
+        zh: {
+          placeholder: "\u641c\u5c0b\u672c\u66f8\u2026",
+          zero_results: "\u627e\u4e0d\u5230 [SEARCH_TERM] \u7684\u76f8\u95dc\u7d50\u679c",
+          many_results: "\u627e\u5230 [COUNT] \u500b [SEARCH_TERM] \u7684\u76f8\u95dc\u7d50\u679c",
+          one_result: "\u627e\u5230 [COUNT] \u500b [SEARCH_TERM] \u7684\u76f8\u95dc\u7d50\u679c",
+          search_label: "\u641c\u5c0b",
+          clear_search: "\u6e05\u9664",
+          load_more: "\u8f09\u5165\u66f4\u591a",
+          searching: "\u641c\u5c0b [SEARCH_TERM] \u4e2d\u2026"
+        },
+        ja: {
+          placeholder: "\u672c\u3092\u691c\u7d22\u2026",
+          zero_results: "[SEARCH_TERM] \u306e\u691c\u7d22\u7d50\u679c\u306f\u3042\u308a\u307e\u305b\u3093",
+          many_results: "[SEARCH_TERM] \u306e\u691c\u7d22\u7d50\u679c [COUNT] \u4ef6",
+          one_result: "[SEARCH_TERM] \u306e\u691c\u7d22\u7d50\u679c [COUNT] \u4ef6",
+          search_label: "\u691c\u7d22",
+          clear_search: "\u30af\u30ea\u30a2",
+          load_more: "\u3082\u3063\u3068\u898b\u308b",
+          searching: "[SEARCH_TERM] \u3092\u691c\u7d22\u4e2d\u2026"
+        },
+        de: {
+          placeholder: "Buch durchsuchen\u2026",
+          zero_results: "Keine Ergebnisse f\u00fcr [SEARCH_TERM]",
+          many_results: "[COUNT] Ergebnisse f\u00fcr [SEARCH_TERM]",
+          one_result: "[COUNT] Ergebnis f\u00fcr [SEARCH_TERM]",
+          search_label: "Suche",
+          clear_search: "L\u00f6schen",
+          load_more: "Mehr laden",
+          searching: "Suche nach [SEARCH_TERM]\u2026"
+        },
+        th: {
+          placeholder: "\u0e04\u0e49\u0e19\u0e2b\u0e32\u0e43\u0e19\u0e2b\u0e19\u0e31\u0e07\u0e2a\u0e37\u0e2d\u2026",
+          zero_results: "\u0e44\u0e21\u0e48\u0e1e\u0e1a\u0e1c\u0e25\u0e25\u0e31\u0e1e\u0e18\u0e4c\u0e2a\u0e33\u0e2b\u0e23\u0e31\u0e1a [SEARCH_TERM]",
+          many_results: "\u0e1e\u0e1a [COUNT] \u0e1c\u0e25\u0e25\u0e31\u0e1e\u0e18\u0e4c\u0e2a\u0e33\u0e2b\u0e23\u0e31\u0e1a [SEARCH_TERM]",
+          one_result: "\u0e1e\u0e1a [COUNT] \u0e1c\u0e25\u0e25\u0e31\u0e1e\u0e18\u0e4c\u0e2a\u0e33\u0e2b\u0e23\u0e31\u0e1a [SEARCH_TERM]",
+          search_label: "\u0e04\u0e49\u0e19\u0e2b\u0e32",
+          clear_search: "\u0e25\u0e49\u0e32\u0e07",
+          load_more: "\u0e42\u0e2b\u0e25\u0e14\u0e40\u0e1e\u0e34\u0e48\u0e21\u0e40\u0e15\u0e34\u0e21",
+          searching: "\u0e01\u0e33\u0e25\u0e31\u0e07\u0e04\u0e49\u0e19\u0e2b\u0e32 [SEARCH_TERM]\u2026"
+        },
+        el: {
+          placeholder: "\u0391\u03bd\u03b1\u03b6\u03ae\u03c4\u03b7\u03c3\u03b7 \u03c3\u03c4\u03bf \u03b2\u03b9\u03b2\u03bb\u03af\u03bf\u2026",
+          zero_results: "\u0394\u03b5\u03bd \u03b2\u03c1\u03ad\u03b8\u03b7\u03ba\u03b1\u03bd \u03b1\u03c0\u03bf\u03c4\u03b5\u03bb\u03ad\u03c3\u03bc\u03b1\u03c4\u03b1 \u03b3\u03b9\u03b1 [SEARCH_TERM]",
+          many_results: "\u0392\u03c1\u03ad\u03b8\u03b7\u03ba\u03b1\u03bd [COUNT] \u03b1\u03c0\u03bf\u03c4\u03b5\u03bb\u03ad\u03c3\u03bc\u03b1\u03c4\u03b1 \u03b3\u03b9\u03b1 [SEARCH_TERM]",
+          one_result: "\u0392\u03c1\u03ad\u03b8\u03b7\u03ba\u03b5 [COUNT] \u03b1\u03c0\u03bf\u03c4\u03ad\u03bb\u03b5\u03c3\u03bc\u03b1 \u03b3\u03b9\u03b1 [SEARCH_TERM]",
+          search_label: "\u0391\u03bd\u03b1\u03b6\u03ae\u03c4\u03b7\u03c3\u03b7",
+          clear_search: "\u039a\u03b1\u03b8\u03b1\u03c1\u03b9\u03c3\u03bc\u03cc\u03c2",
+          load_more: "\u03a0\u03b5\u03c1\u03b9\u03c3\u03c3\u03cc\u03c4\u03b5\u03c1\u03b1",
+          searching: "\u0391\u03bd\u03b1\u03b6\u03ae\u03c4\u03b7\u03c3\u03b7 [SEARCH_TERM]\u2026"
+        }
+      };
       instance = new PagefindUI({
         element: container,
         showSubResults: true,
         showImages: false,
-        translations: {
-          placeholder: "Search the book\u2026",
-          zero_results: "No results for [SEARCH_TERM]"
-        }
+        translations: uiTranslations[pageLang] || uiTranslations.en
       });
     }
     setTimeout(function () {
@@ -213,8 +265,6 @@
   document.querySelectorAll('.search-toggle').forEach(function (btn) {
     btn.addEventListener('click', open);
   });
-
-  if (closeBtn) closeBtn.addEventListener('click', close);
 
   overlay.addEventListener('click', function (e) {
     if (e.target === overlay) close();
