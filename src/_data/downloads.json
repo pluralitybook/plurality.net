@@ -35,5 +35,11 @@
     "purchase": [
       { "label": "ネット書店で購入", "url": "https://cybozushiki.cybozu.co.jp/books/plurality/#onlineshop" }
     ]
+  },
+  "de": {
+    "purchase": [
+      { "label": "Bei Amazon kaufen", "url": "https://www.amazon.de/dp/B0D24N776G" },
+      { "label": "Deutsche Übersetzung kaufen", "url": "https://www.amazon.de/dp/3000860932" }
+    ]
   }
 }
