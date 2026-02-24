@@ -16,4 +16,14 @@ eleventyComputed:
   nextTitle: "{{ chapter.nextChapter.title if chapter.nextChapter else '' }}"
 ---
 
-{% fetchcontent chapter.githubUrl %}
+{% if chapter.id == "0-0" and chapter.localEndorsements %}
+  {% set langEndorsements = endorsements[chapter.lang] %}
+  {% for item in langEndorsements %}
+    <blockquote>
+      <p>{{ item.quote }}</p>
+      <p>— {{ item.author }}{% if item.title %}, {{ item.title }}{% endif %}</p>
+    </blockquote>
+  {% endfor %}
+{% else %}
+  {% fetchcontent chapter.githubUrl %}
+{% endif %}

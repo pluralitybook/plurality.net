@@ -9,6 +9,9 @@ const chapters = JSON.parse(
 const translations = JSON.parse(
   fs.readFileSync(path.join(__dirname, "translations.json"), "utf-8")
 );
+const endorsements = JSON.parse(
+  fs.readFileSync(path.join(__dirname, "endorsements.json"), "utf-8")
+);
 
 export default function () {
   const allEntries = [];
@@ -35,6 +38,12 @@ export default function () {
         const encodedFile = encodeURIComponent(file + ".md");
         const prefix = langData.prefix || "";
 
+        // For 0-0 chapters, check if we should use local endorsements data
+        // (when the language has endorsements but the file is a placeholder)
+        const localEndorsements = ch.id === "0-0" && lang !== "en"
+          && endorsements[lang]
+          && file === "0-0-endorsements";
+
         flat.push({
           id: ch.id,
           number: ch.number,
@@ -48,6 +57,7 @@ export default function () {
           sectionColor: section.color,
           url: `${prefix}/read/${ch.id}/`,
           githubUrl: `${base}${langData.dir}/${encodedFile}`,
+          localEndorsements: localEndorsements,
           altLangs: [],
         });
       }
