@@ -145,13 +145,14 @@ permalink: "{% if pageLang == 'en' %}/{% else %}/{{ pageLang }}/{% endif %}"
     <p class="section-label reveal">{{ t.section_endorsements }}</p>
     <h2 class="reveal">{{ t.endorsements_heading }}</h2>
 
+    {% set langEndorsements = endorsements[pageLang] or endorsements.en %}
     <div class="endorsement-grid">
-      {% for item in endorsements | slice(0, 3) %}
+      {% for item in langEndorsements | slice(0, 3) %}
         <div class="endorsement-card reveal">
           <span class="endorsement-card__quote-mark" aria-hidden="true">&ldquo;</span>
           <p class="endorsement-card__text">{{ item.quote }}</p>
           <p class="endorsement-card__author">{{ item.author }}</p>
-          <p class="endorsement-card__role">{{ item.title }}</p>
+          {% if item.title %}<p class="endorsement-card__role">{{ item.title }}</p>{% endif %}
         </div>
       {% endfor %}
     </div>

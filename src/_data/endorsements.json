@@ -1,42 +1,61 @@
-[
-  {
-    "quote": "In a technologically advanced, politically challenging, and rapidly evolving 21st century, what does a free and open future look like? Glen, Audrey and their coauthors offer a compelling view of a way forward.",
-    "author": "Vitalik Buterin",
-    "title": "Founder of Ethereum"
-  },
-  {
-    "quote": "They offer us a portal into a future where technology supports democracy, pluralism, and broad human flourishing. We know this future is possible because Tang has been building it in Taiwan.",
-    "author": "Danielle S. Allen",
-    "title": "Political philosopher, James Bryan Conant University Professor at Harvard, MacArthur Fellow"
-  },
-  {
-    "quote": "Plurality reads like optimistic sci-fi, already happening in real life! Can democracies around the world follow in Taiwan's footsteps to upgrade free society for the digital age?",
-    "author": "Joseph Gordon-Levitt",
-    "title": "Emmy-winning artist and founder of HITRECORD"
-  },
-  {
-    "quote": "With wit, erudition and optimism, Audrey Tang and her collaborators argue that we can harness digital technology to confront authoritarianism, and that we can do so by leaning into, rather than shying away from, the principles of an open society.",
-    "author": "Anne Applebaum",
-    "title": "Pulitzer Prize winner, author of Twilight of Democracy"
-  },
-  {
-    "quote": "Rejoice! Here is a burst of creativity that gives us a peek at the humanistic high tech future we suspected was possible.",
-    "author": "Jaron Lanier",
-    "title": "Inventor of Virtual Reality, Microsoft OCTOPUS"
-  },
-  {
-    "quote": "An exciting, creative and provocative set of ideas on how to make progress on some of the most fundamental problems in the world. You will never think the same way again after reading this book.",
-    "author": "Jason Furman",
-    "title": "Former Chair of the Council of Economic Advisors, Harvard Economics Professor"
-  },
-  {
-    "quote": "Here in lucid and non-technical prose is a sweeping vision for how to integrate so much of what we've learned about technology and society in the past decades to remake the future of democracy, from someone who is actually doing it on the ground.",
-    "author": "Alex \"Sandy\" Pentland",
-    "title": "Inaugural Academic Head of the MIT Media Lab"
-  },
-  {
-    "quote": "In an era of anxiety and division, Glen Weyl and Audrey Tang provide a rare, grounded vision for how technology and democracy can harmonize, and propel us to a better future.",
-    "author": "Tristan Harris",
-    "title": "Co-Founder of the Center for Humane Technology"
-  }
-]
+{
+  "en": [
+    {
+      "quote": "In a technologically advanced, politically challenging, and rapidly evolving 21st century, what does a free and open future look like? Glen, Audrey and their coauthors offer a compelling view of a way forward.",
+      "author": "Vitalik Buterin",
+      "title": "Founder of Ethereum"
+    },
+    {
+      "quote": "They offer us a portal into a future where technology supports democracy, pluralism, and broad human flourishing. We know this future is possible because Tang has been building it in Taiwan.",
+      "author": "Danielle S. Allen",
+      "title": "Political philosopher, James Bryan Conant University Professor at Harvard, MacArthur Fellow"
+    },
+    {
+      "quote": "Plurality reads like optimistic sci-fi, already happening in real life! Can democracies around the world follow in Taiwan's footsteps to upgrade free society for the digital age?",
+      "author": "Joseph Gordon-Levitt",
+      "title": "Emmy-winning artist and founder of HITRECORD"
+    },
+    {
+      "quote": "With wit, erudition and optimism, Audrey Tang and her collaborators argue that we can harness digital technology to confront authoritarianism, and that we can do so by leaning into, rather than shying away from, the principles of an open society.",
+      "author": "Anne Applebaum",
+      "title": "Pulitzer Prize winner, author of Twilight of Democracy"
+    },
+    {
+      "quote": "Rejoice! Here is a burst of creativity that gives us a peek at the humanistic high tech future we suspected was possible.",
+      "author": "Jaron Lanier",
+      "title": "Inventor of Virtual Reality, Microsoft OCTOPUS"
+    },
+    {
+      "quote": "An exciting, creative and provocative set of ideas on how to make progress on some of the most fundamental problems in the world. You will never think the same way again after reading this book.",
+      "author": "Jason Furman",
+      "title": "Former Chair of the Council of Economic Advisors, Harvard Economics Professor"
+    },
+    {
+      "quote": "Here in lucid and non-technical prose is a sweeping vision for how to integrate so much of what we've learned about technology and society in the past decades to remake the future of democracy, from someone who is actually doing it on the ground.",
+      "author": "Alex \"Sandy\" Pentland",
+      "title": "Inaugural Academic Head of the MIT Media Lab"
+    },
+    {
+      "quote": "In an era of anxiety and division, Glen Weyl and Audrey Tang provide a rare, grounded vision for how technology and democracy can harmonize, and propel us to a better future.",
+      "author": "Tristan Harris",
+      "title": "Co-Founder of the Center for Humane Technology"
+    }
+  ],
+  "zh": [
+    {
+      "quote": "在這浩瀚無垠的多元宇宙中，每個生命都是獨特而珍貴的存在。無論外在環境多麼險峻，內心的淨土是慈悲與智慧的沃土，讓我們以積極的行動讓共善的種子破土而出，綻放出慈悲、喜悅與和諧之花。",
+      "author": "第十四世達賴喇嘛",
+      "title": ""
+    },
+    {
+      "quote": "在科技先進、政治充滿挑戰、瞬息萬變的 21 世紀，自由開放的未來會是什麼樣子？衛谷倫、唐鳳和共筆作者群，提供了令人信服的前進之路。",
+      "author": "Vitalik Buterin",
+      "title": "以太坊創辦人"
+    },
+    {
+      "quote": "過去的民主，是兩個價值觀的對決，臺灣的民主，已經是不同價值觀的對話。唐鳳展示了如何打造不被意識形態綁架的「數位民主」——這就是本書的貢獻。",
+      "author": "蔡英文總統",
+      "title": ""
+    }
+  ]
+}

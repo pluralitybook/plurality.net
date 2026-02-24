@@ -11,12 +11,12 @@ title: "Endorsements"
   </p>
 
   <div class="endorsement-grid">
-    {% for item in endorsements %}
+    {% for item in endorsements.en %}
       <div class="endorsement-card reveal">
         <span class="endorsement-card__quote-mark" aria-hidden="true">&ldquo;</span>
         <p class="endorsement-card__text">{{ item.quote }}</p>
         <p class="endorsement-card__author">{{ item.author }}</p>
-        <p class="endorsement-card__role">{{ item.title }}</p>
+        {% if item.title %}<p class="endorsement-card__role">{{ item.title }}</p>{% endif %}
       </div>
     {% endfor %}
   </div>
