@@ -1,6 +1,6 @@
-# new.plurality.net
+# plurality.net
 
-The website for [Plurality: The Future of Collaborative Technology and Democracy](https://new.plurality.net), a book by E. Glen Weyl, Audrey Tang and the Plurality Community.
+The website for [Plurality: The Future of Collaborative Technology and Democracy](https://plurality.net), a book by E. Glen Weyl, Audrey Tang and the Plurality Community.
 
 Built with [Eleventy](https://www.11ty.dev/) and [Bun](https://bun.sh/).
 
