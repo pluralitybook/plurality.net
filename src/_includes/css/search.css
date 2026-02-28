@@ -1,6 +1,6 @@
 /* ============================================================
    Search — Plurality
-   Pagefind overlay + theme overrides
+   Pagefind overlay + theme overrides + Fuse.js layout
    ============================================================ */
 
 /* Search toggle button (reuses theme-toggle style) */
@@ -52,7 +52,7 @@
   padding: 24px;
 }
 
-/* ── Pagefind UI theme overrides ── */
+/* ── Pagefind UI theme variables ── */
 :root {
   --pagefind-ui-scale: 0.9;
   --pagefind-ui-primary: var(--teal);
@@ -65,6 +65,19 @@
   --pagefind-ui-font: var(--sans);
 }
 
+/* ── Hide Pagefind's language filter panel ── */
+.pagefind-ui__filter-panel-label,
+.pagefind-ui__filter-panel {
+  display: none !important;
+}
+
+/* Make Pagefind results take full width (no filter sidebar) */
+.pagefind-ui__drawer {
+  display: flex !important;
+  flex-direction: column !important;
+}
+
+/* ── Shared input styling (applies to both Pagefind and Fuse) ── */
 .pagefind-ui__search-input {
   font-family: var(--sans) !important;
   color: var(--text) !important;
@@ -75,6 +88,7 @@
   color: var(--muted) !important;
 }
 
+/* ── Shared result styling ── */
 .pagefind-ui__result-link {
   color: var(--heading) !important;
   font-family: var(--serif) !important;
@@ -112,10 +126,148 @@
   border-color: var(--gold-light) !important;
 }
 
-/* Hide the powered-by footer inside our overlay */
-.pagefind-ui__drawer .pagefind-ui__message {
+/* Message (result count) */
+.pagefind-ui__drawer .pagefind-ui__message,
+.pagefind-ui__message {
   font-family: var(--sans) !important;
   color: var(--muted) !important;
+}
+
+/* Section tags */
+.pagefind-ui__result-tags {
+  list-style: none;
+  padding: 0;
+  margin: calc(8px * var(--pagefind-ui-scale, 1)) 0 0;
+  display: flex;
+  flex-wrap: wrap;
+  gap: calc(4px * var(--pagefind-ui-scale, 1));
+}
+
+.pagefind-ui__result-tag {
+  font-family: var(--sans) !important;
+  font-size: calc(12px * var(--pagefind-ui-scale, 1));
+  color: var(--muted) !important;
+  background: var(--pagefind-ui-tag, var(--warm));
+  padding: calc(2px * var(--pagefind-ui-scale, 1)) calc(8px * var(--pagefind-ui-scale, 1));
+  border-radius: var(--radius);
+}
+
+/* ── Fuse.js result layout (matches Pagefind structure) ── */
+
+.pagefind-ui__form {
+  position: relative;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.pagefind-ui .pagefind-ui__search-input {
+  width: 100%;
+  height: calc(64px * var(--pagefind-ui-scale, 1));
+  padding: 0 calc(70px * var(--pagefind-ui-scale, 1)) 0 calc(48px * var(--pagefind-ui-scale, 1));
+  border: var(--pagefind-ui-border-width, 1px) solid var(--pagefind-ui-border, #eeeeee);
+  border-radius: var(--pagefind-ui-border-radius, 8px);
+  font-size: calc(21px * var(--pagefind-ui-scale, 1));
+  appearance: none;
+  -webkit-appearance: none;
+  outline: none;
+}
+
+.pagefind-ui .pagefind-ui__search-input:focus {
+  border-color: var(--pagefind-ui-primary, var(--teal));
+}
+
+/* Search icon for Fuse input */
+.pagefind-ui__form::before {
+  content: "";
+  position: absolute;
+  left: calc(16px * var(--pagefind-ui-scale, 1));
+  top: 50%;
+  transform: translateY(-50%);
+  width: calc(18px * var(--pagefind-ui-scale, 1));
+  height: calc(18px * var(--pagefind-ui-scale, 1));
+  background: currentColor;
+  opacity: 0.4;
+  mask: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='currentColor' stroke-width='2.5'%3E%3Ccircle cx='11' cy='11' r='7'/%3E%3Cline x1='21' y1='21' x2='16.65' y2='16.65'/%3E%3C/svg%3E") center / contain no-repeat;
+  -webkit-mask: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='currentColor' stroke-width='2.5'%3E%3Ccircle cx='11' cy='11' r='7'/%3E%3Cline x1='21' y1='21' x2='16.65' y2='16.65'/%3E%3C/svg%3E") center / contain no-repeat;
+  pointer-events: none;
+}
+
+.pagefind-ui .pagefind-ui__search-clear {
+  position: absolute;
+  right: calc(2px * var(--pagefind-ui-scale, 1));
+  top: 50%;
+  transform: translateY(-50%);
+}
+
+.pagefind-ui__results {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.pagefind-ui__result {
+  list-style: none;
+  padding: calc(16px * var(--pagefind-ui-scale, 1)) 0;
+  border-top: var(--pagefind-ui-border-width, 1px) solid var(--pagefind-ui-border, var(--border));
+}
+
+.pagefind-ui__result:first-child {
+  border-top: none;
+}
+
+.pagefind-ui__result-inner {
+  display: flex;
+  flex-direction: column;
+}
+
+.pagefind-ui__result-title {
+  margin: 0;
+}
+
+.pagefind-ui .pagefind-ui__result-link {
+  font-size: calc(21px * var(--pagefind-ui-scale, 1));
+  font-weight: 700;
+  text-decoration: none;
+}
+
+.pagefind-ui .pagefind-ui__result-excerpt {
+  margin: calc(4px * var(--pagefind-ui-scale, 1)) 0 0;
+  font-size: calc(15px * var(--pagefind-ui-scale, 1));
+  line-height: 1.5;
+  word-break: break-word;
+}
+
+.pagefind-ui__result-nested {
+  display: flex;
+  flex-direction: column;
+  padding-left: calc(20px * var(--pagefind-ui-scale, 1));
+}
+
+.pagefind-ui__result-nested:first-of-type {
+  padding-top: calc(10px * var(--pagefind-ui-scale, 1));
+}
+
+.pagefind-ui__result-nested .pagefind-ui__result-link {
+  font-size: 0.9em;
+  position: relative;
+  font-weight: 400;
+}
+
+.pagefind-ui__result-nested .pagefind-ui__result-link::before {
+  content: "\2937\00a0";
+  position: absolute;
+  top: 0;
+  right: calc(100% + 0.1em);
+}
+
+.pagefind-ui__result-nested .pagefind-ui__result-excerpt {
+  font-size: calc(14px * var(--pagefind-ui-scale, 1));
+  min-height: 0;
+}
+
+.pagefind-ui__message {
+  padding: calc(10px * var(--pagefind-ui-scale, 1)) 0;
 }
 
 /* ── Custom autocomplete suggestions ── */

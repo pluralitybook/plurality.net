@@ -1,0 +1,9 @@
+---
+pagination:
+  data: searchIndexLangs
+  size: 1
+  alias: siLang
+permalink: "/{{ siLang }}/search-index.json"
+eleventyExcludeFromCollections: true
+---
+{{ searchIndex[siLang] | dump | safe }}
