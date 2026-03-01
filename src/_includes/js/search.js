@@ -248,64 +248,66 @@
     return str.replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;').replace(/"/g, '&quot;');
   }
 
-  // Build excerpt using Fuse.js match indices (handles fuzzy matches like ・ skipping)
-  // matchIndices: array of [start, end] pairs from Fuse.js (inclusive end)
-  function buildExcerpt(content, query, matchIndices) {
-    if (!content) return '';
+  // Strip CJK punctuation for normalized matching
+  // Handles ・、，。；：！？「」『』（）【】…—～ etc.
+  var cjkPunct = /[・\u30FB、，。；：！？「」『』（）〔〕【】…—～·\u00B7]/g;
 
-    // If we have Fuse match indices, use them for precise highlighting
-    if (matchIndices && matchIndices.length > 0) {
-      // Center excerpt around the first match
-      var firstMatch = matchIndices[0];
-      var ctxChars = 40;
-      var winStart = Math.max(0, firstMatch[0] - ctxChars);
-      var winEnd = Math.min(content.length, firstMatch[1] + 1 + ctxChars);
-
-      // Collect all match ranges that fall within our window
-      var ranges = [];
-      for (var m = 0; m < matchIndices.length; m++) {
-        var ms = matchIndices[m][0];
-        var me = matchIndices[m][1] + 1; // Fuse end is inclusive
-        if (ms < winEnd && me > winStart) {
-          ranges.push([Math.max(ms, winStart), Math.min(me, winEnd)]);
-        }
+  // Build a position map: for each char in the normalized string,
+  // store its original index in the source string
+  function buildNormMap(str) {
+    var norm = '';
+    var map = [];
+    for (var i = 0; i < str.length; i++) {
+      if (!cjkPunct.test(str[i])) {
+        map.push(i);
+        norm += str[i];
       }
-
-      // Build the excerpt string with <mark> highlights
-      var result = '';
-      var cursor = winStart;
-      if (winStart > 0) result += '\u2026';
-      for (var r = 0; r < ranges.length; r++) {
-        if (ranges[r][0] > cursor) {
-          result += escapeHtml(content.substring(cursor, ranges[r][0]));
-        }
-        result += '<mark>' + escapeHtml(content.substring(ranges[r][0], ranges[r][1])) + '</mark>';
-        cursor = ranges[r][1];
-      }
-      if (cursor < winEnd) {
-        result += escapeHtml(content.substring(cursor, winEnd));
-      }
-      if (winEnd < content.length) result += '\u2026';
-      return result;
+      cjkPunct.lastIndex = 0; // reset regex state
     }
+    return { norm: norm, map: map };
+  }
 
-    // Fallback: exact substring match (for non-Fuse contexts)
+  function buildExcerpt(content, query) {
+    if (!content) return '';
+    var ctxChars = 40;
+
+    // 1. Try exact substring match first
     var lowerContent = content.toLowerCase();
     var lowerQuery = query.toLowerCase();
     var idx = lowerContent.indexOf(lowerQuery);
-    if (idx === -1) {
-      var slice = content.substring(0, 100);
-      return escapeHtml(slice) + (content.length > 100 ? '\u2026' : '');
+
+    if (idx !== -1) {
+      var start = Math.max(0, idx - ctxChars);
+      var end = Math.min(content.length, idx + query.length + ctxChars);
+      return (start > 0 ? '\u2026' : '') +
+        escapeHtml(content.substring(start, idx)) +
+        '<mark>' + escapeHtml(content.substring(idx, idx + query.length)) + '</mark>' +
+        escapeHtml(content.substring(idx + query.length, end)) +
+        (end < content.length ? '\u2026' : '');
     }
-    var ctxChars = 40;
-    var start = Math.max(0, idx - ctxChars);
-    var end = Math.min(content.length, idx + query.length + ctxChars);
-    var before = content.substring(start, idx);
-    var match = content.substring(idx, idx + query.length);
-    var after = content.substring(idx + query.length, end);
-    return (start > 0 ? '\u2026' : '') +
-      escapeHtml(before) + '<mark>' + escapeHtml(match) + '</mark>' + escapeHtml(after) +
-      (end < content.length ? '\u2026' : '');
+
+    // 2. Try normalized match (strip CJK punctuation from both sides)
+    var info = buildNormMap(lowerContent);
+    var normQuery = lowerQuery.replace(cjkPunct, '');
+    cjkPunct.lastIndex = 0;
+    var normIdx = info.norm.indexOf(normQuery);
+
+    if (normIdx !== -1 && normQuery.length > 0) {
+      // Map back to original content positions
+      var origStart = info.map[normIdx];
+      var origEnd = info.map[normIdx + normQuery.length - 1] + 1;
+      var winStart = Math.max(0, origStart - ctxChars);
+      var winEnd = Math.min(content.length, origEnd + ctxChars);
+      return (winStart > 0 ? '\u2026' : '') +
+        escapeHtml(content.substring(winStart, origStart)) +
+        '<mark>' + escapeHtml(content.substring(origStart, origEnd)) + '</mark>' +
+        escapeHtml(content.substring(origEnd, winEnd)) +
+        (winEnd < content.length ? '\u2026' : '');
+    }
+
+    // 3. Fallback: show beginning of content
+    var slice = content.substring(0, 100);
+    return escapeHtml(slice) + (content.length > 100 ? '\u2026' : '');
   }
 
   function formatMessage(template, count, term) {
@@ -341,23 +343,11 @@
       }
       // Max 3 sub-results per chapter (matches PageFind behavior)
       if (chapterMap[key].subResults.length < 3) {
-        // Extract Fuse match indices for the 'content' key
-        var contentMatches = null;
-        var matches = results[i].matches;
-        if (matches) {
-          for (var mi = 0; mi < matches.length; mi++) {
-            if (matches[mi].key === 'content') {
-              contentMatches = matches[mi].indices;
-              break;
-            }
-          }
-        }
         chapterMap[key].subResults.push({
           heading: item.heading,
           anchor: item.anchor,
           content: item.content,
           score: results[i].score,
-          matchIndices: contentMatches,
         });
       }
     }
@@ -398,7 +388,7 @@
         if (!sub.heading) continue; // skip intro sections without headings
 
         var subUrl = ch.url + '#' + sub.anchor;
-        var subExcerpt = buildExcerpt(sub.content, query, sub.matchIndices);
+        var subExcerpt = buildExcerpt(sub.content, query);
 
         html += '<div class="pagefind-ui__result-nested">';
         html += '<p class="pagefind-ui__result-title">';
