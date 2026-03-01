@@ -474,7 +474,7 @@
     container.innerHTML = '';
 
     var wrapper = document.createElement('div');
-    wrapper.className = 'pagefind-ui';
+    wrapper.className = 'pagefind-ui pagefind-ui--fuse';
 
     var form = document.createElement('form');
     form.className = 'pagefind-ui__form';
