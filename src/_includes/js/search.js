@@ -248,8 +248,48 @@
     return str.replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;').replace(/"/g, '&quot;');
   }
 
-  function buildExcerpt(content, query) {
+  // Build excerpt using Fuse.js match indices (handles fuzzy matches like ・ skipping)
+  // matchIndices: array of [start, end] pairs from Fuse.js (inclusive end)
+  function buildExcerpt(content, query, matchIndices) {
     if (!content) return '';
+
+    // If we have Fuse match indices, use them for precise highlighting
+    if (matchIndices && matchIndices.length > 0) {
+      // Center excerpt around the first match
+      var firstMatch = matchIndices[0];
+      var ctxChars = 40;
+      var winStart = Math.max(0, firstMatch[0] - ctxChars);
+      var winEnd = Math.min(content.length, firstMatch[1] + 1 + ctxChars);
+
+      // Collect all match ranges that fall within our window
+      var ranges = [];
+      for (var m = 0; m < matchIndices.length; m++) {
+        var ms = matchIndices[m][0];
+        var me = matchIndices[m][1] + 1; // Fuse end is inclusive
+        if (ms < winEnd && me > winStart) {
+          ranges.push([Math.max(ms, winStart), Math.min(me, winEnd)]);
+        }
+      }
+
+      // Build the excerpt string with <mark> highlights
+      var result = '';
+      var cursor = winStart;
+      if (winStart > 0) result += '\u2026';
+      for (var r = 0; r < ranges.length; r++) {
+        if (ranges[r][0] > cursor) {
+          result += escapeHtml(content.substring(cursor, ranges[r][0]));
+        }
+        result += '<mark>' + escapeHtml(content.substring(ranges[r][0], ranges[r][1])) + '</mark>';
+        cursor = ranges[r][1];
+      }
+      if (cursor < winEnd) {
+        result += escapeHtml(content.substring(cursor, winEnd));
+      }
+      if (winEnd < content.length) result += '\u2026';
+      return result;
+    }
+
+    // Fallback: exact substring match (for non-Fuse contexts)
     var lowerContent = content.toLowerCase();
     var lowerQuery = query.toLowerCase();
     var idx = lowerContent.indexOf(lowerQuery);
@@ -301,11 +341,23 @@
       }
       // Max 3 sub-results per chapter (matches PageFind behavior)
       if (chapterMap[key].subResults.length < 3) {
+        // Extract Fuse match indices for the 'content' key
+        var contentMatches = null;
+        var matches = results[i].matches;
+        if (matches) {
+          for (var mi = 0; mi < matches.length; mi++) {
+            if (matches[mi].key === 'content') {
+              contentMatches = matches[mi].indices;
+              break;
+            }
+          }
+        }
         chapterMap[key].subResults.push({
           heading: item.heading,
           anchor: item.anchor,
           content: item.content,
           score: results[i].score,
+          matchIndices: contentMatches,
         });
       }
     }
@@ -346,7 +398,7 @@
         if (!sub.heading) continue; // skip intro sections without headings
 
         var subUrl = ch.url + '#' + sub.anchor;
-        var subExcerpt = buildExcerpt(sub.content, query);
+        var subExcerpt = buildExcerpt(sub.content, query, sub.matchIndices);
 
         html += '<div class="pagefind-ui__result-nested">';
         html += '<p class="pagefind-ui__result-title">';
