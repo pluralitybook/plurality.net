@@ -38,8 +38,8 @@
   },
   "de": {
     "purchase": [
-      { "label": "Bei Amazon kaufen", "url": "https://www.amazon.de/dp/B0D24N776G" },
-      { "label": "Deutsche Übersetzung kaufen", "url": "https://www.amazon.de/dp/3000860932" }
+      { "label": "Deutsche Übersetzung kaufen", "url": "https://www.amazon.de/dp/3000860932" },
+      { "label": "pdf herunterladen", "url": "https://github.com/akinorioyama/plurality_tentative/releases/download/latest/pluralitat-german.pdf" }
     ]
   }
 }
