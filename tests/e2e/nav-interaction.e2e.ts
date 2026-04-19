@@ -18,11 +18,21 @@ test.describe("nav interactions", () => {
 
   test("theme toggle switches data attribute", async ({ page }) => {
     await page.goto("/");
-    const toggle = page.locator("[data-theme-toggle], .theme-toggle").first();
+
+    // On narrow viewports the in-nav toggle is hidden; open the hamburger
+    // menu so the overlay's toggle becomes interactable.
+    const hamburger = page.locator(".nav__hamburger");
+    if (await hamburger.isVisible().catch(() => false)) {
+      await hamburger.click();
+      await expect(page.locator(".nav__overlay")).toHaveClass(/active/);
+    }
+
+    const toggle = page.locator(".theme-toggle:visible").first();
     if ((await toggle.count()) === 0) {
       test.skip();
       return;
     }
+
     const before = await page
       .locator("html")
       .evaluate((el) => el.getAttribute("data-theme"));
