@@ -1,0 +1,24 @@
+## Lychee configuration — fast internal link check on the built site.
+## External domains that rate-limit or redirect are excluded via .lycheeignore.
+
+include_verbatim = false
+verbose = "info"
+no_progress = true
+cache = true
+max_cache_age = "6h"
+max_concurrency = 32
+max_redirects = 5
+timeout = 20
+retry_wait_time = 2
+accept = [200, 206, 301, 302, 304, 308, 403, 429, 999]
+exclude_path = [
+  "dist/pagefind/",
+  "dist/assets/js/",
+  "dist/assets/css/",
+  "./dist/pagefind/",
+  "./dist/assets/js/",
+  "./dist/assets/css/"
+]
+
+## Only check URLs referenced by HTML (skip crawling non-HTML assets).
+include_fragments = false

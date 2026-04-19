@@ -22,7 +22,7 @@ jobs:
       - run: bun install
 
       - name: Sync translations from upstream repos
-        run: bun scripts/sync-translations.ts
+        run: bun scripts/sync-translations-bin.ts
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
