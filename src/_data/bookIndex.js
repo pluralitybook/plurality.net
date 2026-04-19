@@ -2,6 +2,7 @@ import EleventyFetch from "@11ty/eleventy-fetch";
 import fs from "fs";
 import path from "path";
 import { fileURLToPath } from "url";
+import { parseIndexMarkdown } from "./lib/book-index-parser.js";
 
 const __dirname = path.dirname(fileURLToPath(import.meta.url));
 
@@ -17,29 +18,22 @@ function loadLocalIndex(lang) {
   }
 }
 
-export default async function () {
-  // English: fetch from GitHub
-  let enTerms = [];
+const defaultFetcher = (url) =>
+  EleventyFetch(url, { duration: "1d", type: "text" });
+
+export default async function bookIndex({
+  fetcher = defaultFetcher,
+  indexUrl = INDEX_URL,
+  localLangs = ["zh", "ja", "th", "el", "de"],
+  loader = loadLocalIndex,
+} = {}) {
+  let en = [];
   try {
-    const raw = await EleventyFetch(INDEX_URL, { duration: "1d", type: "text" });
-    const codeBlockRe = /```\n([\s\S]*?)```/g;
-    let match;
-    while ((match = codeBlockRe.exec(raw)) !== null) {
-      for (const line of match[1].split("\n")) {
-        const tab = line.indexOf("\t");
-        if (tab === -1) continue;
-        const term = line.slice(0, tab).trim();
-        if (term) enTerms.push(term);
-      }
-    }
+    const raw = await fetcher(indexUrl);
+    en = parseIndexMarkdown(raw);
   } catch {}
 
-  return {
-    en: enTerms,
-    zh: loadLocalIndex("zh"),
-    ja: loadLocalIndex("ja"),
-    th: loadLocalIndex("th"),
-    el: loadLocalIndex("el"),
-    de: loadLocalIndex("de"),
-  };
+  const out = { en };
+  for (const lang of localLangs) out[lang] = loader(lang);
+  return out;
 }

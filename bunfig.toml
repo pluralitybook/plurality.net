@@ -1,0 +1,13 @@
+[test]
+# 100% line + function coverage for all source files reachable from the test
+# suites. CI fails on regressions.
+coverage = true
+coverageThreshold = 1.0
+coverageReporter = ["text", "lcov"]
+coverageDir = "coverage"
+coveragePathIgnorePatterns = [
+  "node_modules/",
+  "tests/",
+  "dist/",
+  "scripts/sync-translations-bin.ts"
+]

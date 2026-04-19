@@ -2,6 +2,14 @@ import markdownIt from "markdown-it";
 import markdownItAnchor from "markdown-it-anchor";
 import markdownItFootnote from "markdown-it-footnote";
 import EleventyFetch from "@11ty/eleventy-fetch";
+import {
+  keys,
+  where,
+  slice,
+  first,
+  attr,
+  cleanMarkdown,
+} from "./src/_includes/lib/filters.js";
 
 export default function (eleventyConfig) {
   const md = markdownIt({ html: true, typographer: true, linkify: true })
@@ -20,45 +28,15 @@ export default function (eleventyConfig) {
   eleventyConfig.addPassthroughCopy("src/CNAME");
 
   // Filters
-  eleventyConfig.addFilter("keys", (obj) => Object.keys(obj || {}));
-
-  eleventyConfig.addFilter("where", (arr, key, val) => {
-    if (!arr) return [];
-    return arr.filter((item) => item[key] === val);
-  });
-
-  eleventyConfig.addFilter("slice", (arr, start, end) => {
-    if (!arr) return [];
-    return arr.slice(start, end);
-  });
-
-  eleventyConfig.addFilter("first", (arr) => {
-    if (!arr || !arr.length) return null;
-    return arr[0];
-  });
-
-  eleventyConfig.addFilter("attr", (obj, key) => {
-    if (!obj) return "";
-    return obj[key] || "";
-  });
-
+  eleventyConfig.addFilter("keys", keys);
+  eleventyConfig.addFilter("where", where);
+  eleventyConfig.addFilter("slice", slice);
+  eleventyConfig.addFilter("first", first);
+  eleventyConfig.addFilter("attr", attr);
   eleventyConfig.addFilter("renderMarkdown", (content) => {
     if (!content) return "";
     return md.render(content);
   });
-
-  // Clean fetched markdown: strip leading # title and translation front matter
-  function cleanMarkdown(raw) {
-    let s = String(raw);
-    // Remove leading # Title line (already rendered by template)
-    s = s.replace(/^\s*#\s+.+\n+/, "");
-    // Remove 原文/作者/譯者 block (Chinese translation metadata up to ---)
-    // Handles both "原文：..." and "| 原文：..." pipe-prefixed formats
-    s = s.replace(/^\|?\s*原文[：:][\s\S]*?(?=\n---)/m, "");
-    // Remove any leading --- separator left behind
-    s = s.replace(/^\s*---\s*\n/, "");
-    return s;
-  }
 
   // Shortcode: Fetch remote markdown content from GitHub
   // Usage: {% fetchcontent "https://raw.githubusercontent.com/..." %}
