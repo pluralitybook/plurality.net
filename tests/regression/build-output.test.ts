@@ -149,6 +149,12 @@ describe("build output: assets", () => {
     expect(existsSync(resolve(pfRoot, "pagefind-ui.js"))).toBe(true);
     expect(existsSync(resolve(pfRoot, "pagefind-ui.css"))).toBe(true);
   });
+
+  test("homepage uses the Plurality mark as favicon", () => {
+    const html = readFileSync(resolve(DIST, "index.html"), "utf-8");
+    expect(html).toContain('href="/assets/images/favicon.png"');
+    expect(html).not.toContain("%3EP%3C/text%3E");
+  });
 });
 
 describe("build output: HTML shape", () => {
