@@ -1,0 +1,35 @@
+---
+layout: page.njk
+title: "Read"
+---
+
+<div class="read-page">
+  <p class="section-label">The Book</p>
+  <h1>Plurality: The Future of Collaborative Technology and Democracy</h1>
+  <p class="read-page__intro">
+    Browse chapters by section. The book is available in multiple languages and is being continuously translated by a community of volunteers.
+  </p>
+
+  <p class="read-page__lang-note">
+    <a href="/zh/read/" lang="zh">閱讀繁體中文版 &rarr;</a>
+  </p>
+
+  <div class="chapter-groups">
+    {% for section in chapters.sections %}
+      <div class="chapter-group reveal">
+        <h3 class="chapter-group__title">
+          <span class="chapter-group__accent" style="background:{{ section.color }}"></span>
+          {{ section.title }}
+        </h3>
+        <div class="chapter-list">
+          {% for ch in section.chapters %}
+            <a href="/read/{{ ch.id }}/" class="chapter-card reveal" style="border-top-color:{{ section.color }}">
+              <span class="chapter-card__number">{{ ch.number }}</span>
+              <span class="chapter-card__title">{{ ch.title }}</span>
+            </a>
+          {% endfor %}
+        </div>
+      </div>
+    {% endfor %}
+  </div>
+</div>

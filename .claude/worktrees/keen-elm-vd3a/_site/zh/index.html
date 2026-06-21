@@ -1,0 +1,637 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Plurality</title>
+  <meta name="description" content="A book by E. Glen Weyl, Audrey Tang and the Plurality Community exploring how technology can support and strengthen democracy.">
+  <meta name="theme-color" content="#faf8f5" media="(prefers-color-scheme: light)">
+  <meta name="theme-color" content="#0f1923" media="(prefers-color-scheme: dark)">
+
+  <link rel="canonical" href="https://new.plurality.net/zh/">
+
+  <!-- Open Graph -->
+  <meta property="og:type" content="website">
+  <meta property="og:title" content="Plurality">
+  <meta property="og:description" content="A book by E. Glen Weyl, Audrey Tang and the Plurality Community exploring how technology can support and strengthen democracy.">
+  <meta property="og:site_name" content="Plurality">
+  <meta property="og:locale" content="zh">
+
+  <!-- Twitter Card -->
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Plurality">
+  <meta name="twitter:description" content="A book by E. Glen Weyl, Audrey Tang and the Plurality Community exploring how technology can support and strengthen democracy.">
+
+  <!-- Favicon (inline SVG with brand colors) -->
+  <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='6' fill='%230f1923'/%3E%3Ctext x='16' y='22' text-anchor='middle' fill='%23c9a961' font-family='Georgia,serif' font-size='18' font-weight='700'%3EP%3C/text%3E%3C/svg%3E">
+
+  <!-- Fonts: Stage 1 critical -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+  <!-- Fonts: Stage 2 deferred -->
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,400;0,700;1,400&family=Cormorant+Garamond:wght@400;700&family=Outfit:wght@300;400;500;600&family=Noto+Sans+TC:wght@400;500&family=Noto+Serif+TC:wght@400;700&family=Noto+Sans+JP:wght@400;500&family=Noto+Serif+JP:wght@400;700&family=Sarabun:wght@400;600;700&display=swap" media="print" onload="this.media='all'">
+  <noscript>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,400;0,700;1,400&family=Cormorant+Garamond:wght@400;700&family=Outfit:wght@300;400;500;600&family=Noto+Sans+TC:wght@400;500&family=Noto+Serif+TC:wght@400;700&family=Noto+Sans+JP:wght@400;500&family=Noto+Serif+JP:wght@400;700&family=Sarabun:wght@400;600;700&display=swap">
+  </noscript>
+
+  <link rel="stylesheet" href="/assets/css/main.css">
+
+  <!-- Theme toggle (run before render to prevent flash) -->
+  <script src="/assets/js/theme-toggle.js"></script>
+</head>
+<body>
+  <a href="#main" class="skip-link">Skip to content</a>
+
+  
+
+
+
+
+<nav class="nav nav--hero" role="navigation" aria-label="Main navigation">
+  <div class="nav__inner">
+    <a href="/zh/" class="nav__logo" aria-label="Plurality home">Plurality</a>
+
+    <ul class="nav__links">
+      <li><a href="/zh/read/" class="nav__link">閱讀</a></li>
+      <li><a href="/zh/read/0-1/" class="nav__link">關於</a></li>
+      <li><a href="https://github.com/pluralitybook/plurality" class="nav__link" target="_blank" rel="noopener">GitHub</a></li>
+      <li><button class="theme-toggle" aria-label="Toggle theme">&#9790;</button></li>
+    </ul>
+
+    <button class="nav__hamburger" aria-label="Open menu" aria-expanded="false">
+      <span></span>
+      <span></span>
+      <span></span>
+    </button>
+  </div>
+</nav>
+
+<div class="nav__overlay" role="dialog" aria-label="Mobile menu">
+  <a href="/zh/read/" class="nav__overlay-link">閱讀</a>
+  <a href="/zh/read/0-1/" class="nav__overlay-link">關於</a>
+  <a href="https://github.com/pluralitybook/plurality" class="nav__overlay-link" target="_blank" rel="noopener">GitHub</a>
+  <button class="theme-toggle" aria-label="Toggle theme">&#9790;</button>
+</div>
+
+
+  <main id="main">
+    
+
+
+
+  
+
+
+
+<section class="hero" aria-labelledby="hero-title">
+  <img src="/assets/images/logo-plurality.png" alt="Plurality logo" class="hero__logo" width="319" height="97">
+
+  
+  
+  <nav class="home-lang-bar" aria-label="Language">
+    
+      
+        <a href="/" class="home-lang-bar__link">English</a>
+      
+    
+      
+        <span class="home-lang-bar__current">華文</span>
+      
+    
+      
+        <a href="/ja/" class="home-lang-bar__link">日本語</a>
+      
+    
+      
+        <a href="/th/" class="home-lang-bar__link">ไทย</a>
+      
+    
+      
+        <a href="/el/" class="home-lang-bar__link">Ελληνικά</a>
+      
+    
+  </nav>
+  
+
+  <h1 id="hero-title" class="hero__title">
+    <span class="c-r">P</span><span class="c-o">l</span><span class="c-g">u</span><span class="c-c">r</span><span class="c-w">a</span><span class="c-c">l</span><span class="c-g">i</span><span class="c-o">t</span><span class="c-r">y</span>
+  </h1>
+
+  <div class="hero__brand-line" aria-hidden="true">
+    <span class="hero__brand-line-r"></span>
+    <span class="hero__brand-line-o"></span>
+    <span class="hero__brand-line-g"></span>
+    <span class="hero__brand-line-c"></span>
+    <span class="hero__brand-line-w"></span>
+    <span class="hero__brand-line-c"></span>
+    <span class="hero__brand-line-g"></span>
+    <span class="hero__brand-line-o"></span>
+    <span class="hero__brand-line-r"></span>
+  </div>
+
+  <p class="hero__subtitle">協作技術與民主的未來</p>
+
+  <p class="hero__authors">衛谷倫、唐鳳與多元宇宙社群</p>
+
+  <div class="hero__sep"></div>
+
+  <a href="/zh/read/" class="hero__cta">
+    閱讀本書 <span class="hero__cta-arrow">&rarr;</span>
+  </a>
+
+  <div class="hero__scroll" aria-hidden="true" tabindex="-1">
+    <span>向下捲動</span>
+    <span class="hero__scroll-line"></span>
+  </div>
+</section>
+
+
+<section id="about" class="about-section section">
+  <div class="about-section__inner">
+    <p class="section-label reveal">關於本書</p>
+    <h2 class="reveal">協作多元性的技術</h2>
+    <p class="reveal">《多元宇宙》描述了一種新興的技術範式，它承認並利用跨越社會差異的協作力量。Plurality 展示了數位工具如何強化民主、彌合分歧、釋放人類合作的潛力，而非讓技術撕裂社會結構。</p>
+    <p class="reveal">本書由政治經濟學家暨技術專家衛谷倫（E. Glen Weyl），與臺灣首任數位部部長唐鳳協作撰寫，在科技自由放任主義與中央集權式 AI 治理兩個極端之間，開闢出第三條路。本書取材自臺灣作為全球數位民主領袖的經驗，展示技術如何為公共利益服務。</p>
+    <p class="reveal">本書本身即體現了它所倡導的原則：在 GitHub 上公開撰寫，由全球志願者社群翻譯為十多種語言，並以 CC0 授權釋出至公共領域。</p>
+  </div>
+</section>
+
+<div class="gold-sep"></div>
+
+
+<section class="get-book-section section section--warm">
+  <div class="content-wrap">
+    <div class="get-book reveal">
+      <div class="get-book__cover">
+        <img src="/assets/images/bookcover_small.png" alt="Plurality book cover" class="get-book__img">
+      </div>
+      <div class="get-book__info">
+        <p class="section-label">取得本書</p>
+        <h2>線上閱讀、下載或購買</h2>
+        <p>《多元宇宙》可免費線上閱讀，亦可下載 PDF 和 ePub，或從各大零售商購買實體書。</p>
+        <div class="get-book__links">
+          <a href="/zh/read/1/" class="involved-link">線上閱讀 &rarr;</a>
+          <a href="https://github.com/pluralitybook/plurality/releases" class="involved-link" target="_blank" rel="noopener">下載 PDF &rarr;</a>
+          
+            <a href="https://www.amazon.com/dp/B0DSHVHMF2" class="involved-link" target="_blank" rel="noopener">在 Amazon 購買 &rarr;</a>
+          
+        </div>
+        
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="gold-sep"></div>
+
+
+<section class="chapters-section section">
+  <div class="content-wrap">
+    <p class="section-label reveal">章節</p>
+    <h2 class="reveal">探索本書</h2>
+
+    <div class="chapter-groups">
+      
+        <div class="chapter-group reveal">
+          <h3 class="chapter-group__title">
+            <span class="chapter-group__accent" style="background:var(--plurality-red)"></span>
+            導讀
+          </h3>
+          <div class="chapter-list">
+            
+              
+                <a href="/zh/read/0-0/" class="chapter-card reveal" style="border-top-color:var(--plurality-red)">
+                  <span class="chapter-card__number">0-0</span>
+                  <span class="chapter-card__title">名家推薦</span>
+                </a>
+              
+            
+              
+                <a href="/zh/read/0-1/" class="chapter-card reveal" style="border-top-color:var(--plurality-red)">
+                  <span class="chapter-card__number">0-1</span>
+                  <span class="chapter-card__title">關於作者群</span>
+                </a>
+              
+            
+              
+                <a href="/zh/read/0-2/" class="chapter-card reveal" style="border-top-color:var(--plurality-red)">
+                  <span class="chapter-card__number">0-2</span>
+                  <span class="chapter-card__title">找到你的道路</span>
+                </a>
+              
+            
+              
+                <a href="/zh/read/0-3/" class="chapter-card reveal" style="border-top-color:var(--plurality-red)">
+                  <span class="chapter-card__number">0-3</span>
+                  <span class="chapter-card__title">致謝</span>
+                </a>
+              
+            
+          </div>
+        </div>
+      
+        <div class="chapter-group reveal">
+          <h3 class="chapter-group__title">
+            <span class="chapter-group__accent" style="background:var(--plurality-orange)"></span>
+            序言
+          </h3>
+          <div class="chapter-list">
+            
+              
+                <a href="/zh/read/1/" class="chapter-card reveal" style="border-top-color:var(--plurality-orange)">
+                  <span class="chapter-card__number">1</span>
+                  <span class="chapter-card__title">數位觀照</span>
+                </a>
+              
+            
+          </div>
+        </div>
+      
+        <div class="chapter-group reveal">
+          <h3 class="chapter-group__title">
+            <span class="chapter-group__accent" style="background:var(--plurality-green)"></span>
+            資訊技術與民主
+          </h3>
+          <div class="chapter-list">
+            
+              
+                <a href="/zh/read/2-0/" class="chapter-card reveal" style="border-top-color:var(--plurality-green)">
+                  <span class="chapter-card__number">2-0</span>
+                  <span class="chapter-card__title">資訊技術與民主：日益擴大的鴻溝</span>
+                </a>
+              
+            
+              
+                <a href="/zh/read/2-1/" class="chapter-card reveal" style="border-top-color:var(--plurality-green)">
+                  <span class="chapter-card__number">2-1</span>
+                  <span class="chapter-card__title">玉山視野</span>
+                </a>
+              
+            
+              
+                <a href="/zh/read/2-2/" class="chapter-card reveal" style="border-top-color:var(--plurality-green)">
+                  <span class="chapter-card__number">2-2</span>
+                  <span class="chapter-card__title">數位民主的日常</span>
+                </a>
+              
+            
+          </div>
+        </div>
+      
+        <div class="chapter-group reveal">
+          <h3 class="chapter-group__title">
+            <span class="chapter-group__accent" style="background:var(--plurality-cyan)"></span>
+            多元宇宙
+          </h3>
+          <div class="chapter-list">
+            
+              
+                <a href="/zh/read/3-0/" class="chapter-card reveal" style="border-top-color:var(--plurality-cyan)">
+                  <span class="chapter-card__number">3-0</span>
+                  <span class="chapter-card__title">何謂多元宇宙？</span>
+                </a>
+              
+            
+              
+                <a href="/zh/read/3-1/" class="chapter-card reveal" style="border-top-color:var(--plurality-cyan)">
+                  <span class="chapter-card__number">3-1</span>
+                  <span class="chapter-card__title">活在⿻世界</span>
+                </a>
+              
+            
+              
+                <a href="/zh/read/3-2/" class="chapter-card reveal" style="border-top-color:var(--plurality-cyan)">
+                  <span class="chapter-card__number">3-2</span>
+                  <span class="chapter-card__title">相連的社會</span>
+                </a>
+              
+            
+              
+                <a href="/zh/read/3-3/" class="chapter-card reveal" style="border-top-color:var(--plurality-cyan)">
+                  <span class="chapter-card__number">3-3</span>
+                  <span class="chapter-card__title">我們遺忘的道</span>
+                </a>
+              
+            
+          </div>
+        </div>
+      
+        <div class="chapter-group reveal">
+          <h3 class="chapter-group__title">
+            <span class="chapter-group__accent" style="background:var(--plurality-red)"></span>
+            自由
+          </h3>
+          <div class="chapter-list">
+            
+              
+                <a href="/zh/read/4-0/" class="chapter-card reveal" style="border-top-color:var(--plurality-red)">
+                  <span class="chapter-card__number">4-0</span>
+                  <span class="chapter-card__title">權利、作業系統與數位自由</span>
+                </a>
+              
+            
+              
+                <a href="/zh/read/4-1/" class="chapter-card reveal" style="border-top-color:var(--plurality-red)">
+                  <span class="chapter-card__number">4-1</span>
+                  <span class="chapter-card__title">身分與人格權</span>
+                </a>
+              
+            
+              
+                <a href="/zh/read/4-2/" class="chapter-card reveal" style="border-top-color:var(--plurality-red)">
+                  <span class="chapter-card__number">4-2</span>
+                  <span class="chapter-card__title">結社與多元公眾</span>
+                </a>
+              
+            
+              
+                <a href="/zh/read/4-3/" class="chapter-card reveal" style="border-top-color:var(--plurality-red)">
+                  <span class="chapter-card__number">4-3</span>
+                  <span class="chapter-card__title">商業與信任</span>
+                </a>
+              
+            
+              
+                <a href="/zh/read/4-4/" class="chapter-card reveal" style="border-top-color:var(--plurality-red)">
+                  <span class="chapter-card__number">4-4</span>
+                  <span class="chapter-card__title">財產與合約</span>
+                </a>
+              
+            
+              
+                <a href="/zh/read/4-5/" class="chapter-card reveal" style="border-top-color:var(--plurality-red)">
+                  <span class="chapter-card__number">4-5</span>
+                  <span class="chapter-card__title">存取權</span>
+                </a>
+              
+            
+          </div>
+        </div>
+      
+        <div class="chapter-group reveal">
+          <h3 class="chapter-group__title">
+            <span class="chapter-group__accent" style="background:var(--plurality-orange)"></span>
+            民主
+          </h3>
+          <div class="chapter-list">
+            
+              
+                <a href="/zh/read/5-0/" class="chapter-card reveal" style="border-top-color:var(--plurality-orange)">
+                  <span class="chapter-card__number">5-0</span>
+                  <span class="chapter-card__title">協作技術與民主</span>
+                </a>
+              
+            
+              
+                <a href="/zh/read/5-1/" class="chapter-card reveal" style="border-top-color:var(--plurality-orange)">
+                  <span class="chapter-card__number">5-1</span>
+                  <span class="chapter-card__title">後符號交流</span>
+                </a>
+              
+            
+              
+                <a href="/zh/read/5-2/" class="chapter-card reveal" style="border-top-color:var(--plurality-orange)">
+                  <span class="chapter-card__number">5-2</span>
+                  <span class="chapter-card__title">沉浸式共享實境</span>
+                </a>
+              
+            
+              
+                <a href="/zh/read/5-3/" class="chapter-card reveal" style="border-top-color:var(--plurality-orange)">
+                  <span class="chapter-card__number">5-3</span>
+                  <span class="chapter-card__title">創意協作</span>
+                </a>
+              
+            
+              
+                <a href="/zh/read/5-4/" class="chapter-card reveal" style="border-top-color:var(--plurality-orange)">
+                  <span class="chapter-card__number">5-4</span>
+                  <span class="chapter-card__title">擴增審議</span>
+                </a>
+              
+            
+              
+                <a href="/zh/read/5-5/" class="chapter-card reveal" style="border-top-color:var(--plurality-orange)">
+                  <span class="chapter-card__number">5-5</span>
+                  <span class="chapter-card__title">適應式行政</span>
+                </a>
+              
+            
+              
+                <a href="/zh/read/5-6/" class="chapter-card reveal" style="border-top-color:var(--plurality-orange)">
+                  <span class="chapter-card__number">5-6</span>
+                  <span class="chapter-card__title">⿻投票</span>
+                </a>
+              
+            
+              
+                <a href="/zh/read/5-7/" class="chapter-card reveal" style="border-top-color:var(--plurality-orange)">
+                  <span class="chapter-card__number">5-7</span>
+                  <span class="chapter-card__title">社會市場</span>
+                </a>
+              
+            
+          </div>
+        </div>
+      
+        <div class="chapter-group reveal">
+          <h3 class="chapter-group__title">
+            <span class="chapter-group__accent" style="background:var(--plurality-green)"></span>
+            影響
+          </h3>
+          <div class="chapter-list">
+            
+              
+                <a href="/zh/read/6-0/" class="chapter-card reveal" style="border-top-color:var(--plurality-green)">
+                  <span class="chapter-card__number">6-0</span>
+                  <span class="chapter-card__title">從⿻到現實社會</span>
+                </a>
+              
+            
+              
+                <a href="/zh/read/6-1/" class="chapter-card reveal" style="border-top-color:var(--plurality-green)">
+                  <span class="chapter-card__number">6-1</span>
+                  <span class="chapter-card__title">職場</span>
+                </a>
+              
+            
+              
+                <a href="/zh/read/6-2/" class="chapter-card reveal" style="border-top-color:var(--plurality-green)">
+                  <span class="chapter-card__number">6-2</span>
+                  <span class="chapter-card__title">健康</span>
+                </a>
+              
+            
+              
+                <a href="/zh/read/6-3/" class="chapter-card reveal" style="border-top-color:var(--plurality-green)">
+                  <span class="chapter-card__number">6-3</span>
+                  <span class="chapter-card__title">媒體</span>
+                </a>
+              
+            
+              
+                <a href="/zh/read/6-4/" class="chapter-card reveal" style="border-top-color:var(--plurality-green)">
+                  <span class="chapter-card__number">6-4</span>
+                  <span class="chapter-card__title">環境</span>
+                </a>
+              
+            
+              
+                <a href="/zh/read/6-5/" class="chapter-card reveal" style="border-top-color:var(--plurality-green)">
+                  <span class="chapter-card__number">6-5</span>
+                  <span class="chapter-card__title">學習</span>
+                </a>
+              
+            
+          </div>
+        </div>
+      
+        <div class="chapter-group reveal">
+          <h3 class="chapter-group__title">
+            <span class="chapter-group__accent" style="background:var(--plurality-cyan)"></span>
+            展望
+          </h3>
+          <div class="chapter-list">
+            
+              
+                <a href="/zh/read/7-0/" class="chapter-card reveal" style="border-top-color:var(--plurality-cyan)">
+                  <span class="chapter-card__number">7-0</span>
+                  <span class="chapter-card__title">政策</span>
+                </a>
+              
+            
+              
+                <a href="/zh/read/7-1/" class="chapter-card reveal" style="border-top-color:var(--plurality-cyan)">
+                  <span class="chapter-card__number">7-1</span>
+                  <span class="chapter-card__title">結語</span>
+                </a>
+              
+            
+          </div>
+        </div>
+      
+    </div>
+  </div>
+</section>
+
+
+
+
+<div class="gold-sep"></div>
+
+<section class="endorsements-section section">
+  <div class="content-wrap">
+    <p class="section-label reveal">推薦</p>
+    <h2 class="reveal">各界好評</h2>
+
+    
+    <div class="endorsement-grid">
+      
+        <div class="endorsement-card reveal">
+          <span class="endorsement-card__quote-mark" aria-hidden="true">&ldquo;</span>
+          <p class="endorsement-card__text">在這浩瀚無垠的多元宇宙中，每個生命都是獨特而珍貴的存在。無論外在環境多麼險峻，內心的淨土是慈悲與智慧的沃土，讓我們以積極的行動讓共善的種子破土而出，綻放出慈悲、喜悅與和諧之花。</p>
+          <p class="endorsement-card__author">第十四世達賴喇嘛</p>
+          
+        </div>
+      
+        <div class="endorsement-card reveal">
+          <span class="endorsement-card__quote-mark" aria-hidden="true">&ldquo;</span>
+          <p class="endorsement-card__text">在科技先進、政治充滿挑戰、瞬息萬變的 21 世紀，自由開放的未來會是什麼樣子？衛谷倫、唐鳳和共筆作者群，提供了令人信服的前進之路。</p>
+          <p class="endorsement-card__author">Vitalik Buterin</p>
+          <p class="endorsement-card__role">以太坊創辦人</p>
+        </div>
+      
+        <div class="endorsement-card reveal">
+          <span class="endorsement-card__quote-mark" aria-hidden="true">&ldquo;</span>
+          <p class="endorsement-card__text">過去的民主，是兩個價值觀的對決，臺灣的民主，已經是不同價值觀的對話。唐鳳展示了如何打造不被意識形態綁架的「數位民主」——這就是本書的貢獻。</p>
+          <p class="endorsement-card__author">蔡英文總統</p>
+          
+        </div>
+      
+    </div>
+
+    
+    <div class="section__view-all">
+      <a href="/zh/read/0-0/" class="involved-link reveal">
+        查看所有推薦 &rarr;
+      </a>
+    </div>
+    
+  </div>
+</section>
+
+
+<div class="gold-sep"></div>
+
+
+<section class="involved-section section">
+  <div class="content-wrap">
+    <p class="section-label reveal">參與其中</p>
+    <h2 class="reveal">加入社群</h2>
+    <p class="reveal">《多元宇宙》是一個開放的協作專案，有許多方式可以參與貢獻。</p>
+
+    <div class="involved-links">
+      <a href="https://github.com/pluralitybook/plurality" class="involved-link reveal" target="_blank" rel="noopener">
+        在 GitHub 上貢獻 &rarr;
+      </a>
+      <a href="https://discord.gg/YWSDRqdW5n" class="involved-link reveal" target="_blank" rel="noopener">
+        加入 Discord &rarr;
+      </a>
+      <a href="/zh/read/" class="involved-link reveal">
+        開始閱讀 &rarr;
+      </a>
+    </div>
+  </div>
+</section>
+
+
+  </main>
+
+  
+
+
+
+
+<footer class="footer" role="contentinfo">
+  <div class="footer__inner">
+    <div class="footer__brand" aria-hidden="true">
+      <span class="c-r">P</span><span class="c-o">l</span><span class="c-g">u</span><span class="c-c">r</span><span class="c-w">a</span><span class="c-c">l</span><span class="c-g">i</span><span class="c-o">t</span><span class="c-r">y</span>
+    </div>
+
+    <ul class="footer__links">
+      <li><a href="/zh/read/" class="footer__link">閱讀</a></li>
+      <li><a href="/zh/read/0-1/" class="footer__link">關於</a></li>
+      <li><a href="https://github.com/pluralitybook/plurality" class="footer__link" target="_blank" rel="noopener">GitHub</a></li>
+      <li><a href="https://discord.gg/YWSDRqdW5n" class="footer__link" target="_blank" rel="noopener">Discord</a></li>
+    </ul>
+
+    <div class="footer__sep"></div>
+
+    <p class="footer__authors">衛谷倫、唐鳳與多元宇宙社群</p>
+    <p class="footer__license">本作品以 CC0 授權條款貫徹自由開放精神。</p>
+  </div>
+</footer>
+
+
+  <script src="/assets/js/nav.js"></script>
+  <script src="/assets/js/scroll-reveal.js"></script>
+
+  <!-- Structured Data -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "WebSite",
+    "name": "Plurality",
+    "description": "A book by E. Glen Weyl, Audrey Tang and the Plurality Community exploring how technology can support and strengthen democracy.",
+    "url": "https://new.plurality.net",
+    "author": [
+      { "@type": "Person", "name": "E. Glen Weyl" },
+      { "@type": "Person", "name": "Audrey Tang" },
+      { "@type": "Organization", "name": "the Plurality Community" }
+    ],
+    "license": "https://creativecommons.org/publicdomain/zero/1.0/"
+  }
+  </script>
+</body>
+</html>

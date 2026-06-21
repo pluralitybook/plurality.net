@@ -1,0 +1,111 @@
+/* ============================================================
+   Design Tokens — Plurality
+   ============================================================ */
+
+:root {
+  /* Core palette */
+  --ink: #0f1923;
+  --paper: #faf8f5;
+  --warm: #f4f1ec;
+  --surface: #ffffff;
+  --text: #1a2a3a;
+  --muted: #4a5568;
+  --heading: #0f1923;
+  --gold: #7d6430;
+  --gold-light: #c9a961;
+  --teal: #2a7f8a;
+  --border: #e0ddd7;
+
+  /* Plurality brand colors */
+  --plurality-red: #D64933;
+  --plurality-orange: #FBB03B;
+  --plurality-green: #39B54A;
+  --plurality-cyan: #0EB1D2;
+  --plurality-white: #FFFFFF;
+
+  /* Typography */
+  --serif: 'Lora', 'Noto Serif TC', Georgia, serif;
+  --display-serif: 'Cormorant Garamond', 'Noto Serif TC', Georgia, serif;
+  --sans: 'Outfit', 'Noto Sans TC', system-ui, sans-serif;
+
+  /* Spacing */
+  --content-max: 1200px;
+  --reading-max: 720px;
+  --narrow-max: 800px;
+  --section-pad-v: 100px;
+  --section-pad-h: clamp(24px, 5vw, 80px);
+  --radius: 4px;
+
+  /* Shadows */
+  --shadow-sm: 0 2px 8px rgba(0, 0, 0, 0.06);
+  --shadow-md: 0 8px 32px rgba(0, 0, 0, 0.08);
+  --shadow-lg: 0 16px 48px rgba(0, 0, 0, 0.1);
+
+  /* Easing */
+  --ease-out: cubic-bezier(0.22, 1, 0.36, 1);
+
+  /* Nav */
+  --nav-height: 72px;
+  --nav-bg: rgba(250, 248, 245, 0.96);
+}
+
+/* ---- Dark Mode ---- */
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) {
+    --ink: #080d12;
+    --paper: #111820;
+    --warm: #161e28;
+    --surface: #1c2535;
+    --text: #b8b4ac;
+    --muted: #8a96a8;
+    --heading: #e8e4dc;
+    --gold: #c9a961;
+    --gold-light: #ddc07a;
+    --teal: #4bc3d4;
+    --border: rgba(255, 255, 255, 0.1);
+    --nav-bg: rgba(17, 24, 32, 0.96);
+    --shadow-sm: 0 2px 8px rgba(0, 0, 0, 0.2);
+    --shadow-md: 0 8px 32px rgba(0, 0, 0, 0.3);
+    --shadow-lg: 0 16px 48px rgba(0, 0, 0, 0.4);
+  }
+}
+
+/* Manual dark toggle */
+[data-theme="dark"] {
+  --ink: #080d12;
+  --paper: #111820;
+  --warm: #161e28;
+  --surface: #1c2535;
+  --text: #d4d0c8;
+  --muted: #9ca8b8;
+  --heading: #e8e4dc;
+  --gold: #c9a961;
+  --gold-light: #ddc07a;
+  --teal: #4bc3d4;
+  --border: rgba(255, 255, 255, 0.1);
+  --nav-bg: rgba(17, 24, 32, 0.96);
+  --shadow-sm: 0 2px 8px rgba(0, 0, 0, 0.2);
+  --shadow-md: 0 8px 32px rgba(0, 0, 0, 0.3);
+  --shadow-lg: 0 16px 48px rgba(0, 0, 0, 0.4);
+}
+
+/* Manual light toggle */
+@media (prefers-color-scheme: dark) {
+  [data-theme="light"] {
+    --ink: #0f1923;
+    --paper: #faf8f5;
+    --warm: #f4f1ec;
+    --surface: #ffffff;
+    --text: #2c3e50;
+    --muted: #5f6a7d;
+    --heading: #0f1923;
+    --gold: #7d6430;
+    --gold-light: #c9a961;
+    --teal: #2a7f8a;
+    --border: #e0ddd7;
+    --nav-bg: rgba(250, 248, 245, 0.96);
+    --shadow-sm: 0 2px 8px rgba(0, 0, 0, 0.06);
+    --shadow-md: 0 8px 32px rgba(0, 0, 0, 0.08);
+    --shadow-lg: 0 16px 48px rgba(0, 0, 0, 0.1);
+  }
+}

@@ -1,0 +1,38 @@
+---
+layout: page.njk
+title: "Lesen"
+lang: de
+permalink: /de/read/
+---
+
+<div class="read-page">
+  <p class="section-label">{{ i18n.de.get_book }}</p>
+  <h1>Plurality: {{ i18n.de.subtitle }}</h1>
+  <p class="read-page__intro">{{ i18n.de.get_book_desc }}</p>
+
+  <p class="read-page__lang-note">
+    <a href="/read/">Read in English &rarr;</a>
+  </p>
+
+  <div class="chapter-groups">
+    {% for section in chapters.sections %}
+      <div class="chapter-group reveal">
+        <h3 class="chapter-group__title">
+          <span class="chapter-group__accent" style="background:{{ section.color }}"></span>
+          {{ i18n.de.sections[section.title] or section.title }}
+        </h3>
+        <div class="chapter-list">
+          {% for ch in section.chapters %}
+            {% set trData = translations.de.files[ch.id] %}
+            {% if trData %}
+              <a href="/de/read/{{ ch.id }}/" class="chapter-card reveal" style="border-top-color:{{ section.color }}">
+                <span class="chapter-card__number">{{ ch.number }}</span>
+                <span class="chapter-card__title">{{ trData.title }}</span>
+              </a>
+            {% endif %}
+          {% endfor %}
+        </div>
+      </div>
+    {% endfor %}
+  </div>
+</div>

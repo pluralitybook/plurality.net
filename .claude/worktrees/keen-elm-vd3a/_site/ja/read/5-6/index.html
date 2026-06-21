@@ -1,0 +1,659 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>⿻投票 — Plurality</title>
+  <meta name="description" content="A book by E. Glen Weyl, Audrey Tang and the Plurality Community exploring how technology can support and strengthen democracy.">
+  <meta name="theme-color" content="#faf8f5" media="(prefers-color-scheme: light)">
+  <meta name="theme-color" content="#0f1923" media="(prefers-color-scheme: dark)">
+
+  <link rel="canonical" href="https://new.plurality.net/ja/read/5-6/">
+
+  <!-- Open Graph -->
+  <meta property="og:type" content="website">
+  <meta property="og:title" content="⿻投票 — Plurality">
+  <meta property="og:description" content="A book by E. Glen Weyl, Audrey Tang and the Plurality Community exploring how technology can support and strengthen democracy.">
+  <meta property="og:site_name" content="Plurality">
+  <meta property="og:locale" content="ja">
+
+  <!-- Twitter Card -->
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="⿻投票 — Plurality">
+  <meta name="twitter:description" content="A book by E. Glen Weyl, Audrey Tang and the Plurality Community exploring how technology can support and strengthen democracy.">
+
+  <!-- Favicon (inline SVG with brand colors) -->
+  <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='6' fill='%230f1923'/%3E%3Ctext x='16' y='22' text-anchor='middle' fill='%23c9a961' font-family='Georgia,serif' font-size='18' font-weight='700'%3EP%3C/text%3E%3C/svg%3E">
+
+  <!-- Fonts: Stage 1 critical -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+  <!-- Fonts: Stage 2 deferred -->
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,400;0,700;1,400&family=Cormorant+Garamond:wght@400;700&family=Outfit:wght@300;400;500;600&family=Noto+Sans+TC:wght@400;500&family=Noto+Serif+TC:wght@400;700&family=Noto+Sans+JP:wght@400;500&family=Noto+Serif+JP:wght@400;700&family=Sarabun:wght@400;600;700&display=swap" media="print" onload="this.media='all'">
+  <noscript>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,400;0,700;1,400&family=Cormorant+Garamond:wght@400;700&family=Outfit:wght@300;400;500;600&family=Noto+Sans+TC:wght@400;500&family=Noto+Serif+TC:wght@400;700&family=Noto+Sans+JP:wght@400;500&family=Noto+Serif+JP:wght@400;700&family=Sarabun:wght@400;600;700&display=swap">
+  </noscript>
+
+  <link rel="stylesheet" href="/assets/css/main.css">
+
+  <!-- Theme toggle (run before render to prevent flash) -->
+  <script src="/assets/js/theme-toggle.js"></script>
+</head>
+<body>
+  <a href="#main" class="skip-link">Skip to content</a>
+
+  
+
+
+
+
+<nav class="nav" role="navigation" aria-label="Main navigation">
+  <div class="nav__inner">
+    <a href="/ja/" class="nav__logo" aria-label="Plurality home">Plurality</a>
+
+    <ul class="nav__links">
+      <li><a href="/ja/read/" class="nav__link nav__link--active">読む</a></li>
+      <li><a href="/ja/read/0-1/" class="nav__link">概要</a></li>
+      <li><a href="https://github.com/pluralitybook/plurality" class="nav__link" target="_blank" rel="noopener">GitHub</a></li>
+      <li><button class="theme-toggle" aria-label="Toggle theme">&#9790;</button></li>
+    </ul>
+
+    <button class="nav__hamburger" aria-label="Open menu" aria-expanded="false">
+      <span></span>
+      <span></span>
+      <span></span>
+    </button>
+  </div>
+</nav>
+
+<div class="nav__overlay" role="dialog" aria-label="Mobile menu">
+  <a href="/ja/read/" class="nav__overlay-link">読む</a>
+  <a href="/ja/read/0-1/" class="nav__overlay-link">概要</a>
+  <a href="https://github.com/pluralitybook/plurality" class="nav__overlay-link" target="_blank" rel="noopener">GitHub</a>
+  <button class="theme-toggle" aria-label="Toggle theme">&#9790;</button>
+</div>
+
+
+  <main id="main">
+    <div class="book" id="book">
+  
+  
+  
+  
+  <aside class="book__toc" aria-label="Table of contents" id="book-toc">
+    <button class="book__toc-toggle" aria-expanded="false" id="toc-toggle">
+      <span class="book__toc-toggle-icon"></span>
+      目次
+    </button>
+    <nav class="book__toc-nav" id="toc-nav">
+      <p class="book__toc-heading">目次</p>
+      
+        <p class="book__toc-section">読む前に</p>
+        <ul class="book__toc-list">
+          
+            
+            
+              
+            
+            <li>
+              <a href="/ja/read/0-0/">
+                <span class="book__toc-num">0-0</span> 推薦
+              </a>
+            </li>
+          
+            
+            
+              
+            
+            <li>
+              <a href="/ja/read/0-1/">
+                <span class="book__toc-num">0-1</span> 著者紹介
+              </a>
+            </li>
+          
+            
+            
+              
+            
+            <li>
+              <a href="/ja/read/0-2/">
+                <span class="book__toc-num">0-2</span> 自分の道を見つける
+              </a>
+            </li>
+          
+            
+            
+              
+            
+            <li>
+              <a href="/ja/read/0-3/">
+                <span class="book__toc-num">0-3</span> クレジット
+              </a>
+            </li>
+          
+        </ul>
+      
+        <p class="book__toc-section">序文</p>
+        <ul class="book__toc-list">
+          
+            
+            
+              
+            
+            <li>
+              <a href="/ja/read/1/">
+                <span class="book__toc-num">1</span> 多元性を見る
+              </a>
+            </li>
+          
+        </ul>
+      
+        <p class="book__toc-section">情報技術と民主主義</p>
+        <ul class="book__toc-list">
+          
+            
+            
+              
+            
+            <li>
+              <a href="/ja/read/2-0/">
+                <span class="book__toc-num">2-0</span> ITと民主主義　拡大する溝
+              </a>
+            </li>
+          
+            
+            
+              
+            
+            <li>
+              <a href="/ja/read/2-1/">
+                <span class="book__toc-num">2-1</span> 玉山からの眺め
+              </a>
+            </li>
+          
+            
+            
+              
+            
+            <li>
+              <a href="/ja/read/2-2/">
+                <span class="book__toc-num">2-2</span> デジタル民主主義の日常
+              </a>
+            </li>
+          
+        </ul>
+      
+        <p class="book__toc-section">プルラリティ</p>
+        <ul class="book__toc-list">
+          
+            
+            
+              
+            
+            <li>
+              <a href="/ja/read/3-0/">
+                <span class="book__toc-num">3-0</span> ⿻プルラリティ（多元性）とは？
+              </a>
+            </li>
+          
+            
+            
+              
+            
+            <li>
+              <a href="/ja/read/3-1/">
+                <span class="book__toc-num">3-1</span> ⿻世界に生きる
+              </a>
+            </li>
+          
+            
+            
+              
+            
+            <li>
+              <a href="/ja/read/3-2/">
+                <span class="book__toc-num">3-2</span> つながった社会
+              </a>
+            </li>
+          
+            
+            
+              
+            
+            <li>
+              <a href="/ja/read/3-3/">
+                <span class="book__toc-num">3-3</span> 失われた道
+              </a>
+            </li>
+          
+        </ul>
+      
+        <p class="book__toc-section">自由</p>
+        <ul class="book__toc-list">
+          
+            
+            
+              
+            
+            <li>
+              <a href="/ja/read/4-0/">
+                <span class="book__toc-num">4-0</span> 権利、オペレーティングシステム、⿻的自由
+              </a>
+            </li>
+          
+            
+            
+              
+            
+            <li>
+              <a href="/ja/read/4-1/">
+                <span class="book__toc-num">4-1</span> IDと人物性
+              </a>
+            </li>
+          
+            
+            
+              
+            
+            <li>
+              <a href="/ja/read/4-2/">
+                <span class="book__toc-num">4-2</span> 団体と⿻公衆
+              </a>
+            </li>
+          
+            
+            
+              
+            
+            <li>
+              <a href="/ja/read/4-3/">
+                <span class="book__toc-num">4-3</span> 商取引と信頼
+              </a>
+            </li>
+          
+            
+            
+              
+            
+            <li>
+              <a href="/ja/read/4-4/">
+                <span class="book__toc-num">4-4</span> 財産と契約
+              </a>
+            </li>
+          
+            
+            
+              
+            
+            <li>
+              <a href="/ja/read/4-5/">
+                <span class="book__toc-num">4-5</span> アクセス
+              </a>
+            </li>
+          
+        </ul>
+      
+        <p class="book__toc-section">民主主義</p>
+        <ul class="book__toc-list">
+          
+            
+            
+              
+            
+            <li>
+              <a href="/ja/read/5-0/">
+                <span class="book__toc-num">5-0</span> 協働テクノロジーと民主主義
+              </a>
+            </li>
+          
+            
+            
+              
+            
+            <li>
+              <a href="/ja/read/5-1/">
+                <span class="book__toc-num">5-1</span> ポスト表象コミュニケーション
+              </a>
+            </li>
+          
+            
+            
+              
+            
+            <li>
+              <a href="/ja/read/5-2/">
+                <span class="book__toc-num">5-2</span> 没入型共有現実（ISR）
+              </a>
+            </li>
+          
+            
+            
+              
+            
+            <li>
+              <a href="/ja/read/5-3/">
+                <span class="book__toc-num">5-3</span> クリエイティブなコラボレーション
+              </a>
+            </li>
+          
+            
+            
+              
+            
+            <li>
+              <a href="/ja/read/5-4/">
+                <span class="book__toc-num">5-4</span> 拡張熟議
+              </a>
+            </li>
+          
+            
+            
+              
+            
+            <li>
+              <a href="/ja/read/5-5/">
+                <span class="book__toc-num">5-5</span> 適応型管理行政
+              </a>
+            </li>
+          
+            
+            
+              
+            
+            <li>
+              <a href="/ja/read/5-6/" class="active">
+                <span class="book__toc-num">5-6</span> ⿻投票
+              </a>
+            </li>
+          
+            
+            
+              
+            
+            <li>
+              <a href="/ja/read/5-7/">
+                <span class="book__toc-num">5-7</span> 社会市場
+              </a>
+            </li>
+          
+        </ul>
+      
+        <p class="book__toc-section">インパクト</p>
+        <ul class="book__toc-list">
+          
+            
+            
+              
+            
+            <li>
+              <a href="/ja/read/6-0/">
+                <span class="book__toc-num">6-0</span> ⿻から現実へ
+              </a>
+            </li>
+          
+            
+            
+              
+            
+            <li>
+              <a href="/ja/read/6-1/">
+                <span class="book__toc-num">6-1</span> 職場
+              </a>
+            </li>
+          
+            
+            
+              
+            
+            <li>
+              <a href="/ja/read/6-2/">
+                <span class="book__toc-num">6-2</span> 保健
+              </a>
+            </li>
+          
+            
+            
+              
+            
+            <li>
+              <a href="/ja/read/6-3/">
+                <span class="book__toc-num">6-3</span> メディア
+              </a>
+            </li>
+          
+            
+            
+              
+            
+            <li>
+              <a href="/ja/read/6-4/">
+                <span class="book__toc-num">6-4</span> 環境
+              </a>
+            </li>
+          
+            
+            
+              
+            
+            <li>
+              <a href="/ja/read/6-5/">
+                <span class="book__toc-num">6-5</span> 学習
+              </a>
+            </li>
+          
+        </ul>
+      
+        <p class="book__toc-section">未来へ</p>
+        <ul class="book__toc-list">
+          
+            
+            
+              
+            
+            <li>
+              <a href="/ja/read/7-0/">
+                <span class="book__toc-num">7-0</span> 政策
+              </a>
+            </li>
+          
+            
+            
+              
+            
+            <li>
+              <a href="/ja/read/7-1/">
+                <span class="book__toc-num">7-1</span> 結論
+              </a>
+            </li>
+          
+        </ul>
+      
+    </nav>
+  </aside>
+
+  
+  <article class="book__page" id="book-page">
+    
+    <div class="book__page-curl" aria-hidden="true"></div>
+
+    
+    <header class="book__header">
+      
+        <p class="book__section-label">民主主義 · 5-6</p>
+      
+      <h1 class="book__title">⿻投票</h1>
+      
+      
+        <nav class="book__lang-switch" aria-label="Language versions">
+          <span class="book__lang-current">日本語</span>
+          
+            <a href="/read/5-6/" class="book__lang-link" lang="en">English</a>
+          
+            <a href="/zh/read/5-6/" class="book__lang-link" lang="zh">華文</a>
+          
+            <a href="/th/read/5-6/" class="book__lang-link" lang="th">ไทย</a>
+          
+        </nav>
+      
+      <div class="book__header-ornament" aria-hidden="true">
+        <span></span><span></span><span></span>
+      </div>
+    </header>
+
+    
+    <div class="book__body">
+      
+
+  <p>史上最大のベストセラー戦略ゲーム<a href="https://civilization.com/">Civilization VI</a>では、プレイヤーは最初の入植地の誕生から近い将来まで文明を管理し、文化、軍事征服、外交支援、科学的成果、宗教的影響力を通じて他の文明と競争し、時には協力しながら勝利を目指す。このゲームで広く採用され、気候変動をテーマにした拡張パック「<a href="https://civilization.com/civilization-6-gathering-storm/">Gathering Storm</a>」では、全世界に影響を与える外交上の決定は「世界議会」で決定される。文明は同盟、インフラなどにより「外交的支持」を蓄積する。その後、文明はこれらを消費して、化石燃料の規制、核兵器の管理、移民規則などの世界政策に影響を与えられるのだ。</p>
+<p>投票の際、各国は、どの文明が世界からその行動を精査されるかなど、さまざまな選択肢がある。各文明は1票は無料で獲得できるが、追加票には外交的支持のコストが増え、その割合は追加の票ごとに増加する。最初の追加票には外交的支持が10必要で、2回目には20必要という具合だ。通常、1回の議会でさまざまな問題について複数の投票が行われ、外交的支持は議会をまたがって保存できるほか、何か特定の問題を審議対象に指定するなど、他の目的にも使用できる。だから各文明は、それぞれの問題が自分にとってどれほど重要かを判断する必要がある。そしてその問題に対する影響力を高めるために増加するコストと、その恩を温存する価値とが一致するまで、外交的支持を使って票を「買い」続ける。</p>
+<p>このゲームの仕組みは、本書著者グレン・ワイルが考案した「<a href="https://en.wikipedia.org/wiki/Quadratic_voting">クアドラティック投票</a>」手順の変形版だ。この手順は、以下で説明するように、現在ではゲーム以外でも広く使用されている<sup class="footnote-ref"><a href="#fn1" id="fnref1">[1]</a></sup>。上記のロジックにより、個人の好みの方向性だけでなく、その強さも投票に反映される。したがって、個人の行動が独立している場合、「最大数」だけでなく「最大数にとっての最大利益」に基づいた決定ができる。</p>
+<hr>
+<p>本書第5章の主なテーマは、協働テクノロジーと民主主義が、通常連想される制度よりもはるかに幅広いものだということだ。「民主主義」と聞いて、人々がまっ先に思い浮かべる正式な制度は、投票と選挙の仕組みとなる。投票は、民主主義制度だけでなく、企業ガバナンス、共同住宅の管理、読書クラブ、ゲームなど、さらに広い意味でのガバナンス体制で使用されている。投票は、大規模で多様なグループが、比較的迅速かつ低コストで、意見の相違について明確な決定を下す方法を提供する。投票が実現するコミュニケーションは、これまで説明してきた技術よりもはるかに希薄だが、多くの場合、はるかに広範囲に及ぶ包括的なプロセスとなり、市場の結果よりも（少なくとも通常は限られた参政権を持つ人々の間では）正当と思われる「共通の意志」の判断につながる。ここでは、投票が現在最も頻繁に適用されている状況での長所と短所、そして「国民の意志」について忠実度の高い信号を生み出すクアドラティック投票（QV）などのイノベーションについて検討し、大規模なグループの人々が一緒に未来を選択する方法について、研究者たちの考える各種の将来的な可能性について見よう。</p>
+<h3 id="%E4%BB%8A%E6%97%A5%E3%81%AE%E6%8A%95%E7%A5%A8" tabindex="-1">今日の投票</h3>
+<p>最も一般的な投票形式では、あるコミュニティのすべてのメンバーが、互いに排他的な複数の選択肢からひとつを選択し、最も多くの票を獲得した選択肢が選ばれる。この慣行は、特定の種類の暴力的な紛争（古代ギリシャの密集軍の戦闘など）で、人数の多いグループが勝利することから生まれたという説もある。それであれば、人数を集計して多いほうに決めれば、戦闘をする必要がなくなるからだ。この「多数決ルール」は単純だが、私たちの考える⿻を、あまりうまく表現するものではない。これにはいくつかの理由がある。</p>
+<p>①「2つの悪のうち、ましなほう」の力学（政治学者の言う「デュヴェルジェの法則」）を生み出しがち。みんな2つの主要な選択肢のどちらも嫌だと思っており、2番手以下の選択肢のほうが幅広い支持を得そうでも、主要選択肢のどちらかに投票せざるを得ない<sup class="footnote-ref"><a href="#fn2" id="fnref2">[2]</a></sup>。</p>
+<p>②多くの状況では、このような集計で想定される単純な平等は、広い正当性を持たない。投票の参加者ごとに、問題に対する正当な関心の度合いは異なるだろう（たとえば、異なる人口を代表していたり、コミュニティで過ごした時間がより長いなど）。</p>
+<p>③投票は、せいぜいが大多数が選択した方向を表すだけで、「集団の意志」の全体的な感覚を表すものではない。「集団の意志」には、その問題の各人にとっての重要度や、各人の知識水準も含まれるべきだからだ。これはしばしば「多数派の専制」と呼ばれる。</p>
+<p>こうした課題に多少なりとも対処するため、さまざまな投票手順が広く使われている。</p>
+<p>・<a href="https://fairvote.org/">優先順位付投票</a>と<a href="https://electionscience.org/">認定投票</a>：最近人気のこの2つのシステムは、問題①に部分的に対処するものだ。順位付け投票システムでは、参加者がいくつかの選択肢を順位付けし、決定はその一覧を何らかの形で集計する。最も単純な例は「決選投票」タイプのシステムで、候補の数が徐々に絞り込まれ、投票のラウンドごとに、生き残った候補に対し各人が投票を繰り返す。認定投票では、投票者は「認定」したい選択肢をいくつでも選べる。そして最も認定された選択肢が選ばれる。どちらの方法も、複数の投票を許可するという文字どおりの点でも、デュヴェルジェの「<a href="https://en.wikipedia.org/wiki/Arrow%27s_impossibility_theorem">スポイラー効果</a>」を回避して各関係者のより大きな合意とより大きな多様性の両方を可能にするという精神的な面でも、⿻の特徴を明らかに持つ。しかし、ノーベル経済学賞受賞者であるケネス・アローは、彼の「不可能性定理」で、そのような単純な入力を持つシステムは、一般的に「合理的な」共通意志の表現を達成できないことを証明している<sup class="footnote-ref"><a href="#fn3" id="fnref3">[3]</a></sup>。</p>
+<p>・加重投票：投票者が明らかに不適切なほど不平等な状況では、加重投票方式が使われる。一般的な例としては、企業統治における「一株一票」、連邦および連合機関（EUや国連など）における人口規模に基づく投票、および権力の格差を重視すべき状況での権力の尺度（GDPなど）に基づく投票がある。しかし、その加重方法はしばしば重大な論争の対象となり、それ自体がパラドックスを引き起こす。たとえば、「51％攻撃」（「トンネリング」とも呼ばれる）では、誰かが企業株式の51％を購入すれば、その企業資産をすべて懐に入れてしまい、残りの49％を収奪できてしまう<sup class="footnote-ref"><a href="#fn4" id="fnref4">[4]</a></sup>。</p>
+<p>・連邦制、比例代表制、コンソーシアム代表制：投票制度は、右で述べたように、「一元的」な形式を持つことが多いが、これが生み出す多数派の専横に対処しようとする重要な例がある。連邦制、コンソーシアム代表制、機能的代表制では、地理、宗教、民族、職業集団などのサブユニットが、その人口比例以上の地位を持つ。通常は大きな集団による抑圧を避けるため、何らかの特別な、または人口に不釣り合いな重みを与えられるのだ。これらの制度はこのようにさまざまな方法で⿻要素を組み込んでいるが、その設計は場当たり的で硬直的なことが多い。そこに反映されている歴史的経緯は、関連する社会問題をもはや反映していないか、または既存の分裂を正式に認めて固定化してしまうような、抑圧的なものだったりする。そのため、このやり方の人気は低下する一方だ<sup class="footnote-ref"><a href="#fn5" id="fnref5">[5]</a></sup>。もっと柔軟なのが「比例代表制」で、ある機関の代表者は得票数に応じて選出され、均衡を高められるが、多くの場合にこれは、多数派の圧政で生じる緊張を、代表機関の連合形成の決定までほぼ「先送り」するにすぎない。</p>
+<p>このように、投票は民主主義の標準的な技術ではあるが、矛盾や硬直性、広く認識されている未解決の問題が満ちあふれている。最近では、投票の可能性を劇的に改善しようとする新世代のアプローチが生まれている。</p>
+<h3 id="%E6%98%8E%E6%97%A5%E3%81%AE%E2%BF%BB%E6%8A%95%E7%A5%A8" tabindex="-1">明日の⿻投票</h3>
+<p>今日の投票の問題は多岐にわたるようだが、結局は2つの問題に集約される。つまり、関心の程度と重みを適切に表す方法と、代表を柔軟で適応性のあるものにする方法だ。ノーベル賞受賞者のアマルティア・センの有名な指摘として、アローの定理の問題は、好みの強さと重みを考慮に入れれば消え去る。そして加重投票はまさにそのような問題に応える<sup class="footnote-ref"><a href="#fn6" id="fnref6">[6]</a></sup>。サブグループの代表は大きな課題だ。強い⿻的理由からもそれは重要なのだが、その多くの実現方法が不十分であるか、過度に厳格で規範的なのだ。これらは、投票の極端な単純さという問題が核心にある。投票者の考えや好みに関する情報があまりに限られているのだ。</p>
+<p>最近の2つの発展により、これらの問題に対処するための、不完全ながら刺激的なアプローチが示された。ひとつ目のアプローチは、このセクションの冒頭で取り上げたクアドラティック投票と、投票の重み付けを組み込む各種の関連アプローチだ。クアドラティック投票は、統計学者（残念ながら優生学者）<a href="https://en.wikipedia.org/wiki/Lionel_Penrose">ライオネル・ペンローズ</a>に由来する。彼は、著名な現代の天体物理学者<a href="https://en.wikipedia.org/wiki/Roger_Penrose">ロジャー・ペンローズ</a>の父だ。彼は投票を重み付けする際に、その投票結果について2倍の正当な利害関係を持つ集団に2倍の票を与えることは、一見すると妥当に見えるが不適切だと指摘した。なぜならそれをやると、その集団には2倍以上の権力が与えられてしまうからだ。協調していない投票者は平均して互いに打ち消し合うため、完全に独立した1万人の投票者の影響力は、ひとりが1万票を持った場合の影響力よりもはるかに小さいのだ<sup class="footnote-ref"><a href="#fn7" id="fnref7">[7]</a></sup>。</p>
+<p>ペンローズと同時にJ・C・R・リックライダー（右記の「<a href="https://www.plurality.net/v/chapters/3-3/eng/?mode=dark">3–3失われた道<sup>ダオ</sup></a>」のヒーロー）が研究した物理的なアナロジーを見れば、いまの話は理解しやすいかもしれない<sup class="footnote-ref"><a href="#fn8" id="fnref8">[8]</a></sup>。騒がしい部屋での会話を考えよう。部屋全体の喧噪の雑音は、会話相手の声の強さよりもはるかに大きい。それでも、相手の言っていることは聞き取れる。これは人間の集中力のおかげもあるが、もうひとつの要因は、その背景となる喧噪が「雑音」になるのはまさに、それぞれの寄与音が、注意を払っている（近くの）声よりもはるかに弱いからだ。この雑音は大部分が相関を持たないので、平均すると打ち消し合い、ほんの少し強いひとつの声のほうがはるかに強く目立つのだ。視覚信号処理も同様で、さまざまな落書きがあってもそれは打ち消し合って灰色または茶色の背景に溶け込み、わずかに強い明確なメッセージが際立つ。</p>
+<p>背景信号が完全に無相関で多数の場合、これを数学的に説明する簡単な方法がある。無相関な信号は、その数の平方根に比例して増加するが、相関する信号はその強さに正比例して増加する。したがって、無相関の投票1万票は、相関のある投票100票と同じだけの重みを持つ。つまりステークホルダーに、その力にきちんと比例する権力を与えるには、その投票の重みをステークホルダーの平方根に比例して増加させればいいのだ。この原則は、しばしば「<a href="https://en.wikipedia.org/wiki/Degressive_proportionality">逓減比例</a>」と呼ばれる。これは加重投票と単純投票という直感的な手法の間で幾何学的（乗法的）妥協を行い、問題と投票について選好の強さを表現しつつ、投票者がその問題に置く「重み」の平方根を取ることで、右記のいくつかの課題に対処するという手法だ。前者の考え方はペンローズの「<a href="https://en.wikipedia.org/wiki/Penrose_method">平方根投票</a>（スクエアルートボーティング）」ルールであり、EU加盟国の統治のいくつかの要素でそれに似たものが使用されている。後者は右で説明したQVルールであり、別の例としては、支出の優先順位付けに<a href="https://www.radicalxchange.org/wiki/colorado-qv/">コロラド州議会</a>で頻繁に使用される。</p>
+<p>ただし注意すべき点として、これらの明確なルールが最適となるのは、投票者が内部的に完全に統合され、外部的に完全に無相関／無調整である場合に限られる。⿻思考に基づけば、このような単純なモデルには警戒が必要で、個人や組織間の社会的つながりにも配慮すべきだが、もちろん投票システム内でこれらを考慮するには、記録して反映させるためのIDの仕組みが必要となる。</p>
+<p>近年普及しているもうひとつの互換性のあるアプローチは、「液体民主主義」（LD）だ。このアイデアは、チャールズ・ドジソン（別名ルイス・キャロル、古典児童書『不思議の国のアリス』著者）の画期的な研究にまで遡る。彼はQVの着想のきっかけとなった、複数の票を持つ人々の投票の重み付けの問題を最初に提起した<sup class="footnote-ref"><a href="#fn9" id="fnref9">[9]</a></sup>。LDは比例代表制のアイデアを拡張し、すべての投票者が自分の投票を他の人に委任できるようにし、その後、その人がそれを再委任できるようにすることで、ボトムアップの創発的な代表パターンを実現する<sup class="footnote-ref"><a href="#fn10" id="fnref10">[10]</a></sup>。このような仕組みは、特に企業やその他の営利目的の組織（DAOなど）のガバナンス、およびアイスランドなど一部の政治的状況で、ますます普及している。ただし、この仕組みだと委譲された権限が少数者に集中することが多いため、権力が過度に集中しがちだ。この傾向により、当初の熱意はいくぶん冷めてしまった。</p>
+<h3 id="%E6%8A%95%E7%A5%A8%E3%81%AE%E3%83%95%E3%83%AD%E3%83%B3%E3%83%86%E3%82%A3%E3%82%A2" tabindex="-1">投票のフロンティア</h3>
+<p>QVとLDは、将来の投票システムが現状よりはるかに豊かになるという根本的かつ革新的な可能性を示す。有望な例をいくつか見ると、その可能性がいかに広いかわかる。</p>
+<p>・相関割引と固有投票：QVとペンローズの法則は、個人や社会グループ（国家など）の投票の重みに逓減比例（平方根ルールなど）を適用する。これを自然に拡張すると、一般的な統計モデルに見られるように、個人内および個人間での相関／調整を行うときに使う根拠の多様性を認めることになる。この場合の最適なルールは、おそらく社会的つながりの度合いに基づく部分的な「相関割引」と、統計モデリングで一般的な、調整と相関を促進する根本的な社会的「主因子」の特定に基づくものとなる<sup class="footnote-ref"><a href="#fn11" id="fnref11">[11]</a></sup>。これらの根本的な独立因子は「固有値」と呼ばれ、逓減比例を適用すべき「実際の」独立投票者と見なせる。このプロセスは、Googleの検索結果のランキングにかつて使われていた、ペイジランクの動作と似ている。これにより、既存の分裂の硬直性と固定化を回避する、動的で適応性のある最適化された多極共存主義が生じる。</p>
+<p>・適応型代表制：適応型代表制への似たような別のアプローチは、単一選挙区制または連邦制だ。ただしその境界を地理のみに基づくのではなく、地理的類型（都市部と農村部）、人種、教育などの現在の社会的格差に基づくようにしよう。明らかに、このアイデアは以前のものと同様に、こうした特徴を投票プロセスに入力するための、<a href="https://www.plurality.net/v/chapters/4-1/jpn/?mode=dark">IDシステム</a>に大きく依存する。</p>
+<p>・予測投票：<a href="https://en.wikipedia.org/wiki/Robin_Hanson">ロビン・ハンソン</a>は、予測市場（人々が将来の結果に賭ける市場）と投票の組み合わせを昔から提唱している。彼が提唱した「<a href="https://en.wikipedia.org/wiki/Futarchy">未来支配</a>（Futarchy）」提案は、これら2つの要素をもっと明確に分離するのが主眼ながら、本書を執筆するときのガバナンスでは、すでに述べたようにその混合版を使っている。参加者が同時に投票して決定の結果を予測し、正しい決定に対して報酬を受け取れるようにしているのだ<sup class="footnote-ref"><a href="#fn12" id="fnref12">[12]</a></sup>。このような仕組みは、提案やオプションの範囲が広い場合に特に有益となる。予測によって、注目に値する提案に注目を集め、それを投票で決定するというわけだ。</p>
+<p>・クアドラティック液体民主主義：右で述べたように、液体民主主義が引き起こす権力の集中を避ける自然な方法は、逓減比例を使用することだ。<a href="https://www.radicalxchange.org">RadicalxChange</a>は、非営利の⿻推進団体だが、内部での意思決定のために、これと似た仕組みを実装している。</p>
+<p>・支援付きリアルタイム投票：よく議論されるもうひとつのアイデアは、デジタルアシスタントが投票者の視点や好みをモデル化し、本人に代わって投票すれば（ただし本人のレビュー／監査は受ける）、投票をはるかに頻繁かつきめ細かく行えるというものだ<sup class="footnote-ref"><a href="#fn13" id="fnref13">[13]</a></sup>。</p>
+<p>おそらく、最もエキサイティングな可能性は、これらの組み合わせだろう。無限の多様性、無限の組み合わせを支えるよう無限に組み合わせれば、無限の多様性が形成される。</p>
+<h3 id="%E2%BF%BB%E6%8A%95%E7%A5%A8%E3%81%AE%E9%99%90%E7%95%8C" tabindex="-1">⿻投票の限界</h3>
+<p>しかし、納得いく妥協に達するための、こうした非常に柔軟で適応性のあるアプローチについてですら懸念はある。そういう妥協そのものが、対立の産湯と一緒に多様性という赤ん坊まで捨ててしまうのでは、というものだ。とはいえ固有投票や高度な流動的民主主義といった仕組みの最も興味深い特性のひとつは、それらが新しい種類の連合と代表を生み出す可能性があるという点なのだ。一人一票のルールは、支持の多い側に非暴力的な方法で権力を握らせて紛争を回避するために生まれた。ここで挙げた各種の仕組みは、もっと洗練された理論に基づいて紛争を緩和しようとしている。その理論とは、紛争が生じるのは、同じグループが一貫して多数派と少数派を形成し続けるのを容認することで、既存の社会的分裂を一貫して強化してしまうからだ、というものだ。ここで提案した仕組みは、従来所属していたグループからの支持を割り引くことで、既存の紛争強化を避け、既存の境界線を越える新しい紛争を作り出す。これで妥協したのと同じくらい多くの多様性が生まれることもある。しかもそれは、しつこい分裂を固定化しない方向のものになるかもしれない。</p>
+<p>しかしこれらの長所にもかかわらず、投票はどんなに豊かな形態でさえ、他の社会的プロセスによってすでに提起された決定についての好みを表現し、決定することしかできない。右記の方法のいくつかを組み合わせれば、投票についての理解は一変し、今日のアプローチはかつてのそろばんのように、古くさいものに見えてくるだろう。しかし、この可能性に惑わされて、前の節で説明した豊かなコミュニケーションと共同設計が不要になると思い込んでしまったら、人間性の豊かさを根本的に損なってしまう。私たちが概説したクリエイティブコラボレーション、熟議、想像力、および行政管理システムの文脈がなければ、集団的決定は無意味だ。</p>
+<p>また、投票システムが現在の国境を大きく越える可能性は、当分の間ほぼなさそうだ。ここで述べた仕組みを支えるには⿻IDシステムが必要となる。そこから見て、国境を越えた新しい集団に基づく投票は、不可能ではないにしても、そうした投票の仕組みが真に世界的な正当性をすぐに獲得する可能性は低いだろう。そこまでの多様性の範囲に真に到達するには、コラボレーションの基盤の中でも最も希薄な、市場経済を再考する必要がある。</p>
+<hr class="footnotes-sep">
+<section class="footnotes">
+<ol class="footnotes-list">
+<li id="fn1" class="footnote-item"><p>The Economist, “The Mathematical Method that Could Offer a Fairer Way to Vote”, December 18, 2021. <a href="#fnref1" class="footnote-backref">↩︎</a></p>
+</li>
+<li id="fn2" class="footnote-item"><p>Maurice Duverger, Les Partis Politiques (Paris: Points, 1951). <a href="#fnref2" class="footnote-backref">↩︎</a></p>
+</li>
+<li id="fn3" class="footnote-item"><p>Kenneth J. Arrow, Social Choice and Individual Values (New York, John Wiley &amp; Sons, 1951). See also Kenneth O. May, “A Set of Independent Necessary and Sufficient Conditions for Simple Majority Decision” 20, no. 4 (1952): 680-684, Allan Gibbard,“Manipulation of Voting Schemes: A General Result”, Econometrica 41, no. 4 (1973): 587-601 and Mark A. Sattherthwaite, “Strategy-Proofness and Arrow’s Conditions: Existence and Correspondence Theorems for Voting Procedures and Social Welfare Functions”, Journal of Economic Theory 10, no. 2 (1975): 187-217. <a href="#fnref3" class="footnote-backref">↩︎</a></p>
+</li>
+<li id="fn4" class="footnote-item"><p>Simon Johnson, Rafael La Porta, Florencio Lopez-de-Silanes and Andrei Shleifer, “Tunneling”, American Economic Review 90, no. 2 (2000): 22-27. <a href="#fnref4" class="footnote-backref">↩︎</a></p>
+</li>
+<li id="fn5" class="footnote-item"><p>もっと詳しい議論としてはE. Glen Weyl, “Why I am a Pluralist” RadicalxChange Blog, February 10, 2022 at <a href="https://www.radicalxchange.org/media/blog/why-i-am-a-pluralist/">https://www.radicalxchange.org/media/blog/why-i-am-a-pluralist/</a> 参照. <a href="#fnref5" class="footnote-backref">↩︎</a></p>
+</li>
+<li id="fn6" class="footnote-item"><p>Amartya Sen, Collective Choice and Social Welfare, (Cambridge, Massachusetts: Harvard University Press, 1970). <a href="#fnref6" class="footnote-backref">↩︎</a></p>
+</li>
+<li id="fn7" class="footnote-item"><p>L. S. Penrose, “The Elementary Statistics of Majority Voting”, Journal of the Royal Statistical Society 109, no. 1 (1946): 53-57. <a href="#fnref7" class="footnote-backref">↩︎</a></p>
+</li>
+<li id="fn8" class="footnote-item"><p>J. C. R. Licklider, “The Influence of Interaural Phase Relations upon the Masking of Speech by White Noise”, Journal of the Acoustic Society of America 20, no. 2 (1948): 150-159. だからきわめて皮肉な意味とはいえ,リックライダーはQVの父のひとりとも見られる. <a href="#fnref8" class="footnote-backref">↩︎</a></p>
+</li>
+<li id="fn9" class="footnote-item"><p>Charles L. Dodgson, The Principles of Parliamentary Representation (London, Harrison and Sons, 1884). <a href="#fnref9" class="footnote-backref">↩︎</a></p>
+</li>
+<li id="fn10" class="footnote-item"><p>似たような考え方として,分人民主主義(divicracy)がある. LQとは異なり,分人民主主義は自分の票を他者に委ねるだけでなく,複数の政治課題に票を分散させることも認めている.分人民主主義は, 20世紀フランスの哲学者ジル・ドゥルーズが提唱した「分人」という概念を政治的に拡張したもので,「個人」というアイデンティティの概念とは対照的に,ひとりの人間の中に多様で潜在的に矛盾した考えを認めるものである.鈴木はこの概念を2000年代に導入し, 2013年の著書『なめらかな社会とその敵』(勁草書房)で詳しく述べている. <a href="#fnref10" class="footnote-backref">↩︎</a></p>
+</li>
+<li id="fn11" class="footnote-item"><p>Ohlhaver, Weyl and Buterin, op. cit. Joel Miller, E. Glen Weyl and Leon Erichsen, “Beyond Collusion Resistance: Leveraging Social Information for Plural Funding and Voting” (2023) at <a href="https://papers.ssrn.com/sol3/papers.cfm?abstract%5C_id=4311507">https://papers.ssrn.com/sol3/papers.cfm?abstract\_id=4311507</a>. <a href="#fnref11" class="footnote-backref">↩︎</a></p>
+</li>
+<li id="fn12" class="footnote-item"><p>Robin Hanson, “Shall we Vote on Values but Bet on Beliefs?”, Journal of Political Philosophy 20, no. 2: 151-178. <a href="#fnref12" class="footnote-backref">↩︎</a></p>
+</li>
+<li id="fn13" class="footnote-item"><p>Nils Gilman and Ben Cerveny, “Tomorrow’s Democracy is Open Source”, Noema September 12, 2023 at <a href="https://www.noemamag.com/tomorrows-democracy-is-open-source/">https://www.noemamag.com/tomorrows-democracy-is-open-source/</a>. <a href="#fnref13" class="footnote-backref">↩︎</a></p>
+</li>
+</ol>
+</section>
+
+
+
+    </div>
+
+    
+    
+    <nav class="book__nav" aria-label="Chapter navigation">
+      
+        <a href="/ja/read/5-5/" class="book__nav-link book__nav-link--prev" data-page-dir="prev">
+          <span class="book__nav-arrow">&larr;</span>
+          <span class="book__nav-info">
+            <span class="book__nav-label">前の章</span>
+            <span class="book__nav-title">適応型管理行政</span>
+          </span>
+        </a>
+      
+      
+        <a href="/ja/read/5-7/" class="book__nav-link book__nav-link--next" data-page-dir="next">
+          <span class="book__nav-info">
+            <span class="book__nav-label">次の章</span>
+            <span class="book__nav-title">社会市場</span>
+          </span>
+          <span class="book__nav-arrow">&rarr;</span>
+        </a>
+      
+    </nav>
+    
+
+    
+    <div class="book__page-number" aria-hidden="true">
+      5-6
+    </div>
+  </article>
+</div>
+
+<script src="/assets/js/book.js"></script>
+
+  </main>
+
+  
+
+
+
+
+<footer class="footer" role="contentinfo">
+  <div class="footer__inner">
+    <div class="footer__brand" aria-hidden="true">
+      <span class="c-r">P</span><span class="c-o">l</span><span class="c-g">u</span><span class="c-c">r</span><span class="c-w">a</span><span class="c-c">l</span><span class="c-g">i</span><span class="c-o">t</span><span class="c-r">y</span>
+    </div>
+
+    <ul class="footer__links">
+      <li><a href="/ja/read/" class="footer__link">読む</a></li>
+      <li><a href="/ja/read/0-1/" class="footer__link">概要</a></li>
+      <li><a href="https://github.com/pluralitybook/plurality" class="footer__link" target="_blank" rel="noopener">GitHub</a></li>
+      <li><a href="https://discord.gg/YWSDRqdW5n" class="footer__link" target="_blank" rel="noopener">Discord</a></li>
+    </ul>
+
+    <div class="footer__sep"></div>
+
+    <p class="footer__authors">E・グレン・ワイル、オードリー・タン、Pluralityコミュニティ</p>
+    <p class="footer__license">この作品はCC0の下でパブリックドメインに捧げられています。</p>
+  </div>
+</footer>
+
+
+  <script src="/assets/js/nav.js"></script>
+  <script src="/assets/js/scroll-reveal.js"></script>
+
+  <!-- Structured Data -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "WebSite",
+    "name": "Plurality",
+    "description": "A book by E. Glen Weyl, Audrey Tang and the Plurality Community exploring how technology can support and strengthen democracy.",
+    "url": "https://new.plurality.net",
+    "author": [
+      { "@type": "Person", "name": "E. Glen Weyl" },
+      { "@type": "Person", "name": "Audrey Tang" },
+      { "@type": "Organization", "name": "the Plurality Community" }
+    ],
+    "license": "https://creativecommons.org/publicdomain/zero/1.0/"
+  }
+  </script>
+</body>
+</html>

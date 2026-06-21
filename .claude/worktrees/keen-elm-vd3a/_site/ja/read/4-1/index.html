@@ -1,0 +1,759 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>IDと人物性 — Plurality</title>
+  <meta name="description" content="A book by E. Glen Weyl, Audrey Tang and the Plurality Community exploring how technology can support and strengthen democracy.">
+  <meta name="theme-color" content="#faf8f5" media="(prefers-color-scheme: light)">
+  <meta name="theme-color" content="#0f1923" media="(prefers-color-scheme: dark)">
+
+  <link rel="canonical" href="https://new.plurality.net/ja/read/4-1/">
+
+  <!-- Open Graph -->
+  <meta property="og:type" content="website">
+  <meta property="og:title" content="IDと人物性 — Plurality">
+  <meta property="og:description" content="A book by E. Glen Weyl, Audrey Tang and the Plurality Community exploring how technology can support and strengthen democracy.">
+  <meta property="og:site_name" content="Plurality">
+  <meta property="og:locale" content="ja">
+
+  <!-- Twitter Card -->
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="IDと人物性 — Plurality">
+  <meta name="twitter:description" content="A book by E. Glen Weyl, Audrey Tang and the Plurality Community exploring how technology can support and strengthen democracy.">
+
+  <!-- Favicon (inline SVG with brand colors) -->
+  <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='6' fill='%230f1923'/%3E%3Ctext x='16' y='22' text-anchor='middle' fill='%23c9a961' font-family='Georgia,serif' font-size='18' font-weight='700'%3EP%3C/text%3E%3C/svg%3E">
+
+  <!-- Fonts: Stage 1 critical -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+  <!-- Fonts: Stage 2 deferred -->
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,400;0,700;1,400&family=Cormorant+Garamond:wght@400;700&family=Outfit:wght@300;400;500;600&family=Noto+Sans+TC:wght@400;500&family=Noto+Serif+TC:wght@400;700&family=Noto+Sans+JP:wght@400;500&family=Noto+Serif+JP:wght@400;700&family=Sarabun:wght@400;600;700&display=swap" media="print" onload="this.media='all'">
+  <noscript>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,400;0,700;1,400&family=Cormorant+Garamond:wght@400;700&family=Outfit:wght@300;400;500;600&family=Noto+Sans+TC:wght@400;500&family=Noto+Serif+TC:wght@400;700&family=Noto+Sans+JP:wght@400;500&family=Noto+Serif+JP:wght@400;700&family=Sarabun:wght@400;600;700&display=swap">
+  </noscript>
+
+  <link rel="stylesheet" href="/assets/css/main.css">
+
+  <!-- Theme toggle (run before render to prevent flash) -->
+  <script src="/assets/js/theme-toggle.js"></script>
+</head>
+<body>
+  <a href="#main" class="skip-link">Skip to content</a>
+
+  
+
+
+
+
+<nav class="nav" role="navigation" aria-label="Main navigation">
+  <div class="nav__inner">
+    <a href="/ja/" class="nav__logo" aria-label="Plurality home">Plurality</a>
+
+    <ul class="nav__links">
+      <li><a href="/ja/read/" class="nav__link nav__link--active">読む</a></li>
+      <li><a href="/ja/read/0-1/" class="nav__link">概要</a></li>
+      <li><a href="https://github.com/pluralitybook/plurality" class="nav__link" target="_blank" rel="noopener">GitHub</a></li>
+      <li><button class="theme-toggle" aria-label="Toggle theme">&#9790;</button></li>
+    </ul>
+
+    <button class="nav__hamburger" aria-label="Open menu" aria-expanded="false">
+      <span></span>
+      <span></span>
+      <span></span>
+    </button>
+  </div>
+</nav>
+
+<div class="nav__overlay" role="dialog" aria-label="Mobile menu">
+  <a href="/ja/read/" class="nav__overlay-link">読む</a>
+  <a href="/ja/read/0-1/" class="nav__overlay-link">概要</a>
+  <a href="https://github.com/pluralitybook/plurality" class="nav__overlay-link" target="_blank" rel="noopener">GitHub</a>
+  <button class="theme-toggle" aria-label="Toggle theme">&#9790;</button>
+</div>
+
+
+  <main id="main">
+    <div class="book" id="book">
+  
+  
+  
+  
+  <aside class="book__toc" aria-label="Table of contents" id="book-toc">
+    <button class="book__toc-toggle" aria-expanded="false" id="toc-toggle">
+      <span class="book__toc-toggle-icon"></span>
+      目次
+    </button>
+    <nav class="book__toc-nav" id="toc-nav">
+      <p class="book__toc-heading">目次</p>
+      
+        <p class="book__toc-section">読む前に</p>
+        <ul class="book__toc-list">
+          
+            
+            
+              
+            
+            <li>
+              <a href="/ja/read/0-0/">
+                <span class="book__toc-num">0-0</span> 推薦
+              </a>
+            </li>
+          
+            
+            
+              
+            
+            <li>
+              <a href="/ja/read/0-1/">
+                <span class="book__toc-num">0-1</span> 著者紹介
+              </a>
+            </li>
+          
+            
+            
+              
+            
+            <li>
+              <a href="/ja/read/0-2/">
+                <span class="book__toc-num">0-2</span> 自分の道を見つける
+              </a>
+            </li>
+          
+            
+            
+              
+            
+            <li>
+              <a href="/ja/read/0-3/">
+                <span class="book__toc-num">0-3</span> クレジット
+              </a>
+            </li>
+          
+        </ul>
+      
+        <p class="book__toc-section">序文</p>
+        <ul class="book__toc-list">
+          
+            
+            
+              
+            
+            <li>
+              <a href="/ja/read/1/">
+                <span class="book__toc-num">1</span> 多元性を見る
+              </a>
+            </li>
+          
+        </ul>
+      
+        <p class="book__toc-section">情報技術と民主主義</p>
+        <ul class="book__toc-list">
+          
+            
+            
+              
+            
+            <li>
+              <a href="/ja/read/2-0/">
+                <span class="book__toc-num">2-0</span> ITと民主主義　拡大する溝
+              </a>
+            </li>
+          
+            
+            
+              
+            
+            <li>
+              <a href="/ja/read/2-1/">
+                <span class="book__toc-num">2-1</span> 玉山からの眺め
+              </a>
+            </li>
+          
+            
+            
+              
+            
+            <li>
+              <a href="/ja/read/2-2/">
+                <span class="book__toc-num">2-2</span> デジタル民主主義の日常
+              </a>
+            </li>
+          
+        </ul>
+      
+        <p class="book__toc-section">プルラリティ</p>
+        <ul class="book__toc-list">
+          
+            
+            
+              
+            
+            <li>
+              <a href="/ja/read/3-0/">
+                <span class="book__toc-num">3-0</span> ⿻プルラリティ（多元性）とは？
+              </a>
+            </li>
+          
+            
+            
+              
+            
+            <li>
+              <a href="/ja/read/3-1/">
+                <span class="book__toc-num">3-1</span> ⿻世界に生きる
+              </a>
+            </li>
+          
+            
+            
+              
+            
+            <li>
+              <a href="/ja/read/3-2/">
+                <span class="book__toc-num">3-2</span> つながった社会
+              </a>
+            </li>
+          
+            
+            
+              
+            
+            <li>
+              <a href="/ja/read/3-3/">
+                <span class="book__toc-num">3-3</span> 失われた道
+              </a>
+            </li>
+          
+        </ul>
+      
+        <p class="book__toc-section">自由</p>
+        <ul class="book__toc-list">
+          
+            
+            
+              
+            
+            <li>
+              <a href="/ja/read/4-0/">
+                <span class="book__toc-num">4-0</span> 権利、オペレーティングシステム、⿻的自由
+              </a>
+            </li>
+          
+            
+            
+              
+            
+            <li>
+              <a href="/ja/read/4-1/" class="active">
+                <span class="book__toc-num">4-1</span> IDと人物性
+              </a>
+            </li>
+          
+            
+            
+              
+            
+            <li>
+              <a href="/ja/read/4-2/">
+                <span class="book__toc-num">4-2</span> 団体と⿻公衆
+              </a>
+            </li>
+          
+            
+            
+              
+            
+            <li>
+              <a href="/ja/read/4-3/">
+                <span class="book__toc-num">4-3</span> 商取引と信頼
+              </a>
+            </li>
+          
+            
+            
+              
+            
+            <li>
+              <a href="/ja/read/4-4/">
+                <span class="book__toc-num">4-4</span> 財産と契約
+              </a>
+            </li>
+          
+            
+            
+              
+            
+            <li>
+              <a href="/ja/read/4-5/">
+                <span class="book__toc-num">4-5</span> アクセス
+              </a>
+            </li>
+          
+        </ul>
+      
+        <p class="book__toc-section">民主主義</p>
+        <ul class="book__toc-list">
+          
+            
+            
+              
+            
+            <li>
+              <a href="/ja/read/5-0/">
+                <span class="book__toc-num">5-0</span> 協働テクノロジーと民主主義
+              </a>
+            </li>
+          
+            
+            
+              
+            
+            <li>
+              <a href="/ja/read/5-1/">
+                <span class="book__toc-num">5-1</span> ポスト表象コミュニケーション
+              </a>
+            </li>
+          
+            
+            
+              
+            
+            <li>
+              <a href="/ja/read/5-2/">
+                <span class="book__toc-num">5-2</span> 没入型共有現実（ISR）
+              </a>
+            </li>
+          
+            
+            
+              
+            
+            <li>
+              <a href="/ja/read/5-3/">
+                <span class="book__toc-num">5-3</span> クリエイティブなコラボレーション
+              </a>
+            </li>
+          
+            
+            
+              
+            
+            <li>
+              <a href="/ja/read/5-4/">
+                <span class="book__toc-num">5-4</span> 拡張熟議
+              </a>
+            </li>
+          
+            
+            
+              
+            
+            <li>
+              <a href="/ja/read/5-5/">
+                <span class="book__toc-num">5-5</span> 適応型管理行政
+              </a>
+            </li>
+          
+            
+            
+              
+            
+            <li>
+              <a href="/ja/read/5-6/">
+                <span class="book__toc-num">5-6</span> ⿻投票
+              </a>
+            </li>
+          
+            
+            
+              
+            
+            <li>
+              <a href="/ja/read/5-7/">
+                <span class="book__toc-num">5-7</span> 社会市場
+              </a>
+            </li>
+          
+        </ul>
+      
+        <p class="book__toc-section">インパクト</p>
+        <ul class="book__toc-list">
+          
+            
+            
+              
+            
+            <li>
+              <a href="/ja/read/6-0/">
+                <span class="book__toc-num">6-0</span> ⿻から現実へ
+              </a>
+            </li>
+          
+            
+            
+              
+            
+            <li>
+              <a href="/ja/read/6-1/">
+                <span class="book__toc-num">6-1</span> 職場
+              </a>
+            </li>
+          
+            
+            
+              
+            
+            <li>
+              <a href="/ja/read/6-2/">
+                <span class="book__toc-num">6-2</span> 保健
+              </a>
+            </li>
+          
+            
+            
+              
+            
+            <li>
+              <a href="/ja/read/6-3/">
+                <span class="book__toc-num">6-3</span> メディア
+              </a>
+            </li>
+          
+            
+            
+              
+            
+            <li>
+              <a href="/ja/read/6-4/">
+                <span class="book__toc-num">6-4</span> 環境
+              </a>
+            </li>
+          
+            
+            
+              
+            
+            <li>
+              <a href="/ja/read/6-5/">
+                <span class="book__toc-num">6-5</span> 学習
+              </a>
+            </li>
+          
+        </ul>
+      
+        <p class="book__toc-section">未来へ</p>
+        <ul class="book__toc-list">
+          
+            
+            
+              
+            
+            <li>
+              <a href="/ja/read/7-0/">
+                <span class="book__toc-num">7-0</span> 政策
+              </a>
+            </li>
+          
+            
+            
+              
+            
+            <li>
+              <a href="/ja/read/7-1/">
+                <span class="book__toc-num">7-1</span> 結論
+              </a>
+            </li>
+          
+        </ul>
+      
+    </nav>
+  </aside>
+
+  
+  <article class="book__page" id="book-page">
+    
+    <div class="book__page-curl" aria-hidden="true"></div>
+
+    
+    <header class="book__header">
+      
+        <p class="book__section-label">自由 · 4-1</p>
+      
+      <h1 class="book__title">IDと人物性</h1>
+      
+      
+        <nav class="book__lang-switch" aria-label="Language versions">
+          <span class="book__lang-current">日本語</span>
+          
+            <a href="/read/4-1/" class="book__lang-link" lang="en">English</a>
+          
+            <a href="/zh/read/4-1/" class="book__lang-link" lang="zh">華文</a>
+          
+            <a href="/th/read/4-1/" class="book__lang-link" lang="th">ไทย</a>
+          
+        </nav>
+      
+      <div class="book__header-ornament" aria-hidden="true">
+        <span></span><span></span><span></span>
+      </div>
+    </header>
+
+    
+    <div class="book__body">
+      
+
+  <p>資格審査の行列が着実に進むにつれ、希望の感覚が露骨な不安と入り混じっていた。頭上の大画面は、難民資格の重要性について繰り返し述べていた。ムールーは、崩壊しかけたコミュニティの中では十分に尊重されている人物だが、重大な局面を迎えたところだった。気候変動が彼女の故国をボロボロにしたので、彼女は娘たちのために、新しい土地で平安と明るい見通しを得たいと思っていたのだ。</p>
+<p>ムールーが前へ進み出ると、彼女の過去─豊かで活気あふれるもの─が目の前を駆け巡った。彼女は不確実な未来を、特に自分の娘たちのために恐れた。彼女たちは停滞に直面しかねない。政府の役人は、歓迎するように、親しみやすく、<a href="https://home-affairs.ec.europa.eu/system/files/2016-12/factsheet_-_the_common_european_asylum_system_en.pdf">共通ヨーロッパ難民システム</a>手続きのコードをスキャンするように告げた。</p>
+<p>彼女の壊れかけたスマートフォンには、いくつか率直な質問の書かれたページが読み込まれた。</p>
+<p>「共通難民システムに、以下についてはい／いいえの回答を要求することを認めますか？」</p>
+<p>1…支援プログラムについてのあなたの適合性があるか<br>
+　2…あなたが我々の社会に何か脅威をもたらす可能性があるか<br>
+　3…過去の経験が我々の社会内で生産的な役割に貢献できるかどうか</p>
+<p>彼女はすぐに画面に署名した。すると彼女のスマートフォンは、質問に正確に答える支援をするよう関連情報を表示し始めた。</p>
+<p>・紛争で引き裂かれた村で、あなたは仮設学校を作り、子供たちの顔に微笑みをもたらしました。この希望の光は信頼できる情報源76カ所が述べており、その称賛は複数のデジタル資格証に示され、EUが認知する機関の裏付けを得ています。</p>
+<p>・ある記者会見で、有害な個人とコミュニティとの連携に反対するあなたの決然とした姿勢は大きな反響を得て、デジタル署名つきの41の肯定証言がそれを裏付けており、社会のひるまぬ保護者だと示しています。</p>
+<p>・各種コミュニティと34の政府機関との対話を橋渡しするあなたの活動は、あなたを取り巻く信頼と安全性の盾を作り、それぞれがあなたの貢献の印となり、それがデジタル認知表彰により不滅のものとなっています。</p>
+<p>・あなたのイノベーションは人生を変えるプロジェクトの源となり、あなたの同輩たちの78％が活気あるデジタルナラティブでそれを称賛し、工学部門に対するあなたの大きな貢献のダイナミックなタペストリーを織りなしています。</p>
+<p>・あなたが支援した……</p>
+<p>一覧はどんどん続く。彼女は、校庭に集まる子供たちの活気ある場面、自信を持って壇上に立つようインスパイアした導師たち、熱心な同僚たちと協働した無数の夜遅くまでの活動を思い出した。</p>
+<p>役人のデスクに緑のランプが次々にともり、集められた証言と裏付けある実績をもとに彼女の申請を承認する。</p>
+<p>彼女の娘たちも同様に承認され、彼女たちの新しい出発を祝う。心からの優しさで、役人は彼女たちを有望な世界へと受け入れた。その世界は彼女たちを理解し、受け入れる用意が十分にあるようで、ムールーと娘たちが再び繁栄できる、新しい出発を提供してくれたのだ。</p>
+<p>最も根本的な人権は生命や人物性と市民権に関わるものだ。同様に、⿻社会の最も根本的なプロトコルは、参加者の身元を確立して保護するものとなる。権利を確保しサービスを提供するためには、そうしたものを得る権利を持つのが誰／何かの定義が必須だ。ある程度セキュアな身元IDの基盤なしには、偽の資格証を最もたくさん作り出せる人に投票システムなども捕獲されてしまい、すぐに金権政治に堕落してしまう。1993年の『ニューヨーカー』誌に出た有名な漫画で「インターネットでは、こちらがイヌだとは誰も知らない」（訳注：インターネットの匿名性を示すもの。漫画ではコンピュータの前に座る大きな犬が、近くの小さな犬に「インターネットでは、こちらがイヌだとは誰も知らないんだ」と語る）というものがある。これはあまりに有名で、独自のWikipediaページ<sup class="footnote-ref"><a href="#fn1" id="fnref1">[1]</a></sup>があるほどだ。これが本当だとすれば、オンライン民主主義の試みは文字どおり、イヌも食わないものになりかねない<sup class="footnote-ref"><a href="#fn2" id="fnref2">[2]</a></sup>。これはまさにWeb3コミュニティで劇的に示されてしまったことだ。そこでは匿名性や無名性に大きく依存しているため、しばしば、物理的、金銭的なリソースを持つ者たちの利害に捕獲されてしまったのだ<sup class="footnote-ref"><a href="#fn3" id="fnref3">[3]</a></sup>。</p>
+<p>このように、IDシステムはデジタル生活の中心であり、ほとんどのオンライン活動へのアクセスの門番役となる。SNSのアカウント、eコマース、政府サービス、雇用やサブスクリプションなどすべてでこれが使われる。こうしたシステムが提供できるものは、それが利用者の身元をどれだけ「豊か」に確立できるかに大きく左右される。たとえばその<a href="https://en.wikipedia.org/wiki/CAPTCHA">利用者を確認できないシステム</a>は、二重応募をチェックできないため、割引や無料提供が困難となる。<a href="https://en.wikipedia.org/wiki/Proof_of_personhood">利用者が誰かはわかる</a>が、その属性を確認できないシステムは、万人に合法的かつ現実的に提供できるサービスにしか使えない<sup class="footnote-ref"><a href="#fn4" id="fnref4">[4]</a></sup>。オンライン攻撃が容易なので、ある人物の情報をきちんと識別できなければ人々の安全も守れないのだ。</p>
+<p>その一方で、身元を確立する手続きをあまりに簡単にすると、IDシステムそのものが役に立たなくなる。これは特にオンラインでは顕著だ。身元を確立するにはパスワードがよく使われるが、こうした認証が慎重に行われないと、パスワードはすぐに漏洩して、攻撃者たちのなりすましを可能にしてしまう。「プライバシー」はしばしば「あればうれしい」くらいの扱いとなり、「隠しごとのある人」だけがこだわるものとして軽視されることも多い。しかしIDシステムでは、個人情報の保護がその中核となる。IDシステムの有効性は、身元を確立しつつ保護する能力で判断されるべきなのだ。</p>
+<p>この課題の展開を知るには、IDシステムの相互に関連する要素を把握しておくべきだ。</p>
+<p>・作成：IDシステムへの登録とは、アカウントをつくり、識別子を割り当ててもらうということだ。システムごとに登録の要件は異なる。これはそのシステム所有者が、各個人の提示する識別情報をどの程度信頼するか（保証レベルと呼ばれる<sup class="footnote-ref"><a href="#fn5" id="fnref5">[5]</a></sup>）で変わってくる。</p>
+<p>・アクセス：継続的にアカウントにアクセスするために、参加者はパスワード、キー、またはMFA（<a href="https://en.wikipedia.org/wiki/Multi-factor_authentication">多要素認証</a>）を提示するなど、登録するときよりは簡単なプロセスを使う。</p>
+<p>・リンケージ：参加者が自分のアカウントでシステムを使うと、そのやりとりの多くが記録され、システムが参加者を理解するための記録の一部となる。この情報は、あとで他のアカウント機能に使用できる。</p>
+<p>・グラフ：蓄積されるユーザーデータの多くは、他のアカウントとリンクしている。たとえば、複数のユーザーがシステムを利用してメッセージを交換したり、一緒にイベントに参加したりする。これらは、複数のアカウントの相関データとなり、「<a href="https://en.wikipedia.org/wiki/Social_graph">ソーシャルグラフ</a>」となる。</p>
+<p>・回復：パスワードやキーは紛失や盗難にあうし、多要素認証システムも機能しなくなることがある。ほとんどのIDシステムには、秘密情報、外部IDトークンへのアクセス、または社会関係を使用して、紛失または盗難された認証情報を回復する方法がある。</p>
+<p>・連携：アカウントを作成するとき、参加者は外部ソースから自分に関する情報（多くの場合検証済み）を引き出す。同様に、ほとんどのアカウントも情報の一部を他のシステムでアカウントを作成するために使用される<sup class="footnote-ref"><a href="#fn6" id="fnref6">[6]</a></sup>。</p>
+<p>この節では、既存のデジタルIDシステムの現状と、確立と保護という2つの必須事項をそれらのシステムが実践する際の限界について説明しよう。次に、これらの問題に対処するための、重要だが限定的な世界各地の取り組みをいくつか紹介する。加えて、そうした重要な取り組みをさらに野心的に構築および拡張し、豊かな⿻未来を実現する方法を説明する。最後に、IDの基本的な役割のため、それが他の基本的なプロトコルや権利、特に次の節で焦点を当てる結社の権利とどのように関連し、絡み合っているかを指摘しよう。</p>
+<h3 id="%E4%BB%8A%E6%97%A5%E3%81%AE%E3%83%87%E3%82%B8%E3%82%BF%E3%83%ABid" tabindex="-1">今日のデジタルID</h3>
+<p>正式な「ID（身分証明書）」といえば、通常は政府が発行した文書を指す場合がほとんどだ。これらは国によって違いもあるが、一般的な例としては、以下がある。</p>
+<p>・出生証明書<br>
+・公的プログラムへの登録証明書（多くの場合、それと関連した識別番号付き（米国の年金と税金の社会保障制度、台湾の国民健康保険制度など））<br>
+・自動車や銃器など、潜在的に危険なツールの所持使用許可証<br>
+・一部の国では統一された国民識別カード／番号／データベース<br>
+・国際旅行用のパスポート（暗黙のうちに国際的に連合された形で使われていることから見て、おそらく最も広範な識別システムだろう）</p>
+<p>これらのシステムは国ごとに違うが、一般的にいくつかの注目すべき特徴を共有している。</p>
+<p>①これらはさまざまな状況で標準的で信頼性が高く、多くの場合「法的」または「真の」IDとさえ呼ばれている。その他のすべてのIDは「仮名」か、正式なものを参照して正当性を得ている。</p>
+<p>②右の理由もあって、特定の目的やプログラムに特化したシステムに登録するときにも、こうしたIDが使われる（例：バーでの年齢確認、銀行口座の登録、税金の支払い）。悪名高い例としては、米国の社会保障番号（SSN）がある。これは、1930年代に新しい年金制度の管理用に作られた<sup class="footnote-ref"><a href="#fn7" id="fnref7">[7]</a></sup>。1960年代までには、それがさまざまな政府機関や民間企業から普通に要求されるようになった。この広範な使用により、さまざまな状況で人々の活動をプロファイリングできるようになる。1960年代後半から1970年代前半にかけて、こうした慣行に対する懸念が高まり<sup class="footnote-ref"><a href="#fn8" id="fnref8">[8]</a></sup>、連邦政府の各種機関がデータを共有する能力を制限し、民間部門でのSSNの使用も制限する一連の法律が可決された<sup class="footnote-ref"><a href="#fn9" id="fnref9">[9]</a></sup>。それ以来、連邦政府はSSNの使用を減らそうとして、代替案を積極的に検討している<sup class="footnote-ref"><a href="#fn10" id="fnref10">[10]</a></sup>。</p>
+<p>③こうしたIDは通常、その人の身元についての限られたシグナルに基づいて発行されている。つまり通常は、他の政府発行文書を参照するだけで、それを遡れば根底には出生証明書があり、そしてその出生証明書自体はひとりの医師の署名だけに依存する。時折、これらは本人の出頭によって補完されることもある。ただし、身元をめぐる紛争が続く場合は、面倒な法的手続きによって裏付けられることも多い。</p>
+<p>これらの特徴が合わさると、IDは不安定となる。政府発行のIDは現代生活の基盤であり、通常はプライバシーの侵害を避けようとする。しかし、非常に多くの状況で使用されるために秘密を維持できない。そして根拠となるシグナルが限られているため、身元保護には不十分なのだ。さらに、以下で説明するように、これらの問題は現在、生成基盤モデル（GFM：Generative Foundation Models）などの技術進歩のため悪化している。GFMはコンテンツを簡単に模倣および変更できるし、公開シグナルから高度な推論を導き出せるからだ。さらに、これらのIDのデジタル版を作成するプロセスはあまりに時間がかかり、行政区域ごとにバラバラだ。こうした理由から、既存の物理的な（紙またはプラスチック）政府発行のIDはますます危うい立場にあり、本人確認とプライバシー保護との間で提供しているトレードオフは、かなりお粗末だ。</p>
+<p>もうひとつ、広く使用されているIDシステムは、Meta、Amazon、Microsoft（Microsoft account、LinkedIn、GitHub）、Alphabet、Appleなどの主要な技術プラットフォームのアカウント管理となる。これらのプラットフォームでは、OAuth<sup class="footnote-ref"><a href="#fn11" id="fnref11">[11]</a></sup>やOpenID Connect<sup class="footnote-ref"><a href="#fn12" id="fnref12">[12]</a></sup>などのオープン標準を利用しており、ユーザーがそのプラットフォームのアカウントを使って他のシステムにログインできるようにしている。これは「シングルサインオン」（SSO）とも呼ばれる。これらのサービスを使うことで、オンラインの認証インターフェースによく表示される「……でサインイン」ボタンが可能になる。この単一のサインインを通じて、IDの発行者（別名「IDプロバイダ」）である大規模プラットフォームは、自社アカウントを持ち、他の場所でそのアカウントを使用する個人が訪れる場所すべてを「把握する」。</p>
+<p>各種の政府発行のIDに共通の特徴があるのと同様に、各種のSSOシステムにも重要な共通点がある。</p>
+<p>①SSOシステムは主に民間の営利企業が管理している。SSOシステムがもたらす利便性とSSOシステムが依存するデータ（後述）は、顧客維持と価値を最大化するために使われる。</p>
+<p>②SSOシステムは、ユーザーのさまざまなシグナルと特性を利用して、ユーザーIDの整合性を維持し、その価値を活用する。データの種類（購入履歴、SNS接続、電子メールのやりとり、GPS位置情報など）はいろいろあるが、いずれの場合も、複数のドメインにまたがる対象者の行動の完全なプロファイルを広範かつ詳細に、かなりの精度で把握している<sup class="footnote-ref"><a href="#fn13" id="fnref13">[13]</a></sup>。</p>
+<p>③②を理由として、これらのエンドポイント識別子の提携は広範囲にわたり、そのSSOプロバイダと特に深い関係がなくても、さまざまなオンライン認証サービスで受け入れられている。</p>
+<p>人々のID情報や属性を大量に収集する重要な組織が、他に2つある。これらの組織はSSOシステムと共通点も多いが別の存在で、情報を収集される人々が直接やりとりをすることはない。それは信用格付け、公安機関だ（公安機関は人々についての調査書を作る。一般的な監視と、その機関の業務クリアランスを得ようとする従業員たちの審査用である）。</p>
+<p>これらの組織も、高い整合性とかなり幅広い用途を備えた豊富なシグナルを活用するが、標準的な政府IDのような公的正当性はない。したがって、これらのデータ収集システムは、トレードオフの分布の中で、政府IDとは対極にある。人々に関する豊富なプロファイルを提供する点でははるかに優れているが、「すべてを把握する」という性質は社会的に正当性がなく、少数の手に多大な権力が集中するため、主に陰で運用されている。</p>
+<p>ほとんどの国では、これらの両極端の中間に、銀行口座や携帯電話などの重要／基礎的なサービスのアカウントがある。銀行業務は通常、政府によって規制されており、登録に政府発行のIDが必要だ（「顧客確認」またはKYCと呼ばれるプロセス）。通信プロバイダは、実効性のあるアカウント管理（請求書をどこに送るか）と回復（電話紛失時の本人確認）をサポートするために、政府発行のIDを要求することが多い。また、一部の国では、電話番号を取得する際に顧客の身元確認が求められる。銀行と電話会社はどちらも民間管理で、セキュリティに利用できる豊富なユーザーデータとリンクしているため、他のIDシステム（SSOシステムなど）への重要な入力情報として使われることも多いが、通常はSSOシステムよりもはるかに規制が厳しいため、民間プロバイダ間での正当性とポータビリティは高い。多くの状況で、これらのシステムはセキュリティと正当性の便利な組み合わせと見なされ、多くのサービスでは、多要素認証を通じて、電話番号が多くのサービスでの最終的なセキュリティの根拠となっている。しかしこのIDは、企業による監視と安全性欠如という欠陥も抱えている。どちらも盗まれやすく、盗まれたら回復が難しく、政府発行のIDのような強力な法的根拠がないからだ。</p>
+<p>このスペクトラムとはまったく別の方向として、もっと伝統的な場面とデジタルネイティブ的な場面で使われる、小規模で、多様で、ローカルなIDシステムがある<sup class="footnote-ref"><a href="#fn14" id="fnref14">[14]</a></sup>。</p>
+<p>・教育資格、専門職協会や労働組合、政党、宗教団体への加入など、市民社会の登録と取引<br>
+・仕事関連の資格やアクセスなど、雇用の登録と取引<br>
+・ポイントカードや民間保険への加入など、商業の登録と取引<br>
+・「ダークウェブ」フォーラム（例：<a href="https://en.wikipedia.org/wiki/4chan">4chan</a>または<a href="https://www.reddit.com/">Reddit</a>）からビデオゲームや仮想世界への参加（例：<a href="https://store.steampowered.com/">Steam</a>）まで、さまざまなオンラインの社会的および政治的やりとりで使用される仮名ID<br>
+・Web3で金融取引、分散型自律組織（DAO、詳細は後述）、および<a href="https://discord.com/">Discord</a>などのサーバーでよく使用される、関連ディスカッションでのアカウント<br>
+・機械または生物（つまり精神）の基層に、共有された個人および関係の履歴、コミュニケーションのやりとりなどを記録する、個人のデジタルおよび現実のつながり</p>
+<p>これらのIDは、これまで議論してきたものの中で最も⿻で、最も共通点が少ない。これらのIDが持つ共通性は、その断片化と異質性にはっきり関連した少数のものにとどまる。</p>
+<p>①これらのシステムは大幅に断片化されており、現時点では相互運用性に乏しく、提携または相互接続されることはほとんどないため、適用範囲が非常に限られる。[Verifiable Credentials]((<a href="https://www.w3.org/TR/vc-data-model-2.0/">https://www.w3.org/TR/vc-data-model-2.0/</a>)（検証可能な資格情報<sup class="footnote-ref"><a href="#fn15" id="fnref15">[15]</a></sup>）などの新しい標準は、この課題に対処しようとするものだ。</p>
+<p>②同時に、これらのIDソースは、最も自然で適切で非侵襲的に感じられる。トップダウンの命令や権力構造からではなく、人間の相互作用の自然な流れから生じるように思えるのだ。正当性はきわめて高いと見なされるが、確定的または外部の「法的」IDの根拠となるものではなく、仮名またはその他の私的なものと見なされることが多い。</p>
+<p>③豊富で詳細な個人情報を記録するものが多いが、それは狭い文脈や生活の一部として行われ、他の文脈とは明確に区別される。このため、個人的な関係に基づいた強力な回復方法を持てる。</p>
+<p>④デジタルユーザー体験はおおむねかなり劣悪だ。まったくデジタル化されていないか、デジタルインターフェースの管理プロセスが非技術系ユーザーには使いにくい。</p>
+<p>これらの例はおそらくデジタルIDにとって周縁的なものでしかない。しかしその総合的な状態を最もよく表しているとも言える。デジタルIDシステムは渾然としており、一般的にかなり安全性が低く、相互運用性も弱く、機能が限られる。その一方で、プラバシーを保護するために設立されたはずの集中的な権力を持つ組織が、広範な監視に従事し、プライバシーの規範を平然と破っている。この問題についての認識は広がり、多くのITプロジェクトでその克服が目指されている。</p>
+<h3 id="%E5%85%AC%E5%85%B1%E5%88%86%E6%95%A3%E3%83%87%E3%82%B8%E3%82%BF%E3%83%ABid" tabindex="-1">公共分散デジタルID</h3>
+<p>IDツールの最も影響力のある開発は、多くの場合「<a href="https://www.undp.org/digital/digital-public-infrastructure">デジタル公共インフラ</a>」という旗印の下、開発途上国を市場としてきた。これはITの他の目立つトレンドとは正反対だ。その原因の一部は、途上国ではIDシステムが特に未発達なので、強いニーズがあることだ。しかし、おそらくその結果として、これらのシステムは、通常は生体認証に基づく、非常に統一的で集中化された構造を目指している。これは、デジタルネイティブのIDインフラの実力について、印象的なデモは提供できるが、IDを豊かに確立し、強力に保護する点では不十分だ。</p>
+<p>最も顕著な例は、インド政府がIndia Stack計画の一環として支援するIDシステム「Aadhaar」だ。当初Aadhaarに登録するには、各種の組織から発行された既存IDを提示する必要があった――既存の州政府文書、配給カードなどだ（認められる書類の種類は膨大だった<sup class="footnote-ref"><a href="#fn16" id="fnref16">[16]</a></sup>）。各登録者は写真を撮影し、虹彩をスキャンし、10本の指紋をすべて登録する。新規登録者は、IDに関連付けられた情報がデータベースと照合し、チェックされる。登録済みでなければAadhaar番号が発行され、それが記録されたカードが郵送される。インド固有識別番号庁（UIDAI<sup class="footnote-ref"><a href="#fn17" id="fnref17">[17]</a></sup>）という、データベース認証の専門組織を通じ、認証サービスが提供される。政府サービスを使う人々は、Aadhaar番号を提示し、登録した指紋を示すと認証されたかどうかの回答が戻ってくる。</p>
+<p>その後インド最高裁判所は、プライバシーの保護を理由に、民間部門によるこの制度利用を制限した<sup class="footnote-ref"><a href="#fn18" id="fnref18">[18]</a></sup>。それでもインド全土で登録者数を最大化するため、登録エージェントに報酬が支払われたので、Aadhaarはインド人口の99％以上を登録できている。</p>
+<p>この成功にも触発され、OpenAIの共同創設者サム・アルトマンらを含む技術者のグループは、世界初のユニバーサル生体認証IDを目指して、2019年にWorldcoinを立ち上げた<sup class="footnote-ref"><a href="#fn19" id="fnref19">[19]</a></sup>。彼らは独自技術の虹彩スキャナ「Orb」を使用して、これまでにほぼ開発途上国の数百万人の虹彩をスキャンした。暗号化技術を利用して、これらのスキャンを「ハッシュ化」し、表示または復元できないようにしつつ、将来のスキャンはそのハッシュ値と照合することで一意性を確保できる。彼らはこれを使用して、仮想通貨を預けるアカウントを初期化／開設する。人間をGFMが模倣できるようになる中で、彼らが目指すのは、たとえば地球上のすべての人に平等な「ユニバーサルベーシックインカム」を提供し、投票やその他の普遍的な権利への参加に使える、安全なID基盤を確保することだ。</p>
+<p>こうしたシステムは、世界中のあらゆるID制度の中でも、規模、疎外されたコミュニティの包摂、セキュリティの、最も見事な組み合わせを実現したと評価されている。このため、世界的にそれが真似られている。アジア（フィリピン、スリランカなど）とアフリカ（ウガンダ、モロッコ、エチオピアなど）の国々は、インドの経験に基づくモジュラーオープンソースIDプラットフォーム（MOSIP<sup class="footnote-ref"><a href="#fn20" id="fnref20">[20]</a></sup>）を採用している。これまでに約1億件のIDが作成された。</p>
+<p>その一方で、こうしたシステムはIDを確立し保護する能力に重大な限界を持つ。これほど広範なやりとりや手続きを、たったひとつのバイオメトリック識別子に紐付けると、厳しいトレードオフは避けられないのだ。（Aadhaarの場合のように）プログラムの管理者が認証に生体認証情報を常に使用している場合、幅広い領域にわたる市民の活動を空前の規模で監視できるようになる。さらに脆弱な集団に妨害工作をしたり標的にしたりできてしまう可能性もある<sup class="footnote-ref"><a href="#fn21" id="fnref21">[21]</a></sup>。活動家たちは、インドにおける少数派のイスラム教徒の地位について繰り返し懸念を表明している。</p>
+<p>また、Worldcoinのように、アカウントの初期化／開設にのみ生体認証を使用することでプライバシーが保護されている場合、システムはアカウントの盗難や販売に対して脆弱になる。人々が使うほとんどのサービスでは、本人であることを証明する以上のことが求められる（たとえば国籍、ある企業の従業員かどうかなど）。だから極端なプライバシー保護はシステムの有用性を台無しにしてしまう。さらに、このようなシステムは、生体認証システムの技術性能に大きく依存する。将来、人工知能と高度な印刷技術を組み合わせて、眼球を偽装できるようになった場合、そのようなシステムは、極端な「単一障害点」が生じかねない<sup class="footnote-ref"><a href="#fn22" id="fnref22">[22]</a></sup>。つまり、生体認証システムは包括的でシンプルだが、⿻のサポートに必要な豊かさとセキュリティとを備えたIDを確立して保護するには、あまりにも簡略化されている。</p>
+<p>まったく違う問題意識から始まった別のID方式も、類似のトレードオフに直面する。「分散型ID」は、前述のデジタルIDをめぐる多くの懸念から生じたものだ。つまり、断片化、ネイティブなデジタルインフラの欠如、プライバシーの問題、監視、企業による管理などの懸念だ。重要な基本文書が、MicrosoftのIDアーキテクトであるキム・キャメロンの「IDの法則<sup class="footnote-ref"><a href="#fn23" id="fnref23">[23]</a></sup>」である。この文書では、ユーザーの制御／同意、適切な関係者への最小限の開示、複数のユースケース、参加の多様性、人間のユーザーとの統合、コンテキスト全体にわたるエクスペリエンスの一貫性の重要性が強調されている。こうした原理に沿ったシステム実装のため、ブロックチェーンなどの「公開」データリポジトリを使って、IDに対する個人の「所有権」を付与するプロトコルやオープン標準が作成され、誰でもこれらの識別子を使ったデジタル資格情報を発行する標準形式が作られた。</p>
+<p>これらのシステムでは、個人が複数のアカウント／仮名を持てる。また、個人が自分のIDを真に「所有」するには、そのIDにアクセスするための究極の鍵を持つか、または上位の管理機関に頼らずにその鍵を確実に回復できねばならないという実務上の課題も共通している。おそらく生体認証（前述の問題）以外には、信頼できる機関なしで鍵を回復する広く合意された方法はなく、大規模で多様な社会で個人が確実に自己管理できる鍵の例もない。</p>
+<p>こうした共通の課題はあるが、これらのスキームの詳細は大きく異なる。一方の極端な例としては、「検証可能な資格情報」（VC）の支持者は、プライバシーと、ユーザーが自分に関するどの主張を提示するか制御できることを優先する。他方の極端な例としては、「ソウルバウンドトークン」（SBT）などのブロックチェーン中心のIDシステムの支持者は、公的資格情報を重視する。そうした証明書は、借金返済や、芸術作品を複製しないという約束といった行動の公的記録となり、その主張が公にIDに結びつく必要があるのだ。ここでも、回復をめぐる課題とDID／VC–SBTの議論の両方において、IDの確立と保護のジレンマが見られる。</p>
+<p>IDをめぐる最近の取り組みの多くは、ワクチン接種証明用の「スマート健康カード」からEUによるヨーロッパ全体での相互運用可能なデジタルID構築まで、ID問題を解決しようと苦労してきた。だがIDの識別と保護のどちらも中核的な重要性を持つので、こうした活動がなかなか進展を見ないのも無理はない。</p>
+<h3 id="%E4%BA%A4%E5%B7%AE%E3%81%A8%E3%81%97%E3%81%A6%E3%81%AEid" tabindex="-1">交差としてのID</h3>
+<p>この一見相容れない対立を乗り越え、中央集権的な監視なしにIDの安全な確立と強力な保護を確保する方法はあるだろうか？　答えは当然、「<a href="https://www.plurality.net/v/chapters/3-2/jpn/?mode=dark">3–2つながった社会</a>」と「<a href="https://www.plurality.net/v/chapters/3-3/jpn/?mode=dark">3–3失われた道<sup>ダオ</sup></a>」で説明した伝統、つまりアイデンティティの本質とその相互接続性、そしてネットワークアーキテクチャの可能性の活用となる。パケット交換が分散化とパフォーマンスを調和させて実際に結びつけ、ハイパーテキストが速度とテキスト経由の経路の多様性を調和させたのと同じように、実験と標準構築を適切に組み合わせることで、「交差的ID手法」というアプローチがIDの確立と保護という目標を調和させられそうだ。</p>
+<p>基本的な考え方を最も簡単に理解するため、バイオメトリクスと対比しよう。バイオメトリクス（虹彩スキャン、指紋、遺伝情報など）は、個人を一意的に識別する詳細な身体情報の集合であり、原則として、その人にアクセスでき、適切な技術を持つ人なら誰でもその人が本人だと確認できる。しかし、人間は単なる生物学的存在ではなく、社会学的存在でもある。バイオメトリクスプロファイルよりもはるかに豊かなのは、他の人々や社会集団と共有された歴史や交流の集合なのだ。バイオメトリクスがそこに含まれる場合もある。なぜなら私たちは、誰かと直接会うときはいつでも、部分的にはその人のバイオメトリクスを認識しているし、そこに他の人の痕跡が含まれることもあるのだから。しかし社会的な交流は、バイオメトリクスをはるかに超えるものである。そこには社会的な交流の過程で自然に観察されるすべての行動や特性が含まれる。たとえば以下のようなものだ。</p>
+<p>・場所：ある場所に一緒にいるという行為自体が、他人の居場所について共同知識を持っているということだ（法医学におけるアリバイの根拠でもある）。さらにほとんどの人はほとんどの時間を他人の近くで過ごす。</p>
+<p>・コミュニケーション：常に少なくとも2人の参加者がいる。</p>
+<p>・行動：それが仕事、遊び、ワークショップのいずれであっても、通常はそれを見ている人のために、またはその面前で行われる。</p>
+<p>・性格的な特性：これは通常は他の人とのやりとりの中で現れる。</p>
+<p>実際、他人のアイデンティティを考えるときには、外見や生物学的特徴ではなく、主にそのような「社会計量学」、つまりその人と一緒にしたこと、一緒に行った場所、彼らがしたこと、行動の仕方といったものを考えるのが普通だろう。このような社会的IDは驚くほどの実用性を持っている。</p>
+<p>・包括性と冗長性：これらのデータを合わせると、その人について一般的に知りたい情報はほとんど得られる。人の本質は、他者と共有するさまざまなやりとりや経験でほぼ決まる。他人に何か証明したいことのほぼすべてについて、専用の監視戦略がなくても、その情報を「保証」できる人々と機関（通常は多数）が存在する。たとえば、特定の年齢以上であることを証明したければ、昔からの友人、通った学校、さまざまな時期に年齢を確認した医師、そしてもちろん、年齢を確認した政府に頼れる。このような多要素検証システムは実際にはかなり一般的に使われている。政府発行の身分証明書を申請する場合、多くの管轄区域では、住所の証明として銀行取引明細書、公共料金の請求書、賃貸契約書などさまざまな方法が認められている。</p>
+<p>・プライバシー：おそらくさらに興味深いのは、こうした属性を「裏付ける存在」はすべて、ほとんどの人が「プライベート」だと考えるやりとりからその情報を得ているということだ。つまり、企業や政府による監視とは違い、そうした社会的事実を知られていても心配する必要はないのだ。</p>
+<p>・段階的認証：単一の要素による標準的な検証では、ユーザーがある事実／属性について得られる信頼度は、それを裏付ける証人／システムに対する信頼度と同じだ。段階的認証システムでは、信頼できる属性の証人を増やすと、もっと広い信頼を実現できる。これにより、ユースケースごとのセキュリティニーズに応じた対応が可能となる。</p>
+<p>・セキュリティ：⿻は、「単一障害点」の問題の多くも回避できる。少数の個人や機関が不正行為を行っても、その影響を受けるのはそれらに依存している人々だけであり、おそらく社会のごく一部だろう。そしてそういう人々がいても、右記の冗長性のおかげで、検証の信頼度は部分的にしか低下せずにすむ。これは、AIや印刷技術の進歩による生体認証システムなどへの潜在的なリスク（前述のとおり）を考えると特に重要となる。こちらの検証方法の基盤ははるかに多様なので（さまざまなコミュニケーション行為、物理的な接触など）、あるひとつの技術進歩だけでこれらすべてが破綻する可能性は、はるかに低い。</p>
+<p>・回復：失われた資格情報の回復は、すでに述べたように最も難しい問題だが、このアプローチはそれに対する自然な解決策も提供する。右で述べたように、回復は通常、アカウントを回復してくれという請求が、本物かどうかを調査できる単一の強力なエンティティとのやりとりに依存する。それに代わるやり方としては、個人に完全な「所有権」を与える方法があるが、これは通常、ハッキングなどの攻撃に対してきわめて弱い。だが自然な代替案としては、関係者の集団に依存するようにすればいい。たとえば5人の友人または機関のうち3者が集まればキーを回復できるようにしたらどうだろう。このような「ソーシャルリカバリ」は、多くのWeb3コミュニティでの<a href="https://vitalik.eth.limo/general/2021/01/11/recovery.html">黄金律</a>となっており、<a href="https://support.apple.com/en-us/HT212513">Apple</a>など主要なプラットフォームでも採用されている<sup class="footnote-ref"><a href="#fn24" id="fnref24">[24]</a></sup>。<a href="https://www.plurality.net/v/chapters/5-6/jpn/?mode=dark">後の章</a>で検討するが、高度な投票アプローチを使うと、その人のネットワーク内で、その個人の利益に反するような結託で資格情報が奪われる可能性を引き下げ、セキュリティを高められる。これを「コミュニティリカバリ」と呼ぶ<sup class="footnote-ref"><a href="#fn25" id="fnref25">[25]</a></sup>。</p>
+<p>これらの利点だけでも、前述のIDについてのトレードオフよりかなり優れている。これは本質的には、「<a href="https://www.plurality.net/v/chapters/3-3/jpn/?mode=dark">3–3失われた道<sup>ダオ</sup></a>」で説明した、⿻構造が一般的に持つ中央集権型構造への優位性を拡張したものなのだ。この優位性のおかげで、通信ネットワークはパケット交換アーキテクチャへの移行が進んだ。だからこそ、<a href="https://trustoverip.org/">Trust over IP財団</a>など、こうした未来の実現を目指す主要な組織の一部は、インターネットプロトコル自体の作成の歴史ときわめてよく似た歴史をたどっているのだ。もちろん、このような⿻システムを機能させるには、次のような多くの技術的および社会的課題がまだある。</p>
+<p>・相互運用：このようなシステムを機能させるには、現在の非常に幅広いIDおよび情報システムが、独立性と整合性を維持しながらこのシステムと相互運用する必要がある。そのためには、明らかに非常に困難な調整作業が必要だが、基本的にはインターネット自体の根底にあるものと同じだ。</p>
+<p>・複雑性：非常に多様な個人や機関との信頼関係と検証関係の管理および処理は、ほとんどの人や機関の能力をはるかに超える。しかし、この複雑性に対処する常識的なアプローチがいくつかある。ひとつは、性能の上がってきたGFMを活用することだ。その個人や機関の関係とコンテキストに適応するようにモデルをトレーニングして、多様な信号から意味を抽出するのだ。この可能性については、「<a href="https://www.plurality.net/v/chapters/5-5/jpn/?mode=dark">5–5適応型管理行政</a>」で詳しく説明しよう。もうひとつのアプローチは、管理すべき関係の数を抑えるために、仲介役（ジャロン・ラニアーと著者グレン・ワイルが「個人データの仲介者」または<a href="https://hbr.org/2018/09/a-blueprint-for-a-better-digital-society">MID</a>と呼ぶもの）を担う中規模の組織（中規模企業、教会など）または「友だちの友だち」関係（私たちはこれを「推移的信頼」と呼ぶ）に頼ることだ。地球上のほぼあらゆる2人は、少数のリンク（およそ6つ）内で結びつくことが知られている<sup class="footnote-ref"><a href="#fn26" id="fnref26">[26]</a></sup>。この2つのアプローチの魅力、トレードオフ、互換性については後述する。</p>
+<p>・遠くからの信頼：もうひとつ密接に関連する問題として、知らない人に出会ったとき、その人々の身元を証明してくれるはずの人々も、ほとんどがやはり知らない人々になってしまう。ここでも、後述のように、推移的信頼とMIDの組み合わせを使用するのが自然となる。「<a href="https://www.plurality.net/v/chapters/4-3/jpn/?mode=dark">4–3商取引と信頼</a>」の部分で説明するように、通貨もここで役割を果たしそうだ。</p>
+<p>・プライバシー：最後に、ほとんどの人は先述の自然な社会活動からの情報を記録しても抵抗を感じないが、認証や検証のためにそれを共有すると、プライバシーの問題が大きくなりかねない。このような情報は、自然な社会活動の中にとどまるよう意図されたものなので、身元確認のためにそれを使う場合は、これらの「コンテキストの整合性」の規範を破らないように細心の注意を払う必要がある。この課題への対処が、<a href="https://www.plurality.net/v/chapters/4-2/jpn/?mode=dark">次のセクション</a>の焦点であり、このセクションでも最後に説明する。</p>
+<h3 id="%E2%BF%BBid" tabindex="-1">⿻ID</h3>
+<p>⿻IDシステムに伴う複雑さと社会的距離の管理方法はどうだろう？　GFMの可能性については、「<a href="https://www.plurality.net/v/chapters/5-5/jpn/?mode=dark">5–5適応型管理行政</a>」で改めて扱う。ここではネットワークベースのアプローチに焦点を当てよう。2つの自然な戦略は、「<a href="https://www.plurality.net/v/chapters/3-3/jpn/?mode=dark">3–3失われた道<sup>ダオ</sup></a>」で述べたインターネットの先駆者であるポール・バランが考えた2種類のネットワークに対応する「多極化」（「<a href="https://www.identityblog.com/?p=352">ポリセントリズム</a>」とも呼ばれる）では、大規模な検証者が多数存在するが、ひどい複雑さを生み出すほどの数ではない。また、「分散型」では大規模な検証者はほとんど存在せず、前述の推移的な信頼を使用することで社会的距離を克服する<sup class="footnote-ref"><a href="#fn27" id="fnref27">[27]</a></sup>。これらの可能性を考慮する際に便利な基本的なヒューリスティックは、「<a href="https://en.wikipedia.org/wiki/Dunbar%27s_number">ダンバー数</a>」だ。これは、人類学者ロビン・ダンバーが主張したもので、情報技術がなくても人々が安定した関係を維持できる人数（通常は約150人）を指す<sup class="footnote-ref"><a href="#fn28" id="fnref28">[28]</a></sup>。本当に150人かどうかはさておき、ほとんどの人は明らかに、技術的支援がないと数百以上の関係や評判の評価などは扱いきれないらしい。</p>
+<p>多極アプローチは、プレイヤーの数を制限することでこの問題に対処する。これは明らかに⿻をある程度は制限してしまうが、参加者の所属先が十分に多様なら、大した問題にはならない。たとえば、人口が100億人で、各人が検証してもらえそうな機関（政府、教会、雇用主など）と100の関係を維持しているとする。検証がまともに機能するには、出会う2人はみんな少なくとも5つの同じ機関に所属する必要があるとしよう。所属先がランダムに分散している場合、検証先が300機関なら、ランダムな2人の個人が検証に失敗する可能性は数百万分の一でしかない。もちろん、出会う個人がランダムであることはめったになく、所属先もランダムには形成されない。また、特にランダムに出会う人々の間なら、ほとんどのやりとりで所属先が5つ絶対に一致しなければならないケースはまれだろう。こうした議論から見て、そのような⿻関係の環境では、さらに多くの検証機関があっていい。</p>
+<p>だが検証機関の総数は当然ながら総人口よりはるかに小さく、せいぜい10万程度で、つまりは人口100億人の10万分の1ということだ。これは現在のID環境よりもはるかに⿻で、自律性／統制や機能性／セキュリティの間のトレードオフがはるかに改善される。だがこれは実現可能なのだろうか？</p>
+<p>計量社会学における最も重要な発見のひとつは、ダンバー的な限界はあっても、わずか数次の隔たりでほとんどの人間が互いにつながっているということだ。これを理解するため、たとえば人間ひとりあたり100の関係しか維持できないとしよう。すると2次の関係は1002=10,000件、3次関係が1003=1,000,000件、4次関係が1004=100,000,000件、5次関係が1005=10,000,000,000件ある。これは世界の人口よりも多い。したがって、あらゆる人は、地球上の他のすべての人々と5次以内の距離にいることが十分にあり得る。各レベルで、これらの関係の一部は重複するため、実際の距離の次数は少し大きくはなるだろう。ほとんどの社会学的研究では、ランダムに選ばれた2人の間の距離はおよそ6次だ<sup class="footnote-ref"><a href="#fn29" id="fnref29">[29]</a></sup>。さらに、7次関係までいくと、2人の間の社会的つながりには通常、かなり独立した連鎖が多数存在する。</p>
+<p>さらに、推移的な連鎖を通じて関係、情報、妥当性を確立するというアイデアは決して新しいものではない。これは紹介という概念、「伝言ゲーム」（これはその限界を示すゲームだ）や、職業的なSNSとして人気のLinkedInの背後にある概念となっている。社会的に離れた人々の間で起こり得る多くの紹介の連鎖を見つけて管理するには、明らかに何らかの技術支援が必要だが、それが可能だということは計算機科学で証明されている。この問題は、実務的にはインターネットを動かすパケット交換の根底にある問題と酷似している。</p>
+<p>さらに、多極型戦略と分散型戦略を組み合わせることで、互いの威力を大幅に強化できる。簡単な例として、検証機関が10万あるという先ほどの話を考えよう。100億人の世界では、ひとり当たり平均して10万の参加者との関係を管理する必要がある。もし他の検証機関と同数の関係を管理できれば、すべての検証機関が他のすべての検証機関と直接つながることになる。2次の距離によって、何百万もの検証機関が同じ論理の下で共存し、他の検証機関の属性を利用して検証を行えるため、はるかに多くのことが実現できる。したがって、推移的信頼と多極性を組み合わせることで、後出のGFMの魔法がなくても、非常に⿻で機能的かつプライベートなID環境を簡単に実現できるのだ。</p>
+<h3 id="%E3%82%A2%E3%82%A4%E3%83%87%E3%83%B3%E3%83%86%E3%82%A3%E3%83%86%E3%82%A3%E3%81%A8%E5%9B%A3%E4%BD%93" tabindex="-1">アイデンティティと団体</h3>
+<p>残る重要な問題は、こうした多様な社会的検証のプロセスがIDの保護の障害にならないかという点だ。結局のところ、現在のID状況が機能不全に陥っているのは、まさにこの恐れのため、自由民主主義の政治体制がIDシステムの創設に抵抗してきたためなのだ。より良い代替案を構築するには、この側面での優秀性を確認する必要がある。だがそれには、「プライバシー」と「統制」が⿻的にはずばり何を意味するのかをまずよく考えよう。</p>
+<p>右で述べたように、私たちに関するほとんどすべてのことは他の誰かに知られており、通常は私たちだけでなくその相手についての情報にもなる。この事実をプライバシーの侵害と感じる人はいない。実際、ファーストキスの記憶をそのキスの相手の心から消去することは、その片方がその情報を不適切に共有することと同じくらいプライバシーの侵害になる。したがって、人々が求めているものは、「プライバシー」という言葉ではうまく説明できない。人々が求めているのは、情報が意図された社会的な環境にとどまるということなのだ。これはプライバシーの権威であるヘレン・ニッセンバウムが「文脈の完全性」と呼ぶものである<sup class="footnote-ref"><a href="#fn30" id="fnref30">[30]</a></sup>。実はこれにはある種の公開性が不可欠となる。情報が意図された人々によって共有され、理解されなければ、情報が過剰に共有された場合と同じくらい有害になりかねない。さらに、こうしたメッセージは本質的に社会的なので、個人の選択や保護よりも、むしろ情報に関する集団規範の侵害から人々の手段を保護することが重要になる。つまり中心的な問題は、別の基本的権利、つまり団体結社の自由に関するものなのだ。本質的に、人格権を支援し実装するシステムは、結社の自由を同時に強化する必要がある。結社の確立と保護という二重の課題は、アイデンティティの場合の課題と似ている。</p>
+<hr class="footnotes-sep">
+<section class="footnotes">
+<ol class="footnotes-list">
+<li id="fn1" class="footnote-item"><p><a href="https://en.wikipedia.org/wiki/On%5C_the%5C_Internet,%5C_nobody%5C_knows%5C_you%27re%5C_a%5C_dog">https://en.wikipedia.org/wiki/On\_the\_Internet,\_nobody\_knows\_you're\_a\_dog</a> <a href="#fnref1" class="footnote-backref">↩︎</a></p>
+</li>
+<li id="fn2" class="footnote-item"><p>Peter Steiner, “On the Internet, nobody knows you’re a dog” The New Yorker July 5, 1993. <a href="#fnref2" class="footnote-backref">↩︎</a></p>
+</li>
+<li id="fn3" class="footnote-item"><p>Vitalik Buterin, “On Nathan Schneider on the Limits of Cryptoeconomics”, September 26, 2021 at <a href="https://vitalik.eth.limo/general/2021/09/26/limits.html">https://vitalik.eth.limo/general/2021/09/26/limits.html</a>. <a href="#fnref3" class="footnote-backref">↩︎</a></p>
+</li>
+<li id="fn4" class="footnote-item"><p>Puja Ohlhaver, Mikhail Nikulin and Paula Berman, “Compressed to 0: The Silent Strings of Proof of Personhood”, 2024 available at <a href="https://papers.ssrn.com/sol3/papers.cfm?abstract%5C_id=4749892">https://papers.ssrn.com/sol3/papers.cfm?abstract\_id=4749892</a>. <a href="#fnref4" class="footnote-backref">↩︎</a></p>
+</li>
+<li id="fn5" class="footnote-item"><p>たとえば,国際商業航空旅行を監督する国際民間航空機関(ICAO)は, [身元証明]のガイドを開発した. <a href="https://www.icao.int/Security/FAL/TRIP/Documents/ICAO%20Guidance%20on%20Evidence%20of%20Identity.pdf">https://www.icao.int/Security/FAL/TRIP/Documents/ICAO Guidance on Evidence of Identity.pdf</a> で入手可能. <a href="#fnref5" class="footnote-backref">↩︎</a></p>
+</li>
+<li id="fn6" class="footnote-item"><p>これを可能にする主要なオープン標準はOAuth(Open Authorization).これは, 2010年にRFC5849として最初に公開され,その後2012年にRFC6749としてOAuth 2.0に更新されたインターネットエンジニアリングタスクフォースのオープン標準である. <a href="#fnref6" class="footnote-backref">↩︎</a></p>
+</li>
+<li id="fn7" class="footnote-item"><p>Carolyn Puckett, “The Story of the Social Security Number,” Social Security Administration, July 2009 参照. <a href="https://www.ssa.gov/policy/docs/ssb/v69n2/v69n2p55.html.">https://www.ssa.gov/policy/docs/ssb/v69n2/v69n2p55.html.</a>). また Kenneth Meiser, “Opening Pandora’s Box: The Social Security Number from 1937-2018,” UT Electronic Theses and Dissertations, June 19, 2018, <a href="http://hdl.handle.net/2152/66022">http://hdl.handle.net/2152/66022</a> も参照. <a href="#fnref7" class="footnote-backref">↩︎</a></p>
+</li>
+<li id="fn8" class="footnote-item"><p>Willis Hare, “Records, Computers and the Rights of Citizens,” <a href="https://www.rand.org/content/dam/rand/pubs/papers/2008/P5077.pdf">https://www.rand.org/content/dam/rand/pubs/papers/2008/P5077.pdf</a>, Rand Corporation, August 1973. <a href="#fnref8" class="footnote-backref">↩︎</a></p>
+</li>
+<li id="fn9" class="footnote-item"><p>“Social Security Numbers: Private Sector Entities Routinely Obtain and Use SSNs, and Laws Limit the Disclosure of This Information.” United States General Accounting Office, 2004. <a href="https://epic.org/wp-content/uploads/privacy/ssn/gao-04-11.pdf">https://epic.org/wp-content/uploads/privacy/ssn/gao-04-11.pdf</a> (GAO Report to the Chairman, Subcommittee on Social Security, Committee on Ways and Means, House of Representatives)参照. また Barbara Bovbjerg, “Social Security Numbers: Federal and State Laws Restrict Use of SSNs, yet Gaps Remain,” United States General Accounting Office, 2005, <a href="https://www.gao.gov/assets/gao-05-1016t.pdf">https://www.gao.gov/assets/gao-05-1016t.pdf</a> (GAO Testimony Before the Committee on Consumer Affairs and Protection and Committee on Governmental Operations, New York State Assembly.)も参照. <a href="#fnref9" class="footnote-backref">↩︎</a></p>
+</li>
+<li id="fn10" class="footnote-item"><p>“News Release: DHS Awards for an Alternative Identifier to the Social Security Number,” US Department of Homeland Security, October 9, 2020, <a href="https://www.dhs.gov/science-and-technology/news/2020/10/09/news-release-dhs-awards-alternative-identifier-social-security-number">https://www.dhs.gov/science-and-technology/news/2020/10/09/news-release-dhs-awards-alternative-identifier-social-security-number</a>. <a href="#fnref10" class="footnote-backref">↩︎</a></p>
+</li>
+<li id="fn11" class="footnote-item"><p>認証の業界標準プロトコルはOAuth 2.0であり,ウェブアプリケーションやデスクトップアプリケーション,スマホ,家庭用デバイスに明確な認証フローを提供する. <a href="https://oauth.net/2/">https://oauth.net/2/</a>. IETF Working Group at <a href="https://datatracker.ietf.org/wg/oauth/about/">https://datatracker.ietf.org/wg/oauth/about/</a>. <a href="#fnref11" class="footnote-backref">↩︎</a></p>
+</li>
+<li id="fn12" class="footnote-item"><p>OpenID Connectはアプリケーションとウェブサイト開発者たちがサインインのフローを開始し,ウェブ,モバイル, Javascriptクライアントを横断して利用者についての証明可能な主張を受け取れるようにする. <a href="https://openid.net/developers/how-connect-works/">https://openid.net/developers/how-connect-works/</a>. <a href="#fnref12" class="footnote-backref">↩︎</a></p>
+</li>
+<li id="fn13" class="footnote-item"><p><a href="https://en.wikipedia.org/wiki/Surveillance%5C_capitalism">https://en.wikipedia.org/wiki/Surveillance\_capitalism</a> <a href="#fnref13" class="footnote-backref">↩︎</a></p>
+</li>
+<li id="fn14" class="footnote-item"><p>Kaliya “Identity Woman” Young, Domains of Identity: A Framework for Understanding Identity Systems in Contemporary Society (London: Anthem Press, 2020). <a href="#fnref14" class="footnote-backref">↩︎</a></p>
+</li>
+<li id="fn15" class="footnote-item"><p>Verifiable Credentials Data Model v1.1 W3C Recommendation 03 March 2022, <a href="https://www.w3.org/TR/vc-data-model/">https://www.w3.org/TR/vc-data-model/</a>. <a href="#fnref15" class="footnote-backref">↩︎</a></p>
+</li>
+<li id="fn16" class="footnote-item"><p>求められたのは,名前,生年月日,性別,実際の郵送先住所の４つの人口統計情報だけだった(電話番号と電子メールアドレスも求められたが,必須ではなかった).新規登録者の情報をインド固有識別番号庁が管理する中央データベースに一括して送信する登録エージェントがこの情報をまとめて集めた. <a href="#fnref16" class="footnote-backref">↩︎</a></p>
+</li>
+<li id="fn17" class="footnote-item"><p>UIDAI公式サイト <a href="https://uidai.gov.in/en/">https://uidai.gov.in/en/</a> <a href="#fnref17" class="footnote-backref">↩︎</a></p>
+</li>
+<li id="fn18" class="footnote-item"><p>Aadhaar裁判の最高裁判決全文は以下で読める.判事３人が異見を別に述べた. <a href="https://thewire.in/law/aadhaar-judgment-supreme-court-full-text">https://thewire.in/law/aadhaar-judgment-supreme-court-full-text</a>. <a href="#fnref18" class="footnote-backref">↩︎</a></p>
+</li>
+<li id="fn19" class="footnote-item"><p>Elizabeth Howcroft, and Martin Coulter, “Worldcoin Aims to Set up Global ID Network Akin to India’s Aadhaar,” Reuters, November 2, 2023, <a href="https://www.reuters.com/technology/worldcoin-aims-set-up-global-id-network-akin-indias-aadhaar-2023-11-02/">https://www.reuters.com/technology/worldcoin-aims-set-up-global-id-network-akin-indias-aadhaar-2023-11-02/</a>. <a href="#fnref19" class="footnote-backref">↩︎</a></p>
+</li>
+<li id="fn20" class="footnote-item"><p>“Overview,” MOSIP, 2021, <a href="https://docs.mosip.io/1.2.0/overview">https://docs.mosip.io/1.2.0/overview</a>. <a href="#fnref20" class="footnote-backref">↩︎</a></p>
+</li>
+<li id="fn21" class="footnote-item"><p>ただし,このようなシステムにゼロ知識証明(ZKP)などの暗号化技術を組み込むと,ユーザーのプライバシーを部分的に保護できることは指摘しておこう. Anon-Aadhaarなどのプロジェクトでは, Aadhaar利用者が証明可能な方法で,情報のサブセットのみを選択的に何らかのエンティティに提示できる. “Advancing Anon Aadhaar: What’s New in V1.0.0,” Mirror, February 14, 2024, <a href="https://mirror.xyz/privacy-scaling-explorations.eth/YnqHAxpjoWl4e%5C_K2opKPN4OAy5EU4sIJYYYHFCjkNOE">https://mirror.xyz/privacy-scaling-explorations.eth/YnqHAxpjoWl4e\_K2opKPN4OAy5EU4sIJYYYHFCjkNOE</a>. <a href="#fnref21" class="footnote-backref">↩︎</a></p>
+</li>
+<li id="fn22" class="footnote-item"><p>Vitalik Buterin, “What Do I Think about Biometric Proof of Personhood?” July 24, 2023 at <a href="https://vitalik.eth.limo/general/2023/07/24/biometric.html">https://vitalik.eth.limo/general/2023/07/24/biometric.html</a>. <a href="#fnref22" class="footnote-backref">↩︎</a></p>
+</li>
+<li id="fn23" class="footnote-item"><p>Kim Cameron, “7 Laws of Identity,” Kim Cameron’s Identity Weblog, August 20, 2009, <a href="https://www.identityblog.com/?p=1065">https://www.identityblog.com/?p=1065</a>. <a href="#fnref23" class="footnote-backref">↩︎</a></p>
+</li>
+<li id="fn24" class="footnote-item"><p>Vitalik Buterin, “Why We Need Broad Adoption of Social Recovery Wallets”, January 11, 2021 at <a href="https://vitalik.eth.limo/general/2021/01/11/recovery.html">https://vitalik.eth.limo/general/2021/01/11/recovery.html</a>. <a href="#fnref24" class="footnote-backref">↩︎</a></p>
+</li>
+<li id="fn25" class="footnote-item"><p>Puja Ohlhaver, E. Glen Weyl and Vitalik Buterin, “Decentralized Society: Finding Web3’s Soul”, 2022 at <a href="https://papers.ssrn.com/sol3/papers.cfm?abstract%5C_id=4105763">https://papers.ssrn.com/sol3/papers.cfm?abstract\_id=4105763</a>. <a href="#fnref25" class="footnote-backref">↩︎</a></p>
+</li>
+<li id="fn26" class="footnote-item"><p>Jaron Lanier and E. Glen Weyl, “A Blueprint for a Better Digital Society” Harvard Business Review: Big Idea Series (Tracked) September 28, 2018: Article 5 available at <a href="https://hbr.org/2018/09/a-blueprint-for-a-better-digital-society">https://hbr.org/2018/09/a-blueprint-for-a-better-digital-society</a>. Duncan J. Watts and Steven H. Strogatz, “The Collective Dynamics of ‘Small World’ Networks” Nature 393 (1998): 440-442. <a href="#fnref26" class="footnote-backref">↩︎</a></p>
+</li>
+<li id="fn27" class="footnote-item"><p>Cameron, op. cit. <a href="#fnref27" class="footnote-backref">↩︎</a></p>
+</li>
+<li id="fn28" class="footnote-item"><p>R.I.M. Dunbar, “Neocortex Size as a Constraint on Group Size in Primates”, Journal of Human Evolution 22, no. 6 (1992): 469-493. <a href="#fnref28" class="footnote-backref">↩︎</a></p>
+</li>
+<li id="fn29" class="footnote-item"><p>Watts and Strogatz, op. cit. <a href="#fnref29" class="footnote-backref">↩︎</a></p>
+</li>
+<li id="fn30" class="footnote-item"><p>Helen Nissenbaum, “Privacy as Contextual Integrity”, Washington Law Review 119 (2004): 101-139. <a href="#fnref30" class="footnote-backref">↩︎</a></p>
+</li>
+</ol>
+</section>
+
+
+
+    </div>
+
+    
+    
+    <nav class="book__nav" aria-label="Chapter navigation">
+      
+        <a href="/ja/read/4-0/" class="book__nav-link book__nav-link--prev" data-page-dir="prev">
+          <span class="book__nav-arrow">&larr;</span>
+          <span class="book__nav-info">
+            <span class="book__nav-label">前の章</span>
+            <span class="book__nav-title">権利、オペレーティングシステム、⿻的自由</span>
+          </span>
+        </a>
+      
+      
+        <a href="/ja/read/4-2/" class="book__nav-link book__nav-link--next" data-page-dir="next">
+          <span class="book__nav-info">
+            <span class="book__nav-label">次の章</span>
+            <span class="book__nav-title">団体と⿻公衆</span>
+          </span>
+          <span class="book__nav-arrow">&rarr;</span>
+        </a>
+      
+    </nav>
+    
+
+    
+    <div class="book__page-number" aria-hidden="true">
+      4-1
+    </div>
+  </article>
+</div>
+
+<script src="/assets/js/book.js"></script>
+
+  </main>
+
+  
+
+
+
+
+<footer class="footer" role="contentinfo">
+  <div class="footer__inner">
+    <div class="footer__brand" aria-hidden="true">
+      <span class="c-r">P</span><span class="c-o">l</span><span class="c-g">u</span><span class="c-c">r</span><span class="c-w">a</span><span class="c-c">l</span><span class="c-g">i</span><span class="c-o">t</span><span class="c-r">y</span>
+    </div>
+
+    <ul class="footer__links">
+      <li><a href="/ja/read/" class="footer__link">読む</a></li>
+      <li><a href="/ja/read/0-1/" class="footer__link">概要</a></li>
+      <li><a href="https://github.com/pluralitybook/plurality" class="footer__link" target="_blank" rel="noopener">GitHub</a></li>
+      <li><a href="https://discord.gg/YWSDRqdW5n" class="footer__link" target="_blank" rel="noopener">Discord</a></li>
+    </ul>
+
+    <div class="footer__sep"></div>
+
+    <p class="footer__authors">E・グレン・ワイル、オードリー・タン、Pluralityコミュニティ</p>
+    <p class="footer__license">この作品はCC0の下でパブリックドメインに捧げられています。</p>
+  </div>
+</footer>
+
+
+  <script src="/assets/js/nav.js"></script>
+  <script src="/assets/js/scroll-reveal.js"></script>
+
+  <!-- Structured Data -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "WebSite",
+    "name": "Plurality",
+    "description": "A book by E. Glen Weyl, Audrey Tang and the Plurality Community exploring how technology can support and strengthen democracy.",
+    "url": "https://new.plurality.net",
+    "author": [
+      { "@type": "Person", "name": "E. Glen Weyl" },
+      { "@type": "Person", "name": "Audrey Tang" },
+      { "@type": "Organization", "name": "the Plurality Community" }
+    ],
+    "license": "https://creativecommons.org/publicdomain/zero/1.0/"
+  }
+  </script>
+</body>
+</html>

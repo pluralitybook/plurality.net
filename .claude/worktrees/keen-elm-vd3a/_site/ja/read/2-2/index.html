@@ -1,0 +1,751 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>デジタル民主主義の日常 — Plurality</title>
+  <meta name="description" content="A book by E. Glen Weyl, Audrey Tang and the Plurality Community exploring how technology can support and strengthen democracy.">
+  <meta name="theme-color" content="#faf8f5" media="(prefers-color-scheme: light)">
+  <meta name="theme-color" content="#0f1923" media="(prefers-color-scheme: dark)">
+
+  <link rel="canonical" href="https://new.plurality.net/ja/read/2-2/">
+
+  <!-- Open Graph -->
+  <meta property="og:type" content="website">
+  <meta property="og:title" content="デジタル民主主義の日常 — Plurality">
+  <meta property="og:description" content="A book by E. Glen Weyl, Audrey Tang and the Plurality Community exploring how technology can support and strengthen democracy.">
+  <meta property="og:site_name" content="Plurality">
+  <meta property="og:locale" content="ja">
+
+  <!-- Twitter Card -->
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="デジタル民主主義の日常 — Plurality">
+  <meta name="twitter:description" content="A book by E. Glen Weyl, Audrey Tang and the Plurality Community exploring how technology can support and strengthen democracy.">
+
+  <!-- Favicon (inline SVG with brand colors) -->
+  <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='6' fill='%230f1923'/%3E%3Ctext x='16' y='22' text-anchor='middle' fill='%23c9a961' font-family='Georgia,serif' font-size='18' font-weight='700'%3EP%3C/text%3E%3C/svg%3E">
+
+  <!-- Fonts: Stage 1 critical -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+  <!-- Fonts: Stage 2 deferred -->
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,400;0,700;1,400&family=Cormorant+Garamond:wght@400;700&family=Outfit:wght@300;400;500;600&family=Noto+Sans+TC:wght@400;500&family=Noto+Serif+TC:wght@400;700&family=Noto+Sans+JP:wght@400;500&family=Noto+Serif+JP:wght@400;700&family=Sarabun:wght@400;600;700&display=swap" media="print" onload="this.media='all'">
+  <noscript>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,400;0,700;1,400&family=Cormorant+Garamond:wght@400;700&family=Outfit:wght@300;400;500;600&family=Noto+Sans+TC:wght@400;500&family=Noto+Serif+TC:wght@400;700&family=Noto+Sans+JP:wght@400;500&family=Noto+Serif+JP:wght@400;700&family=Sarabun:wght@400;600;700&display=swap">
+  </noscript>
+
+  <link rel="stylesheet" href="/assets/css/main.css">
+
+  <!-- Theme toggle (run before render to prevent flash) -->
+  <script src="/assets/js/theme-toggle.js"></script>
+</head>
+<body>
+  <a href="#main" class="skip-link">Skip to content</a>
+
+  
+
+
+
+
+<nav class="nav" role="navigation" aria-label="Main navigation">
+  <div class="nav__inner">
+    <a href="/ja/" class="nav__logo" aria-label="Plurality home">Plurality</a>
+
+    <ul class="nav__links">
+      <li><a href="/ja/read/" class="nav__link nav__link--active">読む</a></li>
+      <li><a href="/ja/read/0-1/" class="nav__link">概要</a></li>
+      <li><a href="https://github.com/pluralitybook/plurality" class="nav__link" target="_blank" rel="noopener">GitHub</a></li>
+      <li><button class="theme-toggle" aria-label="Toggle theme">&#9790;</button></li>
+    </ul>
+
+    <button class="nav__hamburger" aria-label="Open menu" aria-expanded="false">
+      <span></span>
+      <span></span>
+      <span></span>
+    </button>
+  </div>
+</nav>
+
+<div class="nav__overlay" role="dialog" aria-label="Mobile menu">
+  <a href="/ja/read/" class="nav__overlay-link">読む</a>
+  <a href="/ja/read/0-1/" class="nav__overlay-link">概要</a>
+  <a href="https://github.com/pluralitybook/plurality" class="nav__overlay-link" target="_blank" rel="noopener">GitHub</a>
+  <button class="theme-toggle" aria-label="Toggle theme">&#9790;</button>
+</div>
+
+
+  <main id="main">
+    <div class="book" id="book">
+  
+  
+  
+  
+  <aside class="book__toc" aria-label="Table of contents" id="book-toc">
+    <button class="book__toc-toggle" aria-expanded="false" id="toc-toggle">
+      <span class="book__toc-toggle-icon"></span>
+      目次
+    </button>
+    <nav class="book__toc-nav" id="toc-nav">
+      <p class="book__toc-heading">目次</p>
+      
+        <p class="book__toc-section">読む前に</p>
+        <ul class="book__toc-list">
+          
+            
+            
+              
+            
+            <li>
+              <a href="/ja/read/0-0/">
+                <span class="book__toc-num">0-0</span> 推薦
+              </a>
+            </li>
+          
+            
+            
+              
+            
+            <li>
+              <a href="/ja/read/0-1/">
+                <span class="book__toc-num">0-1</span> 著者紹介
+              </a>
+            </li>
+          
+            
+            
+              
+            
+            <li>
+              <a href="/ja/read/0-2/">
+                <span class="book__toc-num">0-2</span> 自分の道を見つける
+              </a>
+            </li>
+          
+            
+            
+              
+            
+            <li>
+              <a href="/ja/read/0-3/">
+                <span class="book__toc-num">0-3</span> クレジット
+              </a>
+            </li>
+          
+        </ul>
+      
+        <p class="book__toc-section">序文</p>
+        <ul class="book__toc-list">
+          
+            
+            
+              
+            
+            <li>
+              <a href="/ja/read/1/">
+                <span class="book__toc-num">1</span> 多元性を見る
+              </a>
+            </li>
+          
+        </ul>
+      
+        <p class="book__toc-section">情報技術と民主主義</p>
+        <ul class="book__toc-list">
+          
+            
+            
+              
+            
+            <li>
+              <a href="/ja/read/2-0/">
+                <span class="book__toc-num">2-0</span> ITと民主主義　拡大する溝
+              </a>
+            </li>
+          
+            
+            
+              
+            
+            <li>
+              <a href="/ja/read/2-1/">
+                <span class="book__toc-num">2-1</span> 玉山からの眺め
+              </a>
+            </li>
+          
+            
+            
+              
+            
+            <li>
+              <a href="/ja/read/2-2/" class="active">
+                <span class="book__toc-num">2-2</span> デジタル民主主義の日常
+              </a>
+            </li>
+          
+        </ul>
+      
+        <p class="book__toc-section">プルラリティ</p>
+        <ul class="book__toc-list">
+          
+            
+            
+              
+            
+            <li>
+              <a href="/ja/read/3-0/">
+                <span class="book__toc-num">3-0</span> ⿻プルラリティ（多元性）とは？
+              </a>
+            </li>
+          
+            
+            
+              
+            
+            <li>
+              <a href="/ja/read/3-1/">
+                <span class="book__toc-num">3-1</span> ⿻世界に生きる
+              </a>
+            </li>
+          
+            
+            
+              
+            
+            <li>
+              <a href="/ja/read/3-2/">
+                <span class="book__toc-num">3-2</span> つながった社会
+              </a>
+            </li>
+          
+            
+            
+              
+            
+            <li>
+              <a href="/ja/read/3-3/">
+                <span class="book__toc-num">3-3</span> 失われた道
+              </a>
+            </li>
+          
+        </ul>
+      
+        <p class="book__toc-section">自由</p>
+        <ul class="book__toc-list">
+          
+            
+            
+              
+            
+            <li>
+              <a href="/ja/read/4-0/">
+                <span class="book__toc-num">4-0</span> 権利、オペレーティングシステム、⿻的自由
+              </a>
+            </li>
+          
+            
+            
+              
+            
+            <li>
+              <a href="/ja/read/4-1/">
+                <span class="book__toc-num">4-1</span> IDと人物性
+              </a>
+            </li>
+          
+            
+            
+              
+            
+            <li>
+              <a href="/ja/read/4-2/">
+                <span class="book__toc-num">4-2</span> 団体と⿻公衆
+              </a>
+            </li>
+          
+            
+            
+              
+            
+            <li>
+              <a href="/ja/read/4-3/">
+                <span class="book__toc-num">4-3</span> 商取引と信頼
+              </a>
+            </li>
+          
+            
+            
+              
+            
+            <li>
+              <a href="/ja/read/4-4/">
+                <span class="book__toc-num">4-4</span> 財産と契約
+              </a>
+            </li>
+          
+            
+            
+              
+            
+            <li>
+              <a href="/ja/read/4-5/">
+                <span class="book__toc-num">4-5</span> アクセス
+              </a>
+            </li>
+          
+        </ul>
+      
+        <p class="book__toc-section">民主主義</p>
+        <ul class="book__toc-list">
+          
+            
+            
+              
+            
+            <li>
+              <a href="/ja/read/5-0/">
+                <span class="book__toc-num">5-0</span> 協働テクノロジーと民主主義
+              </a>
+            </li>
+          
+            
+            
+              
+            
+            <li>
+              <a href="/ja/read/5-1/">
+                <span class="book__toc-num">5-1</span> ポスト表象コミュニケーション
+              </a>
+            </li>
+          
+            
+            
+              
+            
+            <li>
+              <a href="/ja/read/5-2/">
+                <span class="book__toc-num">5-2</span> 没入型共有現実（ISR）
+              </a>
+            </li>
+          
+            
+            
+              
+            
+            <li>
+              <a href="/ja/read/5-3/">
+                <span class="book__toc-num">5-3</span> クリエイティブなコラボレーション
+              </a>
+            </li>
+          
+            
+            
+              
+            
+            <li>
+              <a href="/ja/read/5-4/">
+                <span class="book__toc-num">5-4</span> 拡張熟議
+              </a>
+            </li>
+          
+            
+            
+              
+            
+            <li>
+              <a href="/ja/read/5-5/">
+                <span class="book__toc-num">5-5</span> 適応型管理行政
+              </a>
+            </li>
+          
+            
+            
+              
+            
+            <li>
+              <a href="/ja/read/5-6/">
+                <span class="book__toc-num">5-6</span> ⿻投票
+              </a>
+            </li>
+          
+            
+            
+              
+            
+            <li>
+              <a href="/ja/read/5-7/">
+                <span class="book__toc-num">5-7</span> 社会市場
+              </a>
+            </li>
+          
+        </ul>
+      
+        <p class="book__toc-section">インパクト</p>
+        <ul class="book__toc-list">
+          
+            
+            
+              
+            
+            <li>
+              <a href="/ja/read/6-0/">
+                <span class="book__toc-num">6-0</span> ⿻から現実へ
+              </a>
+            </li>
+          
+            
+            
+              
+            
+            <li>
+              <a href="/ja/read/6-1/">
+                <span class="book__toc-num">6-1</span> 職場
+              </a>
+            </li>
+          
+            
+            
+              
+            
+            <li>
+              <a href="/ja/read/6-2/">
+                <span class="book__toc-num">6-2</span> 保健
+              </a>
+            </li>
+          
+            
+            
+              
+            
+            <li>
+              <a href="/ja/read/6-3/">
+                <span class="book__toc-num">6-3</span> メディア
+              </a>
+            </li>
+          
+            
+            
+              
+            
+            <li>
+              <a href="/ja/read/6-4/">
+                <span class="book__toc-num">6-4</span> 環境
+              </a>
+            </li>
+          
+            
+            
+              
+            
+            <li>
+              <a href="/ja/read/6-5/">
+                <span class="book__toc-num">6-5</span> 学習
+              </a>
+            </li>
+          
+        </ul>
+      
+        <p class="book__toc-section">未来へ</p>
+        <ul class="book__toc-list">
+          
+            
+            
+              
+            
+            <li>
+              <a href="/ja/read/7-0/">
+                <span class="book__toc-num">7-0</span> 政策
+              </a>
+            </li>
+          
+            
+            
+              
+            
+            <li>
+              <a href="/ja/read/7-1/">
+                <span class="book__toc-num">7-1</span> 結論
+              </a>
+            </li>
+          
+        </ul>
+      
+    </nav>
+  </aside>
+
+  
+  <article class="book__page" id="book-page">
+    
+    <div class="book__page-curl" aria-hidden="true"></div>
+
+    
+    <header class="book__header">
+      
+        <p class="book__section-label">情報技術と民主主義 · 2-2</p>
+      
+      <h1 class="book__title">デジタル民主主義の日常</h1>
+      
+      
+        <nav class="book__lang-switch" aria-label="Language versions">
+          <span class="book__lang-current">日本語</span>
+          
+            <a href="/read/2-2/" class="book__lang-link" lang="en">English</a>
+          
+            <a href="/zh/read/2-2/" class="book__lang-link" lang="zh">華文</a>
+          
+            <a href="/th/read/2-2/" class="book__lang-link" lang="th">ไทย</a>
+          
+        </nav>
+      
+      <div class="book__header-ornament" aria-hidden="true">
+        <span></span><span></span><span></span>
+      </div>
+    </header>
+
+    
+    <div class="book__body">
+      
+
+  <blockquote>
+<p>「IoT（モノのインターネット）」を見たら、「生き物のインターネット」を考えよう。<br>
+「仮想現実」を見たら「共有現実」にしよう。<br>
+「機械学習」を見たら「共同学習」にしよう。<br>
+「ユーザー体験（UX）」を見たら「人間同士の体験」にしよう。<br>
+「シンギュラリティは近い」と聞いたら思い出そう。<br>
+「多元性」はいまここにあるのだと。<br>
+─オードリー・タン、ジョブディスクリプション、2016</p>
+</blockquote>
+<hr>
+<p>台湾におけるこの成果が具体的にどんなものなのかは、台湾に住んでそれを日常的に体験しないと理解しづらい。だが台湾にずっと住んでいる人は、こうした特長が当たり前のものだと思っている。そこで、台湾のデジタル公共インフラが他のほとんどの国とどう違うのかを具体的に示し、定量的に分析しよう。事例が多すぎて詳細に説明しきれないため、2012年以降の2年間ごとに、主要な重点プロジェクトをざっとカバーできるように、さまざまな例を6つ選んだ。その後、その他のさまざまなプログラムも手短に説明しよう。</p>
+<h3 id="%E4%BA%8B%E4%BE%8B" tabindex="-1">事例</h3>
+<h4 id="%E2%96%A0%E9%9B%B6%E6%99%82%E6%94%BF%E5%BA%9C%EF%BC%8Fg0v" tabindex="-1">■零時政府／g0v</h4>
+<p>台湾におけるデジタル民主主義の市民社会基盤の何よりの象徴は、零時政府／<a href="https://g0v.tw/">g0v</a>（発音はガブゼロ）である。高嘉良などの市民ハッカーにより2012年に創設されたg0vは、政府のデジタルサービスの品質とデータの不透明性に対する不満から生じた<sup class="footnote-ref"><a href="#fn1" id="fnref1">[1]</a></sup>。市民ハッカーは政府ウェブサイト（<a href="http://xn--gov-oc4b375uet6c.tw">通常はgov.tw</a>）のスクレイピングを行い、ウェブサイトのデータ表示やインタラクションのやり方を変えてみせ、それをg0v.twでホスティングした。こうした政府ウェブサイトの「フォーク」版は、しばしばオリジナルよりも人気を集め、張善政などの大臣はそうしたデザインを政府サービスに「マージ」して採り入れ始めた。</p>
+<figure>
+<img src="https://raw.githubusercontent.com/akinorioyama/plurality/main/figs/japanese/2-2-A.jpg" width="100%" alt="Venn diagram of g0v principles of being open-source, hands-on and public-spirited.  The intersection of the first two is free software, of the second two is social activism and of the first and third is civic media.  g0v lies at the center">
+<p><strong><figcaption>図 2-2-A g0v 原理を示すベン図</figcaption></strong></p>
+</figure>
+<br></br>
+<p>g0vはこの成功をもとに、「（<a href="https://jothon.g0v.tw/about/en/">揪松團</a>）」という定期的なハッカソンを実施し、各種の技術に明るくない市民社会集団を、活発な市民ハッカーコミュニティと交流させた（この名前は北京語の言葉遊びに基づいており、大まかに「Join-athon」といったような意味となる）。ハッカソンは世界中でよく行われているが、g0vでのやり方の特長は、参加者の多様性（技術に明るくない人々のほうが多数派となることが多く、ジェンダーはほぼ完全に偏りがない）、商業的な成果よりも市民問題指向、各種の市民組織との密接な協働となる。こうした特長を最もよくまとめているのは「なぜ誰も（nobody）これをやっていないのか、と問うなかれ。あなたこそがその『誰も（nobody）』です！」というスローガンだろう。おかげでg0v運動は「誰も」運動とも呼ばれるようになった。これはまた、運動の意図を説明するのによく使われる図2–2–Aのベン図にも反映されている。以下に示すように、ここで採り上げる取り組みの大半は、g0vやそれと密接に関連したプロジェクトから生じたものだ。</p>
+<h4 id="%E2%96%A0%E3%81%B2%E3%81%BE%E3%82%8F%E3%82%8A%E5%AD%A6%E7%94%9F%E9%81%8B%E5%8B%95" tabindex="-1">■ひまわり学生運動</h4>
+<p>g0vは当初から、大きな注目と支援を集めてきたが、それが表舞台に出たのは、前述のひまわり学生運動のときだった。立法院占拠には、g0vへの貢献者が何百人も参加し、市民活動の放送、記録、広報を支援した。ライブストリームに基づくコミュニケーションは、国民の間に激しい議論を引き起こした。露店の店主、弁護士、教師、デザイナーたちは、腕まくりをして各種のオンラインやオフラインの活動に参加した<sup class="footnote-ref"><a href="#fn2" id="fnref2">[2]</a></sup>。デジタルツールはクラウドファンディング、デモ、国際的な支援の声のためのリソースをまとめた<sup class="footnote-ref"><a href="#fn3" id="fnref3">[3]</a></sup>。</p>
+<p>2014年3月30日、50万人が街頭に出て、台湾では1980年代以来最大のデモが行われた。そこでは、両岸サービス貿易協定の可決前にレビュー手続きを経るという要求がまとめられ、占拠開始から約3週間後の4月6日に台湾の王金平院長によって受け入れられると、デモ隊はすぐに解散した。g0vが双方に貢献し、対立が解消されたことで、現政権はg0vの手法に意義があると考えるようになった。特に閣僚の蔡英文はオードリー・タンを青年顧問として採用し、またg0vの会議に出席して支援するとともに、g0vプラットフォームを通じてますます多くの政府資料を公開するようになった。</p>
+<p>多くのひまわり学生運動参加者はオープンガバメント運動に身を捧<sup>ささ</sup>げた。その後の地方選挙（2014年）と総選挙（2016年）では、結果が約10ポイントも民進党に傾き、また、台湾の著名なロックスター林昶佐（フレディ・リム）などのひまわり学生運動のリーダーらが、新政党「新勢力党」を設立した。こうした出来事で、g0vの勢いは大きく高まり、著者のひとりオードリー・タンが、オープン政府、ソーシャルイノベーション、若者の参加を担当する政務委員（大臣）に任命された。</p>
+<h4 id="%E2%96%A0vtaiwan%E3%81%A8join" tabindex="-1">■vTaiwanとJoin</h4>
+<p>g0vの制度化の過程で、紛争解決を可能にしたこれらの手法を、もっと幅広い政策問題に適用したいという要望が高まった。その結果、公共政策論争をめぐる審議促進用に、g0vが開発したプラットフォームとプロジェクトである<a href="https://vtaiwan.tw/intro/">vTaiwan</a>が設立された。このプロセスには多くのステップ（提案、意見表明、反映、法制化）が含まれ、それぞれがさまざまなオープンソースソフトウェアツールを活用している。特に有名なのは、当時（2015年）としては斬新な機械学習ベースのオープンソース「wikisurvey」とソーシャルメディアツールであるPolisの使用だ。これについては、以下の「<a href="https://www.plurality.net/v/chapters/5-4/eng/?mode=dark">5–4拡張熟議</a>」で詳述する。簡単に言うと、PolisはⅩ（旧Twitter）などの従来のマイクロブログサービスと同様に機能するが、次元削減技術を使用して意見をクラスター化して図2–2–Bのように表示する点が違う。Polisはエンゲージメントを最大化するコンテンツを表示するのではなく、存在する意見のクラスターを示し、それらを橋渡しするステートメントを強調表示するのだ。このアプローチにより、合意形成と、分割線のより良い理解の両方が促進される。</p>
+<figure>
+<img src="https://raw.githubusercontent.com/akinorioyama/plurality/main/figs/japanese/2-2-B.jpg" width="70%" alt="Diagram of an opinion displayed by polis on vtaiwan, with similar views clustered.">
+<p><strong><figcaption>図 2-2-B vTaiwan の Polis で生成された合意意見のクラスター</figcaption></strong></p>
+</figure>
+<br></br>
+<p>出典: <a href="http://vTaiwan.tw">vTaiwan.tw</a>, CC0</p>
+<p>vTaiwanは実験的で、人間的な接触のある集中的なプラットフォームを意図して設計された。ピーク時には約20万人のユーザー、つまり台湾の人口の約1％が参加し、28の問題について詳細な審議が行われ、そのうち80％が立法措置につながった。たとえばライドシェア規制、同意のないきわどい画像への対応、金融ITの規制実験、AIの規制など、IT規制に関する問題に焦点を当てた議論が多かった。</p>
+<p>市民主導の分散型コミュニティであるvTaiwanは、市民ボランティアがさまざまな形で参加することで自然に進化し適応する、生命体のような存在でもある。コロナパンデミックの発生後、コミュニティへの参加が低下し、対面会議が中断され、参加者は減少した。集中的なボランティア活動が必要であること、政府に対応の義務がないこと、そして焦点がやや狭いことが、プラットフォームとしての課題となった。これらの課題に対応するため、vTaiwanのコミュニティは近年、国民と政府をつなぐという新しい役割を見つけ、台湾国内での規制問題という枠を超えて活動範囲を広げようとしている。</p>
+<p>このため、vTaiwanや、以下で説明する他のプロジェクトと協力するために、オードリー・タンが大臣として2016年に設立した公共デジタルイノベーションスペース（PDIS）は、2つ目の関連プラットフォームである<a href="https://join.gov.tw/">Join</a>を支援した。JoinはPolisを使用することもあったが、Polisのユーザーインターフェースのほうが軽量で、一般の人々から幅広く意見や提案、イニシアチブを募ることを重視し、提案が十分な支持を得た場合には政府関係者が対応しなければならない実施メカニズムを備えている。さらにvTaiwanとは違い、Joinは高校の始業時間など、技術に関連しない問題を含む、さまざまな政策問題に取り組んでいる。創設以来、人口の約半数が継続的に使用しており、1日あたり平均1万1000人のユニークビジターがいる。</p>
+<p>vTaiwanを再活性化するための重要な取り組みとしては、2023年に行われた、OpenAIによるAIへの民主的インプットプロジェクトとの協力がある。チャタムハウス（英国王立国際問題研究所）との提携と、AI倫理とローカリゼーションをテーマにしたいくつかの物理的およびオンラインの討論イベントの開催を通じて、vTaiwanはAIと技術ガバナンスに関する世界的な議論に、地元の視点を提供した。2024年以降、vTaiwanは台湾および海外におけるAI関連規制をめぐる議論に参加する予定だ。Polis以外にも、vTaiwanは新しい議論および投票ツールを常に実験しているし、要約作成のために大規模言語モデル（LLM）も採り入れている。vTaiwanコミュニティは、民主的な実験と、政策立案のための国民の合意形成に取り組み続けている。政府の外で培ったvTaiwanの以前の経験は、Join公式プラットフォームの設計にも影響を与えた。このプラットフォームは、市民が政府に問題やアイデアを提案する手段として積極的に使用されている。</p>
+<h4 id="%E2%96%A0%E3%83%8F%E3%83%83%E3%82%AB%E3%82%BD%E3%83%B3%E3%80%81%E9%80%A3%E5%90%88%E3%80%81%E3%82%AF%E3%82%A2%E3%83%89%E3%83%A9%E3%83%86%E3%82%A3%E3%83%83%E3%82%AF%E6%8A%95%E7%A5%A8" tabindex="-1">■ハッカソン、連合、クアドラティック投票</h4>
+<p>これほど活発なデジタル市民参加に驚く西洋人も多いだろう。だがこれは単に、ソーシャルメディア（むしろ反社会メディアの様相を呈しているが）での対立に浪費されるエネルギーを、ほんの少し公共の問題解決に転用しただけとも言える。総統杯ハッカソンなどさまざまな支援制度でg0vのハッカソンに政府の後ろ盾を与え、この原理のさらに集中的な適用も実現した。</p>
+<p>この総統杯ハッカソンは、市民問題に対処するにあたり、公務員、学者、活動家、技術者の混合チームを招集した。このチームは自分たちの持つデータを交渉材料として、政府やPDIS支援の「データ連合」プログラムが支援する民間アクターと「団体交渉」するためのツール、社会的慣行、および集団データ管理契約を提案した。たとえば大気汚染の監視や山火事の早期警報システムなどだ。参加者と一般市民は、クアドラティック投票（クアドラティックボーティング）と呼ばれる投票システムを使用して受賞者を選ぶ。この投票システムでは、さまざまなプロジェクトに対する支持の度合いを表明できる。これについては「<a href="https://www.plurality.net/v/chapters/5-6/jpn/?mode=dark">5–6⿻投票</a>」の節で説明する。これにより、幅広い参加者が部分的な受賞者となることが可能となった。誰もが何らかの受賞者を指示している可能性が高く、あるプロジェクトを強く支持している人は、そのプロジェクトを強く後押しすることができるからだ。優勝したプロジェクトにはトロフィーが贈られた。トロフィーは、台湾の総統が優勝者に賞を授与する様子を映したマイクロプロジェクターだった。g0vは前述したように正統性を獲得していたから、優勝者はこのトロフィーを利用して、関係する政府機関や地方自治体に自分たちのミッションへの協力を促せる。</p>
+<p>最近では、この手法は技術的なソリューションの開発にとどまらない。さまざまな未来を思い描き、「アイデアソン」を通じてこれをサポートするメディアコンテンツの制作にも拡大している。また象徴的な支援だけでなく、「公益創新・徵案100」（公共福祉イノベーション：プロジェクト100件公募）ではクアドラティック投票を資金提供に拡張して、有意義なプロジェクト（農業や食品の安全性検査など）に実際の資金を提供している。これについては、「<a href="https://www.plurality.net/v/chapters/5-7/jpn/?mode=dark">5–7社会市場</a>」の節で説明する。</p>
+<h4 id="%E2%96%A0%E3%83%91%E3%83%B3%E3%83%87%E3%83%9F%E3%83%83%E3%82%AF" tabindex="-1">■パンデミック</h4>
+<p>このように、政府が機敏に市民参加を活用する多様なアプローチが最も劇的に威力を発揮したのは、コロナ禍のときだった。台湾はパンデミックの危機段階で、世界で最も効果的な対応をした国のひとつだとされる（この評価は「危機対応」の項で説明する統計に基づく）。特筆すべきは、ロックダウンなしで世界で最も低い死亡率を達成しつつ、世界最高水準の経済成長率も維持したことだ。島国であることと、即座に対応できる疫学者を副総統に擁し、渡航を制限した効果は明らかに大きかったが、さまざまな技術的介入も重要な役割を果たした。</p>
+<p>広く報道され、前出の事例と最も整合しているのは「マスクアプリ」だ。コロナ以前にSARSが流行したため、世界的にまだ誰もCOVID–​19など聞いたこともなかった1月下旬の時点で、台湾ではすでにマスクが不足し始めていた。吳展瑋（ハワード・ウー）率いる市民ハッカーたちはこれに苛立ち、マスクが入手できる場所をマッピングするアプリを開発した。これはg0v運動によって活用および強化された、オープンで透明なデータ慣行に基づいて政府が提供したデータを利用している。おかげで、初期段階では世界的に生産が追いつかずマスクの供給が大幅に不足していたのに、台湾では2月中旬までに市民にマスクが行き渡った。</p>
+<p>台湾の対応のもうひとつの重要な側面は、地域内での病気の拡散を防ぐために、検査、追跡、隔離支援を厳格に使用したことだ。他国のほとんどは従来の方法で感染者の追跡を行ったが、台湾は電話ベースのソーシャルディスタンシングおよび追跡システムを採用した。それはきわめて高い普及率となり、台湾はコロナ対応の中でもそうしたシステムを重要かつ効果的に活用できた数少ない国のひとつとなったのだ。これもまた、政府の保健当局と、プライバシーに深い関心を持つg0vコミュニティのメンバーとの緊密な協力をPDISが促進したおかげだ。特に台湾には、独立したプライバシー保護組織がないので、g0vコミュニティの参画は重要だった。これについては後述する。これにより、強力な匿名化と分散化機能を備えたシステムが設計され、広く利用された。</p>
+<h4 id="%E2%96%A0%E6%83%85%E5%A0%B1%E3%81%AE%E6%AD%A3%E7%9C%9F%E6%80%A7" tabindex="-1">■情報の正真性</h4>
+<p>しかし、台湾のパンデミック対応におけるデジタル面での最も重要な貢献は、誤情報や偽情報の意図的な拡散の試みに、迅速かつ効果的に対応できたことかもしれない。この「スーパーパワー」はパンデミックをはるかに超えて活用され、情報の正真性の欠如が他の多くの国などで課題となっている時期に、台湾の選挙成功に欠かせないものとなった。</p>
+<p>これらの取り組みの中心となったのは、g0vのスピンオフプロジェクト「Cofacts」だ。参加した市民は、ソーシャルメディアのトレンドと、パブリックコメントボックスに転送された私的チャネルからの回答要求メッセージの両方に迅速に対応する。<a href="https://tech.cornell.edu/news/crowdsourced-fact-checking-fights-misinformation-in-taiwan/">最近の調査</a><sup class="footnote-ref"><a href="#fn4" id="fnref4">[4]</a></sup>によると、これらのシステムは通常、対応能力がはるかに小さい専門ファクトチェッカーに比べ、噂に対して素早く、正確で、効果的に応答できることがわかっている<sup class="footnote-ref"><a href="#fn5" id="fnref5">[5]</a></sup>。</p>
+<p>台湾の民間部門の高度な技術と、それに対する公共部門の支援は、他の面でも役に立った。MyGoPenのような組織やGogolookのような民間企業は、公共支援を受けてLINEのような私的メッセージングサービス用のチャットボットを開発し、急速に普及させた。これにより、市民は誤解を招きそうな情報に対し、匿名で迅速な応答を、素早く容易に受け取れる。政府指導者は、このような民間団体と密接に協力することで、「噂よりもユーモア」と「迅速で楽しく公平な」対応という方針を構築し、実践できた。たとえばパンデミック中に、マスクの量産によりトイレットペーパーが不足するという噂が広まり始めたとき、蘇貞昌首相は、そんな恐れはないことを示すため、お尻を振っている自分の写真を広めたことで知られる。</p>
+<p>これらの政策は、ロックダウンなしでパンデミックと闘ったのと同じように、台湾が「インフォデミック（誤情報の蔓延）」に対してサービス停止せずに闘うのに役立っている。その集大成が、前述の2024年1月13日の選挙だった。この選挙では、前例のない規模の、AIまで動員した中華人民共和国による高度なキャンペーンが行われたが、それが選挙を二極化したり、目立った影響を与えたりすることはできなかった。</p>
+<h4 id="%E2%96%A0%E3%81%9D%E3%81%AE%E4%BB%96%E3%81%AE%E6%B4%BB%E5%8B%95" tabindex="-1">■その他の活動</h4>
+<p>以上は台湾デジタル民主主義イノベーションの最も顕著な事例となる。他にも多くの例があるが、詳しく書ききれないため、簡単に列挙するにとどめよう。</p>
+<p>①<a href="https://moda.gov.tw/en/major-policies/alignment-assemblies/1453#:~:text=In%20May%202023%2C%20the%20Ministry,the%20people's%20interests%20and%20create">アライメント集会</a>：台湾はAI基盤モデルの規制と誘導のために、市民参加を招集している。これは世界でますます普及しつつある手法の先駆けだ。</p>
+<p>②情報セキュリティ：台湾は悪意に基づきコンテンツをアクセス不能にしてしまうことを防ぐための分散ストレージと、市民アカウントのセキュリティ確保のための「<a href="https://www.trade.gov/country-commercial-guides/taiwan-cybersecurity">ゼロトラスト</a>」原理の活用において、世界最先端である。</p>
+<p>③<a href="https://goldcard.nat.gov.tw/en/">ゴールドカード</a>（金卡）：台湾は「ゴールドカード」プログラムを通じ、きわめて多様な永住権取得への道を用意している。オープンソースや公益ソフトウェアに貢献した人々に永住権が与えられる「デジタルフィールド」も用意されている。</p>
+<p>④透明性：著者オードリー・タンは政府全体のデータ透明性方針を拡大適用して、自分の公式会議の録音および書き起こしを、著作権フリーで公開している。</p>
+<p>⑤デジタル能力教育：2019年以来、台湾は「技術、情報、メディアリテラシー」を国民の中核技能として掲げ、生徒たちが情報の受動的な消費者にとどまるのではなく、メディアの積極的な共同クリエイターや見識ある仲介者となれるようにしている。</p>
+<p>⑥土地と周波数帯：ヘンリー・ジョージ思想に基づき、台湾は天然資源、土地、電磁周波数帯の十分な活用を確保するために、強制売却権など税制による革新的な政策を持つ（これについては「<a href="https://www.plurality.net/v/chapters/4-4/jpn/?mode=dark">4–4財産と契約</a>」「<a href="https://www.plurality.net/v/chapters/5-7/jpn/?mode=dark">5–7社会市場</a>」の節で詳述）。</p>
+<p>⑦<a href="https://po.pdis.nat.gov.tw/en/po/">開放政府連絡人</a>：PDISは、市民参加、政府部局間協力、デジタルフィードバックに注力する公務員ネットワークの創設を支援した。彼らは、ここに挙げた各種活動の支援者兼つなぎ役として活動する。</p>
+<p>⑧ブロードバンドアクセス：台湾は、世界で最もユニバーサルなインターネットアクセスを持つ国のひとつであり、平均で世界最速のインターネットだと2年連続で認定されている。</p>
+<p>⑨開放国会：台湾は世界的な「開放国会」運動の先導者となり、立法審議を国民に透明化する各種の方法を実験し、革新的な投票手法を試している。</p>
+<p>⑩デジタル外交：同様の課題に直面し、デジタルツールを活用して市民参加と回復力を改善したい世界中の民主国に対し、台湾は以上のような経験を使って主導的なアドバイザーとなっている。</p>
+<p>さらに、これらの取り組みは社会と政府双方の信頼を十分に勝ち取った。このため2022年8月に台湾は、デジタル省を設立し、著者オードリー・タンを政務委員から昇格させて、この新設の省の長にした。</p>
+<h3 id="10%E5%B9%B4%E3%81%AE%E6%88%90%E6%9E%9C" tabindex="-1">10年の成果</h3>
+<p>以上、興味深いプログラムの羅列ではあるが、どこまで成功したのか証拠を見せろという声も当然出るだろう。こんなに多くのプロジェクトの因果関係を正確に追跡するのはあまりに煩雑で、本書の範疇を超える。だが少なくとも、過去数十年間に各地の自由民主主義国を悩ませてきたさまざまな課題に対し、台湾が全体としてどこまで対処できているかは見ておこう。そうした課題をこれから分野ごとに検討する。残念ながら、台湾の国際的地位を取り巻く複雑な地政学のため、多くの標準的な国際比較指数は台湾をデータから除外している。それがなければ、もっと厳密な比較が可能だったはずだ。</p>
+<h4 id="%E2%96%A0%E7%B5%8C%E6%B8%88" tabindex="-1">■経済</h4>
+<p>台湾の実績を見るとき、経済は実は副次的なものでしかない。しかし定量化しやすいし、他の側面がどこから生じたかを理解する基盤としても有用だ。台湾はヨーロッパの多くの国と同様に、中所得国上位に位置し、国際通貨基金（IMF）によると2024年のひとりあたりGDPは3万4000ドルだった<sup class="footnote-ref"><a href="#fn6" id="fnref6">[6]</a></sup>。しかし台湾の物価は他のほとんどの富裕国よりも平均ではるかに低く、これを使って調整すると（経済学者が「購買力平価（PPP）」と呼ぶもの）、台湾は人口1000万人を超える国の中で、米国に次いで世界第2位の富裕国となる。さらに以下で論じるように、各種の指標から見て台湾は米国よりもはるかに経済格差が小さいようだ。つまり台湾は、人口1000万人を超える国の中では、おそらく世界で最も高い平均生活水準を持っていることになる。だから台湾は中所得国というよりも、絶対的に見て世界最発展国のひとつと考えるべきだろう。</p>
+<p>台湾経済は、産業面での集中度も際立っている。完全に比較できるデータはあまりないが、台湾が世界で最もデジタル化された輸出集約経済なのはほぼ確実であり、電子機器や情報通信製品の輸出が経済の約31％を占めている。イスラエルや韓国など他の主要技術輸出国は、その半分以下となっている<sup class="footnote-ref"><a href="#fn7" id="fnref7">[7]</a></sup>。この事実は統計だけでなく具体的な現象からも世界的に知られている。世界の半導体、特に最先端の半導体のほとんどは台湾で製造されているし、台湾はフォックスコンなどのスマートフォンメーカーにとって主要な製造元であり本拠地でもあるのだ。</p>
+<p>台湾は富裕国の中では税率が比較的低いという点でも異例だ。アジア開発銀行によると、台湾の税収はGDPのわずか11％にとどまる。経済協力開発機構（OECD）に加盟する富裕国の平均は34％だ<sup class="footnote-ref"><a href="#fn8" id="fnref8">[8]</a></sup>。また、ヘリテージ財団の経済自由度指数では台湾は世界第4位とされる<sup class="footnote-ref"><a href="#fn9" id="fnref9">[9]</a></sup>。</p>
+<p>これを背景として、台湾の経済実績の中でもいくつかの特長が浮かび上がる。</p>
+<p>①経済成長：台湾は過去10年の平均実質GDP成長率が3％だった。これに対しOECD平均は2％に満たず、アメリカは2％強、世界平均は2・7％にとどまる<sup class="footnote-ref"><a href="#fn10" id="fnref10">[10]</a></sup>。</p>
+<p>②失業：台湾の平均失業率は、この10年で4％弱で安定している。OECD平均ではこれが6％であり、アメリカは5％、世界平均はおよそ6％だ。</p>
+<p>③インフレ：インフレ率は世界の富裕国のほとんどで跳ねあがり、きわめて不安定だが、台湾のインフレ率は過去10年でかなり安定して0〜2％の範囲にとどまり、平均は1・3％だ（IMFデータ）。</p>
+<p>④格差：過去10年で、格差統計の計算手法についてはさまざまな議論があった。伝統的な手法を使うと、台湾の家計所得支出調査によれば台湾の格差ジニ係数（完全に平等だと0から、完全に不平等だと1の範囲となる指数）は過去10年で0・28あたりで安定しており、世界格差においては最低水準のオーストリア並み、アメリカのおよそ0・4よりもはるかに低い水準にとどまる。他の分析としては、エマニュエル・サエズ、トマ・ピケティ、ガブリエル・ズックマンら経済学者が先導した、革新的ながらも議論の分かれる税務アプローチに基づくと、台湾のトップ1％の所得シェアは19％でアメリカの21％にかなり近く、フランスなどの13％よりはずっと高い。しかしこうしたデータですら、台湾のトップ1％の所得シェアは過去10年で1割ほど下がっている。この指標は、フランスでもアメリカでも、むしろ1割ほど上がっているのだ。さらに最近の多くの研究で、こうした手法は税当局のデータに頼っているので、租税回避を十分に考慮できず、このため税率が低く、累進性の低い国や時代において格差を高めにはじき出す傾向があるとされる<sup class="footnote-ref"><a href="#fn11" id="fnref11">[11]</a></sup>。台湾の税率はアメリカやフランスより大幅に低いため、こうした指摘が妥当なら、台湾の格差はかなり過大に示されている可能性が高い<sup class="footnote-ref"><a href="#fn12" id="fnref12">[12]</a></sup>。</p>
+<p>これらの事実を総合すると、台湾の経済面での実績は、その豊かさと極度の技術集約性にもかかわらず、力強いうえ、かなり平等─少なくとも不平等が拡大していないこと─が特筆される。右で述べたように、経済学者は、成長の鈍化、失業、格差の拡大など、最近の多くの経済問題を技術のせいにしてきた。しかし世界で最も技術集約的な台湾経済には、どうやらそれが当てはまらないらしい。</p>
+<h4 id="%E2%96%A0%E7%A4%BE%E4%BC%9A" tabindex="-1">■社会</h4>
+<p>台湾は世界保健機関（WHO）から排除されているため、国際的に比較できる社会指標は、経済指標よりもはるかに見つけにくい。しかしよく引用される2つの社会指標、孤独と、自己申告によるIT依存については、ほぼ比較可能なデータがある。台湾の高齢者（65歳以上）の孤独率は約10％で、世界で最も孤独率の低い国（主に北欧）とほぼ同水準、北米（約20％）よりも低く、中国（30％以上）よりはるかに低い<sup class="footnote-ref"><a href="#fn13" id="fnref13">[13]</a></sup>。もうひとつ比べられるのが、自己申告による携帯電話中毒率で、台湾でもかなり高い（約28％）とはいえ、米国（58％）よりはずっと低い<sup class="footnote-ref"><a href="#fn14" id="fnref14">[14]</a></sup>。規制薬物中毒率の違いはさらに顕著で、一度でも違法薬物を試したことがある台湾人は、違法薬物を少なくとも月に1回使用していると報告しているアメリカ人の約10分の1である<sup class="footnote-ref"><a href="#fn15" id="fnref15">[15]</a></sup>。</p>
+<p>台湾はまた、富裕国の中で宗教面でもユニークな特徴を持つ。富裕国のほとんどすべて（特に米国）は、単一の宗教集団（キリスト教など）が圧倒的多数を占めているし、さらに信仰の自称や実践などさまざまな尺度で、宗教性の劇的な低下が見られる<sup class="footnote-ref"><a href="#fn16" id="fnref16">[16]</a></sup>。これに対し、台湾の宗教ははるかに多様で、民間信仰、道教、仏教、西洋宗教、少数派宗教の4つの異なった伝統的宗教の信者がほぼ同数ずつ混在しており、そのそれぞれと同じくらいの比率で無信仰者がいる<sup class="footnote-ref"><a href="#fn17" id="fnref17">[17]</a></sup>。同時に、これらのグループ間で多少の変動はあれど、過去数十年間に台湾で無信仰または非実践が大幅に増加したことはほとんどない<sup class="footnote-ref"><a href="#fn18" id="fnref18">[18]</a></sup>。</p>
+<h4 id="%E2%96%A0%E6%94%BF%E6%B2%BB" tabindex="-1">■政治</h4>
+<p>台湾は、その民主主義の質と、ITによる情報操作に対する耐性の両方で名高い。Freedom House<sup class="footnote-ref"><a href="#fn19" id="fnref19">[19]</a></sup>、Economist Intelligence Unit<sup class="footnote-ref"><a href="#fn20" id="fnref20">[20]</a></sup>、Bertelsmann財団、V-Demなどの組織が発表する各種の指標を見ても、台湾は一貫して地球上で最も自由で有効な民主主義国のひとつだ<sup class="footnote-ref"><a href="#fn21" id="fnref21">[21]</a></sup>。正確な順位は指標ごとに異なるが（1位から上位15％以内まで）、台湾はほぼ常にアジア全体でも、民主化30年未満の国の中でも最も強力な民主主義国として際立っている。ソ連崩壊後に乱立した民主主義国を含めても、そのほとんどすべてが民主主義のスコアは台湾の半分以下、通常は1桁小さい規模にとどまる。したがって、台湾は少なくともアジアで最も強力な民主主義国、この規模の国として最も強力な新興民主主義国であり、多くの人から世界で絶対的に最強の民主主義国と見なされている。さらにこれらの指標によると、全体として過去10年間で世界のあらゆる地域で民主主義が衰退しているのに対し、台湾の民主主義スコアは大幅に上昇している。</p>
+<p>この総合的な強さに加えて、台湾は世論の分断や情報の正真性に対する脅威への抵抗力も強い。さまざまな手法を用いた多くの研究で、台湾は世界で最も政治的、社会的、宗教的に分断の低い先進国のひとつとされる（ただし一部の研究では、ひまわり学生運動以降、政治的分断がわずかに上昇<sup class="footnote-ref"><a href="#fn22" id="fnref22">[22]</a></sup>）。これは特に、政治的反対者に対する否定的または敵対的な個人的態度を示すという感情的分極化の面で顕著だ。台湾は一貫して感情的に分断されていないトップ5か国に含まれている。</p>
+<p>台湾は、地球上で最も大量の偽情報の標的にされていることが、各種の分析で示されているが<sup class="footnote-ref"><a href="#fn23" id="fnref23">[23]</a></sup>、それでも世論の極端な分裂はあまり見られない。この逆説的な結果の理由として、他の多くの状況とは異なり、台湾では外国による操作が党派間の分裂を悪化させないという、政治学者のバウアーとウィルソンの発見があるかもしれない。外国の干渉はむしろ、台湾人の団結姿勢を強化する傾向があるのだ<sup class="footnote-ref"><a href="#fn24" id="fnref24">[24]</a></sup>。</p>
+<h4 id="%E2%96%A0%E6%B3%95%E6%B2%BB" tabindex="-1">■法治</h4>
+<p>台湾は常に、世界で最も安全な国トップ5に入り、人口10万人以上の国としては、世界で最も安全な民主主義国として突出している<sup class="footnote-ref"><a href="#fn25" id="fnref25">[25]</a></sup>。著者グレン・ワイルは初めて台湾を訪れたとき、飛行機代として大きな封筒に入った現金を渡されて驚いた。台湾はきわめて安全なので、みんな多額の現金を平気で持ち歩くのだ。さらに、米国などでは、特に暴力犯罪が急増しているのに、台湾の犯罪は着実に減少傾向にある<sup class="footnote-ref"><a href="#fn26" id="fnref26">[26]</a></sup>。しかし台湾は歴史的に、かなり強力な警官の配備（米国よりやや高い）と、米国には遠く及ばないものの、世界的に見れば高い収監率によってこれを達成してきたことは指摘しておこう。</p>
+<p>台湾の司法・政治制度は、長年の社会的対立を包括的に解決する適応力も際立っている。2017年、憲法裁判所は、政府は2年以内に同性婚を合法化する法律を可決しなければならないと判決を下した。2018年に同性婚を認めるという単純な提案をめぐる国民投票が否決された後、政府はあらゆる立場の人々の利益に応える独創的な方法を見つけた。同性婚に反対する人々の多くは、台湾には大家族が結婚によって結びつくという伝統があるため、同性婚に反対する家族も同性婚への参加を強いられるのではないかと懸念していたのだ。一方でこの新しい規定を利用しようと考えている若者のほとんどは、結婚についてもっと個人主義的でパートナー中心のビジョンを持っており、家族を結びつけたいという願望もなかった。このことから政府は親族を同性婚の手続きから除外する規定を設けることで、同性婚合法化法案を可決したのだった。</p>
+<h4 id="%E2%96%A0%E5%8D%B1%E6%A9%9F%E5%AF%BE%E5%BF%9C" tabindex="-1">■危機対応</h4>
+<p>危機はめったに起こらず、発生確率も低い。だから台湾がどこまでうまく危機を回避または緩和できるかは見極めにくい。しかし実際に発生した緊急事態に近いものとして、新型コロナウイルス感染症のパンデミックがある。前述のように、台湾はこの事態への対処において、世界で最高かそれに近い国のひとつと広く見なされている。ここではこの名声の定量的な根拠を示そう。</p>
+<p>台湾が傑出した実績を示し、国際的に称賛されたのは、パンデミックできわめて重要だった初期段階でのことだった。当時、ワクチンが利用可能になる前に、世界の大部分が段階的なロックダウンを行っていた。この時期をパンデミックの「危機」段階と呼ぼう。この段階の終了は、米国でワクチンが広く利用可能になった2021年4月と考えられる。パンデミックの開始から2021年4月まで、台湾のパンデミックによる死者数はわずか12人であり、その時点では国際的に正確な推計値を持つどの行政区よりもはるかに低い死亡率だった。さらに、台湾はロックダウンなしでこれを達成し、2020年にはアイルランドを除くどの先進国よりも高い経済成長を実現した。より広い視点で見ると、台湾の平均寿命は世界最高水準で、医療制度はここ10年ほどNumbeo（生活環境データベース）によって世界で最も効率的に機能していると評価されてきた<sup class="footnote-ref"><a href="#fn27" id="fnref27">[27]</a></sup>。</p>
+<p>しかし、2021年半ば以降の「危機後」の段階では、ワクチンの供給と接種がコロナ対応の最も重要な要素となり、国内でのワクチン生産と配布で生じた問題により、その後数年間で多大な人命損失が生じた。この段階での台湾の成績は、あまり目覚ましいものではなかった。中規模以上の国の信頼できるデータで見る限り、台湾は依然として死亡率は最も低く、経済実績も最高水準ではあった。しかしパンデミック初期に見られた並外れたリーダーシップは、危機段階の後も十分に持続したとは言えない。危機（ひまわり学生運動やパンデミックなど）が育んだ結束と市民参加により、台湾は世界のどこよりも高い対応力を示したものの、そうした取り組みを制度化し、持続可能にするための追加の配慮や努力が必要なのかもしれない。これは重要な方向性なので、以下でさらに議論する。</p>
+<p>この課題に関わる緩やかに進行するもうひとつの危機に気候変動がある。台湾は他の多くの国々と共に、2050年までに温室効果ガスの実質ゼロ排出を目指すという野心を法律化し、この目標達成に向けた計画で称賛されているが、これまでの進捗はささやかなものにとどまっている<sup class="footnote-ref"><a href="#fn28" id="fnref28">[28]</a></sup>。もっと広い視点で見ると、台湾は環境保護の実績が高いとはいえ、傑出してはいない<sup class="footnote-ref"><a href="#fn29" id="fnref29">[29]</a></sup>。</p>
+<p>それでも台湾は、制度、特に民主主義への人々の参加と信頼が他に類を見ないほど高い水準にある。投票率は、投票が義務付けられている国を除けば、世界で最高水準だ<sup class="footnote-ref"><a href="#fn30" id="fnref30">[30]</a></sup>。国民91％が民主主義を少なくとも「かなり良い」と見なしている。長い歴史を持つ民主主義国の多くでさえ、近年は民主主義への支持が劇的に低下しているが、台湾はまったく対照的なのだ[^116]。</p>
+<p>要するに、他の国と同じく限界はあるものの、台湾は世界の模範として主導的な地位に値する。だがそれがあまりに見すごされている。西側諸国の左派は、スカンジナビア諸国をやたらに誉めるし、右派はシンガポールをほめそやす。確かにこれらの国々はすべて重要な教訓を与えてくれるし、多くの重要な点で台湾と重なり合っている。しかし今日の主要な課題に対処する上で、台湾ほど幅広い可能性を示し、ありがちな分断を超えて人々を惹きつける場所は、他にほとんどない。経済的に自由で、活発な参加型の自由民主主義国である台湾は、右から左まであらゆる政治的な立場の国々に提供できるものがあり、ますます衰退しつつある西側民主主義の慣行の克服を目指す人々にとっては、おそらく最も説得力のある例だろう。これは、豊富な天然資源や戦略的な位置を持たず、脆弱な地政学的状況にあり、人口は均質でまとまった規模ではなく、深く分裂しており、わずか数十年前に民主化され、極貧から脱出して1世紀も経っていないという台湾の出発点を考えると、なおさら強調すべきことだ。</p>
+<p>もちろん、台湾のユニークで劇的なデジタル民主主義の実践と、今日の最も厄介な課題に立ち向かう中で台湾が達成したさまざまな成功との間の正確な因果関係を理解するには、何十年もの研究が必要となる。しかし、これほど見るべき点があるのだから、スカンジナビア諸国やシンガポールについて多くの人が行ったように、この世界で最も称賛されているデジタル民主主義の戦略の背後にある、一般化可能な哲学をまずは明確に記述するべきではないだろうか。本書ではこれからその作業を行う。</p>
+<hr class="footnotes-sep">
+<section class="footnotes">
+<ol class="footnotes-list">
+<li id="fn1" class="footnote-item"><p>g0v Manifesto(<a href="https://g0v.tw/intl/ja/manifesto/ja/">https://g0v.tw/intl/ja/manifesto/ja/</a>)はそれを「無党派,非営利,草の根運動」と定義している. 本書の著者のひとりであるオードリー・タンは初期のg0vプロジェクト萌典(<a href="https://moedict.tw/">https://moedict.tw/</a>)を主導していた. <a href="#fnref1" class="footnote-backref">↩︎</a></p>
+</li>
+<li id="fn2" class="footnote-item"><p>現場アンケート(<a href="https://twstreetcorner.org/2014/06/30/chenwanchi-2/">https://twstreetcorner.org/2014/06/30/chenwanchi-2/</a>)で,参加者はサービス業が中心だと示された. <a href="#fnref2" class="footnote-backref">↩︎</a></p>
+</li>
+<li id="fn3" class="footnote-item"><p><a href="https://audreyt.github.io/0sdc.tw/zh">https://audreyt.github.io/0sdc.tw/zh</a> <a href="#fnref3" class="footnote-backref">↩︎</a></p>
+</li>
+<li id="fn4" class="footnote-item"><p>Cornell Tech, “Crowdsourced Fact-Checking Fights Misinformation in Taiwan,” <a href="https://tech.cornell.edu/news/crowdsourced-fact-checking-fights-misinformation-in-taiwan/">https://tech.cornell.edu/news/crowdsourced-fact-checking-fights-misinformation-in-taiwan/</a>. <a href="#fnref4" class="footnote-backref">↩︎</a></p>
+</li>
+<li id="fn5" class="footnote-item"><p>Andy Zhao and Mor Naaman, “Insights from a Comparative Study on the Variety, Velocity, Veracity, and Viability of Crowdsourced and Professional Fact-Checking Services”, Journal of Online Trust and Safety 2, no. 1. <a href="https://doi.org/10.54501/jots.v2i1.118">https://doi.org/10.54501/jots.v2i1.118</a>. <a href="#fnref5" class="footnote-backref">↩︎</a></p>
+</li>
+<li id="fn6" class="footnote-item"><p>“GDP per Capita, Current Prices,” International Monetary Fund, n.d., <a href="https://www.imf.org/external/datamapper/NGDPDPC@WEO/ADVEC/WEOWORLD/TWN/CHN">https://www.imf.org/external/datamapper/NGDPDPC@WEO/ADVEC/WEOWORLD/TWN/CHN</a>. <a href="#fnref6" class="footnote-backref">↩︎</a></p>
+</li>
+<li id="fn7" class="footnote-item"><p>“Exports,” Trading Economics, n.d., <a href="https://tradingeconomics.com/country-list/exports">https://tradingeconomics.com/country-list/exports</a>. <a href="#fnref7" class="footnote-backref">↩︎</a></p>
+</li>
+<li id="fn8" class="footnote-item"><p>Key Indicators Database,” Asian Development Bank, n.d., <a href="https://kidb.adb.org/economies/taipeichina">https://kidb.adb.org/economies/taipeichina</a>; “Revenue Statistics 2015 - the United States,” OECD, 2015, <a href="https://www.oecd.org/tax/revenue-statistics-united-states.pdf">https://www.oecd.org/tax/revenue-statistics-united-states.pdf</a>. <a href="#fnref8" class="footnote-backref">↩︎</a></p>
+</li>
+<li id="fn9" class="footnote-item"><p>“Index of Economic Freedom.” The Heritage Foundation, 2023. <a href="https://www.heritage.org/index/">https://www.heritage.org/index/</a>. <a href="#fnref9" class="footnote-backref">↩︎</a></p>
+</li>
+<li id="fn10" class="footnote-item"><p>GDP Growth (Annual %),” World Bank, 2023. <a href="https://data.worldbank.org/indicator/ny.gdp.mktp.kd.zg">https://data.worldbank.org/indicator/ny.gdp.mktp.kd.zg</a>; “GDP per Capita, Current Prices,” International Monetary Fund, n.d., <a href="https://www.imf.org/external/datamapper/NGDPDPC@WEO/ADVEC/WEOWORLD/TWN/CHN">https://www.imf.org/external/datamapper/NGDPDPC@WEO/ADVEC/WEOWORLD/TWN/CHN</a>. <a href="#fnref10" class="footnote-backref">↩︎</a></p>
+</li>
+<li id="fn11" class="footnote-item"><p>Gerald Auten, and David Splinter, “Income Inequality in the United States: Using Tax Data to Measure Long-Term Trends,” Journal of Political Economy, November 14, 2023. <a href="https://doi.org/10.1086/728741">https://doi.org/10.1086/728741</a>. <a href="#fnref11" class="footnote-backref">↩︎</a></p>
+</li>
+<li id="fn12" class="footnote-item"><p>報告したい最も興味深い統計は,台湾における所得の労働シェアの推移である. しかしこれについての説得力ある国際的に比較可能な調査は寡聞にして知らない. これについてのさらなる研究が近々登場することを願う. <a href="#fnref12" class="footnote-backref">↩︎</a></p>
+</li>
+<li id="fn13" class="footnote-item"><p>S. Schroyen, N. Janssen, L. A. Duffner, M. Veenstra, E. Pyrovolaki, E. Salmon, and S. Adam, “Prevalence of Loneliness in Older Adults: A Scoping Review.” Health &amp; Social Care in the Community 2023 (September 14, 2023): e7726692. <a href="https://doi.org/10.1155/2023/7726692">https://doi.org/10.1155/2023/7726692</a>. <a href="#fnref13" class="footnote-backref">↩︎</a></p>
+</li>
+<li id="fn14" class="footnote-item"><p>“More than Half of Teens Admit Phone Addiction.” Taipei Times, February 4, 2020. <a href="https://www.taipeitimes.com/News/biz/archives/2020/02/04/2003730302">https://www.taipeitimes.com/News/biz/archives/2020/02/04/2003730302</a>; “Study Finds Nearly 57% of Americans Admit to Being Addicted to Their Phones - CBS Pittsburgh.” CBS News, August 30, 2023. <a href="https://www.cbsnews.com/pittsburgh/news/study-finds-nearly-57-of-americans-admit-to-being-addicted-to-their-phones/">https://www.cbsnews.com/pittsburgh/news/study-finds-nearly-57-of-americans-admit-to-being-addicted-to-their-phones/</a>. <a href="#fnref14" class="footnote-backref">↩︎</a></p>
+</li>
+<li id="fn15" class="footnote-item"><p>“NCDAS: Substance Abuse and Addiction Statistics [2020],” National Center for Drug Abuse Statistics, 2020, <a href="https://drugabusestatistics.org/">https://drugabusestatistics.org/</a>; Ling-Yi Feng, and Jih-Heng Li, “New Psychoactive Substances in Taiwan,” Current Opinion in Psychiatry 33, no. 4 (March 2020): 1, <a href="https://doi.org/10.1097/yco.0000000000000604">https://doi.org/10.1097/yco.0000000000000604</a>. <a href="#fnref15" class="footnote-backref">↩︎</a></p>
+</li>
+<li id="fn16" class="footnote-item"><p>Ronald Inglehart, “Giving up on God: The Global Decline of Religion,” Foreign Affairs 99 (2020): 110. <a href="https://heinonline.org/HOL/LandingPage?handle=hein.journals/fora99%5C&amp;div=123%5C&amp;id=%5C&amp;page=">https://heinonline.org/HOL/LandingPage?handle=hein.journals/fora99\&amp;div=123\&amp;id=\&amp;page=</a>. <a href="#fnref16" class="footnote-backref">↩︎</a></p>
+</li>
+<li id="fn17" class="footnote-item"><p>“2022 Report on International Religious Freedom: Taiwan,” American Institute in Taiwan, June 8, 2023, <a href="https://www.ait.org.tw/2022-report-on-international-religious-freedom-taiwan/%5C#:%5C~:text=According%20to%20a%20survey%20by">https://www.ait.org.tw/2022-report-on-international-religious-freedom-taiwan/\#:\~:text=According to a survey by</a>. <a href="#fnref17" class="footnote-backref">↩︎</a></p>
+</li>
+<li id="fn18" class="footnote-item"><p>“Religion in Taiwan,” Wikipedia, Wikimedia Foundation, January 12, 2020. <a href="https://en.wikipedia.org/wiki/Religion%5C_in%5C_Taiwan">https://en.wikipedia.org/wiki/Religion\_in\_Taiwan</a>. <a href="#fnref18" class="footnote-backref">↩︎</a></p>
+</li>
+<li id="fn19" class="footnote-item"><p>“Freedom in the World,” Freedom House, 2023, <a href="https://freedomhouse.org/report/freedom-world">https://freedomhouse.org/report/freedom-world</a>. <a href="#fnref19" class="footnote-backref">↩︎</a></p>
+</li>
+<li id="fn20" class="footnote-item"><p>“Democracy Index 2023,” Economist Intelligence Unit, n.d., <a href="https://www.eiu.com/n/campaigns/democracy-index-2023">https://www.eiu.com/n/campaigns/democracy-index-2023</a>. <a href="#fnref20" class="footnote-backref">↩︎</a></p>
+</li>
+<li id="fn21" class="footnote-item"><p>“Democracy Indices,” Wikipedia, Wikimedia Foundation, March 5, 2024. <a href="https://en.wikipedia.org/wiki/Democracy%5C_indices%5C#:%5C~:text=Democracy%20indices%20are%20quantitative%20and">https://en.wikipedia.org/wiki/Democracy\_indices\#:\~:text=Democracy indices are quantitative and</a>… <a href="#fnref21" class="footnote-backref">↩︎</a></p>
+</li>
+<li id="fn22" class="footnote-item"><p>Laura Silver, Janell Fetterolf, and Aidan Connaughton, “Diversity and Division in Advanced Economies,” Pew Research Center, October 13, 2021, <a href="https://www.pewresearch.org/global/2021/10/13/diversity-and-division-in-advanced-economies/">https://www.pewresearch.org/global/2021/10/13/diversity-and-division-in-advanced-economies/</a>. <a href="#fnref22" class="footnote-backref">↩︎</a></p>
+</li>
+<li id="fn23" class="footnote-item"><p>Adrian Rauchfleisch, Tzu-Hsuan Tseng, Jo-Ju Kao, and Yi-Ting Liu, “Taiwan’s Public Discourse about Disinformation: The Role of Journalism, Academia, and Politics,” Journalism Practice 17, no. 10 (August 18, 2022): 1–21, <a href="https://doi.org/10.1080/17512786.2022.2110928">https://doi.org/10.1080/17512786.2022.2110928</a>. <a href="#fnref23" class="footnote-backref">↩︎</a></p>
+</li>
+<li id="fn24" class="footnote-item"><p>Fin Bauer, and Kimberly Wilson, “Reactions to China-Linked Fake News: Experimental Evidence from Taiwan,” The China Quarterly 249 (March 2022): 1–26. <a href="https://doi.org/10.1017/S030574102100134X">https://doi.org/10.1017/S030574102100134X</a>. <a href="#fnref24" class="footnote-backref">↩︎</a></p>
+</li>
+<li id="fn25" class="footnote-item"><p>“Crime Index by Country,” Numbeo, 2023, <a href="https://www.numbeo.com/crime/rankings%5C_by%5C_country.jsp">https://www.numbeo.com/crime/rankings\_by\_country.jsp</a>. <a href="#fnref25" class="footnote-backref">↩︎</a></p>
+</li>
+<li id="fn26" class="footnote-item"><p>“Taiwan: Crime Rate,” Statista, n.d, <a href="https://www.statista.com/statistics/319861/taiwan-crime-rate/%5C#:%5C~:text=In%202022%2C%20around%201%2C139%20crimes">https://www.statista.com/statistics/319861/taiwan-crime-rate/\#:\~:text=In 2022%2C around 1%2C139 crimes</a>. <a href="#fnref26" class="footnote-backref">↩︎</a></p>
+</li>
+<li id="fn27" class="footnote-item"><p><a href="https://www.numbeo.com/health-care/rankings%5C_by%5C_country.jsp">https://www.numbeo.com/health-care/rankings\_by\_country.jsp</a> <a href="#fnref27" class="footnote-backref">↩︎</a></p>
+</li>
+<li id="fn28" class="footnote-item"><p>“Net Zero Tracker,” Energy &amp; Climate Intelligence Unit, 2023. <a href="https://eciu.net/netzerotracker">https://eciu.net/netzerotracker</a>. <a href="#fnref28" class="footnote-backref">↩︎</a></p>
+</li>
+<li id="fn29" class="footnote-item"><p>“2022 EPI Results,” Environmental Performance Index, 2022, <a href="https://epi.yale.edu/epi-results/2022/component/epi">https://epi.yale.edu/epi-results/2022/component/epi</a>. <a href="#fnref29" class="footnote-backref">↩︎</a></p>
+</li>
+<li id="fn30" class="footnote-item"><p>Drew DeSilver, “Turnout in U.S. Has Soared in Recent Elections but by Some Measures Still Trails that of Many Other Countries.” Pew Research Center, November 1, 2022. <a href="https://www.pewresearch.org/short-reads/2022/11/01/turnout-in-u-s-has-soared-in-recent-elections-but-by-some-measures-still-trails-that-of-many-other-countries/">https://www.pewresearch.org/short-reads/2022/11/01/turnout-in-u-s-has-soared-in-recent-elections-but-by-some-measures-still-trails-that-of-many-other-countries/</a>. <a href="#fnref30" class="footnote-backref">↩︎</a></p>
+</li>
+</ol>
+</section>
+
+
+
+    </div>
+
+    
+    
+    <nav class="book__nav" aria-label="Chapter navigation">
+      
+        <a href="/ja/read/2-1/" class="book__nav-link book__nav-link--prev" data-page-dir="prev">
+          <span class="book__nav-arrow">&larr;</span>
+          <span class="book__nav-info">
+            <span class="book__nav-label">前の章</span>
+            <span class="book__nav-title">玉山からの眺め</span>
+          </span>
+        </a>
+      
+      
+        <a href="/ja/read/3-0/" class="book__nav-link book__nav-link--next" data-page-dir="next">
+          <span class="book__nav-info">
+            <span class="book__nav-label">次の章</span>
+            <span class="book__nav-title">⿻プルラリティ（多元性）とは？</span>
+          </span>
+          <span class="book__nav-arrow">&rarr;</span>
+        </a>
+      
+    </nav>
+    
+
+    
+    <div class="book__page-number" aria-hidden="true">
+      2-2
+    </div>
+  </article>
+</div>
+
+<script src="/assets/js/book.js"></script>
+
+  </main>
+
+  
+
+
+
+
+<footer class="footer" role="contentinfo">
+  <div class="footer__inner">
+    <div class="footer__brand" aria-hidden="true">
+      <span class="c-r">P</span><span class="c-o">l</span><span class="c-g">u</span><span class="c-c">r</span><span class="c-w">a</span><span class="c-c">l</span><span class="c-g">i</span><span class="c-o">t</span><span class="c-r">y</span>
+    </div>
+
+    <ul class="footer__links">
+      <li><a href="/ja/read/" class="footer__link">読む</a></li>
+      <li><a href="/ja/read/0-1/" class="footer__link">概要</a></li>
+      <li><a href="https://github.com/pluralitybook/plurality" class="footer__link" target="_blank" rel="noopener">GitHub</a></li>
+      <li><a href="https://discord.gg/YWSDRqdW5n" class="footer__link" target="_blank" rel="noopener">Discord</a></li>
+    </ul>
+
+    <div class="footer__sep"></div>
+
+    <p class="footer__authors">E・グレン・ワイル、オードリー・タン、Pluralityコミュニティ</p>
+    <p class="footer__license">この作品はCC0の下でパブリックドメインに捧げられています。</p>
+  </div>
+</footer>
+
+
+  <script src="/assets/js/nav.js"></script>
+  <script src="/assets/js/scroll-reveal.js"></script>
+
+  <!-- Structured Data -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "WebSite",
+    "name": "Plurality",
+    "description": "A book by E. Glen Weyl, Audrey Tang and the Plurality Community exploring how technology can support and strengthen democracy.",
+    "url": "https://new.plurality.net",
+    "author": [
+      { "@type": "Person", "name": "E. Glen Weyl" },
+      { "@type": "Person", "name": "Audrey Tang" },
+      { "@type": "Organization", "name": "the Plurality Community" }
+    ],
+    "license": "https://creativecommons.org/publicdomain/zero/1.0/"
+  }
+  </script>
+</body>
+</html>

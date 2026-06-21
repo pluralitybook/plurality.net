@@ -1,0 +1,15 @@
+[
+  { "code": "en", "iso": "eng", "name": "English", "nativeName": "English", "dir": "ltr" },
+  { "code": "zh", "iso": "zho", "name": "Traditional Mandarin", "nativeName": "\u7e41\u9ad4\u4e2d\u6587", "dir": "ltr" },
+  { "code": "ja", "iso": "jpn", "name": "Japanese", "nativeName": "\u65e5\u672c\u8a9e", "dir": "ltr" },
+  { "code": "ko", "iso": "kor", "name": "Korean", "nativeName": "\ud55c\uad6d\uc5b4", "dir": "ltr" },
+  { "code": "th", "iso": "tha", "name": "Thai", "nativeName": "\u0e44\u0e17\u0e22", "dir": "ltr" },
+  { "code": "de", "iso": "ger", "name": "German", "nativeName": "Deutsch", "dir": "ltr" },
+  { "code": "fr", "iso": "fre", "name": "French", "nativeName": "Fran\u00e7ais", "dir": "ltr" },
+  { "code": "el", "iso": "gre", "name": "Greek", "nativeName": "\u0395\u03bb\u03bb\u03b7\u03bd\u03b9\u03ba\u03ac", "dir": "ltr" },
+  { "code": "it", "iso": "ita", "name": "Italian", "nativeName": "Italiano", "dir": "ltr" },
+  { "code": "no", "iso": "nor", "name": "Norwegian", "nativeName": "Norsk", "dir": "ltr" },
+  { "code": "pl", "iso": "pol", "name": "Polish", "nativeName": "Polski", "dir": "ltr" },
+  { "code": "ru", "iso": "rus", "name": "Russian", "nativeName": "\u0420\u0443\u0441\u0441\u043a\u0438\u0439", "dir": "ltr" },
+  { "code": "uk", "iso": "ukr", "name": "Ukrainian", "nativeName": "\u0423\u043a\u0440\u0430\u0457\u043d\u0441\u044c\u043a\u0430", "dir": "ltr" }
+]

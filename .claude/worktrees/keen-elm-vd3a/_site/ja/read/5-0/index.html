@@ -1,0 +1,688 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>協働テクノロジーと民主主義 — Plurality</title>
+  <meta name="description" content="A book by E. Glen Weyl, Audrey Tang and the Plurality Community exploring how technology can support and strengthen democracy.">
+  <meta name="theme-color" content="#faf8f5" media="(prefers-color-scheme: light)">
+  <meta name="theme-color" content="#0f1923" media="(prefers-color-scheme: dark)">
+
+  <link rel="canonical" href="https://new.plurality.net/ja/read/5-0/">
+
+  <!-- Open Graph -->
+  <meta property="og:type" content="website">
+  <meta property="og:title" content="協働テクノロジーと民主主義 — Plurality">
+  <meta property="og:description" content="A book by E. Glen Weyl, Audrey Tang and the Plurality Community exploring how technology can support and strengthen democracy.">
+  <meta property="og:site_name" content="Plurality">
+  <meta property="og:locale" content="ja">
+
+  <!-- Twitter Card -->
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="協働テクノロジーと民主主義 — Plurality">
+  <meta name="twitter:description" content="A book by E. Glen Weyl, Audrey Tang and the Plurality Community exploring how technology can support and strengthen democracy.">
+
+  <!-- Favicon (inline SVG with brand colors) -->
+  <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='6' fill='%230f1923'/%3E%3Ctext x='16' y='22' text-anchor='middle' fill='%23c9a961' font-family='Georgia,serif' font-size='18' font-weight='700'%3EP%3C/text%3E%3C/svg%3E">
+
+  <!-- Fonts: Stage 1 critical -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+  <!-- Fonts: Stage 2 deferred -->
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,400;0,700;1,400&family=Cormorant+Garamond:wght@400;700&family=Outfit:wght@300;400;500;600&family=Noto+Sans+TC:wght@400;500&family=Noto+Serif+TC:wght@400;700&family=Noto+Sans+JP:wght@400;500&family=Noto+Serif+JP:wght@400;700&family=Sarabun:wght@400;600;700&display=swap" media="print" onload="this.media='all'">
+  <noscript>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,400;0,700;1,400&family=Cormorant+Garamond:wght@400;700&family=Outfit:wght@300;400;500;600&family=Noto+Sans+TC:wght@400;500&family=Noto+Serif+TC:wght@400;700&family=Noto+Sans+JP:wght@400;500&family=Noto+Serif+JP:wght@400;700&family=Sarabun:wght@400;600;700&display=swap">
+  </noscript>
+
+  <link rel="stylesheet" href="/assets/css/main.css">
+
+  <!-- Theme toggle (run before render to prevent flash) -->
+  <script src="/assets/js/theme-toggle.js"></script>
+</head>
+<body>
+  <a href="#main" class="skip-link">Skip to content</a>
+
+  
+
+
+
+
+<nav class="nav" role="navigation" aria-label="Main navigation">
+  <div class="nav__inner">
+    <a href="/ja/" class="nav__logo" aria-label="Plurality home">Plurality</a>
+
+    <ul class="nav__links">
+      <li><a href="/ja/read/" class="nav__link nav__link--active">読む</a></li>
+      <li><a href="/ja/read/0-1/" class="nav__link">概要</a></li>
+      <li><a href="https://github.com/pluralitybook/plurality" class="nav__link" target="_blank" rel="noopener">GitHub</a></li>
+      <li><button class="theme-toggle" aria-label="Toggle theme">&#9790;</button></li>
+    </ul>
+
+    <button class="nav__hamburger" aria-label="Open menu" aria-expanded="false">
+      <span></span>
+      <span></span>
+      <span></span>
+    </button>
+  </div>
+</nav>
+
+<div class="nav__overlay" role="dialog" aria-label="Mobile menu">
+  <a href="/ja/read/" class="nav__overlay-link">読む</a>
+  <a href="/ja/read/0-1/" class="nav__overlay-link">概要</a>
+  <a href="https://github.com/pluralitybook/plurality" class="nav__overlay-link" target="_blank" rel="noopener">GitHub</a>
+  <button class="theme-toggle" aria-label="Toggle theme">&#9790;</button>
+</div>
+
+
+  <main id="main">
+    <div class="book" id="book">
+  
+  
+  
+  
+  <aside class="book__toc" aria-label="Table of contents" id="book-toc">
+    <button class="book__toc-toggle" aria-expanded="false" id="toc-toggle">
+      <span class="book__toc-toggle-icon"></span>
+      目次
+    </button>
+    <nav class="book__toc-nav" id="toc-nav">
+      <p class="book__toc-heading">目次</p>
+      
+        <p class="book__toc-section">読む前に</p>
+        <ul class="book__toc-list">
+          
+            
+            
+              
+            
+            <li>
+              <a href="/ja/read/0-0/">
+                <span class="book__toc-num">0-0</span> 推薦
+              </a>
+            </li>
+          
+            
+            
+              
+            
+            <li>
+              <a href="/ja/read/0-1/">
+                <span class="book__toc-num">0-1</span> 著者紹介
+              </a>
+            </li>
+          
+            
+            
+              
+            
+            <li>
+              <a href="/ja/read/0-2/">
+                <span class="book__toc-num">0-2</span> 自分の道を見つける
+              </a>
+            </li>
+          
+            
+            
+              
+            
+            <li>
+              <a href="/ja/read/0-3/">
+                <span class="book__toc-num">0-3</span> クレジット
+              </a>
+            </li>
+          
+        </ul>
+      
+        <p class="book__toc-section">序文</p>
+        <ul class="book__toc-list">
+          
+            
+            
+              
+            
+            <li>
+              <a href="/ja/read/1/">
+                <span class="book__toc-num">1</span> 多元性を見る
+              </a>
+            </li>
+          
+        </ul>
+      
+        <p class="book__toc-section">情報技術と民主主義</p>
+        <ul class="book__toc-list">
+          
+            
+            
+              
+            
+            <li>
+              <a href="/ja/read/2-0/">
+                <span class="book__toc-num">2-0</span> ITと民主主義　拡大する溝
+              </a>
+            </li>
+          
+            
+            
+              
+            
+            <li>
+              <a href="/ja/read/2-1/">
+                <span class="book__toc-num">2-1</span> 玉山からの眺め
+              </a>
+            </li>
+          
+            
+            
+              
+            
+            <li>
+              <a href="/ja/read/2-2/">
+                <span class="book__toc-num">2-2</span> デジタル民主主義の日常
+              </a>
+            </li>
+          
+        </ul>
+      
+        <p class="book__toc-section">プルラリティ</p>
+        <ul class="book__toc-list">
+          
+            
+            
+              
+            
+            <li>
+              <a href="/ja/read/3-0/">
+                <span class="book__toc-num">3-0</span> ⿻プルラリティ（多元性）とは？
+              </a>
+            </li>
+          
+            
+            
+              
+            
+            <li>
+              <a href="/ja/read/3-1/">
+                <span class="book__toc-num">3-1</span> ⿻世界に生きる
+              </a>
+            </li>
+          
+            
+            
+              
+            
+            <li>
+              <a href="/ja/read/3-2/">
+                <span class="book__toc-num">3-2</span> つながった社会
+              </a>
+            </li>
+          
+            
+            
+              
+            
+            <li>
+              <a href="/ja/read/3-3/">
+                <span class="book__toc-num">3-3</span> 失われた道
+              </a>
+            </li>
+          
+        </ul>
+      
+        <p class="book__toc-section">自由</p>
+        <ul class="book__toc-list">
+          
+            
+            
+              
+            
+            <li>
+              <a href="/ja/read/4-0/">
+                <span class="book__toc-num">4-0</span> 権利、オペレーティングシステム、⿻的自由
+              </a>
+            </li>
+          
+            
+            
+              
+            
+            <li>
+              <a href="/ja/read/4-1/">
+                <span class="book__toc-num">4-1</span> IDと人物性
+              </a>
+            </li>
+          
+            
+            
+              
+            
+            <li>
+              <a href="/ja/read/4-2/">
+                <span class="book__toc-num">4-2</span> 団体と⿻公衆
+              </a>
+            </li>
+          
+            
+            
+              
+            
+            <li>
+              <a href="/ja/read/4-3/">
+                <span class="book__toc-num">4-3</span> 商取引と信頼
+              </a>
+            </li>
+          
+            
+            
+              
+            
+            <li>
+              <a href="/ja/read/4-4/">
+                <span class="book__toc-num">4-4</span> 財産と契約
+              </a>
+            </li>
+          
+            
+            
+              
+            
+            <li>
+              <a href="/ja/read/4-5/">
+                <span class="book__toc-num">4-5</span> アクセス
+              </a>
+            </li>
+          
+        </ul>
+      
+        <p class="book__toc-section">民主主義</p>
+        <ul class="book__toc-list">
+          
+            
+            
+              
+            
+            <li>
+              <a href="/ja/read/5-0/" class="active">
+                <span class="book__toc-num">5-0</span> 協働テクノロジーと民主主義
+              </a>
+            </li>
+          
+            
+            
+              
+            
+            <li>
+              <a href="/ja/read/5-1/">
+                <span class="book__toc-num">5-1</span> ポスト表象コミュニケーション
+              </a>
+            </li>
+          
+            
+            
+              
+            
+            <li>
+              <a href="/ja/read/5-2/">
+                <span class="book__toc-num">5-2</span> 没入型共有現実（ISR）
+              </a>
+            </li>
+          
+            
+            
+              
+            
+            <li>
+              <a href="/ja/read/5-3/">
+                <span class="book__toc-num">5-3</span> クリエイティブなコラボレーション
+              </a>
+            </li>
+          
+            
+            
+              
+            
+            <li>
+              <a href="/ja/read/5-4/">
+                <span class="book__toc-num">5-4</span> 拡張熟議
+              </a>
+            </li>
+          
+            
+            
+              
+            
+            <li>
+              <a href="/ja/read/5-5/">
+                <span class="book__toc-num">5-5</span> 適応型管理行政
+              </a>
+            </li>
+          
+            
+            
+              
+            
+            <li>
+              <a href="/ja/read/5-6/">
+                <span class="book__toc-num">5-6</span> ⿻投票
+              </a>
+            </li>
+          
+            
+            
+              
+            
+            <li>
+              <a href="/ja/read/5-7/">
+                <span class="book__toc-num">5-7</span> 社会市場
+              </a>
+            </li>
+          
+        </ul>
+      
+        <p class="book__toc-section">インパクト</p>
+        <ul class="book__toc-list">
+          
+            
+            
+              
+            
+            <li>
+              <a href="/ja/read/6-0/">
+                <span class="book__toc-num">6-0</span> ⿻から現実へ
+              </a>
+            </li>
+          
+            
+            
+              
+            
+            <li>
+              <a href="/ja/read/6-1/">
+                <span class="book__toc-num">6-1</span> 職場
+              </a>
+            </li>
+          
+            
+            
+              
+            
+            <li>
+              <a href="/ja/read/6-2/">
+                <span class="book__toc-num">6-2</span> 保健
+              </a>
+            </li>
+          
+            
+            
+              
+            
+            <li>
+              <a href="/ja/read/6-3/">
+                <span class="book__toc-num">6-3</span> メディア
+              </a>
+            </li>
+          
+            
+            
+              
+            
+            <li>
+              <a href="/ja/read/6-4/">
+                <span class="book__toc-num">6-4</span> 環境
+              </a>
+            </li>
+          
+            
+            
+              
+            
+            <li>
+              <a href="/ja/read/6-5/">
+                <span class="book__toc-num">6-5</span> 学習
+              </a>
+            </li>
+          
+        </ul>
+      
+        <p class="book__toc-section">未来へ</p>
+        <ul class="book__toc-list">
+          
+            
+            
+              
+            
+            <li>
+              <a href="/ja/read/7-0/">
+                <span class="book__toc-num">7-0</span> 政策
+              </a>
+            </li>
+          
+            
+            
+              
+            
+            <li>
+              <a href="/ja/read/7-1/">
+                <span class="book__toc-num">7-1</span> 結論
+              </a>
+            </li>
+          
+        </ul>
+      
+    </nav>
+  </aside>
+
+  
+  <article class="book__page" id="book-page">
+    
+    <div class="book__page-curl" aria-hidden="true"></div>
+
+    
+    <header class="book__header">
+      
+        <p class="book__section-label">民主主義 · 5-0</p>
+      
+      <h1 class="book__title">協働テクノロジーと民主主義</h1>
+      
+      
+        <nav class="book__lang-switch" aria-label="Language versions">
+          <span class="book__lang-current">日本語</span>
+          
+            <a href="/read/5-0/" class="book__lang-link" lang="en">English</a>
+          
+            <a href="/zh/read/5-0/" class="book__lang-link" lang="zh">華文</a>
+          
+            <a href="/th/read/5-0/" class="book__lang-link" lang="th">ไทย</a>
+          
+        </nav>
+      
+      <div class="book__header-ornament" aria-hidden="true">
+        <span></span><span></span><span></span>
+      </div>
+    </header>
+
+    
+    <div class="book__body">
+      
+
+  <p>この本は、⿻を本当に実践しつつそれを説明すること、つまり、伝えるだけでなく見せることを目的としている。そのため、本書自体がこの章で説明する多くのツールを使用して作成されている。原稿は、オープンソースのプログラマーがソフトウェアのバージョン管理に使用する<a href="https://git-scm.com/">Gitプロトコル</a>を使用して<a href="https://github.com/pluralitybook/plurality">保存および更新された</a>。原稿は、<a href="https://creativecommons.org/share-your-work/cclicenses/">クリエイティブ・コモンズ0</a>ライセンスの下で自由に共有されている。つまりここに含まれるコンテンツに対する権利は作成コミュニティに留保されず、自由に再利用できるのだ。本稿執筆時点では、本書冒頭の<a href="https://www.plurality.net/v/chapters/0-1/jpn/?mode=dark">クレジット</a>で強調されているように、あらゆる大陸から何十名もの多様な専門家や市民が執筆に貢献している。そして物理的な本の出版後も、さらに多くの人々が「<a href="https://www.plurality.net/v/chapters/5-3/jpn/?mode=dark">5–3クリエイティブなコラボレーション</a>」の節で説明している実践を体現する形で、テキストの継続的な進化に貢献してほしい。</p>
+<p>作業は共同で優先順位付けされ、報酬は、「<a href="https://www.plurality.net/v/chapters/5-7/jpn/?mode=dark">5–7社会市場</a>」で説明している「クラウドファンディング」アプローチで決定された。今後のテキストの変更は、以下の「<a href="https://www.plurality.net/v/chapters/5-6/jpn/?mode=dark">5–6⿻投票</a>」の節で説明されている高度な投票手順と予測市場を組み合わせて、コミュニティによって集合的に承認される。貢献者は「<a href="https://www.plurality.net/v/chapters/4-1/jpn/?mode=dark">4–1IDと人物性</a>」と「<a href="https://www.plurality.net/v/chapters/4-3/jpn/?mode=dark">4–3商取引と信頼</a>」の節で説明したように、コミュニティ通貨とグループIDトークンを使用して認識され、本の未解決の問題の投票と優先順位付けに使われた。そうした優先事項は、その課題に取り組んだ貢献者が受ける定量的な評価を決定する。私たちはこのアプローチを「<a href="https://papers.ssrn.com/sol3/papers.cfm?abstract_id=4688040">⿻管理プロトコル</a>」と呼ぶ<sup class="footnote-ref"><a href="#fn1" id="fnref1">[1]</a></sup>。これらすべては、金銭的インセンティブではなくオープンソースの参加に基づいたオープンソース・プロトコル<a href="https://gitrules.ai/">GitRules</a>を通じて分散型台帳に記録された。論争の的となった問題は、「<a href="https://www.plurality.net/v/chapters/5-4/jpn/?mode=dark">5–4拡張熟議</a>」で説明するツールを通じて決められた。この本は、コミュニティによって翻訳および校正され、「<a href="https://www.plurality.net/v/chapters/5-5/jpn/?mode=dark">5–5適応型管理行政</a>」の節で説明する多くの言語間およびサブカルチャー間の翻訳ツールによって強化されている。</p>
+<p>出版過程での資金的ニーズを支えるために、「<a href="https://www.plurality.net/v/chapters/5-7/jpn/?mode=dark">5–7社会市場</a>」で説明するツールをいくつか活用した。「5–2没入型共有現実（ISR）」の技術を活用して、世界中の読者に本のアイデアを伝え、探求したい。</p>
+<p>こうした各種の理由から、この本を読むことで、アイデアについて学び、その意義を評価すると同時に、それを実践することで生み出せるものも体験できる。その内容に特に批判的に触発された場合は、Gitのプルリクエストを通じて変更を送信するか、多数の貢献者のひとりに連絡してコミュニティの一員になることで、このドキュメントとそのすべての翻訳の生きたコミュニティ管理の継続に貢献してほしい。この作業に対する批判者の多くが、オープンソースのマントラ「だったらおまえが修正しろ！　（so fix it!）」に触発されることを願う。</p>
+<hr>
+<p>人権というオペレーティングシステムは基盤だが、ほとんどの人にとってこのシステムが重要なのは、その上に構築されるもののためだ。人権という基盤の上で、自由民主主義社会は開かれた社会、民主主義、福祉資本主義を走らせている。オペレーティングシステムの上で、顧客は生産性ツール、ゲーム、さまざまなインターネット通信メディアを運営している。この章では、前節の⿻社会プロトコルの基盤の上に構築できる、協働テクノロジーを説明しよう。</p>
+<p>章題は「民主主義」だが、ここで説明しようとしているのは、従来のこうした記述でありがちな、国民統治システムとしての民主主義の説明をはるかに超えたものだ。むしろ、基本的な社会プロトコルの上に⿻を構築するには、コラボレーションと協力、つまり複数のエンティティ（人またはグループ）の共通目標に向かう協力を、アプリケーションがどのように促進できるか、総合的に検討することがここでの狙いだ。いまの表現でさえ、私たちが注目している重要な点を捉えきれていない。それは協力して作業することで、各部分が個別に作成できるものの合計よりも大きなものを作成できるという点だ。</p>
+<p>数学的には、この考え方は「<a href="https://www.plurality.net/v/chapters/3-2/jpn/?mode=dark">3–2つながった社会</a>」でも述べたが、「<a href="https://cip.org/supermodular">スーパーモジュラリティ</a>」と呼ばれ、アリストテレスの発言とされる「全体は部分の総和より大きい」という古典的な発想と同じだ<sup class="footnote-ref"><a href="#fn2" id="fnref2">[2]</a></sup>。スーパーモジュラリティの定量的応用の初期の例として、「比較優位」という考え方がある。これは、私たちが知る限り、1817年にイギリスの経済学者デイヴィッド・リカードが初めて包括的に説明したものだ<sup class="footnote-ref"><a href="#fn3" id="fnref3">[3]</a></sup>。「比較優位」とは、大まかに言えば、誰かがすべてのものを最も効率的に製造できる場合でも、それぞれの人が自分の最も効率的な製品の製造に特化して取引すれば、経済全体の厚生が最大化されるというものだ。つまり比較優位は、市場メカニズムを通じて実現できる多様性からは、確実な利益があることを示す「経済法則」だとされる。この考え方は新自由主義経済学に非常に大きな影響を与えてきた（「<a href="(https://www.plurality.net/v/chapters/5-7/jpn/?mode=dark)">5–7社会市場</a>」を参照）。ただし、その後この理論は深掘りされ、リカードのものよりも高度になっており、貿易による利得を享受するために、単細胞な「自由貿易」支持になる必要はない。さらに本書の多様性重視の観点からすると、ここでの「利得」の意味は状況次第で変わり、単純に経済的なものである必要はない。むしろ、そこに集まる個人やコミュニティの規範や価値観で定義されるのだ。さらにここでの焦点は、人々や集団そのものではなく、それらを貫き、分離する構造、つまり社会的差異にある。だからここで説明するのは、最も正確に言うなら、ITで社会的差異をまたがるスーパーモジュラリティ、またはもっと口語的に言えば「多様性をまたがるコラボレーション」を強化する方法だ。</p>
+<p>この部分では、本章の枠組みを示し、多様性をまたがるコラボレーションが基本的かつ野心的な目標である理由を明らかにする。次に、コラボレーションの深さと幅のトレードオフに基づいて、コラボレーションを追求できる各種領域を定義しよう。次に、その領域の中で、拙速な最適化とやみくもな実験の罠を避けるための設計の枠組みを明らかにする。しかし、多様性をまたがるコラボレーションの可能性を活用すると、将来のコラボレーションに利用できる多様性が減るというリスクも生じる。これを防ぐために、多様性を再生する必要性を説明しよう。最後に、本章の後続の各節で準拠する構造を説明してこの節を終える。</p>
+<h3 id="%E5%A4%9A%E6%A7%98%E6%80%A7%E3%82%92%E8%B6%85%E3%81%88%E3%81%9F%E3%82%B3%E3%83%A9%E3%83%9C%E3%83%AC%E3%83%BC%E3%82%B7%E3%83%A7%E3%83%B3-%E3%81%9D%E3%81%AE%E6%84%8F%E7%BE%A9%E3%81%A8%E8%AA%B2%E9%A1%8C" tabindex="-1">多様性を超えたコラボレーション　その意義と課題</h3>
+<p>なぜ多様性をまたがるコラボレーションにこだわるのか？　これを簡単に理解するために、エネルギーシステムとのアナロジーを使おう。産業化以前は、強力な熱力学的効果（地中の石油火災など）とのまれな遭遇は恐怖を引き起こし、こうした大火災の鎮圧が試みられた。しかし化石燃料の産業利用の出現により、こうした爆発に山師としての目を向け、爆発が生み出す潜在的エネルギーを生産的な利用に向けるほうが一般的になった。紛争に悩まされている世界では、冒頭で紹介した台湾の例のように、紛争を引き起こす潜在的エネルギーを有用な仕事に変換するエンジンの構築方法を学ばねばならない。⿻時代は、産業時代が化石燃料に、核時代が原子力に対してやったように、社会的および情報的な潜在エネルギーの活用を学ばなければならないのだ<sup class="footnote-ref"><a href="#fn4" id="fnref4">[4]</a></sup>。そのような時代には、マタイ伝20章16節の預言「<a href="https://www.biblegateway.com/passage/?search=Matthew%2020%3A16&amp;version=KJV">最後の者が最初になり、最初の者が最後になる</a>」が実現するかもしれない。なぜなら、地球上で最も多様で紛争に悩まされている場所（特にアフリカ）は、地球上のどこよりも多くの潜在エネルギーを保有していると言えるからだ。</p>
+<p>これはある意味では目新しい見方だが、同時に、人類最古の思想として、最も普遍的に共感されるもののひとつでもある。すべての生命は生存と繁殖に依存しており、違いを超えた協力は、致命的な衝突を回避するだけでなく、特に近親交配を避けるため、異なるものが集まらねばならない繁殖にも不可欠なのだ。おそらく、歴史を通じて世界中の宗教の最も普遍的な特徴は、違いを超えて平和と協力を達成した人々を称えることだった。</p>
+<p>もっと実用的で定量的な志向を持つ人々にとって、おそらく最も説得力のある証拠のひとつは、経済学者オデッド・ガローが『格差の起源』で広めた発見だろう<sup class="footnote-ref"><a href="#fn5" id="fnref5">[5]</a></sup>。長期の経済発展を比較するクアムルル・アシュラフとの<a href="https://www.biblegateway.com/passage/?search=Matthew%2020%3A16&amp;version=KJV">共同研究</a>をもとに、彼は経済成長の最も強力で根本的な原動力は、社会の多様性の可能性を、生産的かつ協力的に活用する社会の能力だと主張する<sup class="footnote-ref"><a href="#fn6" id="fnref6">[6]</a></sup>。</p>
+<p>ガローらは、アフリカ（右記のように多様性が最大）からの移住距離を「多様性」の代理指標にして、多様性はさまざまな形を取り、さまざまな異なる結果につながると<a href="https://cepr.org/voxeu/columns/roots-cultural-diversity">その後主張</a>している<sup class="footnote-ref"><a href="#fn7" id="fnref7">[7]</a></sup>。「多様性」という言葉は、多くの文脈において、今日の世界、特に文化的に支配的な米国などの社会において、歴史的に組織的な抑圧を受けてきた一部の側面だけを指すことが多い。だがそんな定義は、私たちの世界を定義する途方もない多様性に比べると単純すぎる。</p>
+<p>・宗教と宗教性：世俗主義、不可知論、無神論の形態を含む多様な宗教的慣行は、世界中のほとんどの人々の形而上学的、認識論的、倫理的観点の中心となっている。</p>
+<p>・行政区：人々は、国民国家、州、都市など、さまざまな行政区に所属している。</p>
+<p>・地理的類型：人々は、田舎と都会、国際的な都市と伝統的な都市、さまざまな気象パターン、地理的特徴への近さなど、さまざまな種類の地理的地域に住んでいる。</p>
+<p>・職業：ほとんどの人は、人生の大部分を仕事に費やし、職業、工芸、または貿易によってアイデンティティの重要な部分を定義する。</p>
+<p>・組織：人々は、雇用主、市民団体、専門家グループ、運動クラブ、オンラインの関心グループなど、さまざまな組織のメンバーだ。</p>
+<p>・民族言語：人々はさまざまな言語を話し、これらの言語集団またはそのような言語関連の歴史に関連する「民族」グループに属している、または他者から属していると認知される。これらは歴史言語学者によって大まかな系統樹にまとめられている。</p>
+<p>・人種、カースト、部族：多くの社会では、実際のまたは認知されている遺伝的および家族的起源に基づく文化的な集団分類が特徴で、特にこれらの特性に基づく深刻な紛争や抑圧の遺産もあり、集団的な自己認識と社会認識を部分的に形作る。</p>
+<p>・イデオロギー：人々は、暗黙的または明示的に、さまざまな政治的および社会的イデオロギーを採用しており、それらは社会的な文脈によって大きく違う形で区分されている（たとえば、「左」と「右」は一部の文脈では重要な次元だが、文脈によっては宗教的または国籍の分割のほうが重要になる）。</p>
+<p>・教育：人々の教育達成にはさまざまな種類とレベルがある。</p>
+<p>・認識論／分野：教育訓練の分野が違うと、それが思考を構成する。たとえば、人文学者と物理学者は通常、知識へのアプローチが異なる。</p>
+<p>・性別とセクシュアリティ：人々は、生殖機能に関連する身体的特徴、これらに関連する社会的認識と自己認識、およびこれらに関連する親密な関係のパターンが異なる。</p>
+<p>・能力：人々は、生まれつきおよび後天的に身につけた身体能力、知性、課題の面で大きく異なる。</p>
+<p>・世代：人々は年齢と人生経験によって違う。</p>
+<p>・種：右記のほとんどすべては、人間だけの話だというのが前提だが、ここで説明するITの一部は、人間と他の生命体、さらには非生物的な自然界や精神世界とのコミュニケーションやコラボレーションを促進するためにも使用できる。これらの世界は、明らかにそれぞれの内部でも、また人間の生活との関係でも非常に多様だ。</p>
+<p>さらに、これまで繰り返し強調してきたように、人間のアイデンティティは、こうした多様性の組み合わせや交差によって定義されるものであり、それを単に羅列するだけではすまない。DNAの4つの塩基対という単純な構成要素が、生命の多様な多様性を生み出すことと同じだ。</p>
+<p>しかし、歴史の教訓があるなら、それは多様性をまたがるコラボレーションは、いかに可能性があっても困難だということだ。社会的な違いは通常、目標、信念、価値観、連帯感／愛着、文化／パラダイムの差を生み出す。信念と目標の単純な違いだけなら、克服はかなり容易だ。情報を共有したり、意見の相違を認めたりすれば、多くの信念の違いは埋められるし、客観的な状況の共通理解があれば、目標に関する妥協はかなり簡単となる。しかし価値観となると、双方が妥協したり容認したりすることを嫌がる要素を含むため、より困難だ。</p>
+<p>最も埋めにくい違いは、通常、意味づけ（文化）における識別／アイデンティティの仕組み（連帯感／愛着）に関連する差だ。連帯感と愛着は、自分が「運命共同体」や利益を共有していると感じたり、自分が何者であるかを定義したりする集団と関係する。文化は意味付けの体系であり、人はそれによって、本来はどうでもいいシンボルに意味を付与できる。言語は最も単純な例だが、あらゆる種類の行動やふるまいは、文化的背景に応じて意味が違う<sup class="footnote-ref"><a href="#fn8" id="fnref8">[8]</a></sup>。</p>
+<p>連帯と文化がこれほど面倒なのは、それが情報や目標に関する具体的な合意を邪魔するからではない。コミュニケーション、相互理解、そしてそうしたやりとりのできる、価値のあるパートナーとして相手を見なす能力を阻害するためだ。これは抽象的な意味では信念や価値観に関わる話だが、連帯と文化は、実際には人間の発展においてこれらに先行している。人は意識的に意見や目標を抱くずっと前から、家族や守ってくれる人たちを意識し、コミュニケーションをとることを学ぶ。非常に基礎的なものだからこそ、これは安全に調整したり変えたりすることが最も難しく、通常、それを変えるには人生を形作る共通の経験や強力な親密さが必要となる。</p>
+<p>違いを克服する難しさを超えて、それはまた重大な危険をはらんでいる。コラボレーションのために違いを埋めると、しばしば違いが薄れてしまう。すると違いの可能性を活用できるようになる一方で、将来活用できそうな違いが減ってしまう。これは紛争からの保護のためには望ましくても、将来の多様性の生産能力にとっては重要なコストとなる。典型的な例は、グローバル化が料理の多様化など取引による利益をもたらした一方で、文化を均質化させ、将来的にそのような利益を得る機会を減らしかねないというものだ。したがって、⿻における重要な懸念は、多様性を超えたコラボレーションを活用するだけでなく、多様性を再生し、多様性を活用する過程で、新しい形の社会的差異の創出によって多様性が補充できるかということだ。これもまたエネルギー系と似ている。持続可能な成長を実現するためには、エネルギー源を収穫するだけでなく再生しなければならないからだ。</p>
+<h3 id="%E6%B7%B1%E3%81%95%E3%81%A8%E5%BA%83%E3%81%95%E3%81%AE%E3%82%B9%E3%83%9A%E3%82%AF%E3%83%88%E3%83%AB" tabindex="-1">深さと広さのスペクトル</h3>
+<p>コラボレーションと多様性の間に緊張関係があるため、当然のことながら、深さと広さとの間でトレードオフを行うさまざまなアプローチがあるだろう。人によっては、深く豊かなコラボレーションの実現を目指して、このコラボレーションを小規模および／または同質の集団に限定するという代償を払う。コラボレーションの「深さ」は、決まった参加者の集合に対するスーパーモジュラリティの度合いだと大まかに考えられる。つまり、参加者が個別に作成できるものの合計よりも、参加者全員が作成するものが、参加者の目から見てどれだけ大きいかということだ。愛などの深いつながりによる関係は、参加者が単独では知り得なかった、人生、意味、再生の根源的な変革も引き起こすので、最も深い関係のひとつだ。一方、市場ベースの資本主義に浸透している表面的で取引的で、多くの場合匿名の関係は、わずかな利益をもたらしはするが、親密な愛のつながりの深さには遠く及ばない。</p>
+<p>これらの相互作用モードの違いを定量化する大まかな方法として、情報理論の概念である帯域幅を考えよう。資本主義は、すべてをお金という単一の数字（スカラー）に還元する傾向がある。一方、親密さは、通常、すべての感覚にしみ渡るだけでなく、それを超えて「<a href="https://en.wikipedia.org/wiki/Proprioception">深部感覚</a>」（運動感覚としても知られる）に触れる。これは、神経科学者がすべての感覚入力の大部分を構成すると考えている、自分の体と存在の内部感覚のことだ<sup class="footnote-ref"><a href="#fn9" id="fnref9">[9]</a></sup>。この両者の間に中間の様式がいろいろあり、それぞれ構造化された象徴形態や限られた感覚群を刺激する。</p>
+<p>だがそこには自然なトレードオフがある。大規模で多様な集団の中では、高帯域幅のコミュニケーションを確立することが難しいのだ。だからこそ、資本主義は普遍的な親密さには取って代われなかったのだ。薄く浅いコラボレーションのほうが規模を拡大しやすいからだ。最も単純な規模の概念は、そこに関与する人数だが、これは簡略化しすぎだ。コラボレーションの広さは、単なる人数の多さよりも、社会的および文化的距離の境界を越えた包摂をもとに理解することが最も適切だ。たとえば、世界中に散らばって異なる言語を話す少数の人々よりも、物理的に同じ場所にいて、言語と宗教を共有する大規模な拡大家族の中のほうが、深いコラボレーションはずっと容易だろう。</p>
+<figure>
+<img src="https://raw.githubusercontent.com/akinorioyama/plurality/main/figs/japanese/5-0-A.jpg" width="100%" alt="A chart with the bredth of diversity(# of interoperable participants) on the x-axis and depth of collaboration (degree of coexistence) on the y-axis. The former runs on a scale of a few people to the world population; the latter on a scale of bandwidth from scalar ot telepathy. Points displayed in an inner arc represent what is currently possible (such as intimacy and capitalism) and corresponding points on an outer arc represent what is possible with ⿻ (from post symbolic communication to social markets).  ">
+<p><strong><figcaption>図 5-0-A コラボの深さと多様性の広さのトレードオフを生産可能性フロンティア上の点として表現。⿻はこのフロンティアを外に広げることが目標</figcaption></strong></p>
+</figure>
+<br></br>
+<p>ここから考えて、この両者のトレードオフを表すような、深さと広さの全範囲を示すスペクトルがあるはずだ。経済学者は、技術をよく「生産可能性フロンティア」（PPF）で表現する。これは、緊張関係にある2つの望ましいものの間での、現在可能なトレードオフを示す。図5–0–Aでは、このようなPPFとして協力のスペクトルをプロットし、以下で検討するさまざまな個別様式を大まかに3つに分類した。豊富だが狭いコミュニケーションを持つ「コミュニティ」、どちらも中間的な「国家」、浅いけれど幅広い協力モードを持つ「商品」だ。⿻の目標は、図の7つの点で示したように、このフロンティアに沿ったあらゆる点を外側に押し広げ、それぞれを技術的に強化し拡張することだ<sup class="footnote-ref"><a href="#fn10" id="fnref10">[10]</a></sup>。</p>
+<p>このトレードオフの一例は、政治学でよく登場する。民主的な政治体制において、投票と熟議の価値を比較する議論がそれだ。質の高い熟議は、伝統的に小集団でしか実行できないと考えられており、このため代議制の政府選挙や抽選（参加者を無作為に選択する）など、もっと大規模な人口を代表する小集団の選択プロセスが必要となる。それでも熟議は豊かなコラボレーション、参加者の視点の十分な表明、したがって最終的な集団選択の改善につながるとされる。一方、投票は、はるかに低コストで、はるかに大規模で多様な人口を相手にできるが、各参加者が（通常は）事前に決定された選択肢のリストのどれかに同意するという形で、自分の視点についての薄い信号しか提供できないというコストが生じる。</p>
+<p>しかし、「熟議」民主主義の支持者と「選挙」民主主義の支持者の間で激しい論争はあるが、これらはスペクトル上の2つの点にすぎない（どちらも主に「国家」カテゴリ内）。この2つは、そのスペクトル上の両極端の点を示すものですらないのだ。対面での審議は豊かではあっても、献身的なチーム（軍隊など）や長期にわたる親密な関係の構築がもたらす共有、つながり、共通の目的とアイデンティティの構築の深さには遠く及ばない。また、投票は数億人が決定に口をはさめるようにするが、非人格的でグローバル化された市場が毎日行っているような方法で社会的境界を越えたことは一度もない。これらの形式にはどれもトレードオフがあり、歴史的に人々は実に多様なやり方でそれらを活用してきたし、その手法も次第に改善されてきた（ビデオ会議の出現など）。それを見ると、協調的な開発によってこれらのトレードオフが根本的に改善され、ずっと幅広い社会的な違いを超える、もっと豊かなコラボレーションが実現する可能性は十分にありそうだ。</p>
+<h3 id="%E7%9B%AE%E6%A8%99%E3%80%81%E3%82%A2%E3%83%95%E3%82%A9%E3%83%BC%E3%83%80%E3%83%B3%E3%82%B9%E3%80%81%E5%A4%9A%E6%A5%B5%E6%80%A7" tabindex="-1">目標、アフォーダンス、多極性</h3>
+<p>とはいえ、トレードオフの「改善」を目指すといっても、何をもって改善と見なすかについて、ある程度は決めておこう。コラボレーションを良いもの、有意義なものにするものは何だろうか？　社会の違いだの多様性だのというのは、そもそも何のことなのか？　この双方をどう測定すればいいのか？</p>
+<p>特に経済学など定量化を重視する分野では通常、進歩を判断するためのグローバルな「目的」または「社会的厚生関数」を決めたがる。もちろんこの問題は、社会生活には無限の可能性があるため、そのような基準を決めようとすれば、未知のものや、知り得ないものに足下をすくわれるだけだ。⿻を追求しようとして、そんな基準を強く適用すれば、その基準はそれだけ堅牢性を失う。なぜなら、大きな違いをまたがって他の人と深くつながれば、何がいいかという当初のビジョンの欠陥に気づく可能性も、それだけ高まるからだ。世界の形を学ぶ前にそんな基準を決めようとしたら、拙速な最適化になってしまう。これは、著名な英国のコンピュータ科学者トニー・ホーアがかつて「<a href="https://ubiquity.acm.org/article.cfm?id=1513451">諸悪の根源</a>」と名付けたものだ<sup class="footnote-ref"><a href="#fn11" id="fnref11">[11]</a></sup>。</p>
+<p>中でも最悪なのは、世界の豊かさと多様性を覆い隠してしまうことだ。典型的な例はおそらく、新古典派経済学における市場の最適性に関する結論だ。これはきわめて単純化した前提に依存しており、それが多用されたのは、収穫逓増、社会性、不完全情報、限定合理性などの問題を考慮した社会資源管理の仕組みを探すのが面倒だったからにすぎない。これ以降の節で明らかになるように、こうした特徴に配慮した社会システムを構築する方法さえあまりわかっておらず、ましてそれを最適化する方法など見当もつかない。これは、最適化したいという欲求、つまり善の単純な概念を追い求めたがる欲求が、⿻の追求に役立つ面もあるが、むしろ⿻の指向からの逸脱をもたらすことが多い理由だ。人は本当に追い求めているものではなく、説明が簡単で達成しやすいものを最大化したい誘惑に駆られてしまいがちなのだ。</p>
+<p>最適化、特に社会的厚生関数の追求における最適化には、別の落とし穴がある。それは、「神を演じる」こと、つまり偶像崇拝だ。社会福祉を最大化するには、「どこからでもない」視点を取り、普遍的なレベルで状況を左右できると考えねばならないが、そんなレベルに到達できる人はいない。人はすべて、特定の人々やコミュニティから、そして特定の人々やコミュニティのために行動する。目標と可能性は、その人が誰か、どこにいるか、誰がその発言を気にするかで制限され、しかもそれは他の力のネットワークの中に置かれ、それらが願わくばうまく連携し、大惨事を回避できるパターンとなるのだ。抽象的で普遍的な視点にのみ役立つツールは、単に行きすぎているだけではない。それを実際に採用できる人などおらず、誰にも魅力がないのだ。</p>
+<p>同時に、真逆の極端な危険もある。私たちが単に生命の特徴を模倣した設計だけを追求し、目的や意味をまるで考えずにそっちに向かってしまうと、人間の最も暗い動機にあっさり利用されかねない。今日の世界の多くを形作っている利益動機と権力ゲームは、当然ながら公益の合理的な定義には役立たない。ニール・スティーヴンスンのディストピア小説、『<a href="https://en.wikipedia.org/wiki/Black_Mirror">ブラックミラー</a>』シリーズ（テレビドラマ）、近未来のナイジェリアを舞台にしたSFアニメーション『<a href="https://en.wikipedia.org/wiki/Iw%C3%A1j%C3%BA">イワジュ</a>』での技術者ツンデ・マーティンスの苦境は、人間の価値観から切り離された技術の進歩が、社会の絆を弱め、権力欲の強い人々が他人を収奪し、支配し、奴隷化しかねない罠になれることを思い出させてくれる。</p>
+<p>そんな仮想的なシナリオに目を向けるまでもなく、もっと広範な指針となるミッションなしに魅力的な技術を追求する危険性は明らかだろう。Google、Facebook、AmazonなどのWeb2.0時代の支配的なオンラインプラットフォームは、まさに現実世界の社会性の重要な特徴（つまり、集団で決定された新興の権威、ソーシャルネットワーク、商取引）をデジタル世界にもたらすという考え方から生まれた。これらのサービスは世界中の何十億もの人々に多くの重要な利益をもたらした。だがすでに説明した各種の欠点もあり、さらにもっと広範な公共の目標を指針としないため、危険な方向性を示している。現実の多様な人々の実感されたニーズに応え、彼らの実際の立場に応じてそれを満たすツールを構築しよう。ただし彼らが置かれている広範な社会的文脈と、ニーズのようなものを満たすと、かえって対立を悪化させる可能性もある点には留意しよう。</p>
+<p>幸いなことに、中道的で現実的な⿻の道は可能だ。神の視点や地上レベルの視点だけを取る必要はない。親密な家族や友人から大国まで、<strong>さまざまな社会集団の目標を追求するツールは構築できる</strong>。その際、常にそれぞれの視点の限界に目を向け、つながるべき他の並行する発展方向にも目配りして、そこから学ぶ必要はある。社会的厚生に注目して市場機能の改革を目指すのもいいが、もっと細やかな視点を追求する人々が明らかにする、社会の豊かさの主要な特徴をモデルに加え続けるべきだ。それをきちんと取り込めなければ、どんな解決策もある程度は失敗することに自覚的になろう。人々が他人の内面的な経験に共感するための豊かな方法を構築するのもいい。だがそのようなツールは、熟議、規制、適切に構造化された市場の規律と組み合わせなければ、悪用される可能性が高いことも認識しよう。</p>
+<p>しかし、このアプローチが強調する様式の多様性は、人々の築くつながりや解決する対立が、多様性を超えたコラボレーションプロセスの一段階にすぎないという希望を与えてくれる。前進するたびに、認識できる世界にはますます困難な形の多様性がもたらされ、自分自身についての理解と自分の指向が作り直され、それらを橋渡しするためにさらなる苦労が求められる。そのような願望には、客観的な関数を最大化したり、行き先などお構いなしに技術の進歩と社会の豊かさを追求するといった、心落ち着く単純さはないが、だからこそ、それは追求する価値のある困難な道なのだ。『スタートレック』の別のスローガンである『<a href="https://www.imdb.com/title/tt18971274/">ad astra per aspera</a>』つまり「逆境を乗り越えて星へ」、あるいはノーベル賞受賞者アンドレ・ジッドの言葉を借りれば、「真実を求める者を信頼せよ、だが真実を見つけた者を恐れよ」ということだ。</p>
+<h3 id="%E5%A4%9A%E6%A7%98%E6%80%A7%E3%81%AE%E5%86%8D%E7%94%9F" tabindex="-1">多様性の再生</h3>
+<p>しかし、前で述べたように、これらの落とし穴を避けて多様性をうまく橋渡しし、利用できたとしても、その過程で多様性が提供するリソースを枯渇させるリスクが生じる。これは、スペクトルのどの点でも、また技術高度化のどの水準でも起こる。家族を作り上げる親密な関係は、参加者を同質化し、情熱を燃え上がらせた補完性の火花そのものを弱めかねない。政治的な合意を形成したら、政党政治のダイナミズムと創造性は弱まりかねない<sup class="footnote-ref"><a href="#fn12" id="fnref12">[12]</a></sup>。翻訳と言語学習は、他の言語や文化の微妙な点への関心を弱めてしまう。</p>
+<p>しかし、橋渡ししたら必ず均質化が起こるとは限らない。既存の文化が再統合され、両者の平均的な溝が縮まる効果はあり得るが、必ずそうなるわけではない。なぜなら、橋渡しは防御的な役割だけでなく、積極的で生産的な役割も果たすからだ。科学分野の学際的な橋渡しは、その分野の内部基準を緩め、それによってもたらされる独特の視点を緩めることもある。しかし同時に独特な新しい分野を生み出す可能性もあるのだ。たとえば、心理学と経済学の出合いは、新しい「行動経済学」分野を生み出した。計算機科学と統計学の出合いは、「データサイエンス」と人工知能の誕生に貢献した。</p>
+<p>同様の現象は歴史上いろいろある。政治的分裂を橋渡しすると、過剰な均質化につながるかもしれないが、新しい政治的分裂の誕生につながるかもしれない。家族はしばしば子供を産みだし、その子は親と違う視点をもたらす。斬新な芸術や料理は、ほとんどが既存のスタイルの「ブリコラージュ」または「フュージョン」から生まれる<sup class="footnote-ref"><a href="#fn13" id="fnref13">[13]</a></sup>。テーゼとアンチテーゼが出合ったときに生まれるジンテーゼは、必ずしも妥協ではなく、議論を再調整する新しい視点だったりする<sup class="footnote-ref"><a href="#fn14" id="fnref14">[14]</a></sup>。</p>
+<p>これはどれも、決まったものではない。もちろん多様性を潰してしまう交差の実例は多い。しかし、こうした各種の可能性を見ると、問題に慎重に取り組めば、多くの場合はそこに力をもたらす多様性を刷新するアプローチを設計できるはずだという希望は生じる。</p>
+<h3 id="%E7%84%A1%E9%99%90%E3%81%AE%E7%B5%84%E3%81%BF%E5%90%88%E3%82%8F%E3%81%9B%E3%81%AE%E7%84%A1%E9%99%90%E3%81%AE%E5%A4%9A%E6%A7%98%E6%80%A7" tabindex="-1">無限の組み合わせの無限の多様性</h3>
+<p>本書のこの章では、違いを超えたコラボレーションへのさまざまなアプローチと、⿻のさらなる進歩がそれらを拡張および発展させる可能性を（ごく一部ながら）検討しよう。各節は、この節と同様に、現在使用されている最先端に近い技術の解説で始まる。次に、その分野で一般的で、生まれつつあるアプローチの概要を説明する。次に、研究中の将来の開発の可能性、これらのツールが⿻にもたらしそうなリスク（均質化など）と、他の節で説明するツール活用などによるリスク軽減方法に目を向ける。ここで強調する幅広いアプローチによって、⿻の本質だけでなく、そのアプローチとの一貫性も明らかにしたい。⿻補完的でネットワーク化されたアプローチがないと、⿻の将来発展は支えられないのだ。</p>
+<hr class="footnotes-sep">
+<section class="footnotes">
+<ol class="footnotes-list">
+<li id="fn1" class="footnote-item"><p>Tobin South, Leon Erichsen, Shrey Jain, Petar Maymounkov, Scott Moore and E. Glen Weyl, “Plural Management” (2024) at <a href="https://papers.ssrn.com/sol3/papers.cfm?abstract%5C_id=4688040">https://papers.ssrn.com/sol3/papers.cfm?abstract\_id=4688040</a>. <a href="#fnref1" class="footnote-backref">↩︎</a></p>
+</li>
+<li id="fn2" class="footnote-item"><p>Divya Siddarth, Matt Prewitt and Glen Weyl, “Beyond Public and Private: Collective Provision Under Conditions of Supermodularity” (2024) at <a href="https://cip.org/supermodular">https://cip.org/supermodular</a>. <a href="#fnref2" class="footnote-backref">↩︎</a></p>
+</li>
+<li id="fn3" class="footnote-item"><p>David Ricardo, On the Principles of Political Economy and Taxation, (London: John Murray, 1817). 〔『経済学および課税の原理　上巻, 下巻』デイヴィッド・リカード著, 羽鳥卓也, 吉沢芳樹, 岩波書店, 1987〕 <a href="#fnref3" class="footnote-backref">↩︎</a></p>
+</li>
+<li id="fn4" class="footnote-item"><p>このアナロジーは,一見したよりずっとしっかりしたものだ.通常「エネルギー」と呼ばれるものは,実際には「低エントロピー」である.均一に熱い系には多くの「エネルギー」があるが,これは実際には役に立たない.「エネルギー」を生成するすべての系は,この低エントロピー(「多様性」)を利用して作業を生成することで機能する.こうした系には,爆発による「制御されていない」熱の放出(「紛争」)を回避できるという利点もある.したがって,社会的な低エントロピーを活用するという⿻の目標と,物理的な低エントロピーを活用するという産業主義の目標の間には,文字通り直接的な類似点がある. <a href="#fnref4" class="footnote-backref">↩︎</a></p>
+</li>
+<li id="fn5" class="footnote-item"><p>Oded Galor, The Journey of Humanity: A New History of Wealth and Inequality with Implications for our Future (New York: Penguin Random House, 2022).〔『格差の起源　なぜ人類は繁栄し、不平等が生まれたのか』オデッド・ガロー著, 柴田裕之監訳, 森内薫訳, NHK出版, 2022〕 <a href="#fnref5" class="footnote-backref">↩︎</a></p>
+</li>
+<li id="fn6" class="footnote-item"><p>Quamrul Ashraf and Oded Galor, “The ‘Out of Africa’ Hypothesis, Human Genetic Diversity, and Comparative Economic Development”, American Economic Review 103, no.1 (2013): 1-46. <a href="#fnref6" class="footnote-backref">↩︎</a></p>
+</li>
+<li id="fn7" class="footnote-item"><p>Oded Galor, Marc Klemp and Daniel Wainstock, “The Impact of the Prehistoric Out of Africa Migration on Cultural Diversity” (2023) at <a href="https://www.nber.org/papers/w31274">https://www.nber.org/papers/w31274</a>. <a href="#fnref7" class="footnote-backref">↩︎</a></p>
+</li>
+<li id="fn8" class="footnote-item"><p>Lisa Wedeen, “Conceptualizing Culture: Possibilities for Political Science”, American Political Science Review 96, no. 4 (2002): 713–728. <a href="#fnref8" class="footnote-backref">↩︎</a></p>
+</li>
+<li id="fn9" class="footnote-item"><p>Uwe Proske and Simon C. Gandevia, “The Proprioceptive Senses: Their Roles in Signaling Body Shape, Body Position and Movement, and Muscle Force”, Physiological Review 92, no. 4: 1651-1697. <a href="#fnref9" class="footnote-backref">↩︎</a></p>
+</li>
+<li id="fn10" class="footnote-item"><p>この交換様式をコミュニティ,国家,商品の三部に分けるやり方は柄谷行人『世界史の構造』(岩波書店, 2010)に啓発されたもの. コミュニティの収益をもっと広いスケールで実現しようという柄谷の志向は⿻の野心的な一例とみられる. <a href="#fnref10" class="footnote-backref">↩︎</a></p>
+</li>
+<li id="fn11" class="footnote-item"><p>Randall Hyde, “The Fallacy of Premature Optimization” Ubiquity February, 2009 available at <a href="https://ubiquity.acm.org/article.cfm?id=1513451">https://ubiquity.acm.org/article.cfm?id=1513451</a>. <a href="#fnref11" class="footnote-backref">↩︎</a></p>
+</li>
+<li id="fn12" class="footnote-item"><p>Nancy L. Rosenblum, On the Side of the Angels: An Appreciation of Parties and Partisanship (Princeton, NJ: Princeton University Press, 2010). <a href="#fnref12" class="footnote-backref">↩︎</a></p>
+</li>
+<li id="fn13" class="footnote-item"><p>Claude Lévi-Strauss, The Elementary Structures of Kinship, (Boston: Beacon Press, 1969).〔『親族の基本構造　上, 下』クロード・レヴィ＝ストロース著, 馬淵東一, 田島節夫監訳, 花崎皋平[等]訳 番町書房, 1977, 1978〕 <a href="#fnref13" class="footnote-backref">↩︎</a></p>
+</li>
+<li id="fn14" class="footnote-item"><p>このコンセプトはしばしばヘーゲルのものだと誤解されているが,実はヨハン・ゴットリープ・フィヒテが最初であり,ヘーゲル思想では重要な役割を果たしていない. Johann Gottlieb Fichte, “Renzension des Aenesidemus”, Allgemeine Literatur-Zeitung 11-12 (1794). <a href="#fnref14" class="footnote-backref">↩︎</a></p>
+</li>
+</ol>
+</section>
+
+
+
+    </div>
+
+    
+    
+    <nav class="book__nav" aria-label="Chapter navigation">
+      
+        <a href="/ja/read/4-5/" class="book__nav-link book__nav-link--prev" data-page-dir="prev">
+          <span class="book__nav-arrow">&larr;</span>
+          <span class="book__nav-info">
+            <span class="book__nav-label">前の章</span>
+            <span class="book__nav-title">アクセス</span>
+          </span>
+        </a>
+      
+      
+        <a href="/ja/read/5-1/" class="book__nav-link book__nav-link--next" data-page-dir="next">
+          <span class="book__nav-info">
+            <span class="book__nav-label">次の章</span>
+            <span class="book__nav-title">ポスト表象コミュニケーション</span>
+          </span>
+          <span class="book__nav-arrow">&rarr;</span>
+        </a>
+      
+    </nav>
+    
+
+    
+    <div class="book__page-number" aria-hidden="true">
+      5-0
+    </div>
+  </article>
+</div>
+
+<script src="/assets/js/book.js"></script>
+
+  </main>
+
+  
+
+
+
+
+<footer class="footer" role="contentinfo">
+  <div class="footer__inner">
+    <div class="footer__brand" aria-hidden="true">
+      <span class="c-r">P</span><span class="c-o">l</span><span class="c-g">u</span><span class="c-c">r</span><span class="c-w">a</span><span class="c-c">l</span><span class="c-g">i</span><span class="c-o">t</span><span class="c-r">y</span>
+    </div>
+
+    <ul class="footer__links">
+      <li><a href="/ja/read/" class="footer__link">読む</a></li>
+      <li><a href="/ja/read/0-1/" class="footer__link">概要</a></li>
+      <li><a href="https://github.com/pluralitybook/plurality" class="footer__link" target="_blank" rel="noopener">GitHub</a></li>
+      <li><a href="https://discord.gg/YWSDRqdW5n" class="footer__link" target="_blank" rel="noopener">Discord</a></li>
+    </ul>
+
+    <div class="footer__sep"></div>
+
+    <p class="footer__authors">E・グレン・ワイル、オードリー・タン、Pluralityコミュニティ</p>
+    <p class="footer__license">この作品はCC0の下でパブリックドメインに捧げられています。</p>
+  </div>
+</footer>
+
+
+  <script src="/assets/js/nav.js"></script>
+  <script src="/assets/js/scroll-reveal.js"></script>
+
+  <!-- Structured Data -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "WebSite",
+    "name": "Plurality",
+    "description": "A book by E. Glen Weyl, Audrey Tang and the Plurality Community exploring how technology can support and strengthen democracy.",
+    "url": "https://new.plurality.net",
+    "author": [
+      { "@type": "Person", "name": "E. Glen Weyl" },
+      { "@type": "Person", "name": "Audrey Tang" },
+      { "@type": "Organization", "name": "the Plurality Community" }
+    ],
+    "license": "https://creativecommons.org/publicdomain/zero/1.0/"
+  }
+  </script>
+</body>
+</html>

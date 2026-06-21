@@ -1,0 +1,156 @@
+/* ============================================================
+   Search — Plurality
+   Pagefind overlay + theme overrides
+   ============================================================ */
+
+/* Search toggle button (reuses theme-toggle style) */
+.search-toggle {
+  background: none;
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  padding: 6px 12px;
+  font-size: 0.9rem;
+  color: var(--text);
+  cursor: pointer;
+  transition: all 0.2s;
+  line-height: 1;
+}
+
+.search-toggle:hover {
+  border-color: var(--gold-light);
+  color: var(--gold);
+}
+
+/* Overlay */
+.search-overlay {
+  display: none;
+  position: fixed;
+  inset: 0;
+  z-index: 2000;
+  background: rgba(0, 0, 0, 0.5);
+  backdrop-filter: blur(4px);
+  -webkit-backdrop-filter: blur(4px);
+  align-items: flex-start;
+  justify-content: center;
+  padding-top: min(15vh, 120px);
+}
+
+.search-overlay.active {
+  display: flex;
+}
+
+.search-overlay__inner {
+  position: relative;
+  width: 90%;
+  max-width: 640px;
+  max-height: 70vh;
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  box-shadow: var(--shadow-lg);
+  overflow-y: auto;
+  padding: 24px;
+}
+
+/* ── Pagefind UI theme overrides ── */
+:root {
+  --pagefind-ui-scale: 0.9;
+  --pagefind-ui-primary: var(--teal);
+  --pagefind-ui-text: var(--text);
+  --pagefind-ui-background: var(--surface);
+  --pagefind-ui-border: var(--border);
+  --pagefind-ui-tag: var(--warm);
+  --pagefind-ui-border-width: 1px;
+  --pagefind-ui-border-radius: var(--radius);
+  --pagefind-ui-font: var(--sans);
+}
+
+.pagefind-ui__search-input {
+  font-family: var(--sans) !important;
+  color: var(--text) !important;
+  background: var(--warm) !important;
+}
+
+.pagefind-ui__search-input::placeholder {
+  color: var(--muted) !important;
+}
+
+.pagefind-ui__result-link {
+  color: var(--heading) !important;
+  font-family: var(--serif) !important;
+}
+
+.pagefind-ui__result-link:hover {
+  color: var(--teal) !important;
+}
+
+.pagefind-ui__result-excerpt {
+  color: var(--text) !important;
+  font-family: var(--serif) !important;
+}
+
+.pagefind-ui__result-excerpt mark {
+  background: rgba(201, 169, 97, 0.25) !important;
+  color: var(--heading) !important;
+}
+
+/* Clear button */
+.pagefind-ui__search-clear {
+  background: var(--warm) !important;
+  color: var(--muted) !important;
+  border: 1px solid var(--border) !important;
+  border-radius: var(--radius) !important;
+  font-family: var(--sans) !important;
+  font-size: 0.75rem !important;
+  padding: 4px 10px !important;
+  cursor: pointer;
+  transition: all 0.2s;
+}
+
+.pagefind-ui__search-clear:hover {
+  color: var(--heading) !important;
+  border-color: var(--gold-light) !important;
+}
+
+/* Hide the powered-by footer inside our overlay */
+.pagefind-ui__drawer .pagefind-ui__message {
+  font-family: var(--sans) !important;
+  color: var(--muted) !important;
+}
+
+/* ── Custom autocomplete suggestions ── */
+.search-suggest {
+  position: absolute;
+  z-index: 3000;
+  list-style: none;
+  margin: 4px 0 0;
+  padding: 4px 0;
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  box-shadow: var(--shadow-md);
+  max-height: 240px;
+  overflow-y: auto;
+  scrollbar-width: thin;
+  scrollbar-color: var(--border) transparent;
+}
+
+.search-suggest__item {
+  padding: 8px 14px;
+  font-family: var(--sans);
+  font-size: 0.85rem;
+  color: var(--text);
+  cursor: pointer;
+  transition: background 0.1s, color 0.1s;
+}
+
+.search-suggest__item:hover,
+.search-suggest__item--active {
+  background: var(--warm);
+  color: var(--heading);
+}
+
+.search-suggest__item--active {
+  outline: 2px solid var(--teal);
+  outline-offset: -2px;
+}

@@ -1,0 +1,19 @@
+{
+  "name": "new.plurality.net",
+  "version": "1.0.0",
+  "type": "module",
+  "private": true,
+  "license": "CC0-1.0",
+  "scripts": {
+    "dev": "bunx @11ty/eleventy --serve",
+    "build": "bunx @11ty/eleventy",
+    "clean": "rm -rf dist"
+  },
+  "dependencies": {
+    "@11ty/eleventy": "^3.1.2",
+    "@11ty/eleventy-fetch": "^5.1.1",
+    "markdown-it": "^14.1.1",
+    "markdown-it-anchor": "^9.2.0",
+    "markdown-it-footnote": "^4.0.0"
+  }
+}

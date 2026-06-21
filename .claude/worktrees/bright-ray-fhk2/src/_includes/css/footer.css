@@ -1,0 +1,85 @@
+/* ============================================================
+   Footer — Plurality
+   ============================================================ */
+
+.footer {
+  background: var(--ink);
+  padding: 60px var(--section-pad-h);
+  text-align: center;
+}
+
+.footer__inner {
+  max-width: var(--content-max);
+  margin: 0 auto;
+}
+
+/* Plurality word with brand colors */
+.footer__brand {
+  font-family: var(--serif);
+  font-size: 1.5rem;
+  font-weight: 400;
+  margin-bottom: 1.5rem;
+  letter-spacing: 0.05em;
+}
+
+.footer__brand .c-r { color: var(--plurality-red); }
+.footer__brand .c-o { color: var(--plurality-orange); }
+.footer__brand .c-g { color: var(--plurality-green); }
+.footer__brand .c-c { color: var(--plurality-cyan); }
+.footer__brand .c-w { color: #fff; }
+
+.footer__links {
+  display: flex;
+  justify-content: center;
+  gap: 24px;
+  flex-wrap: wrap;
+  margin-bottom: 2rem;
+  list-style: none;
+  padding: 0;
+}
+
+.footer__link {
+  font-family: var(--sans);
+  font-size: 0.85rem;
+  color: var(--gold-light);
+  text-decoration: none;
+  transition: color 0.2s;
+}
+
+.footer__link:hover {
+  color: #fff;
+  text-decoration: underline;
+}
+
+.footer__sep {
+  width: 120px;
+  height: 1px;
+  background: linear-gradient(90deg, transparent, var(--gold-light), transparent);
+  margin: 0 auto 1.5rem;
+}
+
+.footer__authors {
+  font-family: var(--sans);
+  font-size: 0.85rem;
+  color: rgba(255, 255, 255, 0.5);
+  margin-bottom: 0.5rem;
+  line-height: 1.8;
+}
+
+.footer__license {
+  font-family: var(--sans);
+  font-size: 0.8rem;
+  color: rgba(255, 255, 255, 0.35);
+  line-height: 1.8;
+}
+
+/* ---- Responsive ---- */
+@media (max-width: 768px) {
+  .footer {
+    padding: 48px var(--section-pad-h);
+  }
+
+  .footer__links {
+    gap: 16px;
+  }
+}

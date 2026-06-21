@@ -1,0 +1,94 @@
+{
+  "sections": [
+    {
+      "id": "front-matter",
+      "title": "Before You Read",
+      "color": "var(--plurality-red)",
+      "chapters": [
+        { "id": "0-0", "number": "0-0", "title": "Endorsements", "file": "0-0-endorsements" },
+        { "id": "0-1", "number": "0-1", "title": "About the Authors", "file": "0-1-About-the-authors" },
+        { "id": "0-2", "number": "0-2", "title": "Finding Your Dao", "file": "0-2-finding-your-dao" },
+        { "id": "0-3", "number": "0-3", "title": "Credits", "file": "0-3-credits" }
+      ]
+    },
+    {
+      "id": "preface",
+      "title": "Preface",
+      "color": "var(--plurality-orange)",
+      "chapters": [
+        { "id": "1", "number": "1", "title": "Seeing Plural", "file": "1-preface" }
+      ]
+    },
+    {
+      "id": "foundation",
+      "title": "Information Technology and Democracy",
+      "color": "var(--plurality-green)",
+      "chapters": [
+        { "id": "2-0", "number": "2-0", "title": "A Widening Gulf", "file": "2-0-information-technology-and-democracy-a-widening-gulf" },
+        { "id": "2-1", "number": "2-1", "title": "A View from Yushan", "file": "2-1-a-view-from-yushan" },
+        { "id": "2-2", "number": "2-2", "title": "The Life of a Digital Democracy", "file": "2-2-the-life-of-a-digital-democracy" }
+      ]
+    },
+    {
+      "id": "plurality",
+      "title": "Plurality",
+      "color": "var(--plurality-cyan)",
+      "chapters": [
+        { "id": "3-0", "number": "3-0", "title": "What is \u2ffb?", "file": "3-0-what-is-\u2ffb" },
+        { "id": "3-1", "number": "3-1", "title": "Living in a \u2ffb World", "file": "3-1-living-in-a-\u2ffb-world" },
+        { "id": "3-2", "number": "3-2", "title": "Connected Society", "file": "3-2-connected-society" },
+        { "id": "3-3", "number": "3-3", "title": "The Lost Dao", "file": "3-3-the-lost-dao" }
+      ]
+    },
+    {
+      "id": "freedom",
+      "title": "Freedom",
+      "color": "var(--plurality-red)",
+      "chapters": [
+        { "id": "4-0", "number": "4-0", "title": "Rights, Operating Systems and \u2ffb Freedom", "file": "4-0-rights-os-and-\u2ffb-freedom" },
+        { "id": "4-1", "number": "4-1", "title": "Identity and Personhood", "file": "4-1-identity-and-personhood" },
+        { "id": "4-2", "number": "4-2", "title": "Association and \u2ffb Publics", "file": "4-2-association-and-\u2ffb-publics" },
+        { "id": "4-3", "number": "4-3", "title": "Commerce and Trust", "file": "4-3-commerce-and-trust" },
+        { "id": "4-4", "number": "4-4", "title": "Property and Contract", "file": "4-4-property-and-contract" },
+        { "id": "4-5", "number": "4-5", "title": "Access", "file": "4-5-access" }
+      ]
+    },
+    {
+      "id": "democracy",
+      "title": "Democracy",
+      "color": "var(--plurality-orange)",
+      "chapters": [
+        { "id": "5-0", "number": "5-0", "title": "Collaborative Technology and Democracy", "file": "5-0-collaborative-technology-and-democracy" },
+        { "id": "5-1", "number": "5-1", "title": "Post-Symbolic Communication", "file": "5-1-post-symbolic-communication" },
+        { "id": "5-2", "number": "5-2", "title": "Immersive Shared Reality", "file": "5-2-immersive-shared-reality" },
+        { "id": "5-3", "number": "5-3", "title": "Creative Collaborations", "file": "5-3-creative-collaborations" },
+        { "id": "5-4", "number": "5-4", "title": "Augmented Deliberation", "file": "5-4-augmented-deliberation" },
+        { "id": "5-5", "number": "5-5", "title": "Adaptive Administration", "file": "5-5-adaptive-administration" },
+        { "id": "5-6", "number": "5-6", "title": "\u2ffb Voting", "file": "5-6-\u2ffb-voting" },
+        { "id": "5-7", "number": "5-7", "title": "Social Markets", "file": "5-7-social-markets" }
+      ]
+    },
+    {
+      "id": "impact",
+      "title": "Impact",
+      "color": "var(--plurality-green)",
+      "chapters": [
+        { "id": "6-0", "number": "6-0", "title": "From \u2ffb to Reality", "file": "6-0-from-\u2ffb-to-reality" },
+        { "id": "6-1", "number": "6-1", "title": "Workplace", "file": "6-1-workplace" },
+        { "id": "6-2", "number": "6-2", "title": "Health", "file": "6-2-health" },
+        { "id": "6-3", "number": "6-3", "title": "Media", "file": "6-3-media" },
+        { "id": "6-4", "number": "6-4", "title": "Environment", "file": "6-4-environment" },
+        { "id": "6-5", "number": "6-5", "title": "Learning", "file": "6-5-learning" }
+      ]
+    },
+    {
+      "id": "forward",
+      "title": "Forward",
+      "color": "var(--plurality-cyan)",
+      "chapters": [
+        { "id": "7-0", "number": "7-0", "title": "Policy", "file": "7-0-policy" },
+        { "id": "7-1", "number": "7-1", "title": "Conclusion", "file": "7-1-conclusion" }
+      ]
+    }
+  ]
+}

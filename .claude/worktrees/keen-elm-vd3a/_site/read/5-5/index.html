@@ -1,0 +1,605 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Adaptive Administration — Plurality</title>
+  <meta name="description" content="A book by E. Glen Weyl, Audrey Tang and the Plurality Community exploring how technology can support and strengthen democracy.">
+  <meta name="theme-color" content="#faf8f5" media="(prefers-color-scheme: light)">
+  <meta name="theme-color" content="#0f1923" media="(prefers-color-scheme: dark)">
+
+  <link rel="canonical" href="https://new.plurality.net/read/5-5/">
+
+  <!-- Open Graph -->
+  <meta property="og:type" content="website">
+  <meta property="og:title" content="Adaptive Administration — Plurality">
+  <meta property="og:description" content="A book by E. Glen Weyl, Audrey Tang and the Plurality Community exploring how technology can support and strengthen democracy.">
+  <meta property="og:site_name" content="Plurality">
+  <meta property="og:locale" content="en">
+
+  <!-- Twitter Card -->
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Adaptive Administration — Plurality">
+  <meta name="twitter:description" content="A book by E. Glen Weyl, Audrey Tang and the Plurality Community exploring how technology can support and strengthen democracy.">
+
+  <!-- Favicon (inline SVG with brand colors) -->
+  <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='6' fill='%230f1923'/%3E%3Ctext x='16' y='22' text-anchor='middle' fill='%23c9a961' font-family='Georgia,serif' font-size='18' font-weight='700'%3EP%3C/text%3E%3C/svg%3E">
+
+  <!-- Fonts: Stage 1 critical -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+  <!-- Fonts: Stage 2 deferred -->
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,400;0,700;1,400&family=Cormorant+Garamond:wght@400;700&family=Outfit:wght@300;400;500;600&family=Noto+Sans+TC:wght@400;500&family=Noto+Serif+TC:wght@400;700&family=Noto+Sans+JP:wght@400;500&family=Noto+Serif+JP:wght@400;700&family=Sarabun:wght@400;600;700&display=swap" media="print" onload="this.media='all'">
+  <noscript>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,400;0,700;1,400&family=Cormorant+Garamond:wght@400;700&family=Outfit:wght@300;400;500;600&family=Noto+Sans+TC:wght@400;500&family=Noto+Serif+TC:wght@400;700&family=Noto+Sans+JP:wght@400;500&family=Noto+Serif+JP:wght@400;700&family=Sarabun:wght@400;600;700&display=swap">
+  </noscript>
+
+  <link rel="stylesheet" href="/assets/css/main.css">
+
+  <!-- Theme toggle (run before render to prevent flash) -->
+  <script src="/assets/js/theme-toggle.js"></script>
+</head>
+<body>
+  <a href="#main" class="skip-link">Skip to content</a>
+
+  
+
+
+
+
+<nav class="nav" role="navigation" aria-label="Main navigation">
+  <div class="nav__inner">
+    <a href="/" class="nav__logo" aria-label="Plurality home">Plurality</a>
+
+    <ul class="nav__links">
+      <li><a href="/read/" class="nav__link nav__link--active">Read</a></li>
+      <li><a href="/read/0-1/" class="nav__link">About</a></li>
+      <li><a href="https://github.com/pluralitybook/plurality" class="nav__link" target="_blank" rel="noopener">GitHub</a></li>
+      <li><button class="theme-toggle" aria-label="Toggle theme">&#9790;</button></li>
+    </ul>
+
+    <button class="nav__hamburger" aria-label="Open menu" aria-expanded="false">
+      <span></span>
+      <span></span>
+      <span></span>
+    </button>
+  </div>
+</nav>
+
+<div class="nav__overlay" role="dialog" aria-label="Mobile menu">
+  <a href="/read/" class="nav__overlay-link">Read</a>
+  <a href="/read/0-1/" class="nav__overlay-link">About</a>
+  <a href="https://github.com/pluralitybook/plurality" class="nav__overlay-link" target="_blank" rel="noopener">GitHub</a>
+  <button class="theme-toggle" aria-label="Toggle theme">&#9790;</button>
+</div>
+
+
+  <main id="main">
+    <div class="book" id="book">
+  
+  
+  
+  
+  <aside class="book__toc" aria-label="Table of contents" id="book-toc">
+    <button class="book__toc-toggle" aria-expanded="false" id="toc-toggle">
+      <span class="book__toc-toggle-icon"></span>
+      Table of Contents
+    </button>
+    <nav class="book__toc-nav" id="toc-nav">
+      <p class="book__toc-heading">Table of Contents</p>
+      
+        <p class="book__toc-section">Before You Read</p>
+        <ul class="book__toc-list">
+          
+            
+            
+            <li>
+              <a href="/read/0-0/">
+                <span class="book__toc-num">0-0</span> Endorsements
+              </a>
+            </li>
+          
+            
+            
+            <li>
+              <a href="/read/0-1/">
+                <span class="book__toc-num">0-1</span> About the Authors
+              </a>
+            </li>
+          
+            
+            
+            <li>
+              <a href="/read/0-2/">
+                <span class="book__toc-num">0-2</span> Finding Your Dao
+              </a>
+            </li>
+          
+            
+            
+            <li>
+              <a href="/read/0-3/">
+                <span class="book__toc-num">0-3</span> Credits
+              </a>
+            </li>
+          
+        </ul>
+      
+        <p class="book__toc-section">Preface</p>
+        <ul class="book__toc-list">
+          
+            
+            
+            <li>
+              <a href="/read/1/">
+                <span class="book__toc-num">1</span> Seeing Plural
+              </a>
+            </li>
+          
+        </ul>
+      
+        <p class="book__toc-section">Information Technology and Democracy</p>
+        <ul class="book__toc-list">
+          
+            
+            
+            <li>
+              <a href="/read/2-0/">
+                <span class="book__toc-num">2-0</span> A Widening Gulf
+              </a>
+            </li>
+          
+            
+            
+            <li>
+              <a href="/read/2-1/">
+                <span class="book__toc-num">2-1</span> A View from Yushan
+              </a>
+            </li>
+          
+            
+            
+            <li>
+              <a href="/read/2-2/">
+                <span class="book__toc-num">2-2</span> The Life of a Digital Democracy
+              </a>
+            </li>
+          
+        </ul>
+      
+        <p class="book__toc-section">Plurality</p>
+        <ul class="book__toc-list">
+          
+            
+            
+            <li>
+              <a href="/read/3-0/">
+                <span class="book__toc-num">3-0</span> What is ⿻?
+              </a>
+            </li>
+          
+            
+            
+            <li>
+              <a href="/read/3-1/">
+                <span class="book__toc-num">3-1</span> Living in a ⿻ World
+              </a>
+            </li>
+          
+            
+            
+            <li>
+              <a href="/read/3-2/">
+                <span class="book__toc-num">3-2</span> Connected Society
+              </a>
+            </li>
+          
+            
+            
+            <li>
+              <a href="/read/3-3/">
+                <span class="book__toc-num">3-3</span> The Lost Dao
+              </a>
+            </li>
+          
+        </ul>
+      
+        <p class="book__toc-section">Freedom</p>
+        <ul class="book__toc-list">
+          
+            
+            
+            <li>
+              <a href="/read/4-0/">
+                <span class="book__toc-num">4-0</span> Rights, Operating Systems and ⿻ Freedom
+              </a>
+            </li>
+          
+            
+            
+            <li>
+              <a href="/read/4-1/">
+                <span class="book__toc-num">4-1</span> Identity and Personhood
+              </a>
+            </li>
+          
+            
+            
+            <li>
+              <a href="/read/4-2/">
+                <span class="book__toc-num">4-2</span> Association and ⿻ Publics
+              </a>
+            </li>
+          
+            
+            
+            <li>
+              <a href="/read/4-3/">
+                <span class="book__toc-num">4-3</span> Commerce and Trust
+              </a>
+            </li>
+          
+            
+            
+            <li>
+              <a href="/read/4-4/">
+                <span class="book__toc-num">4-4</span> Property and Contract
+              </a>
+            </li>
+          
+            
+            
+            <li>
+              <a href="/read/4-5/">
+                <span class="book__toc-num">4-5</span> Access
+              </a>
+            </li>
+          
+        </ul>
+      
+        <p class="book__toc-section">Democracy</p>
+        <ul class="book__toc-list">
+          
+            
+            
+            <li>
+              <a href="/read/5-0/">
+                <span class="book__toc-num">5-0</span> Collaborative Technology and Democracy
+              </a>
+            </li>
+          
+            
+            
+            <li>
+              <a href="/read/5-1/">
+                <span class="book__toc-num">5-1</span> Post-Symbolic Communication
+              </a>
+            </li>
+          
+            
+            
+            <li>
+              <a href="/read/5-2/">
+                <span class="book__toc-num">5-2</span> Immersive Shared Reality
+              </a>
+            </li>
+          
+            
+            
+            <li>
+              <a href="/read/5-3/">
+                <span class="book__toc-num">5-3</span> Creative Collaborations
+              </a>
+            </li>
+          
+            
+            
+            <li>
+              <a href="/read/5-4/">
+                <span class="book__toc-num">5-4</span> Augmented Deliberation
+              </a>
+            </li>
+          
+            
+            
+            <li>
+              <a href="/read/5-5/" class="active">
+                <span class="book__toc-num">5-5</span> Adaptive Administration
+              </a>
+            </li>
+          
+            
+            
+            <li>
+              <a href="/read/5-6/">
+                <span class="book__toc-num">5-6</span> ⿻ Voting
+              </a>
+            </li>
+          
+            
+            
+            <li>
+              <a href="/read/5-7/">
+                <span class="book__toc-num">5-7</span> Social Markets
+              </a>
+            </li>
+          
+        </ul>
+      
+        <p class="book__toc-section">Impact</p>
+        <ul class="book__toc-list">
+          
+            
+            
+            <li>
+              <a href="/read/6-0/">
+                <span class="book__toc-num">6-0</span> From ⿻ to Reality
+              </a>
+            </li>
+          
+            
+            
+            <li>
+              <a href="/read/6-1/">
+                <span class="book__toc-num">6-1</span> Workplace
+              </a>
+            </li>
+          
+            
+            
+            <li>
+              <a href="/read/6-2/">
+                <span class="book__toc-num">6-2</span> Health
+              </a>
+            </li>
+          
+            
+            
+            <li>
+              <a href="/read/6-3/">
+                <span class="book__toc-num">6-3</span> Media
+              </a>
+            </li>
+          
+            
+            
+            <li>
+              <a href="/read/6-4/">
+                <span class="book__toc-num">6-4</span> Environment
+              </a>
+            </li>
+          
+            
+            
+            <li>
+              <a href="/read/6-5/">
+                <span class="book__toc-num">6-5</span> Learning
+              </a>
+            </li>
+          
+        </ul>
+      
+        <p class="book__toc-section">Forward</p>
+        <ul class="book__toc-list">
+          
+            
+            
+            <li>
+              <a href="/read/7-0/">
+                <span class="book__toc-num">7-0</span> Policy
+              </a>
+            </li>
+          
+            
+            
+            <li>
+              <a href="/read/7-1/">
+                <span class="book__toc-num">7-1</span> Conclusion
+              </a>
+            </li>
+          
+        </ul>
+      
+    </nav>
+  </aside>
+
+  
+  <article class="book__page" id="book-page">
+    
+    <div class="book__page-curl" aria-hidden="true"></div>
+
+    
+    <header class="book__header">
+      
+        <p class="book__section-label">Democracy · 5-5</p>
+      
+      <h1 class="book__title">Adaptive Administration</h1>
+      
+      
+        <nav class="book__lang-switch" aria-label="Language versions">
+          <span class="book__lang-current">English</span>
+          
+            <a href="/zh/read/5-5/" class="book__lang-link" lang="zh">華文</a>
+          
+            <a href="/ja/read/5-5/" class="book__lang-link" lang="ja">日本語</a>
+          
+            <a href="/th/read/5-5/" class="book__lang-link" lang="th">ไทย</a>
+          
+        </nav>
+      
+      <div class="book__header-ornament" aria-hidden="true">
+        <span></span><span></span><span></span>
+      </div>
+    </header>
+
+    
+    <div class="book__body">
+      
+
+  <p>To launch what has come be known as the “Year of AI”, <a href="https://www.microsoft.com">Microsoft CEO</a> Satya Nadella <a href="https://www.youtube.com/watch?v=tAxQIpp4uQA">demonstrated</a> at the <a href="https://www.weforum.org/">World Economic Forum</a> in Davos, Switzerland how a farmer speaking a local language in rural India could use a feature phone paired with a large language model (LLM) back end to access public services.  The model understood the voice, translated from the local language to the national language in which the relevant forms were available, helped navigate what needed to be filled out, and returned guidance via voice to the farmer.</p>
+<p>This demonstration built on years of work and multi stakeholder collaborations including <a href="https://ai4bharat.iitm.ac.in/">AI4Bharat</a>, <a href="https://karya.in/">Karya</a> and <a href="https://www.usenix.org/conference/nsdr12/workshop-program/presentation/vashistha">IVR Junction</a>, which have employed Indians to gather data on local languages, harnessed these data to empower LLMs to translate across these languages and connected illiterate Indians with access only to simple feature phones to connect to a “voice-based internet”.  Together these hold the promise of helping preserve and strengthen the cultural diversity of India by ensuring those who speak less prominent languages and live far from cities are still able to access the public services they need to sustain their ways of life.</p>
+<figure>
+<img src="https://raw.githubusercontent.com/pluralitybook/plurality/main/figs/farmer.jpg" width="100%" alt="One Indian farmer pointing out something to another on his mobile phone">
+**<figcaption>Figure 5-5-A. The results of this work can be seen taking place already. Source: Courtesy of Microsoft.</figcaption>**
+</figure>
+<br></br>
+<p>Building on these demonstrations, Indian business, civil and government entities have launched services to harness these capabilities at scale.  These include a government-provided chatbot to support applications to <a href="https://opengovasia.com/2023/09/23/ai-based-chatbot-to-support-indian-farmers/">farmer financial support programs</a> and a free WhatsApp-based multilingual chatbot that offers guidance on a variety of public services.</p>
+<hr>
+<p>Administration and bureaucracy are central features organizing much of the world.  They involve structured forms of communication and rule-bound processing of this information that is much more formal and stricter than the conventions of natural language. It is a less rich sensory experience that often has the aim of achieving legitimacy, equity, and procedural fairness.  Yet they usually allow some form of extended communication in contrast to more strictly mathematical and mechanical interactions of voting or markets.  Thus, they generally require deeper common understanding between participants to proceed effectively and ensure that conventions are harnessed and not violated.  Administration is at the core of most interactions between individuals or small businesses with governments or large corporations. It is also central in the formation of medium-term relationships between people within a polity without tight social connections.  It governs most of what we think of as law, property systems, identification, hiring and admissions and most functions of the  “administrative state” and “corporate bureaucracy”.</p>
+<p>The classic complaints against bureaucracy and administration are that they are at once capricious, granting excessive discretionary power to those who hold various adjudicatory positions in the administration, and rigid, unable to adapt to either the nuances of an individual case nor to cultural settings outside the scope of the bureaucracy’s expectations.  In this chapter we aim to illustrate how advances in digital technology, especially generative foundation models, may help alleviate some of these trade-offs, allowing more diverse groups of people to cooperate in administrative systems while respecting their ways of life.</p>
+<h3 id="administration-today" tabindex="-1">Administration today</h3>
+<p>Many of the most consequential junctures of life turn on administrative outcomes based on information structures (various kinds of “forms”) that are much thinner than the way we conduct most of our lives.  Examples include:</p>
+<ul>
+<li>Identification and travel documents</li>
+<li>Educational transcripts, resumés and other summaries of “the course of a life” (curriculum vitae/CV)</li>
+<li>Legal documents, including property deeds and contracts.</li>
+<li>Tax filings.</li>
+<li>Structured performance evaluations</li>
+<li>Medical intake and evaluation forms</li>
+<li>Legal filings (though these usually include more detail and context than the above)</li>
+</ul>
+<p>These structured forms of information allow for “fair”, “just” and “impartial” evaluation of potential allocations or choices that are too complex to rely on universally transparent rules, as markets and votes do.  To achieve fairness, these systems often deliberately discard a range of information, as dramatically illustrated by the blindness of justice in various personified representations in European tradition.  As scholars since at least pioneering sociologist Max Weber have remarked, to achieve these twin goals of harnessing richer information than votes or markets while maintaining fairness, administrative systems employ large “bureaucracies” and much digital processing to evaluate these structured data according to rules and procedures.<sup class="footnote-ref"><a href="#fn1" id="fnref1">[1]</a></sup></p>
+<p>Thus, administrations run into two opposing complaints, which roughly correspond to the limits of the richness of the collaboration they allow and the limits of their ability to span social diversity.<sup class="footnote-ref"><a href="#fn2" id="fnref2">[2]</a></sup></p>
+<p>The first might be called the problem of “rigidity”, namely that bureaucratic rules, by throwing away a lot of detail, lead to outcomes that are insensitive to important features of specific cases or local circumstances. Examples range from the mundane to the oppressive and simply ridiculous. Consider:</p>
+<ul>
+<li>Most jurisdictions have speed limits for driving cars to ensure safety.  Yet the safe speed for driving varies dramatically with road, environmental and other related conditions.  This means that speed limits are, most of the time, either too high or too low for the circumstances.  Similar logic applies to almost all administrative policy settings, from the prices of goods to the break time allowed workers.</li>
+<li>To obtain most high-paying jobs, people from a diversity of cultures around the world have to fit their accomplishments and lives into the format of CVs and transcripts designed to make them legible to administrative bureaucracies and hiring managers, rather than to reflect their accomplishments accurately.</li>
+<li>In the late 1990s, a Dutch airliner ended up <a href="https://www.independent.co.uk/news/airline-killed-440-squirrels-in-giant-shredder-1087522.html">physically shredding</a> hundreds of live squirrels that lacked appropriate paperwork for transiting Schiphol airport.  While a particularly gruesome example, almost anyone who has flown is aware of the rigidity of the bureaucratic systems that administer air travel and will thus not be overly surprised by this outcome.</li>
+</ul>
+<p>Yet at the same time as they are rigid, “cold” and “heartless”, an equally common and opposite complaint about bureaucracies is their “complexity”: that they often are inscrutable, hard to navigate (see, for example, Franz Kafka’s classic work <em>The Castle</em>), full of red tape, and give excessive discretion to apparently arbitrary bureaucrats.<sup class="footnote-ref"><a href="#fn3" id="fnref3">[3]</a></sup>  These problems are among the most infuriating features of bureaucracies and are a constant source of complaint by libertarians.  In fact, they have largely inspired many of the ideas about “distributed autonomous organizations” (DAOs) and “smart contracts” that are intended to escape excessive discretion, as well as leading to the high costs of the legal sector.  And yet, clearly a key reason for such complexity is the need to handle the diversity and nuance of the cases they must administer.  The leading reason, therefore, that bureaucracies become illegitimate as they try to span a broad range of social diversity is that, to accommodate this range, they have to become too complex to function properly.  Increasingly, however, digital technologies are emerging that allow this trade-off to be navigated more elegantly and thus allow richer cooperation to legitimately span a broader range of diversity.</p>
+<h3 id="adaptive-administration-tomorrow" tabindex="-1">Adaptive administration tomorrow</h3>
+<p>The most important suite of technologies so far in achieving elegant complexity navigation have been those usually referred to as “artificial intelligence”(AI).  However, as we have repeatedly noted, the term AI refers more to an aspiration than to a particular set of tools and in this case, the details of the tools involved are critical to what distinguishes the administrative bureaucracies of old from the potential opened up by generative foundation models (GFMs).  The AI work that dominated the field in the 1970s and 1980s, sometimes called “good old-fashioned AI” (GOFAI), was in many ways an attempt to automate traditional bureaucratic processing.  Programmers, by talking to “experts”, would attempt to encode administrative processes in complicated sets of nested rules (often called “decision trees”): Does the patient have a fever?  If yes, are her eyes red; if not are her lymph nodes inflamed?.. This style of AI ran into major obstacles and fell from favor during the 1990s. It has since largely been replaced by “machine learning”, especially neural networks, and their most ambitious and recent outgrowth, GFMs.</p>
+<p>In sharp contrast to GOFAI, machine learning is a statistical and emergent approach to classification, prediction, and decisions.  Rather than applying a top-down set of hard-coded rules, the system learns to classify based on examples, in a probabilistic manner and in ways that often have no simple explanation.  In neural networks, and especially GFMs, there are often billions or even trillions of “nodes” that receive input from each other. These nodes then triggering and inputting to other nodes, all coalescing to predict an outcome such as the next word or image.  Based on such processes, GFMs have shown remarkable and rapidly improving ability to realistically reproduce the type of flexible classification, reaction and reasoning humans are often capable of in a rapidly scalable and largely reproducible way.</p>
+<p>Such successes have created the tantalizing prospect of GFMs ameliorating the fundamental tradeoff at the heart of administration.  Harnessing GFMs as components in administrative processes could allow them to take a far more diverse and unstructured range of inputs, adapt to them in the manner that a thoughtful and knowledgeable expert might, and do so in a way that offers a degree of reproducibility without imposing undue burdens on users to fill out specialized forms.</p>
+<p>Explorations of this possibility have emerged especially in the last two years as interest around GFMs has exploded:</p>
+<ul>
+<li>As we highlighted in our introductory vignette, these tools have shown significant promise in allowing marginalized communities access public services that they may otherwise struggle to discover and navigate.  A primary role of social workers has long been to support such navigation, but public expenditures have typically been far too small to ensure anywhere close to universal access, especially in developing countries.  Leaders in such practices have been the Finnish government’s <a href="https://www.kela.fi/chattirobotti">Kela-Kelpo</a> project, Germany’s <a href="https://www.issa.int/analysis/artificial-intelligence-social-security-institutions-case-intelligent-chatbots">Federal Pension Insurance system</a> and the <a href="https://bdtrust.org/ai-and-the-future-of-government-services/">Benefits Data Trust</a> in the US.</li>
+<li>A similar but even more ambitious application is harnessing GFMs to improve access to legal advice and services for those who cannot afford high quality traditional legal support.  Examples include <a href="https://legalrobot.com/">Legal Robot</a> and <a href="https://donotpay.com/">DoNotPay</a>, both of which aim to help customers with limited means reduce the imbalance in legal access with corporate entities that can afford high quality legal services because they care not just about case outcomes but the precedents they create.<sup class="footnote-ref"><a href="#fn4" id="fnref4">[4]</a></sup></li>
+<li>Job markets often fall into a “rich get richer” pattern as top employers often recruit exclusively from elite universities or use job experience at famous peer firms as a primary indicator of potential, foreclosing paths to opportunity for many who may have less conventional paths and, perhaps more importantly, forcing everyone interested in such opportunities down a narrow educational and career path.  Several new human resources platforms (such as <a href="https://www.hiredscore.com/">HiredScore</a>, <a href="https://www.paradox.ai/">Paradox.ai</a>, <a href="https://www.turing.com/">Turing</a> and <a href="https://www.untapped.io/">Untapped</a>) aim to expand the breadth and diversity of candidates that hiring managers can consider.  A leading challenge is that the limited examples of hiring such diverse candidates in the past can undermine the reliability and flexibility of such algorithms.</li>
+<li>Many of the most environmentally and culturally rich regions of the earth are either poorly mapped or mapped in ways that impose the perspective of colonial outsiders, rather than indigenous peoples who are more attentive to the environment and have long-existing relationships.<sup class="footnote-ref"><a href="#fn5" id="fnref5">[5]</a></sup>  A variety of groups have harnessed digital mapping tools and increasingly GFMs to describe such traditional patterns of rights and assert them against colonial legal systems.  These include <a href="https://www.digital-democracy.org/">Digital Democracy</a>, the <a href="https://en.wikipedia.org/wiki/Rainforest_Foundation_US">Rainforest Foundation US</a>, the Australian Government’s <a href="https://en.wikipedia.org/wiki/Indigenous_Land_and_Sea_Corporation">Indigenous Land and Sea Corporation</a> and México’s <a href="https://servir.alliancebioversityciat.org/">SERVIR Amazonia</a>.<sup class="footnote-ref"><a href="#fn6" id="fnref6">[6]</a></sup></li>
+</ul>
+<p>As the last example especially suggests, a range of digital technologies not traditionally associated with “AI” are also relevant here, including mapping (global positioning and geographical information systems). This is dramatically illustrated in the collaborative mapping work of <a href="https://www.ushahidi.com/">Ushahidi</a> that has helped in the response to disasters and conflict.<sup class="footnote-ref"><a href="#fn7" id="fnref7">[7]</a></sup> Also included are transparent databases (including distributed ledgers) as illustrated in a range of cases where these are being used as substrates for refugee identities by organizations like <a href="https://www.id2020.org/">ID2020</a> or for land registries in Honduras.  Furthermore, the power of GFMs stems less from being “AI” than from their networked and probabilistic structure, which allows them to adapt to a greater diversity and ambiguity of inputs.  Such structures can also exist in networks of human relationships, including more adaptive forms of bureaucracy, packet-switching based trust relationships, etc.</p>
+<h3 id="frontiers-of-adaptive-administration" tabindex="-1">Frontiers of adaptive administration</h3>
+<p>Whether grounded in networks of human minds, computer-simulated neurons or, most likely and effectively, an interweaving mesh of both, the potential for such systems could stretch well beyond these first experiments which largely aim to fit into existing rigid administrative structures and thus, in many cases, to reinforce their limitations.  It is thus worth freeing our minds from some of these constraints to imagine building towards more transformative change.</p>
+<p>One of the most promising directions was <a href="https://www.nextgenbadging.org/">proposed</a> by Danielle Allen, David Kidd and Ariana Zetlin.<sup class="footnote-ref"><a href="#fn8" id="fnref8">[8]</a></sup>  They suggest the gradual replacement of traditional coursework and grades with a far more diverse range of “badges”. Starting with concrete recognition of specific measurable skills which then help qualify holders for “mezzo badges”. Based on holding an appropriate combination of micro and mezzo badges people eventually ladder up to recognizable “macro badges” that can be used by potential employers or educational institutions.  This process directly mirrors that which occurs within a neural network, where combinations of lower-level inputs trigger progressively higher-level and thus more meaningful outputs.  Allen and her co-authors argue that such a system would be much more consistent with years of research in educational psychology which emphasizes the granular nature of skills and the poor fit of standard classroom practices to it and the fact that many students, especially historically marginalized and/or academically disinclined ones, often end up excluded from opportunity by such rigid structures.</p>
+<p>Not only could GFMs and other neural networks be mirrored in the structure of such a system, they might be directly useful to it in allowing employers to cope with the more complex CVs it would create. GFMs could also help students navigate the more diverse learning pathways they would allow and could directly instantiate and produce some of the relevant badges.  Furthermore,  technologies of publicity (including social networks, verifiable credentials, and distributed ledgers) would likely be critical to achieving trust, credibility and transparency around such badges.  Relatedly, but perhaps more broadly, many practices of identification and admission to credentialed spaces (clubs, schools, nations via migration etc.) could rely on a more distributed network of signals from a variety social relations as we discussed in our <a href="https://www.plurality.net/v/chapters/4-1/eng/?mode=dark">Identity and Personhood</a> chapter if such a range of signals could be meaningfully processed by more adaptive administrative infrastructure in the future.</p>
+<p>Even more ambitiously, it might be possible to one day integrate far more diverse legal systems into administrative practices.  The arrival of modernity and colonialism around the world largely overrode a range of traditional practices that varied dramatically by geography and culture.  Many of these practices persist informally but jar with formal legal structures imposed by often distant national governments.  These include practices around gender and sexual relationships, obligations associated with gift giving, the resolution of familial conflict and obligations, land use and more.  While in some cases there is growing consensus that the abolition of such traditions is appropriate (e.g. prohibitions on female genital marking), in many cases laws have “overwritten” traditional practices more out of convenience than conviction.  Traditional practices make it difficult, for example, for someone from far away to understand how to acquire land or appropriately intermarry in a community.  The sometimes enforced, sometimes cajoled homogenization of cultural practices has brought some benefits to intermixing and dynamism, but at a great cost to often ancient and diverse wisdom of cultures.</p>
+<p>Just as GFMs are increasingly capable of providing low-cost translation across a growing number of languages, it is just possible to imagine that equally rapid translation across cultural norms may become feasible. These services in the past have been provided imperfectly and at great expense by cultural anthropologists and ethnographers.  Just as far cheaper and easier translation may allow a much wider range of languages to remain viable and attractive to new generations because of the external interoperability it would allow, far cheaper and easier translation of norms might make a much broader range of legal and property practices sustainable.  This would reduce the constant burden of fitting into modernity imposed not just on colonized but also on a range of “traditional” communities within the developed world, often in rural areas.  It would also greatly enrich the diversity that remains as the fuel for social growth and progress, as next generations of GFMs learn from being stretched by these cultural differences to perform ever more flexibly.</p>
+<p>Beyond the preservation of existing diversity, such a future could help support its further diversification and speciation.  Many of the practices we have sketched in this book challenge the imaginations of even ambitious futurists.  This has led those attracted by experiments with these kinds of ideas to propose “<a href="https://thenetworkstate.com/">network states</a>”, “<a href="https://chartercitiesinstitute.org/intro/">charter cities</a>”, “<a href="https://en.wikipedia.org/wiki/Seasteading">seasteads</a>” and other forms of escape from existing legal jurisdictions that, obviously, run into a range of tensions with preserving broader public goods and social order.  Yet such clean separation may not be necessary to support such experiments if they can easily be understood by and integrated into existing legal structures by machine translation.  This may empower a diverse range of experimentation with combinations of novel and traditional practices, while maintaining cooperation across broad social differences, and empowering the flourishing of ever expanding, infinite diversity in infinite combinations.</p>
+<h3 id="limits-of-adaptive-administration" tabindex="-1">Limits of adaptive administration</h3>
+<p>There may be no technology today whose pitfalls and dangers are more discussed than GFMs and for good reason.  Their opacity, mystique of autonomy (implicit in the common “AI” terminology that we mostly therefore avoid) that helps obscure the conditions of their creation, potential to inherit the biases of both their source data and creators, and potential for misuse all pose significant dangers.</p>
+<p>In the context of administrative applications, the manifestations of these flaws are easy to see.  While GFMs may be less burdensome to interact with, they arguably further exacerbate the opacity of bureaucracy and may not much mitigate the problems of discretion and human bias given that it is often extremely challenging to map the biases of such systems or what clusters of human behaviors in the past shape their outputs today.<sup class="footnote-ref"><a href="#fn9" id="fnref9">[9]</a></sup>  Because such models overwhelmingly train on existing data, measuring the data diversity that AI researchers value, but struggle to define, is crucial to ensuring the models are generally performant and able to cope with diversity in the way we imagine.  The terms of power on which such diversity is explored and incorporated into the models will shape how they offer opportunity for diversity or force conformity. Many of the ethnographers of old became tools of colonial subjugation rather than voices of inclusive translation.<sup class="footnote-ref"><a href="#fn10" id="fnref10">[10]</a></sup>  Furthermore, if abused by powerful interests, interoperability across legal regimes can easily slip into regulatory arbitrage, taking advantage of the gap between legal intent and formal rules.</p>
+<p>Luckily, some of the technologies we highlight in other chapters of this section have the potential to address at least partially some of these harms.  While GFMs logic is hopelessly opaque when we try to reduce it to the simplistic representations of mathematics, richer formats like immersive shared reality or post-symbolic communication may give access to deeper modes of connection and understanding that aid in the establishment of the trust in human communities that enables the use of richer discretion.  Many of the methods of collective deliberation and decision-making we highlighted in the previous chapter and further explore in the next have natural applications to defining legitimate distributions of power that can directly shape the governance of GFMs, the distribution of the economic value they create, and the ways they are collectively steered to behave in line with public wills.  Grounded in legitimacy such practices can provide and explore through richer interaction modes, these and other digital systems hold significant promise of overcoming the simultaneously cold and arbitrary nature of the world of systems that has been the price of modernity.</p>
+<hr class="footnotes-sep">
+<section class="footnotes">
+<ol class="footnotes-list">
+<li id="fn1" class="footnote-item"><p>Max Weber, <em>Economy and Society</em> (Somerville, NJ: Bedminster Press, 1968). <a href="#fnref1" class="footnote-backref">↩︎</a></p>
+</li>
+<li id="fn2" class="footnote-item"><p>A forthcoming book provides an excellent study in these pathologies, as well as providing the squirrel example below. Davies, op. cit. <a href="#fnref2" class="footnote-backref">↩︎</a></p>
+</li>
+<li id="fn3" class="footnote-item"><p>Franz Kafka, <em>The Castle</em> (Munich: Kurt Wolff Verlag, 1926). <a href="#fnref3" class="footnote-backref">↩︎</a></p>
+</li>
+<li id="fn4" class="footnote-item"><p>Marc Galanter, “Why the ‘Haves’ Come Out Ahead: Speculations on the Limits of Legal Change”, <em>Law and Society Review</em> 9, no. 1 (1974): 95. <a href="#fnref4" class="footnote-backref">↩︎</a></p>
+</li>
+<li id="fn5" class="footnote-item"><p>Aníbal Quijano, “Coloniality and Modernity/Rationality”, <em>Cultural Studies</em> 21, no. 2-3: 168-178. <a href="#fnref5" class="footnote-backref">↩︎</a></p>
+</li>
+<li id="fn6" class="footnote-item"><p>Jake Ramthun, Biplov Bhandari and Tim Mayer, “How SERVIR Uses AI to Turn Earth Science into Climate Action”, <em>SERVIR blog</em> November 21, 2023 at <a href="https://servirglobal.net/news/how-servir-uses-ai-turn-earth-science-climate-action">https://servirglobal.net/news/how-servir-uses-ai-turn-earth-science-climate-action</a>. <a href="#fnref6" class="footnote-backref">↩︎</a></p>
+</li>
+<li id="fn7" class="footnote-item"><p>Ory Okolloh, “Ushahidi, or ‘Testimony’: Web 2.0 Tools for Crowdsourcing Crisis Information” in Holly Ashley ed., <em>Change at Hand: Web 2.0 for Development</em> (London: International Institute for Environment and Development, 2009). <a href="#fnref7" class="footnote-backref">↩︎</a></p>
+</li>
+<li id="fn8" class="footnote-item"><p>Danielle Allen, David Kidd and Ariana Zetlin, “A Call to More Equitable Learning: How Next-Generation Badging Improves Education for All” Edmond and Lil Safra Center for Ethics and Democratic Knowledge Project, August 2022 at <a href="https://www.nextgenbadging.org/whitepaper">https://www.nextgenbadging.org/whitepaper</a>. <a href="#fnref8" class="footnote-backref">↩︎</a></p>
+</li>
+<li id="fn9" class="footnote-item"><p>See for example Safiya Umoja Noble, <em>Algorithms of Oppression: How Search Engines Reinforce Racism</em> (New York: New York University Press, 2018). Cathy O’Neil, <em>Weapons of Math Destruction: How Big Data Increases Inequality and Threatens Democracy</em> (New York: Broadway Books, 2016). Ruha Benjamin, <em>Race After Technology: Abolitionist Tools for the New Jim Crow</em> (Cambridge, UK: Polity Press, 2019). <a href="#fnref9" class="footnote-backref">↩︎</a></p>
+</li>
+<li id="fn10" class="footnote-item"><p>Talal Asad, <em>Anthropology &amp; the Colonial Encounter</em> (Ithaca, NY: Ithaca Press, 1973). <a href="#fnref10" class="footnote-backref">↩︎</a></p>
+</li>
+</ol>
+</section>
+
+
+
+    </div>
+
+    
+    
+    <nav class="book__nav" aria-label="Chapter navigation">
+      
+        <a href="/read/5-4/" class="book__nav-link book__nav-link--prev" data-page-dir="prev">
+          <span class="book__nav-arrow">&larr;</span>
+          <span class="book__nav-info">
+            <span class="book__nav-label">Previous</span>
+            <span class="book__nav-title">Augmented Deliberation</span>
+          </span>
+        </a>
+      
+      
+        <a href="/read/5-6/" class="book__nav-link book__nav-link--next" data-page-dir="next">
+          <span class="book__nav-info">
+            <span class="book__nav-label">Next</span>
+            <span class="book__nav-title">⿻ Voting</span>
+          </span>
+          <span class="book__nav-arrow">&rarr;</span>
+        </a>
+      
+    </nav>
+    
+
+    
+    <div class="book__page-number" aria-hidden="true">
+      5-5
+    </div>
+  </article>
+</div>
+
+<script src="/assets/js/book.js"></script>
+
+  </main>
+
+  
+
+
+
+
+<footer class="footer" role="contentinfo">
+  <div class="footer__inner">
+    <div class="footer__brand" aria-hidden="true">
+      <span class="c-r">P</span><span class="c-o">l</span><span class="c-g">u</span><span class="c-c">r</span><span class="c-w">a</span><span class="c-c">l</span><span class="c-g">i</span><span class="c-o">t</span><span class="c-r">y</span>
+    </div>
+
+    <ul class="footer__links">
+      <li><a href="/read/" class="footer__link">Read</a></li>
+      <li><a href="/read/0-1/" class="footer__link">About</a></li>
+      <li><a href="https://github.com/pluralitybook/plurality" class="footer__link" target="_blank" rel="noopener">GitHub</a></li>
+      <li><a href="https://discord.gg/YWSDRqdW5n" class="footer__link" target="_blank" rel="noopener">Discord</a></li>
+    </ul>
+
+    <div class="footer__sep"></div>
+
+    <p class="footer__authors">E. Glen Weyl, Audrey Tang and the Plurality Community</p>
+    <p class="footer__license">This work is dedicated to the public domain under CC0.</p>
+  </div>
+</footer>
+
+
+  <script src="/assets/js/nav.js"></script>
+  <script src="/assets/js/scroll-reveal.js"></script>
+
+  <!-- Structured Data -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "WebSite",
+    "name": "Plurality",
+    "description": "A book by E. Glen Weyl, Audrey Tang and the Plurality Community exploring how technology can support and strengthen democracy.",
+    "url": "https://new.plurality.net",
+    "author": [
+      { "@type": "Person", "name": "E. Glen Weyl" },
+      { "@type": "Person", "name": "Audrey Tang" },
+      { "@type": "Organization", "name": "the Plurality Community" }
+    ],
+    "license": "https://creativecommons.org/publicdomain/zero/1.0/"
+  }
+  </script>
+</body>
+</html>

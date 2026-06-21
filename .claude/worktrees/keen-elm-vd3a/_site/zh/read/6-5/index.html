@@ -1,0 +1,673 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>學習 — Plurality</title>
+  <meta name="description" content="A book by E. Glen Weyl, Audrey Tang and the Plurality Community exploring how technology can support and strengthen democracy.">
+  <meta name="theme-color" content="#faf8f5" media="(prefers-color-scheme: light)">
+  <meta name="theme-color" content="#0f1923" media="(prefers-color-scheme: dark)">
+
+  <link rel="canonical" href="https://new.plurality.net/zh/read/6-5/">
+
+  <!-- Open Graph -->
+  <meta property="og:type" content="website">
+  <meta property="og:title" content="學習 — Plurality">
+  <meta property="og:description" content="A book by E. Glen Weyl, Audrey Tang and the Plurality Community exploring how technology can support and strengthen democracy.">
+  <meta property="og:site_name" content="Plurality">
+  <meta property="og:locale" content="zh">
+
+  <!-- Twitter Card -->
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="學習 — Plurality">
+  <meta name="twitter:description" content="A book by E. Glen Weyl, Audrey Tang and the Plurality Community exploring how technology can support and strengthen democracy.">
+
+  <!-- Favicon (inline SVG with brand colors) -->
+  <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='6' fill='%230f1923'/%3E%3Ctext x='16' y='22' text-anchor='middle' fill='%23c9a961' font-family='Georgia,serif' font-size='18' font-weight='700'%3EP%3C/text%3E%3C/svg%3E">
+
+  <!-- Fonts: Stage 1 critical -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+  <!-- Fonts: Stage 2 deferred -->
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,400;0,700;1,400&family=Cormorant+Garamond:wght@400;700&family=Outfit:wght@300;400;500;600&family=Noto+Sans+TC:wght@400;500&family=Noto+Serif+TC:wght@400;700&family=Noto+Sans+JP:wght@400;500&family=Noto+Serif+JP:wght@400;700&family=Sarabun:wght@400;600;700&display=swap" media="print" onload="this.media='all'">
+  <noscript>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,400;0,700;1,400&family=Cormorant+Garamond:wght@400;700&family=Outfit:wght@300;400;500;600&family=Noto+Sans+TC:wght@400;500&family=Noto+Serif+TC:wght@400;700&family=Noto+Sans+JP:wght@400;500&family=Noto+Serif+JP:wght@400;700&family=Sarabun:wght@400;600;700&display=swap">
+  </noscript>
+
+  <link rel="stylesheet" href="/assets/css/main.css">
+
+  <!-- Theme toggle (run before render to prevent flash) -->
+  <script src="/assets/js/theme-toggle.js"></script>
+</head>
+<body>
+  <a href="#main" class="skip-link">Skip to content</a>
+
+  
+
+
+
+
+<nav class="nav" role="navigation" aria-label="Main navigation">
+  <div class="nav__inner">
+    <a href="/zh/" class="nav__logo" aria-label="Plurality home">Plurality</a>
+
+    <ul class="nav__links">
+      <li><a href="/zh/read/" class="nav__link nav__link--active">閱讀</a></li>
+      <li><a href="/zh/read/0-1/" class="nav__link">關於</a></li>
+      <li><a href="https://github.com/pluralitybook/plurality" class="nav__link" target="_blank" rel="noopener">GitHub</a></li>
+      <li><button class="theme-toggle" aria-label="Toggle theme">&#9790;</button></li>
+    </ul>
+
+    <button class="nav__hamburger" aria-label="Open menu" aria-expanded="false">
+      <span></span>
+      <span></span>
+      <span></span>
+    </button>
+  </div>
+</nav>
+
+<div class="nav__overlay" role="dialog" aria-label="Mobile menu">
+  <a href="/zh/read/" class="nav__overlay-link">閱讀</a>
+  <a href="/zh/read/0-1/" class="nav__overlay-link">關於</a>
+  <a href="https://github.com/pluralitybook/plurality" class="nav__overlay-link" target="_blank" rel="noopener">GitHub</a>
+  <button class="theme-toggle" aria-label="Toggle theme">&#9790;</button>
+</div>
+
+
+  <main id="main">
+    <div class="book" id="book">
+  
+  
+  
+  
+  <aside class="book__toc" aria-label="Table of contents" id="book-toc">
+    <button class="book__toc-toggle" aria-expanded="false" id="toc-toggle">
+      <span class="book__toc-toggle-icon"></span>
+      目錄
+    </button>
+    <nav class="book__toc-nav" id="toc-nav">
+      <p class="book__toc-heading">目錄</p>
+      
+        <p class="book__toc-section">導讀</p>
+        <ul class="book__toc-list">
+          
+            
+            
+              
+            
+            <li>
+              <a href="/zh/read/0-0/">
+                <span class="book__toc-num">0-0</span> 名家推薦
+              </a>
+            </li>
+          
+            
+            
+              
+            
+            <li>
+              <a href="/zh/read/0-1/">
+                <span class="book__toc-num">0-1</span> 關於作者群
+              </a>
+            </li>
+          
+            
+            
+              
+            
+            <li>
+              <a href="/zh/read/0-2/">
+                <span class="book__toc-num">0-2</span> 找到你的道路
+              </a>
+            </li>
+          
+            
+            
+              
+            
+            <li>
+              <a href="/zh/read/0-3/">
+                <span class="book__toc-num">0-3</span> 致謝
+              </a>
+            </li>
+          
+        </ul>
+      
+        <p class="book__toc-section">序言</p>
+        <ul class="book__toc-list">
+          
+            
+            
+              
+            
+            <li>
+              <a href="/zh/read/1/">
+                <span class="book__toc-num">1</span> 數位觀照
+              </a>
+            </li>
+          
+        </ul>
+      
+        <p class="book__toc-section">資訊技術與民主</p>
+        <ul class="book__toc-list">
+          
+            
+            
+              
+            
+            <li>
+              <a href="/zh/read/2-0/">
+                <span class="book__toc-num">2-0</span> 資訊技術與民主：日益擴大的鴻溝
+              </a>
+            </li>
+          
+            
+            
+              
+            
+            <li>
+              <a href="/zh/read/2-1/">
+                <span class="book__toc-num">2-1</span> 玉山視野
+              </a>
+            </li>
+          
+            
+            
+              
+            
+            <li>
+              <a href="/zh/read/2-2/">
+                <span class="book__toc-num">2-2</span> 數位民主的日常
+              </a>
+            </li>
+          
+        </ul>
+      
+        <p class="book__toc-section">多元宇宙</p>
+        <ul class="book__toc-list">
+          
+            
+            
+              
+            
+            <li>
+              <a href="/zh/read/3-0/">
+                <span class="book__toc-num">3-0</span> 何謂多元宇宙？
+              </a>
+            </li>
+          
+            
+            
+              
+            
+            <li>
+              <a href="/zh/read/3-1/">
+                <span class="book__toc-num">3-1</span> 活在⿻世界
+              </a>
+            </li>
+          
+            
+            
+              
+            
+            <li>
+              <a href="/zh/read/3-2/">
+                <span class="book__toc-num">3-2</span> 相連的社會
+              </a>
+            </li>
+          
+            
+            
+              
+            
+            <li>
+              <a href="/zh/read/3-3/">
+                <span class="book__toc-num">3-3</span> 我們遺忘的道
+              </a>
+            </li>
+          
+        </ul>
+      
+        <p class="book__toc-section">自由</p>
+        <ul class="book__toc-list">
+          
+            
+            
+              
+            
+            <li>
+              <a href="/zh/read/4-0/">
+                <span class="book__toc-num">4-0</span> 權利、作業系統與數位自由
+              </a>
+            </li>
+          
+            
+            
+              
+            
+            <li>
+              <a href="/zh/read/4-1/">
+                <span class="book__toc-num">4-1</span> 身分與人格權
+              </a>
+            </li>
+          
+            
+            
+              
+            
+            <li>
+              <a href="/zh/read/4-2/">
+                <span class="book__toc-num">4-2</span> 結社與多元公眾
+              </a>
+            </li>
+          
+            
+            
+              
+            
+            <li>
+              <a href="/zh/read/4-3/">
+                <span class="book__toc-num">4-3</span> 商業與信任
+              </a>
+            </li>
+          
+            
+            
+              
+            
+            <li>
+              <a href="/zh/read/4-4/">
+                <span class="book__toc-num">4-4</span> 財產與合約
+              </a>
+            </li>
+          
+            
+            
+              
+            
+            <li>
+              <a href="/zh/read/4-5/">
+                <span class="book__toc-num">4-5</span> 存取權
+              </a>
+            </li>
+          
+        </ul>
+      
+        <p class="book__toc-section">民主</p>
+        <ul class="book__toc-list">
+          
+            
+            
+              
+            
+            <li>
+              <a href="/zh/read/5-0/">
+                <span class="book__toc-num">5-0</span> 協作技術與民主
+              </a>
+            </li>
+          
+            
+            
+              
+            
+            <li>
+              <a href="/zh/read/5-1/">
+                <span class="book__toc-num">5-1</span> 後符號交流
+              </a>
+            </li>
+          
+            
+            
+              
+            
+            <li>
+              <a href="/zh/read/5-2/">
+                <span class="book__toc-num">5-2</span> 沉浸式共享實境
+              </a>
+            </li>
+          
+            
+            
+              
+            
+            <li>
+              <a href="/zh/read/5-3/">
+                <span class="book__toc-num">5-3</span> 創意協作
+              </a>
+            </li>
+          
+            
+            
+              
+            
+            <li>
+              <a href="/zh/read/5-4/">
+                <span class="book__toc-num">5-4</span> 擴增審議
+              </a>
+            </li>
+          
+            
+            
+              
+            
+            <li>
+              <a href="/zh/read/5-5/">
+                <span class="book__toc-num">5-5</span> 適應式行政
+              </a>
+            </li>
+          
+            
+            
+              
+            
+            <li>
+              <a href="/zh/read/5-6/">
+                <span class="book__toc-num">5-6</span> ⿻投票
+              </a>
+            </li>
+          
+            
+            
+              
+            
+            <li>
+              <a href="/zh/read/5-7/">
+                <span class="book__toc-num">5-7</span> 社會市場
+              </a>
+            </li>
+          
+        </ul>
+      
+        <p class="book__toc-section">影響</p>
+        <ul class="book__toc-list">
+          
+            
+            
+              
+            
+            <li>
+              <a href="/zh/read/6-0/">
+                <span class="book__toc-num">6-0</span> 從⿻到現實社會
+              </a>
+            </li>
+          
+            
+            
+              
+            
+            <li>
+              <a href="/zh/read/6-1/">
+                <span class="book__toc-num">6-1</span> 職場
+              </a>
+            </li>
+          
+            
+            
+              
+            
+            <li>
+              <a href="/zh/read/6-2/">
+                <span class="book__toc-num">6-2</span> 健康
+              </a>
+            </li>
+          
+            
+            
+              
+            
+            <li>
+              <a href="/zh/read/6-3/">
+                <span class="book__toc-num">6-3</span> 媒體
+              </a>
+            </li>
+          
+            
+            
+              
+            
+            <li>
+              <a href="/zh/read/6-4/">
+                <span class="book__toc-num">6-4</span> 環境
+              </a>
+            </li>
+          
+            
+            
+              
+            
+            <li>
+              <a href="/zh/read/6-5/" class="active">
+                <span class="book__toc-num">6-5</span> 學習
+              </a>
+            </li>
+          
+        </ul>
+      
+        <p class="book__toc-section">展望</p>
+        <ul class="book__toc-list">
+          
+            
+            
+              
+            
+            <li>
+              <a href="/zh/read/7-0/">
+                <span class="book__toc-num">7-0</span> 政策
+              </a>
+            </li>
+          
+            
+            
+              
+            
+            <li>
+              <a href="/zh/read/7-1/">
+                <span class="book__toc-num">7-1</span> 結語
+              </a>
+            </li>
+          
+        </ul>
+      
+    </nav>
+  </aside>
+
+  
+  <article class="book__page" id="book-page">
+    
+    <div class="book__page-curl" aria-hidden="true"></div>
+
+    
+    <header class="book__header">
+      
+        <p class="book__section-label">影響 · 6-5</p>
+      
+      <h1 class="book__title">學習</h1>
+      
+      
+        <nav class="book__lang-switch" aria-label="Language versions">
+          <span class="book__lang-current">華文</span>
+          
+            <a href="/read/6-5/" class="book__lang-link" lang="en">English</a>
+          
+            <a href="/ja/read/6-5/" class="book__lang-link" lang="ja">日本語</a>
+          
+            <a href="/th/read/6-5/" class="book__lang-link" lang="th">ไทย</a>
+          
+        </nav>
+      
+      <div class="book__header-ornament" aria-hidden="true">
+        <span></span><span></span><span></span>
+      </div>
+    </header>
+
+    
+    <div class="book__body">
+      
+
+  <p>學習，是全球公認的終身之旅。它始於家庭、文化及社交圈的影響，而教育環境則是這趟旅程常見的集體經驗。不同的背景故事，塑造了彼此之間各異的溝通語言、合作方法與待人接物的價值觀，譬如東西方在對於知識的追求與群體的融入等理念上，尤其存在顯著差異。「跨越社會差異的協作」的⿻技術，促使各地相異的知識傳承過程激盪共創。</p>
+<p>為此，學習者得以全面探索自身和社會的潛力，避免在起點就設定界限。這需要建設開放、非武斷的社會認知系統，讓每個人的獨特才華都能找到適宜的展現空間，且不懼怕溝通。在⿻技術的輔助下，如機器翻譯、共享實境、維基百科等跨境社群（3-3《我們遺忘的道》)，補充也挑戰了傳統的制式學習路徑，超越了傳統教室和教科書的範疇。</p>
+<p>隨著網際網路的普及化，協作學習環境也更加普及。線上學習市場的複合年增長率估計超過 10%<sup class="footnote-ref"><a href="#fn1" id="fnref1">[1]</a></sup>。認知技能的提高，可望讓發展中國家的長期經濟增長率增加 2%。報告指出<sup class="footnote-ref"><a href="#fn2" id="fnref2">[2]</a></sup>，具備敏捷認知技能的勞動力，可實現穩定的 GDP 成長（逐年增幅 0.6%）。互動性和個性化的協作學習環境，則可幫助更多人實現學習目標與掌握關鍵技能<sup class="footnote-ref"><a href="#fn3" id="fnref3">[3]</a></sup>、滿足社會的資源發展需求<sup class="footnote-ref"><a href="#fn4" id="fnref4">[4]</a></sup>。</p>
+<p>本章將描繪如何賦予社群克服僵化教學模式的能力，適應終身學習的⿻環境。通過這些寓教於樂、協作解題、使命導向的專案，來跨越文化的鴻溝。</p>
+<h3 id="%E5%85%B7%E6%9C%89%E9%9F%8C%E6%80%A7%E7%9A%84%E5%AD%B8%E7%BF%92%E9%AB%94%E7%B3%BB" tabindex="-1">具有韌性的學習體系</h3>
+<p>在 PISA<sup class="footnote-ref"><a href="#fn5" id="fnref5">[5]</a></sup> &amp; ICCS<sup class="footnote-ref"><a href="#fn6" id="fnref6">[6]</a></sup> 2022 年全球報告中指出，臺灣、日本、韓國和立陶宛在疫情期間逆勢成長，被認為是具有韌性的教育體系<sup class="footnote-ref"><a href="#fn7" id="fnref7">[7]</a></sup>。臺灣在其中脫穎而出的因素之一，正是 108 課綱多元共創的教學模式，成功組合了實體與數位學習工具，並將「自發、互動、共好」視為新的核心價值，激發邁向全球永續發展的使命感<sup class="footnote-ref"><a href="#fn8" id="fnref8">[8]</a></sup>。</p>
+<p>舉例來說，本書的封面字型「辰宇落雁體」<sup class="footnote-ref"><a href="#fn9" id="fnref9">[9]</a></sup>，正是來自於兩位高二學生的自主學習計畫，活用了社群網絡與相關團隊共學。如此的自主創作，展示出從自身樂趣出發，體現開源協作的精神，學習過程中的知識創意在開放共享中熠熠生輝，鼓舞更多人參與<sup class="footnote-ref"><a href="#fn10" id="fnref10">[10]</a></sup>。</p>
+<p>上個世紀的教育機構裡，學習往往依賴死記硬背與細節回憶；而缺乏開放內容的環境，則使得問題解決和團隊合作變得支離破碎。隨著各國實驗教育的活躍，同時涵蓋批判思維與人際溝通技能的自主學習模式應運而生。這兩種能力並非相互排斥，反而相輔相成，並在⿻技術輔助下，跨越彼此意識型態的局限，強化社會韌性。</p>
+<h3 id="%E5%A4%9A%E5%85%83%E5%8D%94%E4%BD%9C%E7%9A%84%E5%AD%B8%E7%BF%92%E7%B6%B2%E7%B5%A1" tabindex="-1">多元協作的學習網絡</h3>
+<p>隨著各國從以農業為主的模式，過渡到以資訊為中心的社群關係，自由化、民主化、多樣性選擇和多元身分，成為學習中相互支持的⿻支柱。這些因素，也是民主政體與公民社會革新進步的重要方向。然而，在這個過程中我們常常面臨競爭、資源不均、就業不確定性以及公民教育空白等傳統壓力。</p>
+<p>疫情加速了自主學習的普及和線上線下的整合，促進了教育資源的數位化，也讓自主學習更為普及。英國開放大學支持的 「FutureLearn」平台，和流動式大學教育系統「密涅瓦」就是很好的例子，它們打破了傳統的限制，為學習與教育者提供了多元化的學習方式和跨文化的交流機會。</p>
+<p>「FutureLearn」為歐洲最大的線上課程平臺，匯聚大學、專業機構的課程資源，涵蓋了一系列如社會科學、人文藝術、程式設計等多個專項領域，更與聯合國教科文組織（UNSECO）攜手合作全球終身學習<sup class="footnote-ref"><a href="#fn11" id="fnref11">[11]</a></sup>項目；不僅於此，平臺也提供免費的知識學習機會，比如提供難民線上學習基礎英文的課程<sup class="footnote-ref"><a href="#fn12" id="fnref12">[12]</a></sup>，讓任何人都可以用較低或零成本，來獲得優質教育的機會、滿足多樣性的學習目的且具備靈活性。</p>
+<p>流動式的大學教育系統密涅瓦<sup class="footnote-ref"><a href="#fn13" id="fnref13">[13]</a></sup>，打破了傳統校園的限制，學生每學期都要遷移至不同城市，透過學以致用的多元教學方法與相異的文化特徵互動。密涅瓦從學生遴選、學習方式等與傳統大學有所不同，採取全球招生、線上小組模式，鼓勵批判性思維與實際應用的合作性，其創新性也受到國際注目<sup class="footnote-ref"><a href="#fn14" id="fnref14">[14]</a></sup>。</p>
+<p>臺灣的蓬勃技術社會（《2-2 數位民主的日常》）中提及的公民技術協作，也促進了親師生共同參與、從做中學的開源「萌典」<sup class="footnote-ref"><a href="#fn15" id="fnref15">[15]</a></sup>專案，這個服務上載了十六萬筆國語、兩萬筆台語、一萬四千筆客語條目，開放多樣性的編纂機制，使其成為一個多語言互動的線上公民字典，展示一種全球又在地化的「目錄共編」範式，它不僅支持廣泛社群的編寫空間，也作為不同語言和文化的交流提供平台。</p>
+<p>萌典促成公部門主動採用「創用CC」授權<sup class="footnote-ref"><a href="#fn16" id="fnref16">[16]</a></sup>，對臺灣發展 TAIDE 等 AI 模型貢獻了價值<sup class="footnote-ref"><a href="#fn17" id="fnref17">[17]</a></sup>，在地語言與全民知識可以相互串連為協作網絡。「萌典」這樣的開源範式應用，在十年前就與官方教育機構及社會創新組織建立了密切的聯繫，展示了開源的共編文化與正式的教育體系的互通。</p>
+<p>在《3-3 我們遺忘的道》所描述的網際網路圖書館，維基百科與CC授權的圖文共享，這些都是基於開源協作而產生出可比擬公地的、珍貴的世界資產，就像在開闊的世界公園，來自不同國家、相異語言的公民共同創作出的作品，可以讓更多人理解與主動來維護它，進一步推動知識的民主化，填補了公民教育的空白，這些都是讓學習朝⿻路徑演變，且與公眾互惠共生的實際案例。</p>
+<h3 id="%E5%85%A8%E7%90%83%E9%80%A3%E6%8E%A5%E7%9A%84%E7%B5%82%E8%BA%AB%E5%AD%B8%E7%BF%92" tabindex="-1">全球連接的終身學習</h3>
+<p>人類社會中，⿻學習網絡開闢出一條創新的路徑，成為應對複雜問題的有效工具。面對全球性的共通問題，如氣候變遷、傳染病、貧富不均等這些棘手問題，都不是單打獨鬥就能解決的。因為它們跨越地理疆界，影響所有人的生活，挑戰人類長久以來的分歧和隔閡。</p>
+<p>然而，危機也帶來了轉機。為了共度難關，人們開始理解放下成見、向彼此學習的重要性，現在的全球連接乘載了自數百年、數千年來積累的文化差異和社會隔閡，它的發展也在深刻地影響著下一世代，然而這些偏見，都在重大存亡的危機前顯得渺小。唯有攜手合作與互信共行，方能激盪出新的火花，找到以往未曾遇見的創新解方。</p>
+<p>不同族群的智慧，透過開放協作的方式，匯聚成更強大的力量。凝聚全球用戶編寫的百科全書、開源社群共同打造的自由軟體，都是人類同舟共濟、跨越藩籬的⿻學習場域。</p>
+<p>在面向 AI 技術的突破時刻，我們可以積極嘗試將創新思維應用於審議、職場、健康等領域。透過開源的概念、中立的資料集和偏見檢測工具，AI 可以幫助我們建立更彈性的跨文化交流模型，提高組織應對複雜問題的能力。臺灣已運用「我城對談」等擴增審議技術<sup class="footnote-ref"><a href="#fn18" id="fnref18">[18]</a></sup>，基於開源的概念來緩解 AI 引發的衝擊，透過全民參與確保資訊的完整性，來跨越文化的理解並確保社會韌性。</p>
+<p>AI 可以透過分析文化規範、社會習俗和語言細微的差異，來幫助建立更廣泛包容的跨文化交流模型。透過了解這些因素與可行方向，AI 也可以幫助個人克服潛在的文化障礙並調整他們的溝通方式以確保相互理解。透過識別和解決潛在有害或有偏見的語言。這些中立的資料集，也可以用來消弭歧視、惡意攻擊，作為一種替代建議的工具來控制潛在的新資料集中存在的危險偏見，與多元協作的開源工具即時對齊，如果不如此做，這些資料集或許會破壞或影響連續幾代 AI。</p>
+<p>這意味著標籤化的指令將開始改變。除了協助我們進行更廣度思想溝通的重要學習之路上增加互信，還可以增加參與的樂趣與拓寬真實的道路。</p>
+<p>在網際網路中資料如何轉變為知識，取決於我們與自我、生命、世界以及學習的連結。當我們失去這些連結時，意義便會消失。但通過全球社群網絡的廣度光譜，可以幫助我們汲取動能，回歸現實看見更多未來的可能性，我們可以源源不絕地創造新的學習意義感：學習既是對過去知識的延續，也是創新的誕生。想像一下，當面對一篇長篇大論時，我們能夠利用協作技能和開放內容來驗證資訊。在技術高速發展的今天，人類的智慧不會消逝，反而會因為我們對知識和經驗的深層次理解，以及對工具的多元運用，展現出更強大的生命力。</p>
+<p>如果我們能夠巧妙地將互惠技術與群眾知識相互連接，便能培養出敢於冒智力風險、勇於探索未知領域的終身學習者。這種學習者能夠打破二元對立的框架，在跨領域機制中創建多元無界限的⿻共享知識網絡，我們將在下面闡述這個理想。</p>
+<h3 id="%E7%84%A1%E9%99%90%E9%81%8A%E6%88%B2%E8%88%87%E2%BF%BB%E5%85%AC%E6%B0%91" tabindex="-1">無限遊戲與⿻公民</h3>
+<p>「寓教於樂」的精神，將追求知識與分享快樂交織在一起。在無限可能的組合下，創新思維的共創有無數種可能。將此一視角引入學習協作的語境，我們可以看見，真正的快樂學習更似一場無限組合的過程。它不囿於狹隘的評判標準而是鼓勵學習者打破思維定勢，在多元視角的交織下，創新洞見不斷迸發。</p>
+<p>在詹姆斯·卡斯（James Carse）的著作《Finite and Infinite Games》中，他將人生旅程比喻為一場遊戲，提出了有限遊戲和無限遊戲的概念。這樣的觀點，也可以用來比喻寓教於樂的精神內核：在人生的旅程，我們是選擇遵循社會權力，接受既定邊界的有限賽局勝負模式，追逐短暫的勝利；還是選擇作為開放的參與者，投入自人際互動到文化交流的方方面面創造的過程，體驗持續登入的喜悅？</p>
+<p>在《想像的共同體（Imagined Communities）》一書中，班納迪克·安德森（Benedict Anderson）深入探討了通過共同語言溝通如何形成民族認同感的問題。他提出，文學和敘事中的共同語言如何促進社群意識的形成。安德森認為，國家認同的形成是一種社會構建過程，是通過印刷資本主義（Print capitalism）——即報紙和小說——進行仲介的，使得人們將自己想像為具有共同利益和認同的更大社群的一部分。這一過程與學習環境相似，在學習環境中，敘事、語言和符號在塑造學習者的身分和對社群的歸屬感方面發揮著關鍵作用，無論是在本地社群、國家層面還是全球範圍。</p>
+<p>安德森的分析強調了敘事和話語在構建系統、共用知識和社群發展的重要性。進一步引出，教育內容和教學方法若能承認並納入多樣化的敘事，將可以營造更加包容和多元的學習環境，從而鼓勵學習系統具有更大的韌性和全球共通、學習者在與不同故事的互動中，深層形塑自我認知和社群歸屬感。</p>
+<p>然而，社會、政府和資本主義所灌輸的價值觀，往往源自於集體的依賴，比如父母對孩子的期望、伴侶間的相互要求、同儕間的相互擠兌與自我期許等理性與非理性因素，但這些不應成為個體成長與學習道路上的唯一指南針。正如泰勒·斯威夫特在紐約大學的致詞<sup class="footnote-ref"><a href="#fn19" id="fnref19">[19]</a></sup>中所分享——勇敢成為心中想要的人——我們鼓勵的方式，是自然而然，允許在開放、多元的學習歷程中發現自我、享受學習樂趣，正是讓人們探索的動能。</p>
+<p>自團體生活如學校中所學到的知識技能如禮儀，是一種打交道的東西、是尊重人權、理解自由、多樣性的認知，是畢業後、職場和生活中應對各種情境的工具，這提醒了我們，學習不僅是知識的累積過程，也是「身分與社群歸屬感的建立過程」，而且是更為豐富的交織狀態。例如，業餘無線電（Amateur Radio，也被稱為 Ham Radio）社群對科學、工業、社會服務、衛星通訊的重大貢獻，正是基於學習的樂趣和強烈的社群認同感。</p>
+<p>在全球化的推動下，次文化從原先的小眾圈層迅速演化為一種想像的共同體，業餘無線電愛好者、線上的互動社群再到ACG（動畫、漫畫、遊戲）的文化擴散，他們都揭示在知識、教育與學習的界限正在被重新定義，這種跨越傳統邊界的協作創新，打破傳統身分角色的互動，讓每個人的學習之旅中的獨特性和潛力得以被深掘和尊重，更為豐富了多元公民的共學面貌。</p>
+<p>數位遊戲領域，特別是多人遊戲，很適合作為一種學習環境。Minecraft 與《文明帝國》遊戲就是兩個很鮮明的案例。玩家可以通過遊戲探索社會發展、全球暖化、投票公平、太空探索、 AI 等領域，這些遊戲不僅促進了參與者間的協作，創造力和問題解決能力，也不受到年齡和職業的限制。隨著虛擬實境發展，都將使得學習之路拓寬、意義與實用性的價值也遠比一張紙來得重要。</p>
+<p>遊戲化的學習環境，打破了傳統的師生邊界，營造了沉浸式、互動式的體驗。在這樣的環境中，每位參與者都是知識的創造者和分享者。這種參與感和成就感，正是遊戲化學習的魅力所在。</p>
+<p>每次協作、每個專案都是延續遊戲，個體的獨特性得以彰顯、集體的智慧得以彙聚，這正是一場與自我、與他者、與世界共舞的無限遊戲。在這場遊戲中，寓教娛樂的理念是來自參與的投入，意義來自探索的歷程。讓我們擁抱這種無限的可能性，讓學習不再是結果導向的有限遊戲，而是一段充滿驚喜、激發潛能的⿻無限遊戲，其中每個參與者都是不可或缺的共創者。</p>
+<hr class="footnotes-sep">
+<section class="footnotes">
+<ol class="footnotes-list">
+<li id="fn1" class="footnote-item"><p><a href="https://www.renub.com/online-education-market-p.php">https://www.renub.com/online-education-market-p.php</a> <a href="#fnref1" class="footnote-backref">↩︎</a></p>
+</li>
+<li id="fn2" class="footnote-item"><p><a href="https://www.aeaweb.org/articles?id=10.1257/jel.46.3.607">Eric A. Hanushek 和 Ludger Woessmann 的論文</a>，刊登在 2008 年的《經濟文獻雜誌》分析了 50 個國家的認知技能與經濟成長之間的關係，發現二者呈顯著正相關。 <a href="#fnref2" class="footnote-backref">↩︎</a></p>
+</li>
+<li id="fn3" class="footnote-item"><p>經濟學家 Eric Hanushek 的<a href="https://www.educationnext.org/education-and-economic-growth/">研究</a> 表明，在發展中國家，認知技能每提高一個標準差，長期經濟增長率可以提高 2 個百分點。這意味著教育品質的提升對經濟增長的影響，甚至大於受教育年限。 <a href="#fnref3" class="footnote-backref">↩︎</a></p>
+</li>
+<li id="fn4" class="footnote-item"><p><a href="https://www.oecd-ilibrary.org/education/oecd-skills-outlook-2023%5C_27452f29-en">https://www.oecd-ilibrary.org/education/oecd-skills-outlook-2023\_27452f29-en</a> <a href="#fnref4" class="footnote-backref">↩︎</a></p>
+</li>
+<li id="fn5" class="footnote-item"><p><a href="https://www.oecd.org/pisa/">https://www.oecd.org/pisa/</a> &amp; <a href="https://focustaiwan.tw/culture/202312060017">https://focustaiwan.tw/culture/202312060017</a> <a href="#fnref5" class="footnote-backref">↩︎</a></p>
+</li>
+<li id="fn6" class="footnote-item"><p><a href="https://www.iea.nl/studies/iea/iccs/2022">https://www.iea.nl/studies/iea/iccs/2022</a> <a href="#fnref6" class="footnote-backref">↩︎</a></p>
+</li>
+<li id="fn7" class="footnote-item"><p><a href="https://www.cna.com.tw/news/ahel/202312050365.aspx">https://www.cna.com.tw/news/ahel/202312050365.aspx</a> <a href="#fnref7" class="footnote-backref">↩︎</a></p>
+</li>
+<li id="fn8" class="footnote-item"><p><a href="https://en.rti.org.tw/news/view/id/2010665">https://en.rti.org.tw/news/view/id/2010665</a> <a href="#fnref8" class="footnote-backref">↩︎</a></p>
+</li>
+<li id="fn9" class="footnote-item"><p><a href="https://github.com/Chenyu-otf/chenyuluoyan%5C_thin">https://github.com/Chenyu-otf/chenyuluoyan\_thin</a> <a href="#fnref9" class="footnote-backref">↩︎</a></p>
+</li>
+<li id="fn10" class="footnote-item"><p><a href="https://blog.luckertw.com/chenyuluoyan-interview/">https://blog.luckertw.com/chenyuluoyan-interview/</a> <a href="#fnref10" class="footnote-backref">↩︎</a></p>
+</li>
+<li id="fn11" class="footnote-item"><p><a href="https://www.uil.unesco.org/en/learning-cities">https://www.uil.unesco.org/en/learning-cities</a> <a href="#fnref11" class="footnote-backref">↩︎</a></p>
+</li>
+<li id="fn12" class="footnote-item"><p><a href="https://www.futurelearn.com/courses/collections/refugees-displaced-people">https://www.futurelearn.com/courses/collections/refugees-displaced-people</a> <a href="#fnref12" class="footnote-backref">↩︎</a></p>
+</li>
+<li id="fn13" class="footnote-item"><p><a href="https://www.minerva.edu/">https://www.minerva.edu/</a> <a href="#fnref13" class="footnote-backref">↩︎</a></p>
+</li>
+<li id="fn14" class="footnote-item"><p><a href="https://www.wuri.world/2023-global-top-100">https://www.wuri.world/2023-global-top-100</a> <a href="#fnref14" class="footnote-backref">↩︎</a></p>
+</li>
+<li id="fn15" class="footnote-item"><p><a href="https://www.moedict.tw/">https://www.moedict.tw/</a> <a href="#fnref15" class="footnote-backref">↩︎</a></p>
+</li>
+<li id="fn16" class="footnote-item"><p><a href="https://language.moe.gov.tw/001/Upload/Files/site%5C_content/M0001/respub/index.html">https://language.moe.gov.tw/001/Upload/Files/site\_content/M0001/respub/index.html</a> <a href="#fnref16" class="footnote-backref">↩︎</a></p>
+</li>
+<li id="fn17" class="footnote-item"><p><a href="https://taide.tw/index/training-data?type=2">https://taide.tw/index/training-data?type=2</a> <a href="#fnref17" class="footnote-backref">↩︎</a></p>
+</li>
+<li id="fn18" class="footnote-item"><p><a href="https://moda.gov.tw/major-policies/alignment-assemblies/2023-ideathon/1459">https://moda.gov.tw/major-policies/alignment-assemblies/2023-ideathon/1459</a> <a href="#fnref18" class="footnote-backref">↩︎</a></p>
+</li>
+<li id="fn19" class="footnote-item"><p><a href="https://www.youtube.com/watch?v=OBG50aoUwlI">https://www.youtube.com/watch?v=OBG50aoUwlI</a> <a href="#fnref19" class="footnote-backref">↩︎</a></p>
+</li>
+</ol>
+</section>
+
+
+
+    </div>
+
+    
+    
+    <nav class="book__nav" aria-label="Chapter navigation">
+      
+        <a href="/zh/read/6-4/" class="book__nav-link book__nav-link--prev" data-page-dir="prev">
+          <span class="book__nav-arrow">&larr;</span>
+          <span class="book__nav-info">
+            <span class="book__nav-label">上一章</span>
+            <span class="book__nav-title">環境</span>
+          </span>
+        </a>
+      
+      
+        <a href="/zh/read/7-0/" class="book__nav-link book__nav-link--next" data-page-dir="next">
+          <span class="book__nav-info">
+            <span class="book__nav-label">下一章</span>
+            <span class="book__nav-title">政策</span>
+          </span>
+          <span class="book__nav-arrow">&rarr;</span>
+        </a>
+      
+    </nav>
+    
+
+    
+    <div class="book__page-number" aria-hidden="true">
+      6-5
+    </div>
+  </article>
+</div>
+
+<script src="/assets/js/book.js"></script>
+
+  </main>
+
+  
+
+
+
+
+<footer class="footer" role="contentinfo">
+  <div class="footer__inner">
+    <div class="footer__brand" aria-hidden="true">
+      <span class="c-r">P</span><span class="c-o">l</span><span class="c-g">u</span><span class="c-c">r</span><span class="c-w">a</span><span class="c-c">l</span><span class="c-g">i</span><span class="c-o">t</span><span class="c-r">y</span>
+    </div>
+
+    <ul class="footer__links">
+      <li><a href="/zh/read/" class="footer__link">閱讀</a></li>
+      <li><a href="/zh/read/0-1/" class="footer__link">關於</a></li>
+      <li><a href="https://github.com/pluralitybook/plurality" class="footer__link" target="_blank" rel="noopener">GitHub</a></li>
+      <li><a href="https://discord.gg/YWSDRqdW5n" class="footer__link" target="_blank" rel="noopener">Discord</a></li>
+    </ul>
+
+    <div class="footer__sep"></div>
+
+    <p class="footer__authors">衛谷倫、唐鳳與多元宇宙社群</p>
+    <p class="footer__license">本作品以 CC0 授權條款貫徹自由開放精神。</p>
+  </div>
+</footer>
+
+
+  <script src="/assets/js/nav.js"></script>
+  <script src="/assets/js/scroll-reveal.js"></script>
+
+  <!-- Structured Data -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "WebSite",
+    "name": "Plurality",
+    "description": "A book by E. Glen Weyl, Audrey Tang and the Plurality Community exploring how technology can support and strengthen democracy.",
+    "url": "https://new.plurality.net",
+    "author": [
+      { "@type": "Person", "name": "E. Glen Weyl" },
+      { "@type": "Person", "name": "Audrey Tang" },
+      { "@type": "Organization", "name": "the Plurality Community" }
+    ],
+    "license": "https://creativecommons.org/publicdomain/zero/1.0/"
+  }
+  </script>
+</body>
+</html>

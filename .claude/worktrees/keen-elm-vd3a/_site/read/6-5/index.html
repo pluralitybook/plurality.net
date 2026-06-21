@@ -1,0 +1,605 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Learning — Plurality</title>
+  <meta name="description" content="A book by E. Glen Weyl, Audrey Tang and the Plurality Community exploring how technology can support and strengthen democracy.">
+  <meta name="theme-color" content="#faf8f5" media="(prefers-color-scheme: light)">
+  <meta name="theme-color" content="#0f1923" media="(prefers-color-scheme: dark)">
+
+  <link rel="canonical" href="https://new.plurality.net/read/6-5/">
+
+  <!-- Open Graph -->
+  <meta property="og:type" content="website">
+  <meta property="og:title" content="Learning — Plurality">
+  <meta property="og:description" content="A book by E. Glen Weyl, Audrey Tang and the Plurality Community exploring how technology can support and strengthen democracy.">
+  <meta property="og:site_name" content="Plurality">
+  <meta property="og:locale" content="en">
+
+  <!-- Twitter Card -->
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Learning — Plurality">
+  <meta name="twitter:description" content="A book by E. Glen Weyl, Audrey Tang and the Plurality Community exploring how technology can support and strengthen democracy.">
+
+  <!-- Favicon (inline SVG with brand colors) -->
+  <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='6' fill='%230f1923'/%3E%3Ctext x='16' y='22' text-anchor='middle' fill='%23c9a961' font-family='Georgia,serif' font-size='18' font-weight='700'%3EP%3C/text%3E%3C/svg%3E">
+
+  <!-- Fonts: Stage 1 critical -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+  <!-- Fonts: Stage 2 deferred -->
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,400;0,700;1,400&family=Cormorant+Garamond:wght@400;700&family=Outfit:wght@300;400;500;600&family=Noto+Sans+TC:wght@400;500&family=Noto+Serif+TC:wght@400;700&family=Noto+Sans+JP:wght@400;500&family=Noto+Serif+JP:wght@400;700&family=Sarabun:wght@400;600;700&display=swap" media="print" onload="this.media='all'">
+  <noscript>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,400;0,700;1,400&family=Cormorant+Garamond:wght@400;700&family=Outfit:wght@300;400;500;600&family=Noto+Sans+TC:wght@400;500&family=Noto+Serif+TC:wght@400;700&family=Noto+Sans+JP:wght@400;500&family=Noto+Serif+JP:wght@400;700&family=Sarabun:wght@400;600;700&display=swap">
+  </noscript>
+
+  <link rel="stylesheet" href="/assets/css/main.css">
+
+  <!-- Theme toggle (run before render to prevent flash) -->
+  <script src="/assets/js/theme-toggle.js"></script>
+</head>
+<body>
+  <a href="#main" class="skip-link">Skip to content</a>
+
+  
+
+
+
+
+<nav class="nav" role="navigation" aria-label="Main navigation">
+  <div class="nav__inner">
+    <a href="/" class="nav__logo" aria-label="Plurality home">Plurality</a>
+
+    <ul class="nav__links">
+      <li><a href="/read/" class="nav__link nav__link--active">Read</a></li>
+      <li><a href="/read/0-1/" class="nav__link">About</a></li>
+      <li><a href="https://github.com/pluralitybook/plurality" class="nav__link" target="_blank" rel="noopener">GitHub</a></li>
+      <li><button class="theme-toggle" aria-label="Toggle theme">&#9790;</button></li>
+    </ul>
+
+    <button class="nav__hamburger" aria-label="Open menu" aria-expanded="false">
+      <span></span>
+      <span></span>
+      <span></span>
+    </button>
+  </div>
+</nav>
+
+<div class="nav__overlay" role="dialog" aria-label="Mobile menu">
+  <a href="/read/" class="nav__overlay-link">Read</a>
+  <a href="/read/0-1/" class="nav__overlay-link">About</a>
+  <a href="https://github.com/pluralitybook/plurality" class="nav__overlay-link" target="_blank" rel="noopener">GitHub</a>
+  <button class="theme-toggle" aria-label="Toggle theme">&#9790;</button>
+</div>
+
+
+  <main id="main">
+    <div class="book" id="book">
+  
+  
+  
+  
+  <aside class="book__toc" aria-label="Table of contents" id="book-toc">
+    <button class="book__toc-toggle" aria-expanded="false" id="toc-toggle">
+      <span class="book__toc-toggle-icon"></span>
+      Table of Contents
+    </button>
+    <nav class="book__toc-nav" id="toc-nav">
+      <p class="book__toc-heading">Table of Contents</p>
+      
+        <p class="book__toc-section">Before You Read</p>
+        <ul class="book__toc-list">
+          
+            
+            
+            <li>
+              <a href="/read/0-0/">
+                <span class="book__toc-num">0-0</span> Endorsements
+              </a>
+            </li>
+          
+            
+            
+            <li>
+              <a href="/read/0-1/">
+                <span class="book__toc-num">0-1</span> About the Authors
+              </a>
+            </li>
+          
+            
+            
+            <li>
+              <a href="/read/0-2/">
+                <span class="book__toc-num">0-2</span> Finding Your Dao
+              </a>
+            </li>
+          
+            
+            
+            <li>
+              <a href="/read/0-3/">
+                <span class="book__toc-num">0-3</span> Credits
+              </a>
+            </li>
+          
+        </ul>
+      
+        <p class="book__toc-section">Preface</p>
+        <ul class="book__toc-list">
+          
+            
+            
+            <li>
+              <a href="/read/1/">
+                <span class="book__toc-num">1</span> Seeing Plural
+              </a>
+            </li>
+          
+        </ul>
+      
+        <p class="book__toc-section">Information Technology and Democracy</p>
+        <ul class="book__toc-list">
+          
+            
+            
+            <li>
+              <a href="/read/2-0/">
+                <span class="book__toc-num">2-0</span> A Widening Gulf
+              </a>
+            </li>
+          
+            
+            
+            <li>
+              <a href="/read/2-1/">
+                <span class="book__toc-num">2-1</span> A View from Yushan
+              </a>
+            </li>
+          
+            
+            
+            <li>
+              <a href="/read/2-2/">
+                <span class="book__toc-num">2-2</span> The Life of a Digital Democracy
+              </a>
+            </li>
+          
+        </ul>
+      
+        <p class="book__toc-section">Plurality</p>
+        <ul class="book__toc-list">
+          
+            
+            
+            <li>
+              <a href="/read/3-0/">
+                <span class="book__toc-num">3-0</span> What is ⿻?
+              </a>
+            </li>
+          
+            
+            
+            <li>
+              <a href="/read/3-1/">
+                <span class="book__toc-num">3-1</span> Living in a ⿻ World
+              </a>
+            </li>
+          
+            
+            
+            <li>
+              <a href="/read/3-2/">
+                <span class="book__toc-num">3-2</span> Connected Society
+              </a>
+            </li>
+          
+            
+            
+            <li>
+              <a href="/read/3-3/">
+                <span class="book__toc-num">3-3</span> The Lost Dao
+              </a>
+            </li>
+          
+        </ul>
+      
+        <p class="book__toc-section">Freedom</p>
+        <ul class="book__toc-list">
+          
+            
+            
+            <li>
+              <a href="/read/4-0/">
+                <span class="book__toc-num">4-0</span> Rights, Operating Systems and ⿻ Freedom
+              </a>
+            </li>
+          
+            
+            
+            <li>
+              <a href="/read/4-1/">
+                <span class="book__toc-num">4-1</span> Identity and Personhood
+              </a>
+            </li>
+          
+            
+            
+            <li>
+              <a href="/read/4-2/">
+                <span class="book__toc-num">4-2</span> Association and ⿻ Publics
+              </a>
+            </li>
+          
+            
+            
+            <li>
+              <a href="/read/4-3/">
+                <span class="book__toc-num">4-3</span> Commerce and Trust
+              </a>
+            </li>
+          
+            
+            
+            <li>
+              <a href="/read/4-4/">
+                <span class="book__toc-num">4-4</span> Property and Contract
+              </a>
+            </li>
+          
+            
+            
+            <li>
+              <a href="/read/4-5/">
+                <span class="book__toc-num">4-5</span> Access
+              </a>
+            </li>
+          
+        </ul>
+      
+        <p class="book__toc-section">Democracy</p>
+        <ul class="book__toc-list">
+          
+            
+            
+            <li>
+              <a href="/read/5-0/">
+                <span class="book__toc-num">5-0</span> Collaborative Technology and Democracy
+              </a>
+            </li>
+          
+            
+            
+            <li>
+              <a href="/read/5-1/">
+                <span class="book__toc-num">5-1</span> Post-Symbolic Communication
+              </a>
+            </li>
+          
+            
+            
+            <li>
+              <a href="/read/5-2/">
+                <span class="book__toc-num">5-2</span> Immersive Shared Reality
+              </a>
+            </li>
+          
+            
+            
+            <li>
+              <a href="/read/5-3/">
+                <span class="book__toc-num">5-3</span> Creative Collaborations
+              </a>
+            </li>
+          
+            
+            
+            <li>
+              <a href="/read/5-4/">
+                <span class="book__toc-num">5-4</span> Augmented Deliberation
+              </a>
+            </li>
+          
+            
+            
+            <li>
+              <a href="/read/5-5/">
+                <span class="book__toc-num">5-5</span> Adaptive Administration
+              </a>
+            </li>
+          
+            
+            
+            <li>
+              <a href="/read/5-6/">
+                <span class="book__toc-num">5-6</span> ⿻ Voting
+              </a>
+            </li>
+          
+            
+            
+            <li>
+              <a href="/read/5-7/">
+                <span class="book__toc-num">5-7</span> Social Markets
+              </a>
+            </li>
+          
+        </ul>
+      
+        <p class="book__toc-section">Impact</p>
+        <ul class="book__toc-list">
+          
+            
+            
+            <li>
+              <a href="/read/6-0/">
+                <span class="book__toc-num">6-0</span> From ⿻ to Reality
+              </a>
+            </li>
+          
+            
+            
+            <li>
+              <a href="/read/6-1/">
+                <span class="book__toc-num">6-1</span> Workplace
+              </a>
+            </li>
+          
+            
+            
+            <li>
+              <a href="/read/6-2/">
+                <span class="book__toc-num">6-2</span> Health
+              </a>
+            </li>
+          
+            
+            
+            <li>
+              <a href="/read/6-3/">
+                <span class="book__toc-num">6-3</span> Media
+              </a>
+            </li>
+          
+            
+            
+            <li>
+              <a href="/read/6-4/">
+                <span class="book__toc-num">6-4</span> Environment
+              </a>
+            </li>
+          
+            
+            
+            <li>
+              <a href="/read/6-5/" class="active">
+                <span class="book__toc-num">6-5</span> Learning
+              </a>
+            </li>
+          
+        </ul>
+      
+        <p class="book__toc-section">Forward</p>
+        <ul class="book__toc-list">
+          
+            
+            
+            <li>
+              <a href="/read/7-0/">
+                <span class="book__toc-num">7-0</span> Policy
+              </a>
+            </li>
+          
+            
+            
+            <li>
+              <a href="/read/7-1/">
+                <span class="book__toc-num">7-1</span> Conclusion
+              </a>
+            </li>
+          
+        </ul>
+      
+    </nav>
+  </aside>
+
+  
+  <article class="book__page" id="book-page">
+    
+    <div class="book__page-curl" aria-hidden="true"></div>
+
+    
+    <header class="book__header">
+      
+        <p class="book__section-label">Impact · 6-5</p>
+      
+      <h1 class="book__title">Learning</h1>
+      
+      
+        <nav class="book__lang-switch" aria-label="Language versions">
+          <span class="book__lang-current">English</span>
+          
+            <a href="/zh/read/6-5/" class="book__lang-link" lang="zh">華文</a>
+          
+            <a href="/ja/read/6-5/" class="book__lang-link" lang="ja">日本語</a>
+          
+            <a href="/th/read/6-5/" class="book__lang-link" lang="th">ไทย</a>
+          
+        </nav>
+      
+      <div class="book__header-ornament" aria-hidden="true">
+        <span></span><span></span><span></span>
+      </div>
+    </header>
+
+    
+    <div class="book__body">
+      
+
+  <p>Learning is a lifelong journey universally recognized around the globe. It begins with the influence of family, culture, and social circles, while the educational environment is a common collective experience along this journey. Different background stories shape the diverse communication languages, cooperation methods, and values in dealing with people and things between each other. For example, there are significant differences between the East and West, especially in the pursuit of knowledge and the integration of groups. The ⿻ technology of “collaboration across social differences” stimulates co-creation by bringing together different knowledge inheritance processes from around the world.</p>
+<p>To this end, learners can fully explore their own and society’s potential, avoiding setting boundaries at the starting point. This requires building an open, non-dogmatic social cognition system, allowing everyone’s unique talents to find appropriate space for expression without fear of communication. With the assistance of ⿻ technologies such as machine translation, shared reality, and cross-border communities like Wikipedia (3-3 The Lost Dao), the traditional rigid learning paths are supplemented and challenged, going beyond the scope of traditional classrooms and textbooks.</p>
+<p>With the popularization of the Internet, collaborative learning environments have become more prevalent. The compound annual growth rate of the online learning market is estimated to exceed 10%<sup class="footnote-ref"><a href="#fn1" id="fnref1">[1]</a></sup>. The improvement of cognitive skills is expected to increase the long-term economic growth rate of developing countries by 2%. Reports indicate<sup class="footnote-ref"><a href="#fn2" id="fnref2">[2]</a></sup> that a workforce with such skills can achieve stable GDP growth (annual increment of 0.6%). Interactive and personalized collaborative learning environments can help more people achieve learning goals, master key skills<sup class="footnote-ref"><a href="#fn3" id="fnref3">[3]</a></sup>, and meet society’s resource development needs<sup class="footnote-ref"><a href="#fn4" id="fnref4">[4]</a></sup>.</p>
+<p>This chapter will depict how to empower communities to overcome rigid teaching models and adapt to the ⿻ environment of lifelong learning. Through these entertaining, collaborative problem-solving, and mission-oriented projects, we can bridge cultural divides.</p>
+<h3 id="resilient-learning-systems" tabindex="-1">Resilient Learning Systems</h3>
+<p>The 2022 global reports of PISA<sup class="footnote-ref"><a href="#fn5" id="fnref5">[5]</a></sup> &amp; ICCS<sup class="footnote-ref"><a href="#fn6" id="fnref6">[6]</a></sup> point out that Taiwan, Japan, South Korea, and Lithuania grew against the trend during the pandemic, and are considered to have resilient education systems<sup class="footnote-ref"><a href="#fn7" id="fnref7">[7]</a></sup>. One of the outstanding factors for Taiwan is the diverse co-creation teaching model of 2019 Basic Education Curriculum, which successfully combines physical and digital learning tools, and regards “spontaneity, interaction, and common good” as new core values, inspiring a sense of mission towards global sustainable development<sup class="footnote-ref"><a href="#fn8" id="fnref8">[8]</a></sup>.</p>
+<p>For example, the “Chenyuluoyan” font<sup class="footnote-ref"><a href="#fn9" id="fnref9">[9]</a></sup> on the cover of this book comes from the autonomous learning project of two high school students, leveraging social networks and related team co-learning. Such independent creation demonstrates the spirit of open-source collaboration starting from one’s own interests. The knowledge and creativity in the learning process shine in open sharing, inspiring more people to participate<sup class="footnote-ref"><a href="#fn10" id="fnref10">[10]</a></sup>.</p>
+<p>In the educational institutions of the last century, learning often relied on rote memorization and detailed recall; while the lack of open content made problem-solving and teamwork fragmented. With the rise of experimental education in various countries, self-directed learning models that encompass both critical thinking and interpersonal communication skills have emerged. These two abilities are not mutually exclusive but complementary, and with the assistance of ⿻ technology, they transcend the limitations of each other’s ideologies and strengthen social resilience.</p>
+<h3 id="diverse-and-collaborative-learning-networks" tabindex="-1">Diverse and Collaborative Learning Networks</h3>
+<p>As countries transition from agriculture-based models to information-centric social relationships, liberalization, democratization, diverse choices, and pluralistic identities become mutually supportive ⿻ pillars in learning. These factors are also important directions for the innovation and progress of democratic regimes and civil society. However, in this process, we often face traditional pressures such as competition, resource inequality, job insecurity, and civic education gaps.</p>
+<p>The pandemic has accelerated the popularization of self-directed learning and the integration of online and offline, promoting the digitization of educational resources and making self-directed learning more widespread. The “FutureLearn” platform supported by the Open University of the UK and the mobile university education system “Minerva” are good examples. They break traditional limitations and provide learners and educators with diverse learning methods and cross-cultural exchange opportunities.</p>
+<p>“FutureLearn” is Europe’s largest online course platform, bringing together course resources from universities and professional institutions, covering multiple specialized fields such as social sciences, humanities and arts, and programming. It also collaborates with UNESCO on global lifelong learning<sup class="footnote-ref"><a href="#fn11" id="fnref11">[11]</a></sup> projects; furthermore, the platform offers free courses including those providing basic English online learning for refugees<sup class="footnote-ref"><a href="#fn12" id="fnref12">[12]</a></sup>, allowing anyone to access quality education at low or zero cost, meet diverse learning goals, and have flexibility.</p>
+<p>The mobile university education system Minerva<sup class="footnote-ref"><a href="#fn13" id="fnref13">[13]</a></sup> breaks the limitations of traditional campuses. Students migrate to different cities every semester, interacting with diverse teaching methods and cultural characteristics through practical application. Minerva differs from traditional universities in student selection and learning methods, adopting global recruitment and online small group models, encouraging critical thinking and practical application-oriented cooperation, which has drawn attention for its innovation<sup class="footnote-ref"><a href="#fn14" id="fnref14">[14]</a></sup>.</p>
+<p>The civic tech collaboration mentioned in Taiwan’s vibrant tech society (2-2 The Life of a Digital Democracy) has also promoted the open-source “Moedict”<sup class="footnote-ref"><a href="#fn15" id="fnref15">[15]</a></sup> project, which involves teachers, students, and parents learning by doing. This service has uploaded 160,000 Mandarin entries, 20,000 Taiwanese entries, and 14,000 Hakka entries, with an open and diverse compilation mechanism, making it a multilingual interactive online civic dictionary, demonstrating a global yet localized “collaborative cataloging” paradigm. It not only supports a broad community writing space but also serves as a platform for exchanges between different languages and cultures.</p>
+<p>Moedict has prompted the public sector to actively adopt the “Creative Commons” license<sup class="footnote-ref"><a href="#fn16" id="fnref16">[16]</a></sup>, contributing value to the development of AI models like TAIDE in Taiwan<sup class="footnote-ref"><a href="#fn17" id="fnref17">[17]</a></sup>. Local languages and public knowledge can be interconnected into collaborative networks. The application of such an open-source paradigm as “Moedict” established close ties with official educational institutions and social innovation organizations a decade ago, demonstrating the interoperability between open-source co-editing culture and the formal education system.</p>
+<p>Online libraries, Wikipedia, and CC-licensed image and text sharing described in (3-3 The Lost Dao) are all valuable global assets comparable to commons, generated based on open-source collaboration. Like in a vast world park, works co-created by citizens from different countries and languages can be understood and actively maintained by more people, further promoting the democratization of knowledge and filling the gaps in civic education. These are practical examples of learning evolving towards the ⿻ path and mutually benefiting the public.</p>
+<h3 id="globally-connected-lifelong-learning" tabindex="-1">Globally Connected Lifelong Learning</h3>
+<p>In human society, ⿻ learning networks have opened up an innovative path, becoming an effective tool for addressing complex problems. Global common issues such as climate change, epidemics, and wealth inequality are not problems that can be solved by going it alone. They cross geographical boundaries and affect everyone’s lives, challenging long-standing human divisions and barriers.</p>
+<p>However, crises also bring opportunities. To overcome difficulties together, people begin to understand the importance of setting aside prejudices and learning from each other. The current global connectivity carries the cultural differences and social barriers accumulated over hundreds and thousands of years, and its development is profoundly influencing the next generation. However, these biases seem small in the face of major crises of survival. Only by working together and trusting each other can we spark new ideas and find innovative solutions never encountered before.</p>
+<p>The wisdom of different groups, through open collaboration, converges into a more powerful force. Encyclopedias compiled by global users and free software built by open-source communities are all ⿻ learning fields where humanity works together and transcends barriers.</p>
+<p>In the face of breakthroughs in AI technology, we can actively try to apply innovative thinking to areas such as deliberation, the workplace, and health. Through open-source concepts, neutral datasets, and bias detection tools, AI can help us build more flexible cross-cultural communication models and enhance organizations’ ability to address complex problems. Taiwan has used augmented deliberation technologies such as “Talk to the City”<sup class="footnote-ref"><a href="#fn18" id="fnref18">[18]</a></sup>, based on the concept of open source, to mitigate the impact of AI. Through public participation, it ensures the completeness of information, transcends cultural understanding, and ensures social resilience.</p>
+<p>AI can help build more broadly inclusive cross-cultural communication models by analyzing cultural norms, social customs, and subtle differences in language. By understanding these factors and feasible directions, AI can also help individuals overcome potential cultural barriers and adjust their communication styles to ensure mutual understanding. It can identify and address potentially harmful or biased language. These neutral datasets can also be used to eliminate discrimination and malicious attacks, serving as an alternative suggestion tool to control dangerous biases that may exist in new datasets, aligning in real-time with diverse collaborative open-source tools. If not done so, these datasets may corrupt or influence generations of AI.</p>
+<p>This means that labeled instructions will start to change. In addition to increasing trust in the important learning path of broader thought communication, it can also increase the fun of participation and broaden real paths.</p>
+<p>How data transforms into knowledge on the Internet depends on our connections with ourselves, life, the world, and learning. When we lose these connections, meaning disappears. But through the broad spectrum of global community networks, we can draw energy and return to reality to see more future possibilities. We can endlessly create new senses of learning meaning: learning is both a continuation of past knowledge and the birth of innovation. Imagine being able to use collaborative skills and open content to verify information when faced with a lengthy treatise. In today’s rapidly developing technology, human wisdom will not disappear; instead, it will show greater vitality due to our deep understanding of knowledge and experience, as well as our diverse use of tools.</p>
+<p>If we can skillfully interconnect reciprocal technologies with crowd knowledge, we can cultivate lifelong learners who dare to take intellectual risks and explore unknown areas. These learners can break the framework of binary oppositions and create diverse, boundless ⿻ shared knowledge networks in cross-disciplinary mechanisms. We will elaborate on this ideal below.</p>
+<h3 id="infinite-games-and-%E2%BF%BB-citizens" tabindex="-1">Infinite Games and ⿻ Citizens</h3>
+<p>The spirit of “edutainment” interweaves the pursuit of knowledge with the sharing of joy. With infinite possibilities for combination, there are countless possibilities for the co-creation of innovative thinking. Introducing this perspective into the context of collaborative learning, we can see that true joyful learning is more like a process of infinite combinations. It is not confined to narrow evaluation criteria but encourages learners to break free from fixed thinking patterns. Under the interweaving of multiple perspectives, innovative insights constantly emerge.</p>
+<p>In James Carse’s book “Finite and Infinite Games,” he compares life’s journey to a game, proposing the concepts of finite and infinite games. This perspective can also be used to compare the core spirit of edutainment: in the journey of life, do we choose to follow social power, accept the win-lose model of finite games with established boundaries, and pursue short-lived victories; or do we choose to be open participants, engaging in various aspects of creation from interpersonal interactions to cultural exchanges, experiencing the joy of continuous login?</p>
+<p>In the book “Imagined Communities,” Benedict Anderson deeply explores how communication through a common language forms a sense of national identity. He proposes how the common language in literature and narrative promotes the formation of community consciousness. Anderson believes that the formation of national identity is a process of social construction, mediated through print capitalism—that is, newspapers and novels—enabling people to imagine themselves as part of a larger community with shared interests and identities. This process is similar to the learning environment, where narratives, languages, and symbols play a crucial role in shaping learners’ identities and sense of belonging to the community, whether at the local community level, national level, or on a global scale.</p>
+<p>Anderson’s analysis emphasizes the importance of narrative and discourse in constructing systems, shared knowledge, and community development. Furthermore, if educational content and teaching methods can acknowledge and incorporate diverse narratives, it can create a more inclusive and pluralistic learning environment, thereby encouraging learning systems to have greater resilience and global commonality. Learners deeply shape their self-perception and sense of community belonging through interaction with different stories.</p>
+<p>However, the values instilled by society, government, and capitalism often stem from collective dependence, such as parents’ expectations of children, mutual demands between partners, peer pressure, and self-expectations, both rational and irrational factors. But these should not become the sole compass for personal growth and learning. As Taylor Swift shared in her commencement speech at New York University<sup class="footnote-ref"><a href="#fn19" id="fnref19">[19]</a></sup> — bravely becoming the person you want to be in your heart—the way we encourage is natural, allowing the discovery of self and enjoyment of learning in an open, diverse learning journey, which is the driving force for people to explore.</p>
+<p>The knowledge and skills learned from group life, such as etiquette in school, are tools for dealing with people, respecting human rights, understanding freedom and diversity, and coping with various situations after graduation, in the workplace, and in life. This reminds us that learning is not only a process of knowledge accumulation but also a process of “establishing identity and a sense of community belonging,” and it is an even richer intertwined state. For example, the significant contributions of the Amateur Radio (also known as Ham Radio) community to science, industry, social services, and satellite communications are based on the joy of learning and a strong sense of community identity.</p>
+<p>Driven by globalization, subcultures have rapidly evolved from niche circles to a kind of imagined community. Amateur radio enthusiasts, online interactive communities, and the cultural spread of ACG (animation, comics, and games) all reveal that the boundaries of knowledge, education, and learning are being redefined. This collaborative innovation that transcends traditional boundaries and breaks the interaction of traditional identity roles allows the uniqueness and potential of each person’s learning journey to be deeply explored and respected, further enriching the co-learning landscape of diverse citizens.</p>
+<p>The field of digital games, especially multiplayer games, is well-suited as a learning environment. Minecraft and the “Civilization” game series are two striking examples. Players can explore areas such as social development, global warming, voting fairness, space exploration, and AI through games, which not only promote collaboration, creativity, and problem-solving among participants but also are not limited by age or occupation. With the development of virtual reality, learning paths will be broadened, and the value of meaning and practicality will be far more important than a piece of paper.</p>
+<p>Gamified learning environments break down traditional teacher-student boundaries, creating an immersive and interactive experience. In such an environment, each participant is a creator and sharer of knowledge. This sense of participation and accomplishment is the charm of gamified learning.</p>
+<p>Each collaboration and each project is a continuation of the game, where individual uniqueness can be highlighted and collective wisdom can be gathered. It is a dance with oneself, with others, and with the world in an infinite game. In this game, the concept of edutainment comes from the investment of participation, and meaning comes from the process of exploration. Let us embrace this infinite possibility, so that learning is no longer a finite game oriented towards results, but an ⿻ infinite game full of surprises and unleashing potential, in which every participant is an indispensable co-creator.</p>
+<hr class="footnotes-sep">
+<section class="footnotes">
+<ol class="footnotes-list">
+<li id="fn1" class="footnote-item"><p><a href="https://www.renub.com/online-education-market-p.php">https://www.renub.com/online-education-market-p.php</a> <a href="#fnref1" class="footnote-backref">↩︎</a></p>
+</li>
+<li id="fn2" class="footnote-item"><p><a href="https://www.aeaweb.org/articles?id=10.1257/jel.46.3.607">Eric A. Hanushek and Ludger Woessmann’s paper</a>, published in the 2008 Journal of Economic Literature, analyzed the relationship between cognitive skills and economic growth in 50 countries and found a significant positive correlation between the two. <a href="#fnref2" class="footnote-backref">↩︎</a></p>
+</li>
+<li id="fn3" class="footnote-item"><p>Economist Eric Hanushek’s <a href="https://www.educationnext.org/education-and-economic-growth/">research</a> shows that in developing countries, for each standard deviation increase in cognitive skills, the long-term economic growth rate can increase by 2 percentage points. This means that the impact of improving education quality on economic growth is even greater than years of schooling. <a href="#fnref3" class="footnote-backref">↩︎</a></p>
+</li>
+<li id="fn4" class="footnote-item"><p><a href="https://www.oecd-ilibrary.org/education/oecd-skills-outlook-2023%5C_27452f29-en">https://www.oecd-ilibrary.org/education/oecd-skills-outlook-2023\_27452f29-en</a> <a href="#fnref4" class="footnote-backref">↩︎</a></p>
+</li>
+<li id="fn5" class="footnote-item"><p><a href="https://www.oecd.org/pisa/">https://www.oecd.org/pisa/</a> &amp; <a href="https://focustaiwan.tw/culture/202312060017">https://focustaiwan.tw/culture/202312060017</a> <a href="#fnref5" class="footnote-backref">↩︎</a></p>
+</li>
+<li id="fn6" class="footnote-item"><p><a href="https://www.iea.nl/studies/iea/iccs/2022">https://www.iea.nl/studies/iea/iccs/2022</a> <a href="#fnref6" class="footnote-backref">↩︎</a></p>
+</li>
+<li id="fn7" class="footnote-item"><p><a href="https://www.cna.com.tw/news/ahel/202312050365.aspx">https://www.cna.com.tw/news/ahel/202312050365.aspx</a> <a href="#fnref7" class="footnote-backref">↩︎</a></p>
+</li>
+<li id="fn8" class="footnote-item"><p><a href="https://en.rti.org.tw/news/view/id/2010665">https://en.rti.org.tw/news/view/id/2010665</a> <a href="#fnref8" class="footnote-backref">↩︎</a></p>
+</li>
+<li id="fn9" class="footnote-item"><p><a href="https://github.com/Chenyu-otf/chenyuluoyan%5C_thin">https://github.com/Chenyu-otf/chenyuluoyan\_thin</a> <a href="#fnref9" class="footnote-backref">↩︎</a></p>
+</li>
+<li id="fn10" class="footnote-item"><p><a href="https://blog.luckertw.com/chenyuluoyan-interview/">https://blog.luckertw.com/chenyuluoyan-interview/</a> <a href="#fnref10" class="footnote-backref">↩︎</a></p>
+</li>
+<li id="fn11" class="footnote-item"><p><a href="https://www.uil.unesco.org/en/learning-cities">https://www.uil.unesco.org/en/learning-cities</a> <a href="#fnref11" class="footnote-backref">↩︎</a></p>
+</li>
+<li id="fn12" class="footnote-item"><p><a href="https://www.futurelearn.com/courses/collections/refugees-displaced-people">https://www.futurelearn.com/courses/collections/refugees-displaced-people</a> <a href="#fnref12" class="footnote-backref">↩︎</a></p>
+</li>
+<li id="fn13" class="footnote-item"><p><a href="https://www.minerva.edu/">https://www.minerva.edu/</a> <a href="#fnref13" class="footnote-backref">↩︎</a></p>
+</li>
+<li id="fn14" class="footnote-item"><p><a href="https://www.wuri.world/2023-global-top-100">https://www.wuri.world/2023-global-top-100</a> <a href="#fnref14" class="footnote-backref">↩︎</a></p>
+</li>
+<li id="fn15" class="footnote-item"><p><a href="https://www.moedict.tw/">https://www.moedict.tw/</a> <a href="#fnref15" class="footnote-backref">↩︎</a></p>
+</li>
+<li id="fn16" class="footnote-item"><p><a href="https://language.moe.gov.tw/001/Upload/Files/site%5C_content/M0001/respub/index.html">https://language.moe.gov.tw/001/Upload/Files/site\_content/M0001/respub/index.html</a> <a href="#fnref16" class="footnote-backref">↩︎</a></p>
+</li>
+<li id="fn17" class="footnote-item"><p><a href="https://taide.tw/index/training-data?type=2">https://taide.tw/index/training-data?type=2</a> <a href="#fnref17" class="footnote-backref">↩︎</a></p>
+</li>
+<li id="fn18" class="footnote-item"><p><a href="https://moda.gov.tw/major-policies/alignment-assemblies/2023-ideathon/1459">https://moda.gov.tw/major-policies/alignment-assemblies/2023-ideathon/1459</a> <a href="#fnref18" class="footnote-backref">↩︎</a></p>
+</li>
+<li id="fn19" class="footnote-item"><p><a href="https://www.youtube.com/watch?v=OBG50aoUwlI">https://www.youtube.com/watch?v=OBG50aoUwlI</a> <a href="#fnref19" class="footnote-backref">↩︎</a></p>
+</li>
+</ol>
+</section>
+
+
+
+    </div>
+
+    
+    
+    <nav class="book__nav" aria-label="Chapter navigation">
+      
+        <a href="/read/6-4/" class="book__nav-link book__nav-link--prev" data-page-dir="prev">
+          <span class="book__nav-arrow">&larr;</span>
+          <span class="book__nav-info">
+            <span class="book__nav-label">Previous</span>
+            <span class="book__nav-title">Environment</span>
+          </span>
+        </a>
+      
+      
+        <a href="/read/7-0/" class="book__nav-link book__nav-link--next" data-page-dir="next">
+          <span class="book__nav-info">
+            <span class="book__nav-label">Next</span>
+            <span class="book__nav-title">Policy</span>
+          </span>
+          <span class="book__nav-arrow">&rarr;</span>
+        </a>
+      
+    </nav>
+    
+
+    
+    <div class="book__page-number" aria-hidden="true">
+      6-5
+    </div>
+  </article>
+</div>
+
+<script src="/assets/js/book.js"></script>
+
+  </main>
+
+  
+
+
+
+
+<footer class="footer" role="contentinfo">
+  <div class="footer__inner">
+    <div class="footer__brand" aria-hidden="true">
+      <span class="c-r">P</span><span class="c-o">l</span><span class="c-g">u</span><span class="c-c">r</span><span class="c-w">a</span><span class="c-c">l</span><span class="c-g">i</span><span class="c-o">t</span><span class="c-r">y</span>
+    </div>
+
+    <ul class="footer__links">
+      <li><a href="/read/" class="footer__link">Read</a></li>
+      <li><a href="/read/0-1/" class="footer__link">About</a></li>
+      <li><a href="https://github.com/pluralitybook/plurality" class="footer__link" target="_blank" rel="noopener">GitHub</a></li>
+      <li><a href="https://discord.gg/YWSDRqdW5n" class="footer__link" target="_blank" rel="noopener">Discord</a></li>
+    </ul>
+
+    <div class="footer__sep"></div>
+
+    <p class="footer__authors">E. Glen Weyl, Audrey Tang and the Plurality Community</p>
+    <p class="footer__license">This work is dedicated to the public domain under CC0.</p>
+  </div>
+</footer>
+
+
+  <script src="/assets/js/nav.js"></script>
+  <script src="/assets/js/scroll-reveal.js"></script>
+
+  <!-- Structured Data -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "WebSite",
+    "name": "Plurality",
+    "description": "A book by E. Glen Weyl, Audrey Tang and the Plurality Community exploring how technology can support and strengthen democracy.",
+    "url": "https://new.plurality.net",
+    "author": [
+      { "@type": "Person", "name": "E. Glen Weyl" },
+      { "@type": "Person", "name": "Audrey Tang" },
+      { "@type": "Organization", "name": "the Plurality Community" }
+    ],
+    "license": "https://creativecommons.org/publicdomain/zero/1.0/"
+  }
+  </script>
+</body>
+</html>

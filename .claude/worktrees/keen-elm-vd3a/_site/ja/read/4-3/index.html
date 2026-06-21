@@ -1,0 +1,716 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>商取引と信頼 — Plurality</title>
+  <meta name="description" content="A book by E. Glen Weyl, Audrey Tang and the Plurality Community exploring how technology can support and strengthen democracy.">
+  <meta name="theme-color" content="#faf8f5" media="(prefers-color-scheme: light)">
+  <meta name="theme-color" content="#0f1923" media="(prefers-color-scheme: dark)">
+
+  <link rel="canonical" href="https://new.plurality.net/ja/read/4-3/">
+
+  <!-- Open Graph -->
+  <meta property="og:type" content="website">
+  <meta property="og:title" content="商取引と信頼 — Plurality">
+  <meta property="og:description" content="A book by E. Glen Weyl, Audrey Tang and the Plurality Community exploring how technology can support and strengthen democracy.">
+  <meta property="og:site_name" content="Plurality">
+  <meta property="og:locale" content="ja">
+
+  <!-- Twitter Card -->
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="商取引と信頼 — Plurality">
+  <meta name="twitter:description" content="A book by E. Glen Weyl, Audrey Tang and the Plurality Community exploring how technology can support and strengthen democracy.">
+
+  <!-- Favicon (inline SVG with brand colors) -->
+  <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='6' fill='%230f1923'/%3E%3Ctext x='16' y='22' text-anchor='middle' fill='%23c9a961' font-family='Georgia,serif' font-size='18' font-weight='700'%3EP%3C/text%3E%3C/svg%3E">
+
+  <!-- Fonts: Stage 1 critical -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+  <!-- Fonts: Stage 2 deferred -->
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,400;0,700;1,400&family=Cormorant+Garamond:wght@400;700&family=Outfit:wght@300;400;500;600&family=Noto+Sans+TC:wght@400;500&family=Noto+Serif+TC:wght@400;700&family=Noto+Sans+JP:wght@400;500&family=Noto+Serif+JP:wght@400;700&family=Sarabun:wght@400;600;700&display=swap" media="print" onload="this.media='all'">
+  <noscript>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,400;0,700;1,400&family=Cormorant+Garamond:wght@400;700&family=Outfit:wght@300;400;500;600&family=Noto+Sans+TC:wght@400;500&family=Noto+Serif+TC:wght@400;700&family=Noto+Sans+JP:wght@400;500&family=Noto+Serif+JP:wght@400;700&family=Sarabun:wght@400;600;700&display=swap">
+  </noscript>
+
+  <link rel="stylesheet" href="/assets/css/main.css">
+
+  <!-- Theme toggle (run before render to prevent flash) -->
+  <script src="/assets/js/theme-toggle.js"></script>
+</head>
+<body>
+  <a href="#main" class="skip-link">Skip to content</a>
+
+  
+
+
+
+
+<nav class="nav" role="navigation" aria-label="Main navigation">
+  <div class="nav__inner">
+    <a href="/ja/" class="nav__logo" aria-label="Plurality home">Plurality</a>
+
+    <ul class="nav__links">
+      <li><a href="/ja/read/" class="nav__link nav__link--active">読む</a></li>
+      <li><a href="/ja/read/0-1/" class="nav__link">概要</a></li>
+      <li><a href="https://github.com/pluralitybook/plurality" class="nav__link" target="_blank" rel="noopener">GitHub</a></li>
+      <li><button class="theme-toggle" aria-label="Toggle theme">&#9790;</button></li>
+    </ul>
+
+    <button class="nav__hamburger" aria-label="Open menu" aria-expanded="false">
+      <span></span>
+      <span></span>
+      <span></span>
+    </button>
+  </div>
+</nav>
+
+<div class="nav__overlay" role="dialog" aria-label="Mobile menu">
+  <a href="/ja/read/" class="nav__overlay-link">読む</a>
+  <a href="/ja/read/0-1/" class="nav__overlay-link">概要</a>
+  <a href="https://github.com/pluralitybook/plurality" class="nav__overlay-link" target="_blank" rel="noopener">GitHub</a>
+  <button class="theme-toggle" aria-label="Toggle theme">&#9790;</button>
+</div>
+
+
+  <main id="main">
+    <div class="book" id="book">
+  
+  
+  
+  
+  <aside class="book__toc" aria-label="Table of contents" id="book-toc">
+    <button class="book__toc-toggle" aria-expanded="false" id="toc-toggle">
+      <span class="book__toc-toggle-icon"></span>
+      目次
+    </button>
+    <nav class="book__toc-nav" id="toc-nav">
+      <p class="book__toc-heading">目次</p>
+      
+        <p class="book__toc-section">読む前に</p>
+        <ul class="book__toc-list">
+          
+            
+            
+              
+            
+            <li>
+              <a href="/ja/read/0-0/">
+                <span class="book__toc-num">0-0</span> 推薦
+              </a>
+            </li>
+          
+            
+            
+              
+            
+            <li>
+              <a href="/ja/read/0-1/">
+                <span class="book__toc-num">0-1</span> 著者紹介
+              </a>
+            </li>
+          
+            
+            
+              
+            
+            <li>
+              <a href="/ja/read/0-2/">
+                <span class="book__toc-num">0-2</span> 自分の道を見つける
+              </a>
+            </li>
+          
+            
+            
+              
+            
+            <li>
+              <a href="/ja/read/0-3/">
+                <span class="book__toc-num">0-3</span> クレジット
+              </a>
+            </li>
+          
+        </ul>
+      
+        <p class="book__toc-section">序文</p>
+        <ul class="book__toc-list">
+          
+            
+            
+              
+            
+            <li>
+              <a href="/ja/read/1/">
+                <span class="book__toc-num">1</span> 多元性を見る
+              </a>
+            </li>
+          
+        </ul>
+      
+        <p class="book__toc-section">情報技術と民主主義</p>
+        <ul class="book__toc-list">
+          
+            
+            
+              
+            
+            <li>
+              <a href="/ja/read/2-0/">
+                <span class="book__toc-num">2-0</span> ITと民主主義　拡大する溝
+              </a>
+            </li>
+          
+            
+            
+              
+            
+            <li>
+              <a href="/ja/read/2-1/">
+                <span class="book__toc-num">2-1</span> 玉山からの眺め
+              </a>
+            </li>
+          
+            
+            
+              
+            
+            <li>
+              <a href="/ja/read/2-2/">
+                <span class="book__toc-num">2-2</span> デジタル民主主義の日常
+              </a>
+            </li>
+          
+        </ul>
+      
+        <p class="book__toc-section">プルラリティ</p>
+        <ul class="book__toc-list">
+          
+            
+            
+              
+            
+            <li>
+              <a href="/ja/read/3-0/">
+                <span class="book__toc-num">3-0</span> ⿻プルラリティ（多元性）とは？
+              </a>
+            </li>
+          
+            
+            
+              
+            
+            <li>
+              <a href="/ja/read/3-1/">
+                <span class="book__toc-num">3-1</span> ⿻世界に生きる
+              </a>
+            </li>
+          
+            
+            
+              
+            
+            <li>
+              <a href="/ja/read/3-2/">
+                <span class="book__toc-num">3-2</span> つながった社会
+              </a>
+            </li>
+          
+            
+            
+              
+            
+            <li>
+              <a href="/ja/read/3-3/">
+                <span class="book__toc-num">3-3</span> 失われた道
+              </a>
+            </li>
+          
+        </ul>
+      
+        <p class="book__toc-section">自由</p>
+        <ul class="book__toc-list">
+          
+            
+            
+              
+            
+            <li>
+              <a href="/ja/read/4-0/">
+                <span class="book__toc-num">4-0</span> 権利、オペレーティングシステム、⿻的自由
+              </a>
+            </li>
+          
+            
+            
+              
+            
+            <li>
+              <a href="/ja/read/4-1/">
+                <span class="book__toc-num">4-1</span> IDと人物性
+              </a>
+            </li>
+          
+            
+            
+              
+            
+            <li>
+              <a href="/ja/read/4-2/">
+                <span class="book__toc-num">4-2</span> 団体と⿻公衆
+              </a>
+            </li>
+          
+            
+            
+              
+            
+            <li>
+              <a href="/ja/read/4-3/" class="active">
+                <span class="book__toc-num">4-3</span> 商取引と信頼
+              </a>
+            </li>
+          
+            
+            
+              
+            
+            <li>
+              <a href="/ja/read/4-4/">
+                <span class="book__toc-num">4-4</span> 財産と契約
+              </a>
+            </li>
+          
+            
+            
+              
+            
+            <li>
+              <a href="/ja/read/4-5/">
+                <span class="book__toc-num">4-5</span> アクセス
+              </a>
+            </li>
+          
+        </ul>
+      
+        <p class="book__toc-section">民主主義</p>
+        <ul class="book__toc-list">
+          
+            
+            
+              
+            
+            <li>
+              <a href="/ja/read/5-0/">
+                <span class="book__toc-num">5-0</span> 協働テクノロジーと民主主義
+              </a>
+            </li>
+          
+            
+            
+              
+            
+            <li>
+              <a href="/ja/read/5-1/">
+                <span class="book__toc-num">5-1</span> ポスト表象コミュニケーション
+              </a>
+            </li>
+          
+            
+            
+              
+            
+            <li>
+              <a href="/ja/read/5-2/">
+                <span class="book__toc-num">5-2</span> 没入型共有現実（ISR）
+              </a>
+            </li>
+          
+            
+            
+              
+            
+            <li>
+              <a href="/ja/read/5-3/">
+                <span class="book__toc-num">5-3</span> クリエイティブなコラボレーション
+              </a>
+            </li>
+          
+            
+            
+              
+            
+            <li>
+              <a href="/ja/read/5-4/">
+                <span class="book__toc-num">5-4</span> 拡張熟議
+              </a>
+            </li>
+          
+            
+            
+              
+            
+            <li>
+              <a href="/ja/read/5-5/">
+                <span class="book__toc-num">5-5</span> 適応型管理行政
+              </a>
+            </li>
+          
+            
+            
+              
+            
+            <li>
+              <a href="/ja/read/5-6/">
+                <span class="book__toc-num">5-6</span> ⿻投票
+              </a>
+            </li>
+          
+            
+            
+              
+            
+            <li>
+              <a href="/ja/read/5-7/">
+                <span class="book__toc-num">5-7</span> 社会市場
+              </a>
+            </li>
+          
+        </ul>
+      
+        <p class="book__toc-section">インパクト</p>
+        <ul class="book__toc-list">
+          
+            
+            
+              
+            
+            <li>
+              <a href="/ja/read/6-0/">
+                <span class="book__toc-num">6-0</span> ⿻から現実へ
+              </a>
+            </li>
+          
+            
+            
+              
+            
+            <li>
+              <a href="/ja/read/6-1/">
+                <span class="book__toc-num">6-1</span> 職場
+              </a>
+            </li>
+          
+            
+            
+              
+            
+            <li>
+              <a href="/ja/read/6-2/">
+                <span class="book__toc-num">6-2</span> 保健
+              </a>
+            </li>
+          
+            
+            
+              
+            
+            <li>
+              <a href="/ja/read/6-3/">
+                <span class="book__toc-num">6-3</span> メディア
+              </a>
+            </li>
+          
+            
+            
+              
+            
+            <li>
+              <a href="/ja/read/6-4/">
+                <span class="book__toc-num">6-4</span> 環境
+              </a>
+            </li>
+          
+            
+            
+              
+            
+            <li>
+              <a href="/ja/read/6-5/">
+                <span class="book__toc-num">6-5</span> 学習
+              </a>
+            </li>
+          
+        </ul>
+      
+        <p class="book__toc-section">未来へ</p>
+        <ul class="book__toc-list">
+          
+            
+            
+              
+            
+            <li>
+              <a href="/ja/read/7-0/">
+                <span class="book__toc-num">7-0</span> 政策
+              </a>
+            </li>
+          
+            
+            
+              
+            
+            <li>
+              <a href="/ja/read/7-1/">
+                <span class="book__toc-num">7-1</span> 結論
+              </a>
+            </li>
+          
+        </ul>
+      
+    </nav>
+  </aside>
+
+  
+  <article class="book__page" id="book-page">
+    
+    <div class="book__page-curl" aria-hidden="true"></div>
+
+    
+    <header class="book__header">
+      
+        <p class="book__section-label">自由 · 4-3</p>
+      
+      <h1 class="book__title">商取引と信頼</h1>
+      
+      
+        <nav class="book__lang-switch" aria-label="Language versions">
+          <span class="book__lang-current">日本語</span>
+          
+            <a href="/read/4-3/" class="book__lang-link" lang="en">English</a>
+          
+            <a href="/zh/read/4-3/" class="book__lang-link" lang="zh">華文</a>
+          
+            <a href="/th/read/4-3/" class="book__lang-link" lang="th">ไทย</a>
+          
+        </nav>
+      
+      <div class="book__header-ornament" aria-hidden="true">
+        <span></span><span></span><span></span>
+      </div>
+    </header>
+
+    
+    <div class="book__body">
+      
+
+  <p>周囲の興奮のざわめきが屋外に響き渡り、遠くからの笑い声やおしゃべりがそれを際立たせた。地元の家族たちが、このコミュニティで深く大切にされている伝統である、愛すべきレトロ映画の夜に再び集まった。思い出のキャンバスのように、家族、恋人、そして十代の若者たちがキャンプ用の椅子に座り、広大な星空の下で古い映画の感動を追体験する用意を調えていた。</p>
+<p>ベテランの参加者の中に、目新しい雰囲気で目立っている男、ツヴィがいた。町に来たばかりで、地元の学校で教師の職に就いた彼は、コミュニティの祭りに加わり、交流することに熱心だった。彼は誰かと分け合うつもりでポテトチップスの袋を掴み、列に加わって、その夜の独特の雰囲気を吸収した。</p>
+<p>「ストリートアートへの寄付ありがとうございます」と、前方から声が響いた。ツヴィはチケット売り場に目を向けた。チャリティーイベント？　知らなかった、と彼は少し困惑しながら思った。</p>
+<p>「『ローグスターダスト』を観たい」。ツヴィはその声のしたほうに首を伸ばし、見慣れた顔を見つけた。学校の生徒が、誇らしげに学校のパーカーをひけらかしていた。</p>
+<p>予想外だ、と彼は思った。</p>
+<p>別の会話が耳に入ってきて、彼の考えは中断された。「奥様、今夜はどの映画を選びますか。あなたは老人ホームや地域での活動のために数票お持ちですよ」</p>
+<p>優しい年配の声が返事をする。「もしよければ、『虚空のささやき』と『最後の錬金術師』をお願いします」</p>
+<p>「ご協力ありがとうございます」窓口の男性は丁寧な口調で答えた。</p>
+<p>すぐに、ツヴィの番になった。男性は、熟練したサーファーを思わせる落ち着いた雰囲気を漂わせていた。彼の温かい笑顔は伝染した。</p>
+<p>「こんばんは、お客様！　よろしければ、ここで携帯電話をタップして、コミュニティ体験を共有してください。完全に任意ですが、私たちが町の皆さんの貢献に感謝する良い方法なので」と、係員はカウンターの小さくて目立たないスクリーンを指さしながら提案した。</p>
+<p>興味をそそられながらも用心深いツヴィは、「やるとどうなるの？　プライバシーとか、そういうことが気になるんだけど」と尋ねた。</p>
+<p>「もちろん、プライバシーは重要です。このデバイスは、単にコミュニティの公開メッセージと感謝のメッセージを、地元のコミュニティアプリに表示するだけです。アプリで誰でも見ることができる情報と同じです。デジタルで感謝の気持ちを伝え、ポジティブな雰囲気を共有する方法だと考えてください」と、係員は安心させる口調で説明した。</p>
+<p>ツヴィは説明に安心し、参加することにした。デバイス上でスマートフォンをタップすると、画面が点灯し、地元の住民から届いた、コミュニティプロジェクトへの協力に対する感謝のメッセージと楽しい絵文字が色とりどりに表示された。</p>
+<p>温かいメッセージに微笑みながら、ツヴィはこう答えた。「素敵な心遣いですね。特別な何かの一部になったような気分になります」</p>
+<p>「そのとおりです！　そして、私たちのコミュニティの一員として、今夜の映画を提案することができます。ラインナップに加えたい作品は何ですか？」と、係員は目をキラキラと友好的に輝かせながら尋ねた。「それから、あの日は放課後に妹の子供の面倒をみてくださって、ありがとうございます。本当に妹の家族はずいぶん助かりましたよ」</p>
+<p>歓迎を実感したツヴィの体には、温かさが広がった。心からの感謝のうなずきとともに、彼は集まりの中の居心地のいい一角へと向かい、近くにいる大喜びの子供たちとクラッカーを分け合った。</p>
+<p>星がちりばめられた空の下、思い出に満ちた背景を背に、ツヴィは自分の大切な映画が上映されるのを見守った。この瞬間、彼は深いコミュニティ意識に包まれた。彼はただの観客ではなく、集合的な記憶と経験の鮮やかなタペストリーに織り込まれた不可欠な糸となったのだ。</p>
+<hr>
+<p>このセクションで説明するプロトコルのどれもが、支払いと商取引を促進するための新しいアプローチとして、メディアや政策でほとんど注目されていないという事実は、現代世界がいかに商業化されているかを示すものだ。暗号資産は、過去10年間の焦点となる技術のひとつだった。しかし、それほど注目されないものの、はるかに広く採用されているのは、<a href="https://www.npci.org.in/what-we-do/upi/product-overview">インド</a>、<a href="https://www.bcb.gov.br/en/financialstability/pix_en">ブラジル</a>、<a href="https://www.abs.org.sg/consumer-banking/fast">シンガポール</a>などの政府IDを使用した即時決済技術、中央銀行デジタル通貨（CBDC）、中華人民共和国などの規制された相互運用可能なデジタル決済システムなど、政府やその他の公共の支払いに関するさまざまなイノベーションなのだ。新世代の決済システムは、普遍的な採用や相互運用には程遠いものの、世界中の多くの人々の生活にますます浸透し、デジタル空間での支払いは、過去の現金かそれ以上に簡単になっている。</p>
+<p>しかし多くの点で、これらの取り組みが比較的急速に成功を収めていることは、それまでこの分野での進歩がいかに遅れていたかを示すものでもある。現金は、おそらくデジタル化以前の時代の「最もスマートでない」技術のひとつだ。現金は、ほぼ匿名の抽象化されたアカウント間でやりとりされる、単一の均質な物質だ。この基本的な機能の再現は実に困難だと明らかになったし、その意味で最近の進歩は重要ではあるが、別にこれはITがもたらした革命的な技術ではない。ハイパーテキストにより、それまでの文書が改善されたような進歩ではないのだ。この節では、これまでの進歩を要約し、現金やオンライン商取引のそれぞれの限界について説明し、最近の進歩に基づいてデジタル商取引のさらに⿻なビジョンを実現する方法について説明しよう。</p>
+<h3 id="%E4%BC%9D%E7%B5%B1%E7%9A%84%E3%81%AA%E6%94%AF%E6%89%95%E3%81%84" tabindex="-1">伝統的な支払い</h3>
+<p>お金の初期の歴史は、後述するように最近多くの研究対象となっているが、ほとんどの人はお金という概念を、手から手へと渡されるトークンや紙幣の形をした通貨と結びつけ、他の形のお金は、この基本的な概念の抽象化だと考えている。この形の「交換通貨」は、バビロニア、インド、中国の初期の文明にまで遡り、紀元前1千年紀には、青銅、銀、金などの貴金属がますます多く使われるようになった<sup class="footnote-ref"><a href="#fn1" id="fnref1">[1]</a></sup>。これらの金属の耐久性、希少性、そしてその価値に対する幅広い信念により、こうした硬貨はさまざまな商品やサービスの支払いに広く受け入れられるようになった。</p>
+<p>しかしこれらの特性はいずれも、貴金属である必要はないし、金属を硬貨にしてしまうと、武器、機械、装飾品など、もっと実用的な用途には使えなくなる。このため、多くの社会は貴金属そのものの使用から、希少性はあっても他に使い道のない価値表現へと移行した。それが手形、銀行券、および「法定通貨」と見なされ額面どおりの受け取りが義務付けられる、政府発行の紙幣などだ。</p>
+<p>これに密接に関連していたのが、通貨やその他の貴重品を預かって、要請があればそれを返却すると約束し、さらにそうした預金を他人への貸付資金として使用するという、銀行の発展だった。銀行は預金された全額を同時に引き出されることはめったにないため、預金額以上の貸付をするようになった。これで「部分準備銀行制度」の仕組みが生まれ、銀行は新しいお金を生み出す源泉となった。これが引き起こす銀行取り付け騒ぎの明らかな危険性については、ここでは詳述する余裕がないが、この危険性のため、お金を生み出すプロセスを制御して銀行の破綻を回避するという「中央銀行」の自然な役割が生じた。</p>
+<p>20世紀初頭までに、お金のほとんどすべては、紙幣などの通貨ではなく、口座の資金として保持されるようになった。通貨は、額面が固定されており、かさばるため、比較的小規模な取引以外は非効率だ。通貨と並行して、そしておそらく通貨よりも早く、柔軟に額面を設定できる銀行口座間の直接送金が開発された。これは、今日では一般的に「小切手」と呼ばれる。20世紀半ばまでに、これらは（総額で見て）資金移動の主流になった。小切手にはさまざまな形があり、銀行間の情報交換に依存するものもあれば、現金に似た動作（無条件で使途制限のない送金）をするものもある。</p>
+<p>もちろん小切手は、記入に時間がかかり、決済には物理的に送付する必要があるという、おなじみの欠点を持つ。19世紀後半から、一部の店舗では常連客向けに「クレジットアカウント」を表すトークンを発行するようになり、エドワード・ベラミーなどのユートピア小説作家は、すべての支払いを1枚または数枚の軽量カードで行える世界を想像し始めた<sup class="footnote-ref"><a href="#fn2" id="fnref2">[2]</a></sup>。1928年には、クレジットカードの前身である課金プレートが運用を開始した<sup class="footnote-ref"><a href="#fn3" id="fnref3">[3]</a></sup>。その後30年間で、「いま買って後で支払う」カードの使用は、最初は航空業界、後には飲食業界に徐々に広がった<sup class="footnote-ref"><a href="#fn4" id="fnref4">[4]</a></sup>。</p>
+<p>1958年、Bank of AmericaはBankAmericardを発行した。これは明らかに現代のものと同じで、初の成功したクレジットカードとなった。最終的には米国内の他の銀行、そして世界中にライセンス供与された<sup class="footnote-ref"><a href="#fn5" id="fnref5">[5]</a></sup>。このシステムは、Visaの初代CEOであるディー・ホックのリーダーシップの下、1973年にコンピュータ化され、磁気ストライプによって処理が容易になり、取引時間が短縮された。1976年、すべてのBankAmericardのライセンシーが共通ブランドVisaの下に統合され、銀行間の契約ネットワークを管理する銀行コンソーシアムが組織された。1980年代には、電子商取引端末によってカードの受け入れ範囲がより広がり速度がますます上がった。2000年代にはチップとPINが広く追加されたことでさらに加速している。</p>
+<p>小切手決済システムは、1970年代に自動決済機関（ACH）が開発されたことで、データベースと通信ネットワークを活用し始めた。これらは、銀行の口座間の大量の入金および引き落とし取引を一括でネット決済ベースで処理する。このシステムは、政府から国民（従業員、年金受給者）への支払い、雇用主から従業員への支払い、企業間支払い、消費者から銀行への支払い（住宅ローン）、および銀行口座間で行われるその他の取引を支えている。初のACHであるBACSは、1968年に英国で運用が開始され、米国ではサンフランシスコ連邦準備銀行が運営する最初のACHが1972年に取引の処理を開始した。2012年には世界で98のACHシステムがあった<sup class="footnote-ref"><a href="#fn6" id="fnref6">[6]</a></sup>。</p>
+<p>こうした電子送金の加速により、銀行自体が国際送金手法を検討し始め、1973年に銀行が集まって、全銀行が所有管理する協同組合の国際銀行間金融通信協会（SWIFT）を設立した。SWIFTは、取引に関与する金融機関間の支払い指示など、各種メッセージ伝達の仕組みである<sup class="footnote-ref"><a href="#fn7" id="fnref7">[7]</a></sup>。2018年までに、高額の国際送金メッセージの半数がこのネットワーク経由だった<sup class="footnote-ref"><a href="#fn8" id="fnref8">[8]</a></sup>。</p>
+<p>およそ2010年代あたりまでは、この組み合わせがほとんどの取引をカバーしていた。現金と決済カードの組み合わせが物理的に近い場所での小額取引に使用され、電信送金は海外送金に使用され、高額取引は主にACHで行われ、電信送金と小切手はそれより少し少ない程度だった。どれもインターネットの出現以前のもので、インターネットの範囲、速度、柔軟性には遠く及ばない。支払いカードはかつてはオンラインでの使用が面倒で安全性に欠け、現金はオンラインでは出番がなく、ACHは非常に遅かった（通常3日）。当然ながら、リックライダー、ティム・バーナーズ＝リー、ネルソンらは、ネイティブ決済システムがインターネットの初期の開発で欠けていた中核機能のひとつだと確信していた。過去15年間、この欠陥に対処するためのさまざまな試みが行われてきた。</p>
+<h3 id="%E3%83%87%E3%82%B8%E3%82%BF%E3%83%AB%E9%80%9A%E8%B2%A8%E3%81%A8%E3%83%97%E3%83%A9%E3%82%A4%E3%83%90%E3%82%B7%E3%83%BC" tabindex="-1">デジタル通貨とプライバシー</h3>
+<p>こうしたシステムの中で最初に登場し、最も注目を集めたのは、2008年の<a href="(https://en.wikipedia.org/wiki/Bitcoin)">ビットコイン</a>と、その後2010年代に登場したさまざまな「<a href="https://en.wikipedia.org/wiki/Cryptocurrency">暗号資産</a>」だ<sup class="footnote-ref"><a href="#fn9" id="fnref9">[9]</a></sup>。これらのシステムでは、前節で説明したDLTを内部生成の金融構造と組み合わせて、トランザクションを追跡する検証済みの基盤を作り上げた。まず、人間の参加者だと確認するIDシステムの代わりに、何らかのリソースが使えることを証明するプロトコル（強力なコンピュータへのアクセスを必要とするパズル解決に基づくプルーフオブワーク：PoWプロトコルなど）を使用して、取引を横取りしようとする参加者からの保護を提供した。これで参加者に対する効果的な金融スクリーニングができた。一方、「正直な」参加者（トランザクションの記録が他の人の記録と一致している参加者）に、トランザクションで生成した「トークン」を報酬として与え、その参加者のアカウントに計上する。台帳はすべての参加者に公開されており、アカウントは匿名なので個人は複数の「ID」を持てて、グローバルな純粋金融台帳が作り出される。</p>
+<figure>
+<img src="https://raw.githubusercontent.com/pluralitybook/plurality/main/figs/4-3-bitcoin.png" width="100%" alt="Simple user interface for use of early BitCoin.">
+<p><strong><figcaption>画像 4-3-A ビットコインの初期の実装コード</figcaption></strong></p>
+</figure>
+<br></br>
+<p>出典：Wikipediapublic, domain<sup class="footnote-ref"><a href="#fn10" id="fnref10">[10]</a></sup></p>
+<p>ビットコインの初期の成功は、少なくとも3つの理由で注目と関心を呼び起こした。</p>
+<p>①ビットコインは、前述のデジタル決済分野の欠陥を埋め、比較的容易な国境を越えた送金を可能にしたように見えた。</p>
+<p>②ビットコインは、中央集権的なIDおよび許可システムを持たない、大規模で「重要な」（実際の財務的影響を伴う）初のオンラインアプリケーションだった。</p>
+<p>③ビットコインの金融構造と希少性により、コインの価値は急速に上がる可能性があった。実際その後15年間に何度か急上昇期を迎え、大きな富、投機、関心を生み出した。</p>
+<p>多くの政府や主流のビジネス関係者は、最初の点の重要性は認識したが、分散化は不必要または無駄だと見る人が多く、暗号資産をめぐる投機は軽薄で不安定化を招きかねないバブルだと見ていた。このため、デジタル時代の決済システムを再考する多くの取り組みが生まれた。最も野心的な取り組みは「中央銀行デジタル通貨」であり、アフリカやアジアを中心に数十か国で導入または試験運用されており、他の多くの国でも検討されている。これらは、中央銀行に対する通貨のようなデジタル請求権を作成するというもので、暗号資産のトレンドに最も直接的に対応している。</p>
+<p>しかし、通貨の保有と取引はここ数十年で多くの人々にとって当たり前に思えるようになったが、この部分の前後の説明を見ると、これは人類の歴史の中では決して当たり前ではないことがわかる。メディア学者のラナ・シュワルツが著書『ニューマネー』（未邦訳）で強調しているように、商業は支払い義務と、そのローカルな会計処理の伝達に大きく依存してきた<sup class="footnote-ref"><a href="#fn11" id="fnref11">[11]</a></sup>。したがって、過去10年間に最も広く採用された決済イノベーションの多くが、「通貨」そのものの創出ではなく、決済処理と口座振替への変化という形だったのも、決して意外ではない。</p>
+<p>この認識は、興味深いことに、オンライン決済の最初の主要手段のひとつである<a href="https://www.paypal.com/">PayPal</a>のサービス開発の歴史と似ている。PayPalは当初、創設者のマックス・レブチン、ルーク・ノゼック、ピーター・ティールによって新しいデジタル通貨として考案されたものだが、すぐにインターネット対応の決済処理事業へと移行した<sup class="footnote-ref"><a href="#fn12" id="fnref12">[12]</a></sup>。ビットコインの初期の成長に続いて、他の多くの民間の高速で低コストの決済処理業者も市場参入した。たとえば<a href="https://squareup.com/us/en/payments/online-payments">Square</a>や<a href="https://en.wikipedia.org/wiki/Stripe,_Inc.">Stripe</a>（企業を対象）、<a href="https://venmo.com/">Venmo</a>（カジュアルな個人間の取引を対象）などで、すべてビットコインの発売直後に米国で設立されたものだ。さらに印象的だったのは、中国では<a href="https://pay.weixin.qq.com/index.php/public/wechatpay">微信支付</a>、アジアの他の地域では<a href="https://pay.line.me/portal/global/main">LINEペイ</a>を通じて、非常に低コストのソーシャルな支払いが急速に普及したことだ。これに続いて、<a href="https://www.apple.com/apple-pay/">Apple</a>、<a href="https://pay.amazon.com">Amazon</a>、<a href="https://pay.google.com/pay/u/0/home">Google</a>など、西側諸国の最大の技術プラットフォームも、同様のサービスを次々に提供し始めた。</p>
+<p>これらのサービスを低コストでもっと包括的に、特に米国と中国発の各種サービスが十分に普及していない市場で提供するため、いくつかの主要な開発途上国の政府は、公的支援による即時決済サービスを構築した。たとえば2014年のシンガポールのFASTシステム、2020年のブラジルのPixシステム、2016年のインドの統合支払いインターフェース（UPI）などだ。米国でさえ、2023年に<a href="https://www.frbservices.org/financial-services/fednow">FedNow</a>で追随した。国際的な相互運用にはまだ大きな障害があるが、デジタルチャネルを通じてオンラインおよび対面で即時決済を行うための当面のギャップは埋められたというのが、コンセンサスになりつつある。</p>
+<p>しかし、暗号資産が提起した課題は、この分野への関心と最近の通貨価値が示唆するように、それほど簡単に解決するものではない。制裁制度の擁護者や経済学者ケネス・ロゴフのような金融犯罪者と戦う人々は、現金の衰退を歓迎したが、プライバシー擁護者や市民の自由を擁護する人々はそれを憂慮している。民間決済の崩壊は、個々のユーザーが支払い方法を選択する際に考慮に入れていない、システム全体に及ぶ影響をもたらすと彼らは主張する<sup class="footnote-ref"><a href="#fn13" id="fnref13">[13]</a></sup>。ビットコインの利点として挙げられるプライバシーは、十分なリソースを持つ分析者なら匿名アカウントの管理者をかなり容易に暴けることから、おおむね幻想だと証明されている<sup class="footnote-ref"><a href="#fn14" id="fnref14">[14]</a></sup>。しかし、プライバシー技術がこの分野で大きく注目され、<a href="https://z.cash/">Zcash</a>のような高度にプライベートな通貨や、<a href="https://en.wikipedia.org/wiki/Tornado_Cash">Tornado Cash</a>などの「ミキサー」サービス開発の原動力となっている。これらはプライバシーと法的責任のトレードオフに関する論争を刺激し、一部の法域では政府がさまざまなプライバシー機能を強制的に停止させる事態にまで至った。これらの対立は、誰がどのような活動を監視および規制できるかをめぐって各国が争う中で、デジタル決済システムのシームレスな国際相互運用を実現する上での根本的な課題にもなっている。</p>
+<p>これらの課題の多くは、IDの話で強調したのと同じような、通常「プライバシー」と呼ばれる問題についての誤った定義から生じている。金融取引は不適切な監視から保護されるべきだという点については広く合意されている。また、適切な抑制と均衡があれば、犯罪行為を助長した個人や組織の責任を問えるという点についてもやはり広く合意されている。これらを調和させるという問題は、基本的に4章でここまで取り上げた問題と同じだ。つまり、多様な情報コミュニティが、整合性を維持しながら部分的に相互運用する方法という話なのだ。</p>
+<p>そもそも、金融取引は完全にプライベートではあり得ない。金融取引には常に複数の当事者が関与するし、それが行われるコミュニティでは取引の流入が経済環境に影響を及ぼすので、ある程度は他人から検出可能だ。したがって、目標はプライバシーではなく、コンテキストの完全性なのだ。つまり、この情報が他のコミュニティに重要かつ目立つ波及効果（まさに、受託者義務、金融およびビジネス倫理、さらに必要に応じて法執行機関が捕捉しようとしているもの）を及ぼさない限り、それが影響を受けるコミュニティ内にとどまるようにすればいいのだ。そういうことなら、コミュニティの文化がそのような外部に有害な活動を支援しないようにして、外部から不当な言いがかりをつけられたら活動を実施する権利を守るのは、そのコミュニティの責任となる<sup class="footnote-ref"><a href="#fn15" id="fnref15">[15]</a></sup>。⿻的な「抑制と均衡」の本質は、関係するコミュニティがそのような外部監視をある程度は認識し、関与すべきだということであり、それが非対称で外部から課されるものであってはいけないということなのだ。</p>
+<p>しかし監視は、頼母子講から国家に至る各種コミュニティが、こうしたコンテキストに合致した金融の自由を生み出すために引き受けるべき責任の始まりにすぎない。監視のほとんどは、単なるのぞき見趣味ではない。監視は、詐欺から国際法（制裁）に違反する侵略者との取引まで、さまざまな金融犯罪の防止を目的としている。このような明らかな違反以外にも、麻薬や武器の販売、他の債務の返済能力に負担をかける隠れた借金、課税対象の売上など、さまざまな取引が取引当事者以外の人々に影響を与えるので、非常に問題だと言える。こうした話を見れば、匿名で説明責任がないという現金と、政府による会計の集中管理のどちらも、⿻商業信頼システムの理解には不十分なことがわかる。</p>
+<h3 id="%E9%80%9A%E8%B2%A8%E3%81%AE%E6%AD%B4%E5%8F%B2%E3%81%A8%E9%99%90%E7%95%8C" tabindex="-1">通貨の歴史と限界</h3>
+<p>もっと⿻な選択肢を考えたいなら、お金の歴史と、そもそもお金がなぜ進化したのかという問題に戻ることになる。人類学史家デイヴィッド・グレーバーは、お金という制度について記述した際に、R・G・ホートリー、ジェフリー・インガム、L・ランダル・レイ、サミュエルA・チェンバースなど、多くの主要な貨幣学者の見解を明確に述べ、お金が生まれるずっと前から、社会は互恵の規範の下で、さまざまな相互に有益な協力関係を築いていたと主張した<sup class="footnote-ref"><a href="#fn16" id="fnref16">[16]</a></sup>。これらは、正式な「価値」という観点から数値化されることはほとんどなく、単純な二者間の互恵交換にとどまらないさまざまな論理に従っていた。たとえば、漁師が村や長老に社会奉仕したら、コミュニティ全体が彼らに「借り」を作ることになり、彼らへの贈り物が慣習になったりする。こうした伝統はきわめて豊かで多様なので、それを定量化すると不自然になってしまうし、「<a href="https://www.plurality.net/v/chapters/4-1/jpn/?mode=dark">4–1IDと人物性</a>」で説明した約150人の親しい仲間というダンバー数を超えて拡張するのも難しい。</p>
+<p>協力と交換の及ぶ距離、時間、集団が増えるにつれて、複雑さを管理するために、負債と提供された価値を定量化して記録する必要が出てきた。いわば帳簿である。そうした帳簿で最初期のものは、提供された商品やサービスをもとに負債を細かく記録しようとしていたようだが、これもやはりすぐに手に負えなくなり、共通の定量化単位を使うことで会計を簡素化するようになった。これで「通貨」という最初の概念が生まれた。交換媒体、銀行とその紙幣、およびここまでで議論したさまざまな形態のお金は、これらの帳簿を持ち運びやすくする方法として成長した。したがって、「クレジット／債務」は「現金」に先立っていたのだ。</p>
+<p>しかし、通貨が前近代的な情報技術の限界に対処するための単純化として生まれたのであれば、当然、今日ならもっとうまくできるのではないか？　取引などの価値創造についてもっと多くの情報を記録するのは、今日では十分に可能だし、ほとんどの電子商取引では日常的に行われている。これらすべてを金銭送金に還元するのは、もはや必要な単純化ではなく、時代遅れの歴史的儀式の名残でしかない。</p>
+<p>また、社会的に距離が遠い集団の間で信頼をまとめる手段というお金の役割も、今日では特に重要ではない。経済学者が金銭に基づく交換の利点について語る最も一般的な話のひとつは、「欲求の二重の一致」だ。つまり、AさんはBさんのほしいものを持っていても、Bさんのほうは直接それと交換できるものを持っていないかもしれない。お金があれば、集団全員を集めなくても、Aさんがほしがっているものを持っていそうなCさんに商品やサービスを簡単に提供できる。しかし、このような「交換取引サイクル」の必要性をお金で回避するのはすでに時代遅れだ。実際、現代の計算能力により「交換取引サイクル」アルゴリズムの実行コストが安くなっているため、今日の経済学者は、お金に頼らず、さまざまな状況で直接「交換取引サイクル」アルゴリズムをごく当たり前に使用している<sup class="footnote-ref"><a href="#fn17" id="fnref17">[17]</a></sup>。</p>
+<p>同様に、「<a href="https://www.plurality.net/v/chapters/4-1/jpn/?mode=dark">4–1IDと人物性</a>」で述べたように、遠い国の相手に対しては、将来贈り物を約束するよりも、黄金など広く評価されているトークンを提供する必要がかつてはあっただろう。そういう相手と今後また取引をする可能性は低いからだ。しかし、もはやそんな簡便法に頼る意義は激減した。誰もが6次の社会的隔たり内にあり、関係の信頼を数値化することは計算上些細なことであるため、今日では、関係の連鎖における対人「負債」を直接利用するのは、資金を送金するのと同じくらい簡単なのだ。</p>
+<p>当然の疑問は、これらの新しい機能を利用することで何か意味のあるものが追加されるかということだ。商取引と信頼の適用に関する詳細な議論は<a href="https://www.plurality.net/v/chapters/5-7/jpn/?mode=dark">次節</a>に譲るが、お金が与える信頼と影響力を適切に配分する上で、そのような情報の重要性は明らかだろう。地域社会に多くの小さな利益をもたらしているが、その外ではほとんど交流がない独身者と、家族や職業に深く献身しているが、大都市で家族以外の社会的つながりがほとんどない人とでは、適切な社会的恩恵のプロフィールがまったく違う。この2人は、同じ「程度」の社会的評価を受けるに値するかもしれないが（そのような評価を数値化すべきかどうかはさておき）、その評価は大きく異なる。たとえば、前者は地域社会の市民的・政治的リーダーとなるのにふさわしいが、後者は当然、職業上の評価とある程度の物質的快適さを受ける資格がある。</p>
+<p>さらに、お金の重要性を正当化するために一般的に使用される経済理論自体が、社会の現実に適用してみると、この直感を裏付けるものとなる。十分に研究された特定の条件下では、個人が保有するお金で価値創造を追跡できる。ただしその条件とは、すべての商品が私的であること（すべてのものをひとりの個人が消費でき、他の人が消費すると消費できなくなる）、生産が「サブモジュラー」であること、つまり、人々または資産のグループを組み合わせると、個別に生産できる合計よりも少ない量しか生産されないこと（全体が部分の合計よりも少ない）が必要なのだ。一方、消費が少なくとも部分的に社会的であり、生産がスーパーモジュラーである場合、お金は価値を追跡する方法としては貧弱か、まったく役に立たない。</p>
+<p>オープンソースソフトウェア（OSS）プロジェクトがその一例となる。複数の個人間のコラボレーションは、多くの場合、個人だけの行動よりも大きな価値を生み出す。これはスーパーモジュラー生産だ。そして、結果として得られる製品は複製され、多くの人々に効用を提供する。これは社会的消費だ。このような状況では、お金に基づく管理はうまく機能しない。2人の個人が協力して価値を創造し、両方の行動が必要なシナリオを考えよう。創出された価値を貢献者の間で分配する単純で明白な方法はない。創出された価値は基本的に共同のものだ。さらに、2人の参加者が複数の共同プロジェクトに携わる場合、どちらを優先するかは両者の好み次第で、選択は基本的に集合的なものとなり、その決定には商取引よりも投票に近いロジックが必要となる<sup class="footnote-ref"><a href="#fn18" id="fnref18">[18]</a></sup>。</p>
+<p>もっと広い意味では、社会学者がさまざまな面について記述しているように、社会的影響力はまさにこうした豊かな方法で機能する。人々は投票し、尊敬と権威を獲得し、さまざまな状況で評判を築く。医師の白衣、アスリートの地位、権威ある学術論文の賞などだ。これらはすべて影響力の源であり、それらを高く評価する人々から敬意を受けるため、これらの地位の印を持つ人は、それらを持たない人にはできないことを達成できる。</p>
+<p>もちろん、これらのシステムは商業領域から完全に切り離されてはいない。リーダーシップ、高潔さ、技能についての評判は、（時には）収益化できる。たとえば、名声を持つ人物を利用して広告を出したり、その人物に対するアクセス料を請求したり、その信頼を利用して商業事業を実施したりできる。しかし、これらの変換はどれも決して単純で直線的なものではない。それどころか、社会的地位を直接「売っている」と見られると、そのような「裏切り」や「腐敗」によってその地位はすぐに損なわれかねない。したがって、「販売」と「変換」という最も単純なアイデアは、お金をこうした他の「表象的媒体」と相互運用するのに効果的な方法ではないことは明らかだ。こうなるとお金は、これらの他のシステムを定量化し、透明化し、スケール化する方法としてはほとんど役に立たない。すると問題はむしろ、⿻な価値体系がこの制限をどうやって克服するか、ということだ。次にこの質問に取り組もう。</p>
+<h3 id="%E2%BF%BB%E3%83%9E%E3%83%8D%E3%83%BC" tabindex="-1">⿻マネー</h3>
+<p>暗号資産の分散化には大きな期待が寄せられているが、普遍性を目指す通貨は本質的に、重要な意味で高度に集中化されている。つまり、誰もが同じものに価値を帰属させることで、信頼と協力が生まれるのだ。もっと⿻なアプローチは、「<a href="https://www.plurality.net/v/chapters/4-1/jpn/?mode=dark">4–1IDと人物性</a>」で見たように、多極型または分散型構造のいずれかに従う。それは、同節で私たちが述べた考え方に大まかに沿うものとなるのだ。</p>
+<p>多極型構造では、単一の普遍通貨ではなく、さまざまなコミュニティが独自の通貨を持ち、それぞれが限られた領域で使用できる。例としては、住宅や学校のバウチャー、フェアでの乗車券、さまざまなベンダーで食べ物を購入するための大学のクレジットなどだ<sup class="footnote-ref"><a href="#fn19" id="fnref19">[19]</a></sup>。これらの通貨は部分的に相互運用されることもある。たとえば、同じ町にある2つの大学が、食堂での交換を許可するかもしれない。だがコミュニティの同意なしにコミュニティ通貨をもっと広い通貨と交換するのは、ルール違反か、原則として不可能だ<sup class="footnote-ref"><a href="#fn20" id="fnref20">[20]</a></sup>。実際、さまざまな通貨の実験が急増し、目的が類似しているものも多かったため、当時の『ビットコインマガジン』のライターだったヴィタリック・ブテリンがイーサリアムを思いついたのは、まさにそのような実験のプラットフォームとしてだった。ただし、安全なIDに関する課題があるため、コミュニティ通貨の実験は制限されている。アカウントを売却すれば、禁止された送金の規制をあまりに簡単に回避できてしまうからだ<sup class="footnote-ref"><a href="#fn21" id="fnref21">[21]</a></sup>。</p>
+<p>このようなコミュニティ通貨は、本書の作成でも中心的な役割を果たした。貢献度を測定し、貢献者がテキストの変更の優先順位付けと承認を共同で決定できるようにするために、この通貨を使用したのだ。これについては、本書の後半で説明しよう。ただし、一部の最も高度なアプローチは使用せず、前節のツールを活用した。将来的には、コミュニティ通貨はコンテキストに統合されたチェーンに記録されるかもしれない。これにより、通貨保有者は、コミュニティ外の人に保有額を見せられなくなり、通貨を広範囲に使用しにくくなる。</p>
+<p>分散型アプローチは、コミュニティ通貨の大規模なコレクションよりもさらに進んで、通貨を個人間の負債と信頼の直接的な表現に完全に置き換える。このようなシステムでは、人々は商品やサービスの支払いを受けるのではなく、事実上、自分に借りがある人から「恩恵を求める」ことになる。恩恵を受けていない人から何かが必要な場合は、「恩恵を受ける」ネットワークで6次の隔たりの原則を活用する。これについては、「4–1IDと人物性」で説明した。このような恩恵の潜在的な経路は数多く計算可能であり、得られる「クレジット」の合計量は、ネットワーク内の2点間で流れる「最大フロー」（<a href="https://en.wikipedia.org/wiki/Maximum_flow_problem">maxflow</a>）を計算する古典的な計算機科学アルゴリズムで求められる。このような計算は、コーヒーを買うときにその場で行うには明らかに煩雑すぎるが、コンピュータネットワークにとっては簡単なのだ。普遍的に代替可能な通貨を通じて価値を定量化する代わりに、このような豊かで社会に根ざした代替手段によってそれを実施するのは、ますます現実性を増しているようだ。さまざまな社会的通貨（いいね、友達、ネットワークの中心性、引用など）は、将来の協力のためのはるかに豊かな基盤の、皮切りにすぎない<sup class="footnote-ref"><a href="#fn22" id="fnref22">[22]</a></sup>。</p>
+<p>もちろん、これは広く採用されているプロトコルのサポートがあって初めて可能になる。そのプロトコルとは、前節で説明したものを拡張したコミュニティ台帳の形成と検証を容易にするもの、信頼と「負債」の長距離ネットワーク送信を容易にするものなどだ。これらは、TCP／IPが情報パケットを送信するのと同じような役割を果たす。これが前述の<a href="https://trustoverip.org/">Trust Over IP財団</a>などのオープンソースおよびインターネット作業部会や、<a href="https://www.holochain.org/">Holochain</a>などの新興ベンチャーの目指すものだ。基本的な高品質のデジタルネイティブ決済システムを確立するという重要な作業以上に、この真にネットワーク化された⿻的な次世代の商業信頼システムこそが、本書の残りの部分で説明する⿻市場と協力の基盤となる。</p>
+<h3 id="%E2%BF%BB%E7%A4%BE%E4%BC%9A%E3%81%AE%E5%95%86%E5%8F%96%E5%BC%95" tabindex="-1">⿻社会の商取引</h3>
+<p>特に、社会的に遠い距離にまたがる信頼、信用、価値の確立は、前に説明したIDシステムと、次の部分で焦点を当てる契約および資産使用システムの両方の中核となる。IDシステムは、第三者について誰かが行った主張を信頼／信用するという話だ。よく知らない人からのそのような主張を手当たり次第に受け入れる人は、壊滅的な攻撃にさらされかねない。一方、あまり信頼できない情報源からであっても、比較的重要でない事柄に関する主張なら、受け入れてもそれほど危険ではない。つまりIDシステムでは、検証者のネットワークによって確立される信頼は定量的であり、したがって、ネットワークにおける信頼の定量化、およびこの信頼を裏切った場合の罰則で決まってくる。まさにここで説明した種類のシステムというわけだ。同時に、これらのシステムは、ここで説明した商業関係のネットワークを形成する、コミュニティと人々の定義と情報構造を支えるにあたり、前の節で開発したIDと団体結社技術に明らかに依存している。そして、これから検討するように、これらすべては、デジタル時代の重要な資産であるストレージ、計算、データの共同使用、契約、および企業による活用に重要だ。これらのアイデアは、信頼に基づく⿻とオープンソースの社会システムがモバイルおよびデジタル技術と相互作用し、モバイルマネーの概念を独自に発明し、IDシステムのギャップ<sup class="footnote-ref"><a href="#fn23" id="fnref23">[23]</a></sup>に取り組みながら急成長するフィンテック産業の先駆けとなった、アフリカのコミュニティには<sup class="footnote-ref"><a href="#fn24" id="fnref24">[24]</a></sup>特に興味深いものとなるはずだ。</p>
+<hr class="footnotes-sep">
+<section class="footnotes">
+<ol class="footnotes-list">
+<li id="fn1" class="footnote-item"><p>Glyn Davies, A History of Money (Cardiff, UK: University of Wales Press, 2010). <a href="#fnref1" class="footnote-backref">↩︎</a></p>
+</li>
+<li id="fn2" class="footnote-item"><p>Edward Bellamy, Looking Backward (Boston, Ticknor &amp; Co., 1888). 〔『顧りみれば』ベラミー著, 山本政喜訳, 岩波書店, 1953〕 <a href="#fnref2" class="footnote-backref">↩︎</a></p>
+</li>
+<li id="fn3" class="footnote-item"><p>これは,住所表示板や軍の識別票システムに関連する, 64mm×32mmの長方形の金属板だった. これにより,バックオフィスの簿記が高速化され,各店舗の紙の台帳で手作業で行われていたコピーの誤りが減った. <a href="#fnref3" class="footnote-backref">↩︎</a></p>
+</li>
+<li id="fn4" class="footnote-item"><p>1934年にアメリカン航空がエアトラベルカードを提供した.乗客はクレジットを使って「いま購入して後で支払う」ことで航空券を購入し,どの航空会社でも15%の割引を受けられた. 1940年代までには,米国のすべての主要航空会社が17の航空会社で使用できるエアトラベルカードを提供した.顧客が同じカードを使用してさまざまな商人に支払うという概念は, 1950年にダイナースクラブの創設者であるラルフ・シュナイダーとフランク・マクナマラによって拡張され,複数のカードが統合された. <a href="#fnref4" class="footnote-backref">↩︎</a></p>
+</li>
+<li id="fn5" class="footnote-item"><p>Bank of Americaがフレズノを選んだのは,住民の45%が同銀行を利用していたためであり,フレズノの住民6万人にカードを一斉に送ることで,銀行は商店にカードを受け入れるよう説得できた. <a href="#fnref5" class="footnote-backref">↩︎</a></p>
+</li>
+<li id="fn6" class="footnote-item"><p>“Global Payment Systems Survey (GPSS),” World Bank, January 26, 2024. <a href="https://www.worldbank.org/en/topic/financialinclusion/brief/gpss%5C#:%5C~:text=The%20Global%20Payment%20Systems%20Survey%20%28GPSS%29%2C%20conducted%20by">https://www.worldbank.org/en/topic/financialinclusion/brief/gpss\#:\~:text=The Global Payment Systems Survey (GPSS)%2C conducted by</a>. <a href="#fnref6" class="footnote-backref">↩︎</a></p>
+</li>
+<li id="fn7" class="footnote-item"><p>Susan Scott, and Markos Zachariadis, The Society for Worldwide Interbank Financial Telecommunication (Swift): Cooperative Governance for Network Innovation, Standards, and Community, (New York, NY: Routledge), pp. 1, 35, doi:10.4324/9781315849324. <a href="#fnref7" class="footnote-backref">↩︎</a></p>
+</li>
+<li id="fn8" class="footnote-item"><p>Martin Arnold, “Ripple and Swift Slug It out over Cross-Border Payments,” Financial Times, June 6, 2018, <a href="https://www.ft.com/content/631af8cc-47cc-11e8-8c77-ff51caedcde6">https://www.ft.com/content/631af8cc-47cc-11e8-8c77-ff51caedcde6</a>. <a href="#fnref8" class="footnote-backref">↩︎</a></p>
+</li>
+<li id="fn9" class="footnote-item"><p>Satoshi Nakamoto, “Bitcoin: A Peer-To-Peer Electronic Cash System” (2008) at <a href="https://assets.pubpub.org/d8wct41f/31611263538139.pdf">https://assets.pubpub.org/d8wct41f/31611263538139.pdf</a>. Vitalik Buterin, “A Next-Generation Smart Contract and Decentralized Application Platform” (2014) at <a href="https://finpedia.vn/wp-content/uploads/2022/02/Ethereum%5C_white%5C_paper-a%5C_next%5C_generation%5C_smart%5C_contract%5C_and%5C_decentralized%5C_application%5C_platform-vitalik-buterin.pdf">https://finpedia.vn/wp-content/uploads/2022/02/Ethereum\_white\_paper-a\_next\_generation\_smart\_contract\_and\_decentralized\_application\_platform-vitalik-buterin.pdf</a>. <a href="#fnref9" class="footnote-backref">↩︎</a></p>
+</li>
+<li id="fn10" class="footnote-item"><p><a href="https://commons.wikimedia.org/wiki/File:Bitcoin-0.3.23%5C_screenshot.png">https://commons.wikimedia.org/wiki/File:Bitcoin-0.3.23\_screenshot.png</a> <a href="#fnref10" class="footnote-backref">↩︎</a></p>
+</li>
+<li id="fn11" class="footnote-item"><p>Lana Swartz, New Money: How Payment Became Social Media (New Haven, CT: Yale University Press, 2020). <a href="#fnref11" class="footnote-backref">↩︎</a></p>
+</li>
+<li id="fn12" class="footnote-item"><p>現在のPayPalは,イーロン・マスク,ハリス・フリッカー,クリストファー・ペイン,エド・ホーによって設立されたX.comと元のPayPalが合併してできたもので, Xという名前は現在Twitterの後継としてマスクが復活させた. <a href="#fnref12" class="footnote-backref">↩︎</a></p>
+</li>
+<li id="fn13" class="footnote-item"><p>Kenneth S. Rogoff, The Curse of Cash (Princeton, NJ: Princeton University Press, 2016). 〔『現金の呪い 紙幣はいつ廃止するか？』ケネス・S・ロゴフ著, 村井章子訳, 日経BP社, 2017〕 <a href="#fnref13" class="footnote-backref">↩︎</a></p>
+</li>
+<li id="fn14" class="footnote-item"><p>Alyssa Blackburn, Christoph Huber, Yossi Eliaz, Muhammad S. Shamim, David Weisz, Goutham Seshadri, Kevin Kim, Shengqi Hang and Erez Lieberman Aiden, “Cooperation Among an Anonymous Group Protected Bitcoin during Failures of Decentralization” (2022) at <a href="https://arxiv.org/abs/2206.02871">https://arxiv.org/abs/2206.02871</a>. <a href="#fnref14" class="footnote-backref">↩︎</a></p>
+</li>
+<li id="fn15" class="footnote-item"><p>最近ではweb3世界で,こうした目的のために明示的にコミュニティを作ろうという発想が高まっている. Vitalik Buterin, Jacob Illum, Matthias Nadler, Fabian Schär and Ameen Soleimani, “Blockchain Privacy and Regulatory Compliance: Towards a Practical Equilibrium” Blockchain: Research and Applications 5, no. 1 (2024): 100176. <a href="#fnref15" class="footnote-backref">↩︎</a></p>
+</li>
+<li id="fn16" class="footnote-item"><p>David Graeber, Debt: The First 5,000 Years, (Brooklyn: Melville House, 2014). 〔『負債論　貨幣と暴力の5000年』デヴィッド・グレーバー著, 酒井隆史監訳, 高祖岩三郎, 佐々木夏子訳, 以文社, 2016〕. またRalph Hawtrey, Currency and Credit, (London, Longmans, 1919); Larry Randall Wray, and Alfred Mitchell Innes, Credit and State Theories of Money: The Contributions of A. Mitchell Innes, (Cheltenham: Edward Elgar, 2014); and Samuel Chambers, Money Has No Value, (Berlin: Walter de Gruyter GmbH &amp; Co KG, 2023) も参照. <a href="#fnref16" class="footnote-backref">↩︎</a></p>
+</li>
+<li id="fn17" class="footnote-item"><p>Alvin E. Roth, Tayfun Sönmez and M. Utku Ünver, “Kidney Exchange”, Quarterly Journal of Economics 119, no. 2 (2004): 457-488. <a href="#fnref17" class="footnote-backref">↩︎</a></p>
+</li>
+<li id="fn18" class="footnote-item"><p>Divya Siddarth, Matthew Prewitt, and Glen Weyl, “Supermodular,” The Collective Intelligence Project, 2023. <a href="https://cip.org/supermodular">https://cip.org/supermodular</a>. <a href="#fnref18" class="footnote-backref">↩︎</a></p>
+</li>
+<li id="fn19" class="footnote-item"><p>地域通貨の初期の例としては, 1983年にマイケル・リントンが考案したLETS（Local Exchange Trading Systems）がある. 彼はその後, 柄谷行人を訪ね, それがニュー・アソシエーショニズム運動のきっかけとなった. <a href="#fnref19" class="footnote-backref">↩︎</a></p>
+</li>
+<li id="fn20" class="footnote-item"><p>この発想のさらなる深掘りとしては<a href="https://www.radicalxchange.org/concepts/plural-money/%E5%8F%82%E7%85%A7">https://www.radicalxchange.org/concepts/plural-money/参照</a>. <a href="#fnref20" class="footnote-backref">↩︎</a></p>
+</li>
+<li id="fn21" class="footnote-item"><p>hlhaver, Weyl and Buterin, op. cit. <a href="#fnref21" class="footnote-backref">↩︎</a></p>
+</li>
+<li id="fn22" class="footnote-item"><p>Nicole Immorlica, Matthew O. Jackson and E. Glen Weyl, “Verifying Identity as a Social Intersection” (2019) at <a href="https://papers.ssrn.com/sol3/papers.cfm?abstract%5C_id=3375436">https://papers.ssrn.com/sol3/papers.cfm?abstract\_id=3375436</a>. E. Glen Weyl, Kaliya Young (Identity Woman) and Lucas Geiger, “Intersectional Social Data”, RadicalxChange Blog (2019) at <a href="https://www.radicalxchange.org/media/blog/2019-10-24-uh78r5/">https://www.radicalxchange.org/media/blog/2019-10-24-uh78r5/</a>. <a href="#fnref22" class="footnote-backref">↩︎</a></p>
+</li>
+<li id="fn23" class="footnote-item"><p>“The State of Identification Systems in Africa.” World Bank Group, 2017, <a href="https://openknowledge.worldbank.org/server/api/core/bitstreams/5f0f3977-838c-5ce3-af9d-5b6d6efb5910/content">https://openknowledge.worldbank.org/server/api/core/bitstreams/5f0f3977-838c-5ce3-af9d-5b6d6efb5910/content</a>. <a href="#fnref23" class="footnote-backref">↩︎</a></p>
+</li>
+<li id="fn24" class="footnote-item"><p>Omoaholo Omoakhalen, “Navigating the Geopolitics of Innovation: Policy and Strategy Imperatives for the 21st Century Africa,” Remake Africa Consulting, 2023, <a href="https://remakeafrica.com/wp-content/uploads/2023/12/Navigating%5C_the%5C_Geopolitics%5C_of%5C_Innovation.pdf">https://remakeafrica.com/wp-content/uploads/2023/12/Navigating\_the\_Geopolitics\_of\_Innovation.pdf</a>. <a href="#fnref24" class="footnote-backref">↩︎</a></p>
+</li>
+</ol>
+</section>
+
+
+
+    </div>
+
+    
+    
+    <nav class="book__nav" aria-label="Chapter navigation">
+      
+        <a href="/ja/read/4-2/" class="book__nav-link book__nav-link--prev" data-page-dir="prev">
+          <span class="book__nav-arrow">&larr;</span>
+          <span class="book__nav-info">
+            <span class="book__nav-label">前の章</span>
+            <span class="book__nav-title">団体と⿻公衆</span>
+          </span>
+        </a>
+      
+      
+        <a href="/ja/read/4-4/" class="book__nav-link book__nav-link--next" data-page-dir="next">
+          <span class="book__nav-info">
+            <span class="book__nav-label">次の章</span>
+            <span class="book__nav-title">財産と契約</span>
+          </span>
+          <span class="book__nav-arrow">&rarr;</span>
+        </a>
+      
+    </nav>
+    
+
+    
+    <div class="book__page-number" aria-hidden="true">
+      4-3
+    </div>
+  </article>
+</div>
+
+<script src="/assets/js/book.js"></script>
+
+  </main>
+
+  
+
+
+
+
+<footer class="footer" role="contentinfo">
+  <div class="footer__inner">
+    <div class="footer__brand" aria-hidden="true">
+      <span class="c-r">P</span><span class="c-o">l</span><span class="c-g">u</span><span class="c-c">r</span><span class="c-w">a</span><span class="c-c">l</span><span class="c-g">i</span><span class="c-o">t</span><span class="c-r">y</span>
+    </div>
+
+    <ul class="footer__links">
+      <li><a href="/ja/read/" class="footer__link">読む</a></li>
+      <li><a href="/ja/read/0-1/" class="footer__link">概要</a></li>
+      <li><a href="https://github.com/pluralitybook/plurality" class="footer__link" target="_blank" rel="noopener">GitHub</a></li>
+      <li><a href="https://discord.gg/YWSDRqdW5n" class="footer__link" target="_blank" rel="noopener">Discord</a></li>
+    </ul>
+
+    <div class="footer__sep"></div>
+
+    <p class="footer__authors">E・グレン・ワイル、オードリー・タン、Pluralityコミュニティ</p>
+    <p class="footer__license">この作品はCC0の下でパブリックドメインに捧げられています。</p>
+  </div>
+</footer>
+
+
+  <script src="/assets/js/nav.js"></script>
+  <script src="/assets/js/scroll-reveal.js"></script>
+
+  <!-- Structured Data -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "WebSite",
+    "name": "Plurality",
+    "description": "A book by E. Glen Weyl, Audrey Tang and the Plurality Community exploring how technology can support and strengthen democracy.",
+    "url": "https://new.plurality.net",
+    "author": [
+      { "@type": "Person", "name": "E. Glen Weyl" },
+      { "@type": "Person", "name": "Audrey Tang" },
+      { "@type": "Organization", "name": "the Plurality Community" }
+    ],
+    "license": "https://creativecommons.org/publicdomain/zero/1.0/"
+  }
+  </script>
+</body>
+</html>

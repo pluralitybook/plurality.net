@@ -1,0 +1,98 @@
+---
+layout: base.njk
+---
+<div class="book" id="book">
+  {# ── TOC drawer: all chapters ── #}
+  {% set tocLang = lang or "en" %}
+  {% set tocPrefix = "" %}
+  {% if translations[tocLang] %}{% set tocPrefix = translations[tocLang].prefix %}{% endif %}
+  <aside class="book__toc" aria-label="Table of contents" id="book-toc">
+    <button class="book__toc-toggle" aria-expanded="false" id="toc-toggle">
+      <span class="book__toc-toggle-icon"></span>
+      {{ i18n[tocLang].toc or "Contents" }}
+    </button>
+    <nav class="book__toc-nav" id="toc-nav">
+      <p class="book__toc-heading">{{ i18n[tocLang].toc or "Contents" }}</p>
+      {% for section in chapters.sections %}
+        <p class="book__toc-section">{% if i18n[tocLang].sections %}{{ i18n[tocLang].sections[section.title] or section.title }}{% else %}{{ section.title }}{% endif %}</p>
+        <ul class="book__toc-list">
+          {% for ch in section.chapters %}
+            {% set chTitle = ch.title %}
+            {% if tocLang != "en" and translations[tocLang] and translations[tocLang].files[ch.id] %}
+              {% set chTitle = translations[tocLang].files[ch.id].title %}
+            {% endif %}
+            <li>
+              <a href="{{ tocPrefix }}/read/{{ ch.id }}/"{% if chapter and chapter.id == ch.id %} class="active"{% endif %}>
+                <span class="book__toc-num">{{ ch.number }}</span> {{ chTitle }}
+              </a>
+            </li>
+          {% endfor %}
+        </ul>
+      {% endfor %}
+    </nav>
+  </aside>
+
+  {# ── Book page ── #}
+  <article class="book__page" id="book-page">
+    {# Page curl decoration #}
+    <div class="book__page-curl" aria-hidden="true"></div>
+
+    {# Chapter header #}
+    <header class="book__header">
+      {% if chapterLabel %}
+        <p class="book__section-label">{{ chapterLabel }}</p>
+      {% endif %}
+      <h1 class="book__title">{{ title }}</h1>
+      {% if meta %}
+        <p class="book__meta">{{ meta }}</p>
+      {% endif %}
+      {% if chapter and chapter.altLangs | length %}
+        <nav class="book__lang-switch" aria-label="Language versions">
+          <span class="book__lang-current">{{ chapter.langLabel }}</span>
+          {% for alt in chapter.altLangs %}
+            <a href="{{ alt.url }}" class="book__lang-link" lang="{{ alt.lang }}">{{ alt.label }}</a>
+          {% endfor %}
+        </nav>
+      {% endif %}
+      <div class="book__header-ornament" aria-hidden="true">
+        <span></span><span></span><span></span>
+      </div>
+    </header>
+
+    {# Chapter body #}
+    <div class="book__body{% if chapter and chapter.id == '0-0' %} book__body--endorsements{% endif %}{% if chapter and chapter.id == '0-3' %} book__body--credits{% endif %}">
+      {{ content | safe }}
+    </div>
+
+    {# Chapter navigation #}
+    {% if prevUrl or nextUrl %}
+    <nav class="book__nav" aria-label="Chapter navigation">
+      {% if prevUrl %}
+        <a href="{{ prevUrl }}" class="book__nav-link book__nav-link--prev" data-page-dir="prev">
+          <span class="book__nav-arrow">&larr;</span>
+          <span class="book__nav-info">
+            <span class="book__nav-label">{{ i18n[lang or "en"].prev_chapter or "Previous" }}</span>
+            <span class="book__nav-title">{{ prevTitle }}</span>
+          </span>
+        </a>
+      {% endif %}
+      {% if nextUrl %}
+        <a href="{{ nextUrl }}" class="book__nav-link book__nav-link--next" data-page-dir="next">
+          <span class="book__nav-info">
+            <span class="book__nav-label">{{ i18n[lang or "en"].next_chapter or "Next" }}</span>
+            <span class="book__nav-title">{{ nextTitle }}</span>
+          </span>
+          <span class="book__nav-arrow">&rarr;</span>
+        </a>
+      {% endif %}
+    </nav>
+    {% endif %}
+
+    {# Page number decoration #}
+    <div class="book__page-number" aria-hidden="true">
+      {% if chapter %}{{ chapter.number }}{% endif %}
+    </div>
+  </article>
+</div>
+
+<script src="/assets/js/book.js"></script>

@@ -1,0 +1,30 @@
+{% set navLang = lang or "en" %}
+{% set nt = i18n[navLang] or i18n.en %}
+{% set navPrefix = "" %}
+{% if translations[navLang] %}{% set navPrefix = translations[navLang].prefix %}{% endif %}
+
+<nav class="nav{% if navHero %} nav--hero{% endif %}" role="navigation" aria-label="Main navigation">
+  <div class="nav__inner">
+    <a href="{% if navLang == 'en' %}/{% else %}/{{ navLang }}/{% endif %}" class="nav__logo" aria-label="Plurality home">Plurality</a>
+
+    <ul class="nav__links">
+      <li><a href="{{ navPrefix }}/read/" class="nav__link{% if '/read/' in page.url %} nav__link--active{% endif %}">{{ nt.nav_read }}</a></li>
+      <li><a href="{{ navPrefix }}/read/0-1/" class="nav__link{% if '/0-1/' in page.url %} nav__link--active{% endif %}">{{ nt.nav_about }}</a></li>
+      <li><a href="{{ site.github }}" class="nav__link" target="_blank" rel="noopener">GitHub</a></li>
+      <li><button class="theme-toggle" aria-label="Toggle theme">&#9790;</button></li>
+    </ul>
+
+    <button class="nav__hamburger" aria-label="Open menu" aria-expanded="false">
+      <span></span>
+      <span></span>
+      <span></span>
+    </button>
+  </div>
+</nav>
+
+<div class="nav__overlay" role="dialog" aria-label="Mobile menu">
+  <a href="{{ navPrefix }}/read/" class="nav__overlay-link">{{ nt.nav_read }}</a>
+  <a href="{{ navPrefix }}/read/0-1/" class="nav__overlay-link">{{ nt.nav_about }}</a>
+  <a href="{{ site.github }}" class="nav__overlay-link" target="_blank" rel="noopener">GitHub</a>
+  <button class="theme-toggle" aria-label="Toggle theme">&#9790;</button>
+</div>

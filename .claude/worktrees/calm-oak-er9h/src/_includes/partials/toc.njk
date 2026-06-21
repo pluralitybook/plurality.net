@@ -1,0 +1,11 @@
+<aside class="reader__toc" aria-label="Table of contents">
+  <button class="reader__toc-toggle" aria-expanded="false">Table of Contents</button>
+  <p class="reader__toc-title">Contents</p>
+  <ul class="reader__toc-list">
+    {% if tocItems %}
+      {% for item in tocItems %}
+        <li><a href="#{{ item.id }}">{{ item.text }}</a></li>
+      {% endfor %}
+    {% endif %}
+  </ul>
+</aside>

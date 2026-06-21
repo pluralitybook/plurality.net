@@ -1,0 +1,40 @@
+---
+layout: page.njk
+title: "閱讀"
+lang: zh
+permalink: /zh/read/
+---
+
+<div class="read-page">
+  <p class="section-label">本書</p>
+  <h1>多元宇宙：協作技術與民主的未來</h1>
+  <p class="read-page__intro">
+    按章節瀏覽。本書由全球志願者社群翻譯為多種語言。
+  </p>
+
+  <p class="read-page__lang-note">
+    <a href="/read/">Read in English &rarr;</a>
+  </p>
+
+  <div class="chapter-groups">
+    {% for section in chapters.sections %}
+      <div class="chapter-group reveal">
+        <h3 class="chapter-group__title">
+          <span class="chapter-group__accent" style="background:{{ section.color }}"></span>
+          {{ i18n.zh.sections[section.title] or section.title }}
+        </h3>
+        <div class="chapter-list">
+          {% for ch in section.chapters %}
+            {% set zhData = translations.zh.files[ch.id] %}
+            {% if zhData %}
+              <a href="/zh/read/{{ ch.id }}/" class="chapter-card reveal" style="border-top-color:{{ section.color }}">
+                <span class="chapter-card__number">{{ ch.number }}</span>
+                <span class="chapter-card__title">{{ zhData.title }}</span>
+              </a>
+            {% endif %}
+          {% endfor %}
+        </div>
+      </div>
+    {% endfor %}
+  </div>
+</div>

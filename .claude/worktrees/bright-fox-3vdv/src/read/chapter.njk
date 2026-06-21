@@ -1,0 +1,42 @@
+---
+pagination:
+  data: flatChapters
+  size: 1
+  alias: chapter
+permalink: "{{ chapter.url }}"
+layout: reader.njk
+eleventyComputed:
+  title: "{{ chapter.title }}"
+  chapterLabel: "{{ chapter.sectionTitle }} · {{ chapter.number }}"
+  meta: ""
+  lang: "{{ chapter.lang }}"
+  prevUrl: "{{ chapter.prevChapter.url if chapter.prevChapter else '' }}"
+  prevTitle: "{{ chapter.prevChapter.title if chapter.prevChapter else '' }}"
+  nextUrl: "{{ chapter.nextChapter.url if chapter.nextChapter else '' }}"
+  nextTitle: "{{ chapter.nextChapter.title if chapter.nextChapter else '' }}"
+---
+
+{% if chapter.id == "0-0" and chapter.localEndorsements %}
+  {% set langEndorsements = endorsements[chapter.lang] %}
+  {% for item in langEndorsements %}
+    <blockquote>
+      <p>{{ item.quote }}</p>
+      <p>— {{ item.author }}{% if item.title %}, {{ item.title }}{% endif %}</p>
+    </blockquote>
+  {% endfor %}
+{% elif chapter.localCredits %}
+  {% set cl = credits.i18n[chapter.lang] or credits.i18n.en %}
+  <p class="credits__intro">{{ cl.intro }}</p>
+  {% for cat in credits.categories %}
+    <div class="credits__category">
+      <h3 class="credits__category-name">{{ cl.categories[cat.name] or cat.name }}</h3>
+      <ul class="credits__list">
+        {% for person in cat.contributors %}
+          <li class="credits__name" style="font-size: {{ (person.pt / 12) | round(3) }}rem">{{ person.name }}</li>
+        {% endfor %}
+      </ul>
+    </div>
+  {% endfor %}
+{% else %}
+  {% fetchcontent chapter.githubUrl %}
+{% endif %}
