@@ -10,9 +10,17 @@ permalink: /de/read/
   <h1>Plurality: {{ i18n.de.subtitle }}</h1>
   <p class="read-page__intro">{{ i18n.de.get_book_desc }}</p>
 
-  <p class="read-page__lang-note">
-    <a href="/read/">Read in English &rarr;</a>
-  </p>
+  <nav class="home-lang-bar" aria-label="Language">
+    {% for hl in homeLangs %}
+      {% if hl == "de" %}
+        <span class="home-lang-bar__current">{{ i18n[hl].lang_name }}</span>
+      {% elif hl == "en" %}
+        <a href="/read/" class="home-lang-bar__link">{{ i18n[hl].lang_name }}</a>
+      {% else %}
+        <a href="/{{ hl }}/read/" class="home-lang-bar__link">{{ i18n[hl].lang_name }}</a>
+      {% endif %}
+    {% endfor %}
+  </nav>
 
   <div class="chapter-groups">
     {% for section in chapters.sections %}

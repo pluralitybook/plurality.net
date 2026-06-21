@@ -10,9 +10,15 @@ title: "Read"
     Browse chapters by section. The book is available in multiple languages and is being continuously translated by a community of volunteers.
   </p>
 
-  <p class="read-page__lang-note">
-    <a href="/zh/read/" lang="zh">閱讀繁體中文版 &rarr;</a>
-  </p>
+  <nav class="home-lang-bar" aria-label="Language">
+    {% for hl in homeLangs %}
+      {% if hl == "en" %}
+        <span class="home-lang-bar__current">{{ i18n[hl].lang_name }}</span>
+      {% else %}
+        <a href="/{{ hl }}/read/" class="home-lang-bar__link">{{ i18n[hl].lang_name }}</a>
+      {% endif %}
+    {% endfor %}
+  </nav>
 
   <div class="chapter-groups">
     {% for section in chapters.sections %}
