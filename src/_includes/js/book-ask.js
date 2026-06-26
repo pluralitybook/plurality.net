@@ -8,14 +8,7 @@
 
   var pageLang = document.documentElement.lang || 'en';
   var askAnswer = document.getElementById('plurality-ask-answer');
-  if (!askAnswer) {
-    askAnswer = document.createElement('div');
-    askAnswer.id = 'plurality-ask-answer';
-    askAnswer.className = 'plurality-ask-answer';
-    askAnswer.setAttribute('aria-live', 'polite');
-    askAnswer.hidden = true;
-    inner.insertBefore(askAnswer, inner.firstChild);
-  }
+  if (!askAnswer) return;
 
   var askAvailable = false;
   var askLoading = false;
@@ -119,15 +112,25 @@
 
   function initCapacity() {
     if (!window.fetch) return;
+    var isDev =
+      window.location.hostname === 'localhost' ||
+      window.location.hostname === '127.0.0.1';
     fetch(ASK_BASE + '/capacity', { headers: { Accept: 'application/json' } })
       .then(function (r) { return r.ok ? r.json() : Promise.reject(); })
       .then(function (d) {
         askAvailable = !!(d && d.status === 'available');
       })
-      .catch(function () { askAvailable = false; });
+      .catch(function () {
+        askAvailable = isDev;
+      });
   }
 
   initCapacity();
+
+  var obs = new MutationObserver(function () {
+    if (!overlay.classList.contains('active')) hideAsk();
+  });
+  obs.observe(overlay, { attributes: true, attributeFilter: ['class'] });
 
   overlay.addEventListener(
     'keydown',
