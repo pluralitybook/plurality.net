@@ -17,7 +17,14 @@ test.describe("book-ask client", () => {
     const body = await res.text();
     expect(body).toMatch(/function hideAsk/);
 
-    await page.locator("#search-toggle").first().click();
+
+    const hamburger = page.locator(".nav__hamburger");
+    if (await hamburger.isVisible().catch(() => false)) {
+      await hamburger.click();
+      await expect(page.locator(".nav__overlay")).toHaveClass(/active/);
+    }
+
+    await page.locator(".search-toggle:visible").first().click();
     await expect(page.locator("#search-overlay.active")).toBeVisible();
 
     const hideAskErrors = pageErrors.filter((m) => /hideAsk is not defined/i.test(m));
