@@ -39,3 +39,14 @@ test('OPTIONS /au returns CORS preflight for plurality.net', async () => {
   assert.equal(res.status, 204)
   assert.equal(res.headers.get('Access-Control-Allow-Origin'), 'https://plurality.net')
 })
+
+test('GET /capacity allows https://www.plurality.net', async () => {
+  const res = await app.request('http://localhost/capacity', {
+    headers: { Origin: 'https://www.plurality.net' },
+  })
+  assert.equal(res.status, 200)
+  assert.equal(
+    res.headers.get('Access-Control-Allow-Origin'),
+    'https://www.plurality.net',
+  )
+})

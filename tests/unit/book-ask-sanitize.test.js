@@ -19,4 +19,9 @@ describe('book-ask.js XSS hardening', () => {
     expect(source).toMatch(/https\?:/);
     expect(source).toMatch(/isSafeHttpUrl\(href\)/);
   });
+
+  test('defines hideAsk for overlay close', () => {
+    expect(source).toMatch(/function hideAsk/);
+    expect(source).toMatch(/hideAsk:\s*hideAsk/);
+  });
 });
