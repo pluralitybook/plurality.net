@@ -1,4 +1,5 @@
 import {
+  DEFAULT_NEMOTRON_ULTRA_BASETEN_MODEL,
   openAiChatCompletionsEventStreamToText,
   resolveAudreyAiGateway,
   streamViaGatewayChatCompletions,
@@ -13,6 +14,37 @@ import {
 
 type AiBinding = {
   run: (model: string, input: Record<string, unknown>) => Promise<unknown>
+}
+
+
+const DIRECT_BASETEN_URL = 'https://inference.baseten.co/v1/chat/completions'
+
+async function streamDirectBasetenChat(
+  apiKey: string,
+  model: string,
+  messages: Array<{ role: string; content: string }>,
+  maxTokens: number,
+): Promise<ReadableStream<Uint8Array>> {
+  const res = await fetch(DIRECT_BASETEN_URL, {
+    method: 'POST',
+    headers: {
+      Authorization: `Api-Key ${apiKey}`,
+      'Content-Type': 'application/json',
+      Accept: 'text/event-stream',
+    },
+    body: JSON.stringify({
+      model,
+      messages,
+      max_tokens: maxTokens,
+      stream: true,
+    }),
+  })
+  if (!res.ok) {
+    const errText = await res.text()
+    throw new Error(`Direct Baseten HTTP ${res.status}: ${errText.slice(0, 500)}`)
+  }
+  if (!res.body) throw new Error('Direct Baseten stream missing body')
+  return res.body
 }
 
 const LANG_INSTRUCTION: Record<string, string> = {
@@ -121,12 +153,25 @@ export async function streamBookAnswer(
   }
 
   const messages = buildMessages(question, chunks, lang)
+  const basetenKey = bindings.BASETEN_API_KEY?.trim()
+  const basetenModel =
+    bindings.BASETEN_MODEL?.trim() || DEFAULT_NEMOTRON_ULTRA_BASETEN_MODEL
+
+  async function nemotronByteStream(): Promise<ReadableStream<Uint8Array>> {
+    if (basetenKey && !gateway.config.gatewayAuthToken) {
+      return streamDirectBasetenChat(basetenKey, basetenModel, messages, 2048)
+    }
+    if (gateway.config.gatewayAuthToken) {
+      return streamViaGatewayChatCompletions(gateway.config, messages, 2048)
+    }
+    if (basetenKey) {
+      return streamDirectBasetenChat(basetenKey, basetenModel, messages, 2048)
+    }
+    return streamViaGatewayChatCompletions(gateway.config, messages, 2048)
+  }
+
   try {
-    const byteStream = await streamViaGatewayChatCompletions(
-      gateway.config,
-      messages,
-      2048,
-    )
+    const byteStream = await nemotronByteStream()
     const textStreamOut = byteStream
       .pipeThrough(openAiChatCompletionsEventStreamToText())
       .pipeThrough(new TextEncoderStream())
@@ -140,7 +185,30 @@ export async function streamBookAnswer(
       },
     })
   } catch (e) {
-    console.error('gateway stream failed', e)
+    console.error('nemotron stream failed', e)
+    if (basetenKey) {
+      try {
+        const byteStream = await streamDirectBasetenChat(
+          basetenKey,
+          basetenModel,
+          messages,
+          2048,
+        )
+        const textStreamOut = byteStream
+          .pipeThrough(openAiChatCompletionsEventStreamToText())
+          .pipeThrough(new TextEncoderStream())
+        return new Response(textStreamOut, {
+          status: 200,
+          headers: {
+            'Content-Type': 'text/plain; charset=utf-8',
+            'Cache-Control': 'no-store',
+            'X-Accel-Buffering': 'no',
+          },
+        })
+      } catch (e2) {
+        console.error('direct baseten fallback failed', e2)
+      }
+    }
     const body =
       chunks.length > 0
         ? retrievalStubMarkdown(question, lang, chunks)
