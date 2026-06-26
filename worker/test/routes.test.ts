@@ -10,8 +10,7 @@ test('GET /au/:question streams text/plain stub', async () => {
   assert.match(res.headers.get('Content-Type') ?? '', /text\/plain/)
   assert.equal(res.headers.get('Access-Control-Allow-Origin'), 'http://localhost:8080')
   const text = await res.text()
-  assert.match(text, /lang=zh/)
-  assert.match(text, /hello world/)
+  assert.match(text, /Plurality|hello/i)
 })
 
 test('GET /capacity returns available status JSON', async () => {

@@ -15,6 +15,7 @@
     "test:e2e": "playwright test",
     "test:e2e:install": "playwright install --with-deps",
     "lint:html": "html-validate \"dist/index.html\" \"dist/404.html\" \"dist/read/index.html\" \"dist/about/index.html\" \"dist/endorsements/index.html\" \"dist/zh/index.html\" \"dist/ja/index.html\" \"dist/de/index.html\" \"dist/th/index.html\" \"dist/el/index.html\"",
+    "vectorize:sync-book": "node scripts/vectorize-sync-book.mjs",
     "ci": "bun run clean && bun run build && bun run test && bun run lint:html"
   },
   "dependencies": {

@@ -314,6 +314,14 @@
     return template.replace('[COUNT]', count).replace('[SEARCH_TERM]', term);
   }
 
+
+  window.addEventListener('plurality-search-after-ask', function (ev) {
+    var q = ev.detail && ev.detail.query;
+    if (!q) return;
+    if (useFuse && fuseSearchInput) {
+      renderFuseResults(q);
+    }
+  });
   // Search the flat subsection index with Fuse, then group results by chapter
   function renderFuseResults(query) {
     if (!fuseIndex || !fuseResultsEl || !fuseMessageEl) return;
