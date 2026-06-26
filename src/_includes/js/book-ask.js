@@ -250,6 +250,10 @@
       if (!q || !q.trim()) return;
       e.preventDefault();
       e.stopPropagation();
+      if (window.PluralitySearch && typeof window.PluralitySearch.submit === 'function') {
+        window.PluralitySearch.submit();
+        return;
+      }
       runAsk(q).then(function () {
         window.dispatchEvent(
           new CustomEvent('plurality-search-after-ask', { detail: { query: q.trim() } }),
