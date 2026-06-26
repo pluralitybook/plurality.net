@@ -60,6 +60,27 @@ describe("sectionLabel", () => {
 });
 
 describe("buildChapterEntry", () => {
+  test("builds English from chapter.file when translations.en.files is empty", async () => {
+    const enData = {
+      dir: "english",
+      prefix: "",
+      githubBase: "https://example.com/contents/",
+      files: {},
+    };
+    const entry = await buildChapterEntry({
+      lang: "en",
+      langData: enData,
+      langI18n: {},
+      section: { title: "Preface", chapters: [] },
+      chapter: { id: "1", number: "1", title: "Seeing Plural", file: "1-preface" },
+      fetcher: async () => "## Intro\n\nbody",
+    });
+    expect(entry).not.toBeNull();
+    expect(entry!.url).toBe("/read/1/");
+    expect(entry!.subsections.length).toBeGreaterThan(0);
+  });
+
+
   const section = { id: "preface", title: "Preface" };
   const chapter = { id: "1", number: "1", title: "Preface" };
 

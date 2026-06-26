@@ -29,10 +29,19 @@ export async function buildChapterEntry({
   chapter,
   fetcher,
 }) {
-  const override = langData.files?.[chapter.id];
-  if (!override) return null;
+  let file;
+  let title;
+  if (lang === "en") {
+    file = chapter.file;
+    title = chapter.title;
+  } else {
+    const override = langData.files?.[chapter.id];
+    if (!override) return null;
+    file = override.file;
+    title = override.title;
+  }
 
-  const url = chapterFetchUrl(langData, override.file);
+  const url = chapterFetchUrl(langData, file);
   const pageUrl = chapterPageUrl(langData, chapter.id);
 
   let raw;
@@ -43,7 +52,7 @@ export async function buildChapterEntry({
   }
 
   return {
-    title: override.title,
+    title: title,
     section: sectionLabel(langI18n, section.title, chapter.number),
     url: pageUrl,
     subsections: splitByHeadings(raw),
