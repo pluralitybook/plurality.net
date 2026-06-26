@@ -1,14 +1,14 @@
-/** Phase 2 stub; Phase 3 replaces with Vectorize RAG + gateway generation. */
+/** Shown when Vectorize returns no chunks (gateway may still be configured). */
 export function stubBookAnswer(question: string, lang: string): string {
   const q = question.trim()
   return [
-    `*(Plurality book search — stub RAG; lang=${lang})*`,
+    `I could not find passages in the Plurality book index that match your question (lang=${lang}).`,
     '',
     `You asked: **${q}**`,
     '',
-    'Phase 3 will retrieve same-language chunks from `plurality-book` and answer via Nemotron + CF AI Gateway.',
+    'Try a longer phrase, another language, or the keyword search below. Contributor names are listed on [Credits](/read/0-3/).',
     '',
-    'Example citation: [1](https://plurality.net/' + lang + '/read/introduction/)',
+    'If this keeps happening after a recent deploy, the book search index may need a refresh (`bun run vectorize:sync-book`).',
   ].join('\n')
 }
 

@@ -17,6 +17,59 @@ export function sectionLabel(langI18n, sectionTitle, number) {
   return `${name} · ${number}`;
 }
 
+const CREDITS_CHAPTER_ID = "0-3";
+
+/**
+ * Credits (0-3) on the site come from credits.json, not GitHub markdown.
+ * One searchable subsection per language for Fuse + Vectorize sync.
+ */
+export function buildCreditsChapterEntry(lang, langData, credits, chapters) {
+  if (!langData || !credits?.categories?.length) return null;
+  const cl = credits.i18n?.[lang] || credits.i18n?.en;
+  if (!cl) return null;
+
+  let sectionTitle = "Before You Read";
+  let chapterNumber = "0-3";
+  let chapterTitle = "Credits";
+  for (const section of chapters.sections || []) {
+    const ch = section.chapters?.find((c) => c.id === CREDITS_CHAPTER_ID);
+    if (ch) {
+      sectionTitle = section.title;
+      chapterNumber = ch.number;
+      if (lang === "en") chapterTitle = ch.title;
+      break;
+    }
+  }
+  if (lang !== "en") {
+    const override = langData.files?.[CREDITS_CHAPTER_ID];
+    if (override?.title) chapterTitle = override.title;
+  }
+
+  const prefix = langData.prefix ?? "";
+  const pageUrl = `${prefix}/read/${CREDITS_CHAPTER_ID}/`;
+  const lines = [cl.intro, ""];
+  for (const cat of credits.categories) {
+    const catLabel = cl.categories?.[cat.name] || cat.name;
+    const names = (cat.contributors || []).map((p) => p.name).join(", ");
+    if (names) lines.push(`${catLabel}: ${names}`);
+  }
+  const content = lines.join("\n").trim();
+  if (!content) return null;
+
+  return {
+    title: chapterTitle,
+    section: `${sectionTitle} · ${chapterNumber}`,
+    url: pageUrl,
+    subsections: [
+      {
+        heading: chapterTitle,
+        anchor: "credits",
+        content,
+      },
+    ],
+  };
+}
+
 /**
  * Pure, fetch-agnostic builder for a per-chapter search entry.
  * Returns null when no entry should be produced (untranslated or fetch failed).
@@ -89,17 +142,26 @@ export async function buildSearchIndex({
   translations,
   i18n,
   chapters,
+  credits,
   fetcher,
 }) {
   const result = {};
   for (const lang of targetLangs) {
-    result[lang] = await buildLangEntries({
+    const entries = await buildLangEntries({
       lang,
       langData: translations[lang],
       langI18n: i18n[lang] || {},
       chapters,
       fetcher,
     });
+    const creditsEntry = buildCreditsChapterEntry(
+      lang,
+      translations[lang],
+      credits,
+      chapters,
+    );
+    if (creditsEntry) entries.push(creditsEntry);
+    result[lang] = entries;
   }
   return result;
 }
