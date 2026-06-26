@@ -1,6 +1,13 @@
 name = "plurality-ask"
 main = "src/index.ts"
 compatibility_date = "2025-01-01"
+workers_dev = true
+
+
+# Uncomment when ask.plurality.net is a proxied DNS name in this CF account:
+# [[routes]]
+# pattern = "ask.plurality.net"
+# custom_domain = true
 
 [vars]
 AUDREY_MODEL = "nemotron-ultra"
