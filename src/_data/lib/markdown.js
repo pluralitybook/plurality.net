@@ -62,3 +62,20 @@ export function splitByHeadings(raw) {
 
   return subsections;
 }
+
+/** Endorsements (0-0) have no ## headings; one block per blockquote for search/RAG. */
+export function splitByBlockquotes(raw) {
+  const cleaned = cleanFrontMatter(raw);
+  const parts = cleaned.split(/\n<br>\s*<\/br>\s*\n+/i);
+  const subsections = [];
+  for (let i = 0; i < parts.length; i++) {
+    const stripped = stripInlineMarkdown(parts[i].replace(/^>\s?/gm, ""));
+    if (stripped.length < 40) continue;
+    subsections.push({
+      heading: null,
+      anchor: `endorsement-${subsections.length + 1}`,
+      content: stripped,
+    });
+  }
+  return subsections;
+}
