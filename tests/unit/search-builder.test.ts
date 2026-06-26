@@ -8,6 +8,7 @@ import {
   buildSearchIndex,
   buildCreditsChapterEntry,
 } from "../../src/_data/lib/search-builder.js";
+import { splitByBlockquotes } from "../../src/_data/lib/markdown.js";
 
 const langData = {
   dir: "thai",
@@ -185,6 +186,8 @@ describe("buildSearchIndex", () => {
       credits: { i18n: {}, categories: [] },
       fetcher: async () => "# t\n\n## H\n\nbody",
     });
+    expect(Object.keys(result)).toEqual(["th"]);
+    expect(result.th).toHaveLength(1);
   });
 });
 
@@ -207,5 +210,13 @@ describe("buildCreditsChapterEntry", () => {
     const entry = buildCreditsChapterEntry("en", { prefix: "" }, credits, chapters);
     expect(entry?.url).toBe("/read/0-3/");
     expect(entry?.subsections[0].content).toContain("Tenzin Yangtso");
+  });
+});
+
+describe("splitByBlockquotes", () => {
+  test("splits endorsement quotes including Garfield", () => {
+    const raw = `> quote one<br></br>\n> — Richard Garfield, creator of Magic`;
+    const subs = splitByBlockquotes(raw);
+    expect(subs.some((s) => s.content.includes("Richard Garfield"))).toBe(true);
   });
 });

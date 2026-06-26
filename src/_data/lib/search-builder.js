@@ -1,4 +1,4 @@
-import { splitByHeadings } from "./markdown.js";
+import { splitByHeadings, splitByBlockquotes } from "./markdown.js";
 
 const DEFAULT_BASE =
   "https://raw.githubusercontent.com/pluralitybook/plurality/main/contents/";
@@ -108,7 +108,10 @@ export async function buildChapterEntry({
     title: title,
     section: sectionLabel(langI18n, section.title, chapter.number),
     url: pageUrl,
-    subsections: splitByHeadings(raw),
+    subsections:
+      chapter.id === "0-0"
+        ? splitByBlockquotes(raw)
+        : splitByHeadings(raw),
   };
 }
 

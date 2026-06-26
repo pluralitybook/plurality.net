@@ -1,7 +1,7 @@
 export const BOOK_EMBEDDING_MODEL = '@cf/baai/bge-m3'
 export const BOOK_EMBEDDING_DIM = 1024
 export const VECTORIZE_INDEX_NAME = 'plurality-book'
-export const DEFAULT_TOP_K = 4
+export const DEFAULT_TOP_K = 8
 export const DEFAULT_MIN_SCORE = 0.35
 const METADATA_CONTENT_MAX = 1200
 
