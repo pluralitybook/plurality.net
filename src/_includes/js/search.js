@@ -33,11 +33,77 @@
   var fuseLoading = false;
   var fuseLoaded = false;
   var fuseSearchInput = null;
-  var fuseClearBtn = null;
+  var fuseSubmitBtn = null;
   var fuseResultsEl = null;
   var fuseMessageEl = null;
   var fuseDebounceTimer = null;
   var fuseChapters = null;     // raw chapter data for excerpt building
+
+  var SEARCH_SUBMIT_SVG =
+    '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">' +
+    '<circle cx="11" cy="11" r="7"/><path d="M20 20l-3.5-3.5"/></svg>';
+
+  function getSearchInput() {
+    return (
+      fuseSearchInput ||
+      input ||
+      (container && container.querySelector('.pagefind-ui__search-input'))
+    );
+  }
+
+  function createSearchSubmitButton() {
+    var btn = document.createElement('button');
+    btn.type = 'button';
+    btn.className = 'plurality-search__submit';
+    btn.setAttribute('aria-label', (t && t.search_label) || 'Search');
+    btn.innerHTML = SEARCH_SUBMIT_SVG;
+    btn.addEventListener('click', function () {
+      submitSearch();
+    });
+    return btn;
+  }
+
+  function submitSearch() {
+    var inp = getSearchInput();
+    if (!inp) return;
+    var q = inp.value.trim();
+    if (dropdown) dropdown.hidden = true;
+    activeIdx = -1;
+    inp.removeAttribute('aria-activedescendant');
+    if (!q) {
+      if (useFuse && fuseResultsEl && fuseMessageEl) {
+        fuseResultsEl.innerHTML = '';
+        fuseMessageEl.textContent = '';
+      }
+      return;
+    }
+    if (window.PluralityBookAsk && typeof window.PluralityBookAsk.runAsk === 'function') {
+      window.PluralityBookAsk.runAsk(q).then(function () {
+        window.dispatchEvent(
+          new CustomEvent('plurality-search-after-ask', { detail: { query: q } }),
+        );
+      });
+    } else {
+      runKeywordSearchAfterAsk(q);
+    }
+  }
+
+  function wrapSearchFormRow(form) {
+    if (!form || form.querySelector('.plurality-search__row')) return;
+    var inp = form.querySelector('.pagefind-ui__search-input, input[type="search"], input[type="text"]');
+    if (!inp) return;
+    var row = document.createElement('div');
+    row.className = 'plurality-search__row';
+    var wrap = document.createElement('div');
+    wrap.className = 'plurality-search__input-wrap';
+    form.insertBefore(row, inp);
+    wrap.appendChild(inp);
+    row.appendChild(wrap);
+    row.appendChild(createSearchSubmitButton());
+    var clearBtn = form.querySelector('.pagefind-ui__search-clear');
+    if (clearBtn) clearBtn.remove();
+  }
+
 
   var uiTranslations = {
     en: {
@@ -216,6 +282,9 @@
     } else if (e.key === 'Enter' && activeIdx >= 0) {
       e.preventDefault();
       selectSuggestion(items[activeIdx].textContent);
+    } else if (e.key === 'Enter') {
+      e.preventDefault();
+      submitSearch();
     }
   }
 
@@ -516,21 +585,17 @@
     var form = document.createElement('form');
     form.className = 'pagefind-ui__form';
     form.setAttribute('role', 'search');
-    form.addEventListener('submit', function (e) { e.preventDefault(); });
+    form.addEventListener('submit', function (e) { e.preventDefault(); submitSearch(); });
 
     fuseSearchInput = document.createElement('input');
     fuseSearchInput.className = 'pagefind-ui__search-input';
-    fuseSearchInput.type = 'text';
+    fuseSearchInput.type = 'search';
+    fuseSearchInput.setAttribute('enterkeyhint', 'search');
     fuseSearchInput.placeholder = t.placeholder || 'Search\u2026';
 
-    fuseClearBtn = document.createElement('button');
-    fuseClearBtn.className = 'pagefind-ui__search-clear';
-    fuseClearBtn.type = 'button';
-    fuseClearBtn.textContent = t.clear_search || 'Clear';
-    fuseClearBtn.style.display = 'none';
-
     form.appendChild(fuseSearchInput);
-    form.appendChild(fuseClearBtn);
+    wrapSearchFormRow(form);
+    fuseSubmitBtn = form.querySelector('.plurality-search__submit');
 
     var drawer = document.createElement('div');
     drawer.className = 'pagefind-ui__drawer';
@@ -551,21 +616,11 @@
     // Input handler with debounce for full-text, immediate for autocomplete
     fuseSearchInput.addEventListener('input', function () {
       var val = fuseSearchInput.value;
-      fuseClearBtn.style.display = val.length > 0 ? '' : 'none';
       showSuggestions(val);
       clearTimeout(fuseDebounceTimer);
       fuseDebounceTimer = setTimeout(function () {
         renderFuseResults(val.trim());
       }, 200);
-    });
-
-    fuseClearBtn.addEventListener('click', function () {
-      fuseSearchInput.value = '';
-      fuseClearBtn.style.display = 'none';
-      fuseResultsEl.innerHTML = '';
-      fuseMessageEl.textContent = '';
-      if (dropdown) dropdown.hidden = true;
-      fuseSearchInput.focus();
     });
 
     input = fuseSearchInput;
@@ -659,6 +714,9 @@
             }, 200);
           });
         }
+        var pfForm = container.querySelector('.pagefind-ui__form');
+        if (pfForm) wrapSearchFormRow(pfForm);
+        input = getSearchInput();
         if (input) input.focus();
       }, 100);
     }
@@ -678,6 +736,8 @@
   overlay.addEventListener('click', function (e) {
     if (e.target === overlay) close();
   });
+
+  window.PluralitySearch = { submit: submitSearch };
 
   document.addEventListener('keydown', function (e) {
     if ((e.metaKey || e.ctrlKey) && e.key === 'k') {

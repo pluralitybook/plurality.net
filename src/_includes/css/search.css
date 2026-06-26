@@ -108,6 +108,60 @@
   color: var(--heading) !important;
 }
 
+/* archive.tw-style: input + magnifier submit (touch); no clear, no left icon */
+.search-overlay .pagefind-ui__search-clear {
+  display: none !important;
+}
+
+.search-overlay .plurality-search__row {
+  display: flex;
+  align-items: stretch;
+  gap: 0.5rem;
+  width: 100%;
+}
+
+.search-overlay .plurality-search__input-wrap {
+  flex: 1 1 auto;
+  min-width: 0;
+}
+
+.search-overlay .plurality-search__submit {
+  flex: 0 0 auto;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  box-sizing: border-box;
+  width: 3rem;
+  min-width: 3rem;
+  min-height: 3rem;
+  padding: 0;
+  margin: 0;
+  color: var(--teal, #0d6e6e);
+  background: var(--warm, #faf8f5);
+  border: 1px solid var(--border, #e8e4df);
+  border-radius: var(--radius, 8px);
+  cursor: pointer;
+  -webkit-tap-highlight-color: transparent;
+}
+
+.search-overlay .plurality-search__submit:hover,
+.search-overlay .plurality-search__submit:focus-visible {
+  background: var(--bg, #fff);
+  border-color: var(--teal, #0d6e6e);
+  outline: none;
+}
+
+.search-overlay .plurality-search__submit svg {
+  display: block;
+  width: 1.25rem;
+  height: 1.25rem;
+}
+
+.search-overlay .pagefind-ui__search-input {
+  padding-left: calc(16px * var(--pagefind-ui-scale, 1)) !important;
+  padding-right: calc(16px * var(--pagefind-ui-scale, 1)) !important;
+}
+
 /* Clear button */
 .pagefind-ui__search-clear {
   background: var(--warm) !important;
@@ -164,13 +218,18 @@
 .pagefind-ui--fuse .pagefind-ui__search-input {
   width: 100%;
   height: calc(64px * var(--pagefind-ui-scale, 1));
-  padding: 0 calc(70px * var(--pagefind-ui-scale, 1)) 0 calc(48px * var(--pagefind-ui-scale, 1));
+  padding: 0 calc(16px * var(--pagefind-ui-scale, 1));
   border: var(--pagefind-ui-border-width, 1px) solid var(--pagefind-ui-border, #eeeeee);
   border-radius: var(--pagefind-ui-border-radius, 8px);
   font-size: calc(21px * var(--pagefind-ui-scale, 1));
   appearance: none;
   -webkit-appearance: none;
   outline: none;
+}
+
+.search-overlay .pagefind-ui--fuse .pagefind-ui__form::before {
+  display: none !important;
+  content: none !important;
 }
 
 .pagefind-ui--fuse .pagefind-ui__search-input:focus {
