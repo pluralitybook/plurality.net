@@ -140,6 +140,29 @@ para two`;
   });
 });
 
+describe("buildChapterEntry (0-0 endorsements)", () => {
+  test("routes 0-0 chapters through splitByBlockquotes", async () => {
+    const en00 = {
+      dir: "english",
+      prefix: "",
+      githubBase: "https://example.com/contents/",
+      files: {},
+    };
+    const raw = `# Endorsements\n\n> quote one<br></br>\n> — Richard Garfield, creator of Magic`;
+    const entry = await buildChapterEntry({
+      lang: "en",
+      langData: en00,
+      langI18n: {},
+      section: { title: "Before You Read", chapters: [] },
+      chapter: { id: "0-0", number: "0-0", title: "Endorsements", file: "0-0-endorsements" },
+      fetcher: async () => raw,
+    });
+    expect(entry).not.toBeNull();
+    expect(entry!.url).toBe("/read/0-0/");
+    expect(entry!.subsections.some((s) => s.content.includes("Richard Garfield"))).toBe(true);
+  });
+});
+
 describe("buildLangEntries", () => {
   test("returns [] when langData has no files", async () => {
     const out = await buildLangEntries({
@@ -201,6 +224,7 @@ describe("buildCreditsChapterEntry", () => {
     };
     const chapters = {
       sections: [
+        { title: "Preface", chapters: [{ id: "1", number: "1", title: "Preface", file: "y" }] },
         {
           title: "Before You Read",
           chapters: [{ id: "0-3", number: "0-3", title: "Credits", file: "x" }],
