@@ -23,7 +23,7 @@
 
   function resolveAskBaseUrl() {
     if (!isLocalDevAskHost()) {
-      return 'https://ask.plurality.net';
+      return 'https://plurality-ask.audreyt.workers.dev';
     }
     try {
       var o = new URLSearchParams(window.location.search).get('ask_base');

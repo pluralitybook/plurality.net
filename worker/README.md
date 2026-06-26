@@ -18,12 +18,12 @@ cd worker && bun install && bun run dev && bun test
 
 ## Production (`ask.plurality.net`)
 
-1. **Vectorize** (once): `wrangler vectorize create plurality-book --dimensions=1024 --metric=cosine`
-2. **Index book** (repo root): `CLOUDFLARE_ACCOUNT_ID=… CLOUDFLARE_API_TOKEN=… bun run vectorize:sync-book`
-3. **Secrets**: `wrangler secret put BASETEN_API_KEY` and `CF_AIG_TOKEN`
-4. **Deploy**: `cd worker && wrangler deploy`
-5. **DNS** (Cloudflare zone for `plurality.net`): `ask` → Worker route `ask.plurality.net/*` (Workers dashboard: Triggers → Routes, or wrangler `[[routes]]` in `wrangler.toml`).
+**Live (interim):** `https://plurality-ask.audreyt.workers.dev` — site `book-ask.js` points here until `ask.plurality.net` is a proxied name in Cloudflare (then uncomment `[[routes]]` in `wrangler.toml` and switch client URL).
 
-HTTP **526** on `ask.plurality.net` means the hostname has no healthy Worker origin — complete steps 4–5. Until then, the site loads but `/capacity` fails CORS.
+1. **Vectorize** (once): `wrangler vectorize create plurality-book --dimensions=1024 --metric=cosine` ✅
+2. **Index book** (repo root): `CLOUDFLARE_ACCOUNT_ID=… CLOUDFLARE_API_TOKEN=… bun run vectorize:sync-book`
+3. **Secrets**: `wrangler secret put BASETEN_API_KEY` (✅); `CF_AIG_TOKEN` optional for gateway leg
+4. **Deploy**: `cd worker && bunx wrangler deploy`
+5. **Custom domain**: add `ask.plurality.net` DNS (proxied) in CF zone for `plurality.net`, uncomment route in `wrangler.toml`, redeploy.
 
 Publish: `cd askit-hono && npm run publish:gateway`
