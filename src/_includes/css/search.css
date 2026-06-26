@@ -322,5 +322,7 @@
 }
 .plurality-ask-answer[hidden] { display: none; }
 .plurality-ask-answer__body a { color: var(--teal, #0d6e6e); }
+.plurality-ask-answer__body sup.cite a { font-size: 0.75em; text-decoration: none; }
+.plurality-ask-answer__body sup.cite a:hover { text-decoration: underline; }
 .plurality-ask-answer__error { color: #b33; margin: 0; }
 .plurality-ask-answer__cursor { opacity: 0.7; }

@@ -1,4 +1,5 @@
 import {
+  DEFAULT_NEMOTRON_MAX_COMPLETION_TOKENS,
   DEFAULT_NEMOTRON_ULTRA_BASETEN_MODEL,
   openAiChatCompletionsEventStreamToText,
   resolveAudreyAiGateway,
@@ -6,6 +7,7 @@ import {
   streamViaGatewayChatCompletions,
   type AudreyGatewayEnv,
 } from '@au/cf-ai-gateway'
+import { bookCitationFootnotes } from './bookCitationFootnotes'
 import { stubBookAnswer, textStream } from './stubAnswer'
 import {
   retrieveBookChunks,
@@ -18,12 +20,23 @@ type AiBinding = {
 }
 
 const LANG_INSTRUCTION: Record<string, string> = {
-  en: 'Answer in English. Cite book excerpts with markdown footnotes [1], [2] matching the Sources list.',
-  zh: '請用繁體中文作答。以 [1]、[2] 標註引註，對應下方來源列表。',
-  ja: '日本語で回答してください。[1]、[2] の形式で出典を示してください。',
-  de: 'Antworten Sie auf Deutsch. Zitieren Sie mit [1], [2] gemäß der Quellenliste.',
-  th: 'ตอบเป็นภาษาไทย อ้างอิงด้วย [1], [2] ตามรายการแหล่งที่มา',
-  el: 'Απαντήστε στα ελληνικά. Παραπομπές [1], [2] σύμφωνα με τις πηγές.',
+  en: 'Answer in English. Cite excerpts with markdown footnote references [^1], [^2] (caret form only; do not paste URLs).',
+  zh: '請用繁體中文作答。以 [^1]、[^2] 標註引註（僅用此格式，勿貼網址）。',
+  ja: '日本語で回答してください。出典は [^1]、[^2] の形式のみ（URLは書かない）。',
+  de: 'Antworten Sie auf Deutsch. Zitieren Sie mit [^1], [^2] (nur diese Form, keine URLs).',
+  th: 'ตอบเป็นภาษาไทย อ้างอิงด้วย [^1], [^2] เท่านั้น (ไม่ใส่ URL)',
+  el: 'Απαντήστε στα ελληνικά. Παραπομπές [^1], [^2] μόνο (χωρίς URLs).',
+}
+
+
+function chunkFootnoteLabel(c: BookChunk): string {
+  return c.metadata.heading || c.metadata.chapterTitle || 'Section'
+}
+
+function footnoteDefsFromChunks(chunks: BookChunk[]): string {
+  return chunks
+    .map((c, i) => `[^${i + 1}]: [${chunkFootnoteLabel(c)}](${c.metadata.url})`)
+    .join('\n')
 }
 
 function buildMessages(
@@ -64,12 +77,16 @@ function retrievalStubMarkdown(
     '',
   ]
   chunks.forEach((c, i) => {
-    const label = c.metadata.heading || c.metadata.chapterTitle
-    lines.push(`[${i + 1}] [${label}](${c.metadata.url})`)
+    const label = chunkFootnoteLabel(c)
+    lines.push(`[^${i + 1}] **${label}**`)
     lines.push('')
     lines.push(c.metadata.content.slice(0, 400) + (c.metadata.content.length > 400 ? '…' : ''))
     lines.push('')
   })
+  if (chunks.length > 0) {
+    lines.push('')
+    lines.push(footnoteDefsFromChunks(chunks))
+  }
   return lines.join('\n')
 }
 
@@ -129,21 +146,26 @@ export async function streamBookAnswer(
 
   async function nemotronByteStream(): Promise<ReadableStream<Uint8Array>> {
     if (basetenKey && !gateway.config.gatewayAuthToken) {
-      return streamViaDirectBasetenChatCompletions(basetenKey, basetenModel, messages, 2048)
+      return streamViaDirectBasetenChatCompletions(basetenKey, basetenModel, messages, DEFAULT_NEMOTRON_MAX_COMPLETION_TOKENS)
     }
     if (gateway.config.gatewayAuthToken) {
-      return streamViaGatewayChatCompletions(gateway.config, messages, 2048)
+      return streamViaGatewayChatCompletions(gateway.config, messages, DEFAULT_NEMOTRON_MAX_COMPLETION_TOKENS)
     }
     if (basetenKey) {
-      return streamViaDirectBasetenChatCompletions(basetenKey, basetenModel, messages, 2048)
+      return streamViaDirectBasetenChatCompletions(basetenKey, basetenModel, messages, DEFAULT_NEMOTRON_MAX_COMPLETION_TOKENS)
     }
-    return streamViaGatewayChatCompletions(gateway.config, messages, 2048)
+    return streamViaGatewayChatCompletions(gateway.config, messages, DEFAULT_NEMOTRON_MAX_COMPLETION_TOKENS)
   }
 
   try {
     const byteStream = await nemotronByteStream()
+    const footnotes = chunks.map((c) => {
+      const label = c.metadata.heading || c.metadata.chapterTitle || 'Section'
+      return `[${label}](${c.metadata.url})`
+    })
     const textStreamOut = byteStream
       .pipeThrough(openAiChatCompletionsEventStreamToText())
+      .pipeThrough(bookCitationFootnotes(footnotes))
       .pipeThrough(new TextEncoderStream())
 
     return new Response(textStreamOut, {
@@ -162,10 +184,15 @@ export async function streamBookAnswer(
           basetenKey,
           basetenModel,
           messages,
-          2048,
+          DEFAULT_NEMOTRON_MAX_COMPLETION_TOKENS,
         )
+        const footnotes = chunks.map((c) => {
+          const label = c.metadata.heading || c.metadata.chapterTitle || 'Section'
+          return `[${label}](${c.metadata.url})`
+        })
         const textStreamOut = byteStream
           .pipeThrough(openAiChatCompletionsEventStreamToText())
+          .pipeThrough(bookCitationFootnotes(footnotes))
           .pipeThrough(new TextEncoderStream())
         return new Response(textStreamOut, {
           status: 200,
