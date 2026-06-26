@@ -20,7 +20,8 @@ binding = "BOOK_VECTORIZE"
 index_name = "plurality-book"
 
 # Create index (once): wrangler vectorize create plurality-book --dimensions=1024 --metric=cosine
-# Metadata index on `lang` when upserting (see scripts/vectorize-sync-book.mjs)
+# Metadata index (once, BEFORE bulk upsert): wrangler vectorize create-metadata-index plurality-book --propertyName=lang --type=string
+# See scripts/vectorize-sync-book.mjs ensureLangMetadataIndex()
 # Secrets: BASETEN_API_KEY, CF_AIG_TOKEN (wrangler secret put)
 
 [dev]

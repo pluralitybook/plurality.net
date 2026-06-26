@@ -42,3 +42,6 @@ worker/.dev.vars
 
 # Finder (MacOS) folder config
 .DS_Store
+
+# vectorize-sync-book temp ndjson batches
+.vectorize-sync-*
