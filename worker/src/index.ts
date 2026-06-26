@@ -20,6 +20,7 @@ const MAX_QUESTION_CHARS = 100
 const askCors = createAskCors({
   allowedOrigins: [
     'https://plurality.net',
+    'https://www.plurality.net',
     'http://localhost:8080',
     'http://127.0.0.1:8080',
   ],

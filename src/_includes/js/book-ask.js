@@ -104,6 +104,17 @@
     askAnswer.innerHTML =
       '<div class="plurality-ask-answer__body">' + body + cursor + '</div>';
   }
+  function hideAsk() {
+    if (askAbort) {
+      askAbort.abort();
+      askAbort = null;
+    }
+    askLoading = false;
+    if (askAnswer) {
+      askAnswer.hidden = true;
+      askAnswer.innerHTML = '';
+    }
+  }
   function runAsk(question) {
     var q = (question || '').trim();
     if (!askAvailable || !q || askLoading) return Promise.resolve();

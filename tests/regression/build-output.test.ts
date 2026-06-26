@@ -133,7 +133,7 @@ describe("build output: assets", () => {
     }
   });
 
-  test.each(["nav.js", "theme-toggle.js", "search.js", "scroll-reveal.js", "book.js"])(
+  test.each(["nav.js", "theme-toggle.js", "search.js", "book-ask.js", "scroll-reveal.js", "book.js"])(
     "JS asset exists: assets/js/%s",
     (name) => {
       const p = resolve(DIST, "assets/js", name);
