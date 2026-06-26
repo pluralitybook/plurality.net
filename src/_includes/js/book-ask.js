@@ -151,8 +151,18 @@
     var parsed = raw ? parseAnswer(raw) : { html: '', sources: [] };
     var body = parsed.html;
     var cursor = loading ? '<span class="plurality-ask-answer__cursor" aria-hidden="true">▌</span>' : '';
+    var sourcesHtml = '';
+    if (parsed.sources.length > 0) {
+      sourcesHtml = '<div class="plurality-ask-answer__sources"><h3>Sources</h3><ol>';
+      for (var i = 0; i < parsed.sources.length; i++) {
+        var source = parsed.sources[i];
+        sourcesHtml += '<li value="' + source.index + '"><a href="' + escapeAttribute(source.href) +
+          '" target="_blank" rel="noopener noreferrer">' + escapeHtml(source.label) + '</a></li>';
+      }
+      sourcesHtml += '</ol></div>';
+    }
     askAnswer.innerHTML =
-      '<div class="plurality-ask-answer__body">' + body + cursor + '</div>';
+      '<div class="plurality-ask-answer__body">' + body + cursor + '</div>' + sourcesHtml;
   }
   function hideAsk() {
     if (askAbort) {
