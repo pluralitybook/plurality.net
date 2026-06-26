@@ -1,0 +1,12 @@
+name = "plurality-ask"
+main = "src/index.ts"
+compatibility_date = "2025-01-01"
+
+[vars]
+AUDREY_MODEL = "nemotron-ultra"
+
+# Phase 3: [[vectorize]] binding plurality-book (1024-dim bge-m3)
+# Secrets: BASETEN_API_KEY, CF_AIG_TOKEN (wrangler secret put)
+
+[dev]
+port = 8788
