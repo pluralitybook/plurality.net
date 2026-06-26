@@ -85,16 +85,60 @@
     return doc.body.innerHTML;
   }
 
-  function simpleMarkdownToHtml(md) {
-    var html = escapeHtml(md);
-    html = html.replace(/\[([^\]]+)\]\((https?:[^)\s]+)\)/g, function (_m, label, href) {
-      if (!isSafeHttpUrl(href)) return escapeHtml(label);
-      return '<a href="' + escapeHtml(href) + '" target="_blank" rel="noopener noreferrer">' + escapeHtml(label) + '</a>';
-    });
+  function escapeAttribute(value) {
+    return escapeHtml(value);
+  }
+
+  /** ask.archive.tw parity: [^n] defs + clickable superscript citations */
+  function parseAnswer(raw) {
+    var sources = [];
+    var seen = new Map();
+    var body = raw.replace(
+      /^\[\^(\d+)\]:\s*\[([^\]]*)\]\(([^)\s]+)\)\s*$/gm,
+      function (_m, num, label, href) {
+        if (!isSafeHttpUrl(href)) return '';
+        var index = Number(num);
+        if (!seen.has(index)) {
+          seen.set(index, { index: index, label: (label || '').trim() || href, href: href });
+        }
+        return '';
+      },
+    ).trim();
+
+    sources = Array.from(seen.values()).sort(function (a, b) { return a.index - b.index; });
+    var hrefByIndex = new Map(sources.map(function (s) { return [s.index, s.href]; }));
+
+    var html = escapeHtml(body);
+    html = html.replace(
+      /^(#{1,6})[ \t]+([^\n]+?)[ \t]*(?:\n|$)/gm,
+      function (_m, hashes, text) {
+        return '<h' + hashes.length + '>' + text + '</h' + hashes.length + '>';
+      },
+    );
     html = html.replace(/\*\*([^*]+)\*\*/g, '<strong>$1</strong>');
+    html = html.replace(/(^|[^*])\*([^*\n]+)\*/g, '$1<em>$2</em>');
+    html = html.replace(
+      /\[([^\]]+)\]\((https?:[^)\s]+)\)/g,
+      function (_m, label, href) {
+        if (!isSafeHttpUrl(href)) return label;
+        return (
+          '<a href="' + escapeAttribute(href) +
+          '" target="_blank" rel="noopener noreferrer">' + label + '</a>'
+        );
+      },
+    );
+    html = html.replace(/\[\^(\d+)\]/g, function (m, num) {
+      var href = hrefByIndex.get(Number(num));
+      if (!href) return m;
+      return (
+        '<sup class="cite"><a href="' + escapeAttribute(href) +
+        '" target="_blank" rel="noopener noreferrer">[' + num + ']</a></sup>'
+      );
+    });
     html = html.replace(/\n\n/g, '</p><p>');
     html = html.replace(/\n/g, '<br>');
-    return sanitizeHtml('<p>' + html + '</p>');
+    if (html) html = '<p>' + html + '</p>';
+    return { html: sanitizeHtml(html), sources: sources };
   }
 
   function renderAsk(raw, loading, err) {
@@ -104,7 +148,8 @@
       return;
     }
     askAnswer.hidden = false;
-    var body = raw ? simpleMarkdownToHtml(raw) : '';
+    var parsed = raw ? parseAnswer(raw) : { html: '', sources: [] };
+    var body = parsed.html;
     var cursor = loading ? '<span class="plurality-ask-answer__cursor" aria-hidden="true">▌</span>' : '';
     askAnswer.innerHTML =
       '<div class="plurality-ask-answer__body">' + body + cursor + '</div>';

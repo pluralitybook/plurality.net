@@ -5,7 +5,7 @@
     "": {
       "name": "plurality-ask",
       "dependencies": {
-        "@au/cf-ai-gateway": "file:vendor/au-cf-ai-gateway-0.1.0.tgz",
+        "@au/cf-ai-gateway": "file:vendor/au-cf-ai-gateway-0.1.1.tgz",
         "hono": "^4.6.14",
       },
       "devDependencies": {
@@ -17,7 +17,7 @@
     },
   },
   "packages": {
-    "@au/cf-ai-gateway": ["@au/cf-ai-gateway@vendor/au-cf-ai-gateway-0.1.0.tgz", {}, "sha512-+yn/89l4rErUvVh30WrltskzFulEhcAZ/TAh4BFN/Z3ER1xGQLIvJTF0nl167VNR+KwiOA044fb+xLnem0DUdQ=="],
+    "@au/cf-ai-gateway": ["@au/cf-ai-gateway@vendor/au-cf-ai-gateway-0.1.1.tgz", {}, "sha512-19qb1kRQK2K6K/tV0YFtm/slojBM7g3cshQthJp25I6Ntgk4lednUKU7Sx6xK/rj2asVfWcNvAAoH58MaF2kGQ=="],
 
     "@cloudflare/kv-asset-handler": ["@cloudflare/kv-asset-handler@0.5.0", "", {}, "sha512-jxQYkj8dSIzc0cD6cMMNdOc1UVjqSqu8BZdor5s8cGjW2I8BjODt/kWPVdY+u9zj3ms75Q5qaZgnxUad83+eAg=="],
 
