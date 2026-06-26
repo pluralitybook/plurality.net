@@ -5,6 +5,8 @@ node_modules
 out
 dist
 *.tgz
+!worker/vendor/*.tgz
+# Vendored gateway tarball (must be committed for clone/CI)
 
 # code coverage
 coverage
@@ -26,6 +28,9 @@ report.[0-9]_.[0-9]_.[0-9]_.[0-9]_.json
 .env.test.local
 .env.production.local
 .env.local
+
+# Cloudflare Worker secrets (plurality-ask)
+worker/.dev.vars
 
 # caches
 .eslintcache
