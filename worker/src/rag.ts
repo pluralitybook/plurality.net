@@ -121,21 +121,36 @@ export async function streamBookAnswer(
   }
 
   const messages = buildMessages(question, chunks, lang)
-  const byteStream = await streamViaGatewayChatCompletions(
-    gateway.config,
-    messages,
-    2048,
-  )
-  const textStreamOut = byteStream
-    .pipeThrough(openAiChatCompletionsEventStreamToText())
-    .pipeThrough(new TextEncoderStream())
+  try {
+    const byteStream = await streamViaGatewayChatCompletions(
+      gateway.config,
+      messages,
+      2048,
+    )
+    const textStreamOut = byteStream
+      .pipeThrough(openAiChatCompletionsEventStreamToText())
+      .pipeThrough(new TextEncoderStream())
 
-  return new Response(textStreamOut, {
-    status: 200,
-    headers: {
-      'Content-Type': 'text/plain; charset=utf-8',
-      'Cache-Control': 'no-store',
-      'X-Accel-Buffering': 'no',
-    },
-  })
+    return new Response(textStreamOut, {
+      status: 200,
+      headers: {
+        'Content-Type': 'text/plain; charset=utf-8',
+        'Cache-Control': 'no-store',
+        'X-Accel-Buffering': 'no',
+      },
+    })
+  } catch (e) {
+    console.error('gateway stream failed', e)
+    const body =
+      chunks.length > 0
+        ? retrievalStubMarkdown(question, lang, chunks)
+        : stubBookAnswer(question, lang)
+    return new Response(textStream(body), {
+      status: 200,
+      headers: {
+        'Content-Type': 'text/plain; charset=utf-8',
+        'Cache-Control': 'no-store',
+      },
+    })
+  }
 }
