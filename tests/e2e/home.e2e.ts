@@ -31,7 +31,7 @@ test.describe("homepage", () => {
     await page.waitForLoadState("networkidle");
     // Tolerate font network errors in case of offline CI
     const filtered = errors.filter(
-      (e) => !/font|googleapis|gstatic|pagefind/i.test(e)
+      (e) => !/font|googleapis|gstatic|pagefind/i.test(e),
     );
     expect(filtered).toEqual([]);
   });

@@ -14,17 +14,22 @@
   var askLoading = false;
   var askAbort = null;
 
-  function resolveAskBaseUrl() {
+  function isLocalDevAskHost() {
     var host = window.location.hostname;
-    var isDev = host === 'localhost' || host === '127.0.0.1';
-    if (isDev) {
-      try {
-        var o = new URLSearchParams(window.location.search).get('ask_base');
-        if (o) return o.replace(/\/$/, '');
-      } catch (_e) { /* ignore */ }
-      return 'http://127.0.0.1:8788';
+    if (host !== 'localhost' && host !== '127.0.0.1') return false;
+    var port = window.location.port;
+    return port === '8080' || port === '';
+  }
+
+  function resolveAskBaseUrl() {
+    if (!isLocalDevAskHost()) {
+      return 'https://ask.plurality.net';
     }
-    return 'https://ask.plurality.net';
+    try {
+      var o = new URLSearchParams(window.location.search).get('ask_base');
+      if (o) return o.replace(/\/$/, '');
+    } catch (_e) { /* ignore */ }
+    return 'http://127.0.0.1:8788';
   }
 
   var ASK_BASE = resolveAskBaseUrl();
@@ -159,16 +164,22 @@
 
   function initCapacity() {
     if (!window.fetch) return;
-    var isDev =
-      window.location.hostname === 'localhost' ||
-      window.location.hostname === '127.0.0.1';
+    var host = window.location.hostname;
+    if (
+      !isLocalDevAskHost() &&
+      host !== 'plurality.net' &&
+      host !== 'www.plurality.net'
+    ) {
+      return;
+    }
+    var localDev = isLocalDevAskHost();
     fetch(ASK_BASE + '/capacity', { headers: { Accept: 'application/json' } })
       .then(function (r) { return r.ok ? r.json() : Promise.reject(); })
       .then(function (d) {
         askAvailable = !!(d && d.status === 'available');
       })
       .catch(function () {
-        askAvailable = isDev;
+        askAvailable = localDev;
       });
   }
 

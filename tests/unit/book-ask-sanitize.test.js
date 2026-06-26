@@ -24,4 +24,14 @@ describe('book-ask.js XSS hardening', () => {
     expect(source).toMatch(/function hideAsk/);
     expect(source).toMatch(/hideAsk:\s*hideAsk/);
   });
+
+  test('local dev ask only on port 8080 (not CI serve 4321)', () => {
+    expect(source).toMatch(/function isLocalDevAskHost/);
+    expect(source).toMatch(/port === '8080'/);
+  });
+
+  test('initCapacity skips probe unless prod or local :8080', () => {
+    expect(source).toMatch(/host !== 'plurality\.net'/);
+    expect(source).toMatch(/host !== 'www\.plurality\.net'/);
+  });
 });
