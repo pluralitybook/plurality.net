@@ -195,6 +195,7 @@ async function main() {
   const chapters = loadJson('chapters.json')
   const translations = loadJson('translations.json')
   const i18n = loadJson('i18n.json')
+  const credits = loadJson('credits.json')
   const targetLangs = Object.keys(translations)
 
   const fetcher = (url) => EleventyFetch(url, { duration: '1d', type: 'text' })
@@ -203,6 +204,7 @@ async function main() {
     translations,
     i18n,
     chapters,
+    credits,
     fetcher,
   })
 

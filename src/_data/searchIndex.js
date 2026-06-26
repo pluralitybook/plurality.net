@@ -17,6 +17,7 @@ export default async function searchIndex({
   chapters = loadJson("chapters.json"),
   translations = loadJson("translations.json"),
   i18n = loadJson("i18n.json"),
+  credits = loadJson("credits.json"),
   targetLangs = ["zh", "ja"],
   fetcher = defaultFetcher,
 } = {}) {
@@ -25,6 +26,7 @@ export default async function searchIndex({
     translations,
     i18n,
     chapters,
+    credits,
     fetcher,
   });
 }

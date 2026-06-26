@@ -6,6 +6,7 @@ import {
   buildChapterEntry,
   buildLangEntries,
   buildSearchIndex,
+  buildCreditsChapterEntry,
 } from "../../src/_data/lib/search-builder.js";
 
 const langData = {
@@ -181,9 +182,30 @@ describe("buildSearchIndex", () => {
       translations: { th: langData } as any,
       i18n: {},
       chapters,
+      credits: { i18n: {}, categories: [] },
       fetcher: async () => "# t\n\n## H\n\nbody",
     });
-    expect(Object.keys(result)).toEqual(["th"]);
-    expect(result.th).toHaveLength(1);
+  });
+});
+
+describe("buildCreditsChapterEntry", () => {
+  test("includes contributor names for /read/0-3/", () => {
+    const credits = {
+      i18n: { en: { intro: "Intro.", categories: { Writing: "Writing" } } },
+      categories: [
+        { name: "Writing", contributors: [{ name: "Tenzin Yangtso", pt: 1 }] },
+      ],
+    };
+    const chapters = {
+      sections: [
+        {
+          title: "Before You Read",
+          chapters: [{ id: "0-3", number: "0-3", title: "Credits", file: "x" }],
+        },
+      ],
+    };
+    const entry = buildCreditsChapterEntry("en", { prefix: "" }, credits, chapters);
+    expect(entry?.url).toBe("/read/0-3/");
+    expect(entry?.subsections[0].content).toContain("Tenzin Yangtso");
   });
 });

@@ -28,6 +28,7 @@ describe("searchIndex default export", () => {
       chapters,
       translations,
       i18n,
+      credits: { i18n: {}, categories: [] },
       fetcher: async () => "## H\n\npara\n",
     });
 
@@ -71,6 +72,7 @@ describe("searchIndex default export", () => {
         ],
       } as any,
       i18n: {} as any,
+      credits: { i18n: {}, categories: [] },
     });
     expect(result.xx).toEqual([]);
   });
