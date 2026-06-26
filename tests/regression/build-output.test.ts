@@ -155,6 +155,13 @@ describe("build output: assets", () => {
     expect(html).toContain('href="/assets/images/favicon.png"');
     expect(html).not.toContain("%3EP%3C/text%3E");
   });
+
+  test("homepage book-ask.js is cache-busted and defines hideAsk", () => {
+    const html = readFileSync(resolve(DIST, "index.html"), "utf-8");
+    expect(html).toMatch(/book-ask\.js\?v=[a-f0-9]+/);
+    const js = readFileSync(resolve(DIST, "assets/js/book-ask.js"), "utf-8");
+    expect(js).toMatch(/function hideAsk/);
+  });
 });
 
 describe("build output: HTML shape", () => {
