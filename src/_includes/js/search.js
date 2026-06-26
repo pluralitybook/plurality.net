@@ -314,13 +314,39 @@
     return template.replace('[COUNT]', count).replace('[SEARCH_TERM]', term);
   }
 
+  var pendingKeywordAfterAsk = null;
+
+  function runKeywordSearchAfterAsk(q) {
+    if (!q) return;
+    if (useFuse) {
+      if (fuseSearchInput) {
+        var setter = Object.getOwnPropertyDescriptor(
+          HTMLInputElement.prototype,
+          'value',
+        ).set;
+        setter.call(fuseSearchInput, q);
+      }
+      if (fuseIndex && fuseResultsEl) {
+        renderFuseResults(q);
+      } else {
+        pendingKeywordAfterAsk = q;
+      }
+      return;
+    }
+    var pfInput = container.querySelector('input');
+    if (pfInput) {
+      var nativeSet = Object.getOwnPropertyDescriptor(
+        HTMLInputElement.prototype,
+        'value',
+      ).set;
+      nativeSet.call(pfInput, q);
+      pfInput.dispatchEvent(new Event('input', { bubbles: true }));
+    }
+  }
 
   window.addEventListener('plurality-search-after-ask', function (ev) {
     var q = ev.detail && ev.detail.query;
-    if (!q) return;
-    if (useFuse && fuseSearchInput) {
-      renderFuseResults(q);
-    }
+    runKeywordSearchAfterAsk(q);
   });
   // Search the flat subsection index with Fuse, then group results by chapter
   function renderFuseResults(query) {
@@ -466,8 +492,11 @@
         fuseLoaded = true;
         fuseLoading = false;
         if (fuseMessageEl) fuseMessageEl.textContent = '';
-        // If user already typed while loading, search now
-        if (fuseSearchInput && fuseSearchInput.value.trim()) {
+        if (pendingKeywordAfterAsk) {
+          var pending = pendingKeywordAfterAsk;
+          pendingKeywordAfterAsk = null;
+          runKeywordSearchAfterAsk(pending);
+        } else if (fuseSearchInput && fuseSearchInput.value.trim()) {
           renderFuseResults(fuseSearchInput.value.trim());
         }
       })
