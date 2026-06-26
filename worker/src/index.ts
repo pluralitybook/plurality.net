@@ -1,7 +1,8 @@
 import { Hono } from 'hono'
 import { createAskCors } from '@au/cf-ai-gateway'
 import { resolveQueryLang } from './lang'
-import { stubBookAnswer, textStream } from './stubAnswer'
+import { streamBookAnswer } from './rag'
+import type { VectorizeBinding } from './vectorize'
 
 export type Env = {
   AUDREY_MODEL?: string
@@ -10,6 +11,8 @@ export type Env = {
   CF_AI_GATEWAY_ACCOUNT_ID?: string
   CF_AI_GATEWAY_ID?: string
   BASETEN_MODEL?: string
+  AI?: { run: (model: string, input: Record<string, unknown>) => Promise<unknown> }
+  BOOK_VECTORIZE?: VectorizeBinding
 }
 
 const MAX_QUESTION_CHARS = 100
@@ -46,7 +49,7 @@ app.get('/capacity', (c) => {
   return askCors.apply(c.req.raw, res)
 })
 
-app.get('/au/:question', (c) => {
+app.get('/au/:question', async (c) => {
   const lang = resolveQueryLang(c.req.query('lang'))
   const question = decodeRouteParam(c.req.param('question')).trim()
   if (!question) {
@@ -59,14 +62,7 @@ app.get('/au/:question', (c) => {
     )
   }
 
-  const body = stubBookAnswer(question, lang)
-  const res = new Response(textStream(body), {
-    status: 200,
-    headers: {
-      'Content-Type': 'text/plain; charset=utf-8',
-      'Cache-Control': 'no-store',
-    },
-  })
+  const res = await streamBookAnswer(c.env, question, lang)
   return askCors.apply(c.req.raw, res)
 })
 

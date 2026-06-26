@@ -43,6 +43,17 @@ jobs:
       - name: Run unit tests (coverage enforced at 100% via bunfig)
         run: bun test tests/unit
 
+  worker:
+    name: plurality-ask worker
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    steps:
+      - uses: actions/checkout@v4
+      - uses: oven-sh/setup-bun@v2
+        with:
+          bun-version: ${{ env.BUN_VERSION }}
+      - run: cd worker && bun install && bun test
+
       - name: Upload coverage LCOV
         if: always()
         uses: actions/upload-artifact@v4

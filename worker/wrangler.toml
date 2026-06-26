@@ -5,7 +5,15 @@ compatibility_date = "2025-01-01"
 [vars]
 AUDREY_MODEL = "nemotron-ultra"
 
-# Phase 3: [[vectorize]] binding plurality-book (1024-dim bge-m3)
+[ai]
+binding = "AI"
+
+[[vectorize]]
+binding = "BOOK_VECTORIZE"
+index_name = "plurality-book"
+
+# Create index (once): wrangler vectorize create plurality-book --dimensions=1024 --metric=cosine
+# Metadata index on `lang` when upserting (see scripts/vectorize-sync-book.mjs)
 # Secrets: BASETEN_API_KEY, CF_AIG_TOKEN (wrangler secret put)
 
 [dev]
