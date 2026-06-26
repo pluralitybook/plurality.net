@@ -10,6 +10,7 @@
 import { execSync } from 'node:child_process'
 import fs from 'node:fs'
 import path from 'node:path'
+import { fileURLToPath } from 'node:url'
 
 import EleventyFetch from '@11ty/eleventy-fetch'
 import { buildSearchIndex } from '../src/_data/lib/search-builder.js'
