@@ -34,26 +34,68 @@
     return base + (base.indexOf('?') >= 0 ? '&' : '?') + 'lang=' + encodeURIComponent(pageLang);
   }
 
-  function escapeHtml(s) {
-    return String(s)
-      .replace(/&/g, '&amp;')
-      .replace(/</g, '&lt;')
-      .replace(/>/g, '&gt;');
+  function escapeHtml(str) {
+    var div = document.createElement('div');
+    div.textContent = str;
+    return div.innerHTML;
+  }
+
+  function isSafeHttpUrl(value) {
+    if (/[\s"'<>]/.test(value) || /&(quot|#39|lt|gt);/i.test(value)) return false;
+    try {
+      var url = new URL(value);
+      return url.protocol === 'http:' || url.protocol === 'https:';
+    } catch (_e) {
+      return false;
+    }
+  }
+
+  function sanitizeHtml(html) {
+    var doc = new DOMParser().parseFromString(html, 'text/html');
+    var blocked = doc.body.querySelectorAll('script, iframe, object, embed, base, meta, link');
+    for (var i = 0; i < blocked.length; i++) blocked[i].remove();
+
+    var walker = doc.createTreeWalker(doc.body, NodeFilter.SHOW_ELEMENT);
+    var element = walker.nextNode();
+    while (element) {
+      var attrs = Array.prototype.slice.call(element.attributes);
+      for (var j = 0; j < attrs.length; j++) {
+        var attr = attrs[j];
+        var name = attr.name.toLowerCase();
+        if (name.indexOf('on') === 0 || name === 'srcdoc' || name === 'style') {
+          element.removeAttribute(attr.name);
+          continue;
+        }
+        if (/^(href|src|xlink:href|action|formaction|poster)$/i.test(name) && !isSafeHttpUrl(attr.value)) {
+          element.removeAttribute(attr.name);
+        }
+      }
+      if (element.tagName.toLowerCase() === 'a') {
+        element.setAttribute('target', '_blank');
+        element.setAttribute('rel', 'nofollow noopener noreferrer');
+      }
+      element = walker.nextNode();
+    }
+
+    return doc.body.innerHTML;
   }
 
   function simpleMarkdownToHtml(md) {
     var html = escapeHtml(md);
-    html = html.replace(/\[([^\]]+)\]\(([^)]+)\)/g, '<a href="$2" target="_blank" rel="noopener">$1</a>');
+    html = html.replace(/\[([^\]]+)\]\((https?:[^)\s]+)\)/g, function (_m, label, href) {
+      if (!isSafeHttpUrl(href)) return escapeHtml(label);
+      return '<a href="' + escapeHtml(href) + '" target="_blank" rel="noopener noreferrer">' + escapeHtml(label) + '</a>';
+    });
     html = html.replace(/\*\*([^*]+)\*\*/g, '<strong>$1</strong>');
     html = html.replace(/\n\n/g, '</p><p>');
     html = html.replace(/\n/g, '<br>');
-    return '<p>' + html + '</p>';
+    return sanitizeHtml('<p>' + html + '</p>');
   }
 
   function renderAsk(raw, loading, err) {
     if (err) {
       askAnswer.hidden = false;
-      askAnswer.innerHTML = '<p class="plurality-ask-answer__error">' + escapeHtml(err) + '</p>';
+      askAnswer.innerHTML = '<p class="plurality-ask-answer__error">' + sanitizeHtml(escapeHtml(err)) + '</p>';
       return;
     }
     askAnswer.hidden = false;
@@ -62,12 +104,6 @@
     askAnswer.innerHTML =
       '<div class="plurality-ask-answer__body">' + body + cursor + '</div>';
   }
-
-  function hideAsk() {
-    askAnswer.hidden = true;
-    askAnswer.innerHTML = '';
-  }
-
   function runAsk(question) {
     var q = (question || '').trim();
     if (!askAvailable || !q || askLoading) return Promise.resolve();
