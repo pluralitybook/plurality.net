@@ -39,9 +39,7 @@
   var fuseDebounceTimer = null;
   var fuseChapters = null;     // raw chapter data for excerpt building
 
-  var SEARCH_SUBMIT_SVG =
-    '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">' +
-    '<circle cx="11" cy="11" r="7"/><path d="M20 20l-3.5-3.5"/></svg>';
+  var SEARCH_SUBMIT_SVG = '\u2728';
 
   function getSearchInput() {
     return (
