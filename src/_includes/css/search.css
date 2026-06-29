@@ -156,6 +156,10 @@
   width: 1.25rem;
   height: 1.25rem;
 }
+.search-overlay .plurality-search__submit {
+  font-size: 1.25rem;
+  line-height: 1;
+}
 
 .search-overlay .pagefind-ui__search-input {
   padding-left: calc(16px * var(--pagefind-ui-scale, 1)) !important;
