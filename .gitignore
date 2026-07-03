@@ -45,3 +45,6 @@ worker/.dev.vars
 
 # vectorize-sync-book temp ndjson batches
 .vectorize-sync-*
+
+# Claude Code scratch worktrees (never commit)
+.claude/worktrees
