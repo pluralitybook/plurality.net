@@ -1,7 +1,7 @@
 export const BOOK_EMBEDDING_MODEL = '@cf/baai/bge-m3'
 export const BOOK_EMBEDDING_DIM = 1024
 export const VECTORIZE_INDEX_NAME = 'plurality-book'
-export const DEFAULT_TOP_K = 8
+export const DEFAULT_TOP_K = 32
 export const DEFAULT_MIN_SCORE = 0.35
 const METADATA_CONTENT_MAX = 1200
 
@@ -64,6 +64,28 @@ function metadataToChunk(meta: Record<string, unknown> | undefined): BookChunk |
   }
 }
 
+function exactQueryTerms(question: string): string[] {
+  const normalized = question.trim().toLocaleLowerCase()
+  if (!normalized) return []
+  const terms = new Set([normalized])
+  for (const part of normalized.split(/[\s、。・,.;:!?！？()（）「」『』[\]【】]+/)) {
+    if (part.length >= 2) terms.add(part)
+  }
+  return [...terms]
+}
+
+function chunkHasExactQueryTerm(chunk: BookChunk, terms: string[]): boolean {
+  if (terms.length === 0) return false
+  const haystack = [
+    chunk.metadata.heading,
+    chunk.metadata.chapterTitle,
+    chunk.metadata.content,
+  ]
+    .join('\n')
+    .toLocaleLowerCase()
+  return terms.some((term) => haystack.includes(term))
+}
+
 export async function embedQuery(
   ai: AiBinding,
   question: string,
@@ -86,8 +108,9 @@ export async function retrieveBookChunks(
   lang: string,
   options?: { topK?: number; minScore?: number },
 ): Promise<BookChunk[]> {
-  const topK = Math.min(8, Math.max(1, options?.topK ?? DEFAULT_TOP_K))
+  const topK = Math.min(32, Math.max(1, options?.topK ?? DEFAULT_TOP_K))
   const minScore = options?.minScore ?? DEFAULT_MIN_SCORE
+  const exactTerms = exactQueryTerms(question)
   const embedding = await embedQuery(ai, question)
   if (!embedding?.length) return []
 
@@ -104,16 +127,19 @@ export async function retrieveBookChunks(
     return []
   }
 
-  const out: BookChunk[] = []
+  const out: Array<{ chunk: BookChunk; score: number; exact: boolean }> = []
   const seen = new Set<string>()
   for (const m of matches) {
-    if (!Number.isFinite(m.score) || m.score < minScore) continue
+    if (!Number.isFinite(m.score)) continue
     const chunk = metadataToChunk(m.metadata)
     if (!chunk || seen.has(chunk.id)) continue
+    const exact = chunkHasExactQueryTerm(chunk, exactTerms)
+    if (!exact && m.score < minScore) continue
     seen.add(chunk.id)
-    out.push(chunk)
+    out.push({ chunk, score: m.score, exact })
   }
-  return out
+  out.sort((a, b) => Number(b.exact) - Number(a.exact) || b.score - a.score)
+  return out.slice(0, 8).map((item) => item.chunk)
 }
 
 export function truncateForMetadata(content: string, max = METADATA_CONTENT_MAX): string {
