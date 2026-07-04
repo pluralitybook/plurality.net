@@ -164,6 +164,7 @@
 .search-overlay .pagefind-ui__search-input {
   padding-left: calc(16px * var(--pagefind-ui-scale, 1)) !important;
   padding-right: calc(16px * var(--pagefind-ui-scale, 1)) !important;
+  background-image: none !important;
 }
 
 /* Clear button */
