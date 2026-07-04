@@ -139,22 +139,23 @@ export async function streamBookAnswer(
     })
   }
 
-  const messages = buildMessages(question, chunks, lang)
   const basetenKey = bindings.BASETEN_API_KEY?.trim()
+  const gatewayConfig = gateway.config
+  const messages = buildMessages(question, chunks, lang)
   const basetenModel =
     bindings.BASETEN_MODEL?.trim() || DEFAULT_NEMOTRON_ULTRA_BASETEN_MODEL
 
   async function nemotronByteStream(): Promise<ReadableStream<Uint8Array>> {
-    if (basetenKey && !gateway.config.gatewayAuthToken) {
+    if (basetenKey && !gatewayConfig.gatewayAuthToken) {
       return streamViaDirectBasetenChatCompletions(basetenKey, basetenModel, messages, DEFAULT_NEMOTRON_MAX_COMPLETION_TOKENS)
     }
-    if (gateway.config.gatewayAuthToken) {
-      return streamViaGatewayChatCompletions(gateway.config, messages, DEFAULT_NEMOTRON_MAX_COMPLETION_TOKENS)
+    if (gatewayConfig.gatewayAuthToken) {
+      return streamViaGatewayChatCompletions(gatewayConfig, messages, DEFAULT_NEMOTRON_MAX_COMPLETION_TOKENS)
     }
     if (basetenKey) {
       return streamViaDirectBasetenChatCompletions(basetenKey, basetenModel, messages, DEFAULT_NEMOTRON_MAX_COMPLETION_TOKENS)
     }
-    return streamViaGatewayChatCompletions(gateway.config, messages, DEFAULT_NEMOTRON_MAX_COMPLETION_TOKENS)
+    return streamViaGatewayChatCompletions(gatewayConfig, messages, DEFAULT_NEMOTRON_MAX_COMPLETION_TOKENS)
   }
 
   try {

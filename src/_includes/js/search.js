@@ -120,9 +120,9 @@
     },
     ja: {
       placeholder: "\u672c\u3092\u691c\u7d22\u2026",
-      zero_results: "[SEARCH_TERM] \u306e\u691c\u7d22\u7d50\u679c\u306f\u3042\u308a\u307e\u305b\u3093",
-      many_results: "[SEARCH_TERM] \u306e\u691c\u7d22\u7d50\u679c [COUNT] \u4ef6",
-      one_result: "[SEARCH_TERM] \u306e\u691c\u7d22\u7d50\u679c [COUNT] \u4ef6",
+      zero_results: "[SEARCH_TERM] に近い検索結果はありません",
+      many_results: "[SEARCH_TERM] に近い検索結果 [COUNT] 件",
+      one_result: "[SEARCH_TERM] に近い検索結果 [COUNT] 件",
       search_label: "\u691c\u7d22",
       clear_search: "\u30af\u30ea\u30a2",
       load_more: "\u3082\u3063\u3068\u898b\u308b",

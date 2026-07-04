@@ -11,7 +11,6 @@
  * Script calls ensureLangMetadataIndex() before upsert.
  */
 import { execSync } from 'node:child_process'
-import { createHash } from 'node:crypto'
 import { setTimeout as sleep } from 'node:timers/promises'
 
 import fs from 'node:fs'
@@ -20,6 +19,7 @@ import { fileURLToPath } from 'node:url'
 
 import EleventyFetch from '@11ty/eleventy-fetch'
 import { buildSearchIndex } from '../src/_data/lib/search-builder.js'
+import { chunkRecords } from './lib/vectorize-records.mjs'
 
 const __dirname = path.dirname(fileURLToPath(import.meta.url))
 const ROOT = path.join(__dirname, '..')
@@ -31,25 +31,15 @@ const WRANGLER_CWD = path.join(ROOT, 'worker')
 const LIMIT = process.env.LIMIT ? Number(process.env.LIMIT) : Infinity
 const DRY_RUN = process.env.DRY_RUN === '1'
 const BATCH = Math.min(32, Math.max(1, Number(process.env.EMBED_BATCH ?? '16')))
-const CONTENT_MAX = 1800
 
 function loadJson(name) {
   return JSON.parse(fs.readFileSync(path.join(ROOT, 'src/_data', name), 'utf8'))
-}
-
-function truncate(s, max) {
-  const t = String(s).trim()
-  return t.length <= max ? t : t.slice(0, max)
 }
 
 function shellQuote(v) {
   return `'${String(v).replace(/'/g, `'\\''`)}'`
 }
 
-/** Vectorize vector id max 64 bytes; logical ids include full URLs. */
-function vectorId(logicalId) {
-  return createHash('sha256').update(logicalId).digest('hex')
-}
 
 function resolveAccountId() {
   if (process.env.CLOUDFLARE_ACCOUNT_ID) return process.env.CLOUDFLARE_ACCOUNT_ID
@@ -120,6 +110,20 @@ function upsertNdjson(filePath) {
   execSync(cmd, { cwd: WRANGLER_CWD, env: buildWranglerEnvForUpsert(), stdio: 'inherit' })
 }
 
+function deleteVectors(ids) {
+  if (ids.length === 0) return
+  if (DRY_RUN) {
+    console.log(`[dry-run] would delete ${ids.length} stale vector ids`)
+    return
+  }
+  for (let i = 0; i < ids.length; i += 100) {
+    const batch = ids.slice(i, i + 100)
+    const quotedIds = batch.map(shellQuote).join(' ')
+    const cmd = `npx wrangler vectorize delete-vectors ${shellQuote(INDEX)} --ids ${quotedIds}`
+    execSync(cmd, { cwd: WRANGLER_CWD, env: buildWranglerEnvForUpsert(), stdio: 'inherit' })
+  }
+}
+
 async function ensureLangMetadataIndex() {
   if (DRY_RUN) {
     console.log('[dry-run] would ensure metadata index on lang')
@@ -157,34 +161,6 @@ async function ensureLangMetadataIndex() {
   throw new Error('metadata index lang not ready after wait; retry sync later')
 }
 
-function chunkRecords(indexByLang) {
-  const records = []
-  for (const [lang, chapters] of Object.entries(indexByLang)) {
-    for (const ch of chapters) {
-      const baseUrl = ch.url.startsWith('http')
-        ? ch.url
-        : `https://plurality.net${ch.url}`
-      for (const sub of ch.subsections || []) {
-        const anchor = sub.anchor ? `#${sub.anchor}` : ''
-        const heading = sub.heading || ch.title
-        const logicalId = `${lang}:${baseUrl}${anchor}:${sub.anchor || 'intro'}`
-        const content = truncate(sub.content || '', CONTENT_MAX)
-        if (!content) continue
-        records.push({
-          id: vectorId(logicalId),
-          logicalId,
-          lang,
-          url: `${baseUrl}${anchor}`,
-          heading,
-          chapterTitle: ch.title,
-          content,
-          embedText: `${heading}\n${content}`,
-        })
-      }
-    }
-  }
-  return records
-}
 
 async function main() {
   const accountId = resolveAccountId()
@@ -211,6 +187,8 @@ async function main() {
   let records = chunkRecords(indexByLang)
   if (Number.isFinite(LIMIT)) records = records.slice(0, LIMIT)
   console.log(`chunks to sync: ${records.length}`)
+  const staleIds = Array.from(new Set(records.map((r) => r.replacesId).filter(Boolean)))
+  deleteVectors(staleIds)
   if (records.length === 0) return
 
   const tmpDir = fs.mkdtempSync(path.join(ROOT, '.vectorize-sync-'))
@@ -251,7 +229,9 @@ async function main() {
   fs.rmSync(tmpDir, { recursive: true, force: true })
 }
 
-main().catch((e) => {
-  console.error(e)
-  process.exit(1)
-})
+if (process.argv[1] === fileURLToPath(import.meta.url)) {
+  main().catch((e) => {
+    console.error(e)
+    process.exit(1)
+  })
+}
