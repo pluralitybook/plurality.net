@@ -5,7 +5,7 @@ import { fileURLToPath } from 'node:url';
 
 const searchPath = path.resolve(
   path.dirname(fileURLToPath(import.meta.url)),
-  '../../src/_includes/js/search.js',
+  '../../public/assets/js/search.js',
 );
 const source = readFileSync(searchPath, 'utf8');
 

@@ -4,7 +4,7 @@ import {
   stripInlineMarkdown,
   cleanFrontMatter,
   splitByHeadings,
-} from "../../src/_data/lib/markdown.js";
+} from "../../src/lib/markdown.ts";
 
 describe("slugify", () => {
   test("lowercases and replaces spaces with dashes", () => {

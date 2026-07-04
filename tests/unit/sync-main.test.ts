@@ -9,9 +9,9 @@ import {
 } from "../../scripts/sync-translations";
 
 describe("sync-translations main", () => {
-  test("constants point into src/_data", () => {
-    expect(TRANSLATIONS_PATH).toContain("src/_data/translations.json");
-    expect(CHAPTERS_PATH).toContain("src/_data/chapters.json");
+  test("constants point into src/data", () => {
+    expect(TRANSLATIONS_PATH).toContain("src/data/translations.json");
+    expect(CHAPTERS_PATH).toContain("src/data/chapters.json");
   });
 
   test("runs end-to-end in a tempdir and writes only when changed", async () => {

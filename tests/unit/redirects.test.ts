@@ -1,16 +1,16 @@
 import { test, expect, describe, beforeAll } from "bun:test";
 import { readFileSync } from "fs";
 import { resolve } from "path";
-import redirectsFn from "../../src/_data/redirects.js";
+import { getRedirects } from "../../src/lib/book-corpus.ts";
 
-const DATA = resolve(import.meta.dir, "../../src/_data");
+const DATA = resolve(import.meta.dir, "../../src/data");
 const chapters = JSON.parse(readFileSync(resolve(DATA, "chapters.json"), "utf-8"));
 
 let redirects: any[];
 let totalChapters: number;
 
 beforeAll(() => {
-  redirects = redirectsFn();
+  redirects = getRedirects();
   totalChapters = chapters.sections.reduce(
     (n: number, s: any) => n + s.chapters.length,
     0

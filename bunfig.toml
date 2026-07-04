@@ -9,5 +9,6 @@ coveragePathIgnorePatterns = [
   "node_modules/",
   "tests/",
   "dist/",
-  "scripts/sync-translations-bin.ts"
+  "scripts/sync-translations-bin.ts",
+  ".*/worker/.*",
 ]

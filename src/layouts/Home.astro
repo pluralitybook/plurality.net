@@ -1,0 +1,15 @@
+---
+import Base from "./Base.astro";
+import type { LangCode } from "../lib/book-corpus";
+
+type Props = {
+  title?: string;
+  description?: string;
+  lang?: LangCode;
+};
+
+const { title, description, lang = "en" } = Astro.props;
+---
+<Base title={title} description={description} lang={lang} navHero={true}>
+  <slot />
+</Base>

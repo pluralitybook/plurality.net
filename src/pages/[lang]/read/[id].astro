@@ -1,0 +1,16 @@
+---
+import Reader from "../../../layouts/Reader.astro";
+import { getFlatChapters, renderChapterBody, type ChapterEntry } from "../../../lib/book-corpus";
+
+export function getStaticPaths() {
+  return getFlatChapters().filter((chapter) => chapter.lang !== "en").map((chapter) => ({ params: { lang: chapter.lang, id: chapter.id }, props: { chapter } }));
+}
+
+type Props = { chapter: ChapterEntry };
+const { chapter } = Astro.props;
+const body = await renderChapterBody(chapter);
+const chapterLabel = `${chapter.sectionTitle} · ${chapter.number}`;
+---
+<Reader chapter={chapter} title={chapter.title} chapterLabel={chapterLabel}>
+  <Fragment set:html={body} />
+</Reader>

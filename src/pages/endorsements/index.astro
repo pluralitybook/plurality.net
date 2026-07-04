@@ -1,0 +1,17 @@
+---
+import endorsements from "../../data/endorsements.json";
+import Page from "../../layouts/Page.astro";
+
+type Endorsement = { quote: string; author: string; title?: string };
+const items = (endorsements as { en: Endorsement[] }).en;
+---
+<Page title="Endorsements" lang="en">
+  <div class="endorsements-page">
+    <p class="section-label">Endorsements</p>
+    <h1>What People Are Saying</h1>
+    <p class="endorsements-page__intro">Plurality has received endorsements from leaders across technology, academia, and public policy.</p>
+    <div class="endorsement-grid">
+      {items.map((item) => <div class="endorsement-card reveal"><span class="endorsement-card__quote-mark" aria-hidden="true">“</span><p class="endorsement-card__text">{item.quote}</p><p class="endorsement-card__author">{item.author}</p>{item.title && <p class="endorsement-card__role">{item.title}</p>}</div>)}
+    </div>
+  </div>
+</Page>

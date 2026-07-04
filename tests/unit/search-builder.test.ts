@@ -7,8 +7,8 @@ import {
   buildLangEntries,
   buildSearchIndex,
   buildCreditsChapterEntry,
-} from "../../src/_data/lib/search-builder.js";
-import { splitByBlockquotes } from "../../src/_data/lib/markdown.js";
+} from "../../src/lib/search-builder.ts";
+import { splitByBlockquotes } from "../../src/lib/markdown.ts";
 
 const langData = {
   dir: "thai",
@@ -234,6 +234,25 @@ describe("buildCreditsChapterEntry", () => {
     const entry = buildCreditsChapterEntry("en", { prefix: "" }, credits, chapters);
     expect(entry?.url).toBe("/read/0-3/");
     expect(entry?.subsections[0].content).toContain("Tenzin Yangtso");
+  });
+
+  test("uses localized credits title override", () => {
+    const credits = {
+      i18n: { ja: { intro: "Intro.", categories: { Writing: "Writing" } } },
+      categories: [
+        { name: "Writing", contributors: [{ name: "Contributor", pt: 1 }] },
+      ],
+    };
+    const chapters = {
+      sections: [
+        {
+          title: "Before You Read",
+          chapters: [{ id: "0-3", number: "0-3", title: "Credits", file: "x" }],
+        },
+      ],
+    };
+    const entry = buildCreditsChapterEntry("ja", { prefix: "/ja", files: { "0-3": { file: "credits", title: "クレジット" } } }, credits, chapters);
+    expect(entry?.title).toBe("クレジット");
   });
 });
 

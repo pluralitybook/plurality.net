@@ -5,7 +5,7 @@ import { readdirSync } from "fs";
 
 const ROOT = resolve(import.meta.dir, "../..");
 const DIST = resolve(ROOT, "dist");
-const DATA = resolve(ROOT, "src/_data");
+const DATA = resolve(ROOT, "src/data");
 
 const chapters = JSON.parse(readFileSync(resolve(DATA, "chapters.json"), "utf-8"));
 const translations = JSON.parse(
@@ -95,6 +95,20 @@ describe("build output: chapter pages per language", () => {
     const html = readFileSync(resolve(DIST, "read/2-0/index.html"), "utf-8");
     // Has some kind of chapter navigation anchor
     expect(html).toMatch(/<a[^>]+href="\/read\//);
+  });
+
+  test("reader page preserves Pagefind and book script hooks", () => {
+    const html = readFileSync(resolve(DIST, "read/1/index.html"), "utf-8");
+    expect(html).toContain("data-pagefind-body");
+    expect(html).toContain('data-pagefind-filter="lang:en"');
+    expect(html).toContain('id="book-toc"');
+    expect(html).toContain("/assets/js/book.js");
+  });
+
+  test("localized credits page renders local credits body", () => {
+    const html = readFileSync(resolve(DIST, "zh/read/0-3/index.html"), "utf-8");
+    expect(html).toContain("book__body--credits");
+    expect(html).toContain("credits__category");
   });
 });
 
@@ -217,5 +231,19 @@ describe("build output: search index", () => {
   test("pagefind index has language subdirs", () => {
     const indexDir = resolve(DIST, "pagefind", "index");
     expect(existsSync(indexDir)).toBe(true);
+  });
+
+  test("localized Fuse indexes are emitted", () => {
+    expect(existsSync(resolve(DIST, "zh/search-index.json"))).toBe(true);
+    expect(existsSync(resolve(DIST, "ja/search-index.json"))).toBe(true);
+  });
+
+  test("Japanese search index includes /ja/read/5-4/ content", () => {
+    const records = JSON.parse(readFileSync(resolve(DIST, "ja/search-index.json"), "utf-8")) as Array<{
+      url: string;
+      subsections: Array<{ content: string }>;
+    }>;
+    expect(records.some((record) => record.url === "/ja/read/5-4/")).toBe(true);
+    expect(records.some((record) => record.subsections.some((section) => section.content.length > 0))).toBe(true);
   });
 });

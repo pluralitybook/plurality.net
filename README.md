@@ -2,7 +2,7 @@
 
 The website for [Plurality: The Future of Collaborative Technology and Democracy](https://plurality.net), a book by E. Glen Weyl, Audrey Tang and the Plurality Community.
 
-Built with [Eleventy](https://www.11ty.dev/) and [Bun](https://bun.sh/).
+Built with [Astro 7](https://astro.build/) and [Bun](https://bun.sh/).
 
 ## Setup
 

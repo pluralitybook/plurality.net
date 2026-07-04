@@ -1,0 +1,53 @@
+---
+import chapters from "../data/chapters.json";
+import downloads from "../data/downloads.json";
+import endorsements from "../data/endorsements.json";
+import homeLangs from "../data/homeLangs.json";
+import i18n from "../data/i18n.json";
+import site from "../data/site.json";
+import translations from "../data/translations.json";
+import type { LangCode } from "../lib/book-corpus";
+
+type Props = { lang: LangCode };
+type Chapter = { id: string; number: string; title: string };
+type Section = { title: string; color: string; chapters: Chapter[] };
+type Copy = Record<string, string | Array<{ desc: string; url: string; label: string }> | Record<string, string> | undefined> & { lang_name: string; subtitle: string; authors: string };
+type Translation = { prefix?: string; files?: Partial<Record<string, { title: string }>> };
+type Download = { pdf?: string; epub?: string; purchase?: Array<{ url: string; label: string }>; audiobook?: { full?: string; parts?: Array<{ url: string; label: string }> } };
+type Endorsement = { quote: string; author: string; title?: string };
+
+const { lang } = Astro.props;
+const copyByLang = i18n as Record<LangCode, Copy>;
+const translationsByLang = translations as Record<LangCode, Translation>;
+const downloadsByLang = downloads as Partial<Record<LangCode, Download>>;
+const endorsementsByLang = endorsements as Partial<Record<LangCode, Endorsement[]>>;
+const chapterData = chapters as { sections: Section[] };
+const t = copyByLang[lang];
+const readPrefix = translationsByLang[lang]?.prefix || "";
+const dl = downloadsByLang[lang];
+const sectionNames = t.sections instanceof Object && !Array.isArray(t.sections) ? t.sections as Record<string, string> : {};
+const langEndorsements = endorsementsByLang[lang] || endorsementsByLang.en || [];
+const extraResources = Array.isArray(t.extra_resources) ? t.extra_resources : [];
+---
+<section class="hero" aria-labelledby="hero-title">
+  <img src="/assets/images/logo-plurality.png" alt="Plurality logo" class="hero__logo" width="319" height="97" />
+  <nav class="home-lang-bar" aria-label="Language">
+    {(homeLangs as LangCode[]).map((homeLang) => homeLang === lang ? <span class="home-lang-bar__current">{copyByLang[homeLang].lang_name}</span> : <a href={homeLang === "en" ? "/" : `/${homeLang}/`} class="home-lang-bar__link">{copyByLang[homeLang].lang_name}</a>)}
+  </nav>
+  <h1 id="hero-title" class="hero__title"><span class="c-r">P</span><span class="c-o">l</span><span class="c-g">u</span><span class="c-c">r</span><span class="c-w">a</span><span class="c-c">l</span><span class="c-g">i</span><span class="c-o">t</span><span class="c-r">y</span></h1>
+  <div class="hero__brand-line" aria-hidden="true"><span class="hero__brand-line-r"></span><span class="hero__brand-line-o"></span><span class="hero__brand-line-g"></span><span class="hero__brand-line-c"></span><span class="hero__brand-line-w"></span><span class="hero__brand-line-c"></span><span class="hero__brand-line-g"></span><span class="hero__brand-line-o"></span><span class="hero__brand-line-r"></span></div>
+  <p class="hero__subtitle">{t.subtitle}</p>
+  <p class="hero__authors">{t.authors}</p>
+  <div class="hero__sep"></div>
+  <a href={`${readPrefix}/read/`} class="hero__cta">{t.read_book} <span class="hero__cta-arrow">→</span></a>
+  <div class="hero__scroll" aria-hidden="true" tabindex="-1"><span>{t.hero_scroll}</span><span class="hero__scroll-line"></span></div>
+</section>
+<section id="about" class="about-section section"><div class="about-section__inner"><p class="section-label reveal">{t.section_about}</p><h2 class="reveal">{t.about_heading}</h2><p class="reveal">{t.about_p1}</p><p class="reveal">{t.about_p2}</p><p class="reveal">{t.about_p3}</p></div></section>
+<div class="gold-sep"></div>
+<section class="get-book-section section section--warm"><div class="content-wrap"><div class="get-book reveal"><div class="get-book__cover"><img src="/assets/images/bookcover_small.png" alt="Plurality book cover" class="get-book__img" /></div><div class="get-book__info"><p class="section-label">{t.get_book}</p><h2>{t.get_book_heading}</h2><p>{t.get_book_desc}</p><div class="get-book__links"><a href={`${readPrefix}/read/1/`} class="involved-link">{t.read_online} →</a>{dl?.pdf && <a href={dl.pdf} class="involved-link" target="_blank" rel="noopener">{t.download_pdf} →</a>}{dl?.epub && <a href={dl.epub} class="involved-link" target="_blank" rel="noopener">{t.download_epub} →</a>}</div><div class="get-book__links get-book__links--purchase">{(dl?.purchase?.length ? dl.purchase : [{ url: "https://www.amazon.com/dp/B0D24N776G", label: String(t.buy_amazon) }]).map((item) => <a href={item.url} class="involved-link" target="_blank" rel="noopener">{item.label} →</a>)}</div>{extraResources.length > 0 && <div class="get-book__extra">{extraResources.map((res) => <div class="get-book__extra-item"><p>{res.desc}</p><a href={res.url} class="involved-link" target="_blank" rel="noopener">{res.label} →</a></div>)}</div>}<div class="get-book__extra"><h2>{t.donate_heading}</h2><p>{t.donate_desc}</p><div class="get-book__extra-item"><a href="https://www.paypal.com/donate/?hosted_button_id=3Q6BS9ZA595ZS" class="involved-link" target="_blank" rel="noopener noreferrer">{t.donate_paypal} →</a><a href="https://commerce.coinbase.com/checkout/aab4f708-439b-47ac-a68b-adf0613747bd" class="involved-link" target="_blank" rel="noopener noreferrer">{t.donate_coinbase} →</a></div></div></div></div></div></section>
+<div class="gold-sep"></div>
+<section class="chapters-section section"><div class="content-wrap"><p class="section-label reveal">{t.section_chapters}</p><h2 class="reveal">{t.chapters_heading}</h2><div class="chapter-groups">{chapterData.sections.map((section) => <div class="chapter-group reveal"><h3 class="chapter-group__title"><span class="chapter-group__accent" style={`background:${section.color}`}></span>{sectionNames[section.title] || section.title}</h3><div class="chapter-list">{section.chapters.map((chapter) => <a href={`${readPrefix}/read/${chapter.id}/`} class="chapter-card reveal" style={`border-top-color:${section.color}`}><span class="chapter-card__number">{chapter.number}</span><span class="chapter-card__title">{translationsByLang[lang]?.files?.[chapter.id]?.title || chapter.title}</span></a>)}</div></div>)}</div></div></section>
+<div class="gold-sep"></div>
+<section class="endorsements-section section"><div class="content-wrap"><p class="section-label reveal">{t.section_endorsements}</p><h2 class="reveal">{t.endorsements_heading}</h2><div class="endorsement-grid">{langEndorsements.slice(0, 3).map((item) => <div class="endorsement-card reveal"><span class="endorsement-card__quote-mark" aria-hidden="true">“</span><p class="endorsement-card__text">{item.quote}</p><p class="endorsement-card__author">{item.author}</p>{item.title && <p class="endorsement-card__role">{item.title}</p>}</div>)}</div><div class="section__view-all"><a href={`${readPrefix}/read/0-0/`} class="involved-link reveal">{t.view_all_endorsements} →</a></div></div></section>
+<div class="gold-sep"></div>
+<section class="involved-section section"><div class="content-wrap"><p class="section-label reveal">{t.section_get_involved}</p><h2 class="reveal">{t.involved_heading}</h2><p class="reveal">{t.involved_desc}</p><div class="involved-links"><a href={site.github} class="involved-link reveal" target="_blank" rel="noopener">{t.contribute} →</a><a href={site.discord} class="involved-link reveal" target="_blank" rel="noopener">{t.join_discord} →</a><a href={`${readPrefix}/read/`} class="involved-link reveal">{t.start_reading} →</a></div></div></section>

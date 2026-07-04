@@ -1,0 +1,15 @@
+---
+import HomePage from "../../components/HomePage.astro";
+import Home from "../../layouts/Home.astro";
+import { getNonEnglishLangs, type LangCode } from "../../lib/book-corpus";
+
+export function getStaticPaths() {
+  return getNonEnglishLangs().map((lang) => ({ params: { lang }, props: { lang } }));
+}
+
+type Props = { lang: LangCode };
+const { lang } = Astro.props;
+---
+<Home lang={lang}>
+  <HomePage lang={lang} />
+</Home>

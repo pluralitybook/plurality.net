@@ -1,9 +1,9 @@
 #!/usr/bin/env node
 /**
  * Upsert Plurality book subsections into Vectorize `plurality-book` (bge-m3, 1024-dim).
- *   node scripts/vectorize-sync-book.mjs   # uses wrangler login + wrangler auth token when unset
- *   CLOUDFLARE_ACCOUNT_ID=… CLOUDFLARE_API_TOKEN=… node scripts/vectorize-sync-book.mjs
- *   LIMIT=50 DRY_RUN=1 node scripts/vectorize-sync-book.mjs
+ *   bun scripts/vectorize-sync-book.mjs   # uses wrangler login + wrangler auth token when unset
+ *   CLOUDFLARE_ACCOUNT_ID=… CLOUDFLARE_API_TOKEN=… bun scripts/vectorize-sync-book.mjs
+ *   LIMIT=50 DRY_RUN=1 bun scripts/vectorize-sync-book.mjs
  *
  * Prerequisite: wrangler vectorize create plurality-book --dimensions=1024 --metric=cosine
  * Metadata index lang BEFORE bulk upsert (not retroactive):
@@ -17,8 +17,8 @@ import fs from 'node:fs'
 import path from 'node:path'
 import { fileURLToPath } from 'node:url'
 
-import EleventyFetch from '@11ty/eleventy-fetch'
-import { buildSearchIndex } from '../src/_data/lib/search-builder.js'
+import { fetchTextCached } from '../src/lib/remote-text-cache.ts'
+import { buildSearchIndex } from '../src/lib/search-builder.ts'
 import { chunkRecords } from './lib/vectorize-records.mjs'
 
 const __dirname = path.dirname(fileURLToPath(import.meta.url))
@@ -33,7 +33,7 @@ const DRY_RUN = process.env.DRY_RUN === '1'
 const BATCH = Math.min(32, Math.max(1, Number(process.env.EMBED_BATCH ?? '16')))
 
 function loadJson(name) {
-  return JSON.parse(fs.readFileSync(path.join(ROOT, 'src/_data', name), 'utf8'))
+  return JSON.parse(fs.readFileSync(path.join(ROOT, 'src/data', name), 'utf8'))
 }
 
 function shellQuote(v) {
@@ -174,7 +174,7 @@ async function main() {
   const credits = loadJson('credits.json')
   const targetLangs = Object.keys(translations)
 
-  const fetcher = (url) => EleventyFetch(url, { duration: '1d', type: 'text' })
+  const fetcher = (url) => fetchTextCached(url)
   const indexByLang = await buildSearchIndex({
     targetLangs,
     translations,

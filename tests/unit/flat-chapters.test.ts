@@ -1,9 +1,9 @@
 import { test, expect, describe, beforeAll } from "bun:test";
 import { readFileSync } from "fs";
 import { resolve } from "path";
-import flatChaptersFn from "../../src/_data/flatChapters.js";
+import { getFlatChapters } from "../../src/lib/book-corpus.ts";
 
-const DATA = resolve(import.meta.dir, "../../src/_data");
+const DATA = resolve(import.meta.dir, "../../src/data");
 const chapters = JSON.parse(readFileSync(resolve(DATA, "chapters.json"), "utf-8"));
 const translations = JSON.parse(
   readFileSync(resolve(DATA, "translations.json"), "utf-8")
@@ -13,7 +13,7 @@ let flat: any[];
 let totalChapters: number;
 
 beforeAll(() => {
-  flat = flatChaptersFn();
+  flat = getFlatChapters();
   totalChapters = chapters.sections.reduce(
     (n: number, s: any) => n + s.chapters.length,
     0

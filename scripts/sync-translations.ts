@@ -11,8 +11,8 @@ import {
 } from "./lib/sync-core";
 
 const ROOT = resolve(import.meta.dir, "..");
-export const TRANSLATIONS_PATH = resolve(ROOT, "src/_data/translations.json");
-export const CHAPTERS_PATH = resolve(ROOT, "src/_data/chapters.json");
+export const TRANSLATIONS_PATH = resolve(ROOT, "src/data/translations.json");
+export const CHAPTERS_PATH = resolve(ROOT, "src/data/chapters.json");
 
 export type MainOptions = {
   translationsPath?: string;

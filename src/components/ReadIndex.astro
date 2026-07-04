@@ -1,0 +1,46 @@
+---
+import chapters from "../data/chapters.json";
+import homeLangs from "../data/homeLangs.json";
+import i18n from "../data/i18n.json";
+import translations from "../data/translations.json";
+import type { LangCode } from "../lib/book-corpus";
+
+type Props = { lang: LangCode };
+type Chapter = { id: string; number: string; title: string };
+type Section = { title: string; color: string; chapters: Chapter[] };
+type Copy = { lang_name: string; get_book?: string; subtitle?: string; get_book_desc?: string; sections?: Record<string, string> };
+type Translation = { prefix?: string; files?: Partial<Record<string, { title: string }>> };
+
+const { lang } = Astro.props;
+const copyByLang = i18n as Record<LangCode, Copy>;
+const translationByLang = translations as Record<LangCode, Translation>;
+const t = copyByLang[lang];
+const prefix = translationByLang[lang]?.prefix || "";
+const heading = lang === "en" ? "Plurality: The Future of Collaborative Technology and Democracy" : `${lang === "de" ? "Plurality:" : "Plurality："}${t.subtitle || ""}`;
+const intro = lang === "en" ? "Browse chapters by section. The book is available in multiple languages and is being continuously translated by a community of volunteers." : t.get_book_desc;
+const chapterData = chapters as { sections: Section[] };
+---
+<div class="read-page">
+  <p class="section-label">{lang === "en" ? "The Book" : t.get_book}</p>
+  <h1>{heading}</h1>
+  <p class="read-page__intro">{intro}</p>
+  <nav class="home-lang-bar" aria-label="Language">
+    {(homeLangs as LangCode[]).map((homeLang) => homeLang === lang
+      ? <span class="home-lang-bar__current">{copyByLang[homeLang].lang_name}</span>
+      : <a href={homeLang === "en" ? "/read/" : `/${homeLang}/read/`} class="home-lang-bar__link">{copyByLang[homeLang].lang_name}</a>)}
+  </nav>
+  <div class="chapter-groups">
+    {chapterData.sections.map((section) => (
+      <div class="chapter-group reveal">
+        <h3 class="chapter-group__title"><span class="chapter-group__accent" style={`background:${section.color}`}></span>{lang === "en" ? section.title : (t.sections?.[section.title] || section.title)}</h3>
+        <div class="chapter-list">
+          {section.chapters.map((chapter) => {
+            const override = lang !== "en" ? translationByLang[lang]?.files?.[chapter.id] : undefined;
+            const untranslated = lang !== "en" && !override;
+            return <a href={`${prefix}/read/${chapter.id}/`} class:list={["chapter-card", "reveal", { "chapter-card--untranslated": untranslated }]} style={`border-top-color:${section.color}`}><span class="chapter-card__number">{chapter.number}</span><span class="chapter-card__title">{override?.title || chapter.title}</span></a>;
+          })}
+        </div>
+      </div>
+    ))}
+  </div>
+</div>

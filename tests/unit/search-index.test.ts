@@ -1,78 +1,42 @@
-import { test, expect, describe } from "bun:test";
-import searchIndex from "../../src/_data/searchIndex.js";
+import { describe, expect, test } from "bun:test";
+import { buildSearchIndex, type Chapters, type LangData } from "../../src/lib/search-builder.ts";
 
-describe("searchIndex default export", () => {
+describe("buildSearchIndex endpoint data", () => {
+  const translations: Record<string, LangData> = {
+    en: { dir: "english" },
+    xx: {
+      dir: "xx",
+      prefix: "/xx",
+      githubBase: "https://raw.githubusercontent.com/a/b/main/contents/",
+      files: { "1": { file: "01 Foo", title: "Foo" } },
+    },
+  };
+  const chapters: Chapters = {
+    sections: [{ id: "preface", title: "Preface", chapters: [{ id: "1", number: "1", title: "Preface" }] }],
+  };
+
   test("returns one array per target language", async () => {
-    const translations = {
-      en: { dir: "english" },
-      xx: {
-        dir: "xx",
-        prefix: "/xx",
-        githubBase: "https://raw.githubusercontent.com/a/b/main/contents/",
-        files: { "1": { file: "01 Foo", title: "Foo" } },
-      },
-    };
-    const chapters = {
-      sections: [
-        {
-          id: "preface",
-          title: "Preface",
-          chapters: [{ id: "1", number: "1", title: "Preface" }],
-        },
-      ],
-    };
-    const i18n = { xx: { sections: {} } };
-
-    const result = await searchIndex({
+    const result = await buildSearchIndex({
       targetLangs: ["xx"],
       chapters,
       translations,
-      i18n,
+      i18n: { xx: { sections: {} } },
       credits: { i18n: {}, categories: [] },
       fetcher: async () => "## H\n\npara\n",
     });
-
     expect(Object.keys(result)).toEqual(["xx"]);
     expect(result.xx).toHaveLength(1);
     expect(result.xx[0].url).toBe("/xx/read/1/");
   });
 
-  test("loads the baked-in defaults when called with no args", async () => {
-    // This exercises the loadJson + defaultFetcher wiring. The fetcher will
-    // try to hit GitHub for content; we stub via a quick replacement of the
-    // default fetcher by passing our own.
-    const result = await searchIndex({ fetcher: async () => "" });
-    expect(typeof result).toBe("object");
-    for (const lang of Object.keys(result)) {
-      expect(Array.isArray(result[lang])).toBe(true);
-    }
-  });
-
-  test("default fetcher executes the EleventyFetch wiring", async () => {
-    // No fetcher override — the module's defaultFetcher runs. We point it at
-    // a dead localhost so the request fails fast; buildChapterEntry catches
-    // the rejection and returns null, yielding an empty list.
-    const result = await searchIndex({
+  test("fetch failures produce empty language arrays", async () => {
+    const result = await buildSearchIndex({
       targetLangs: ["xx"],
-      translations: {
-        xx: {
-          dir: "xx",
-          prefix: "/xx",
-          githubBase: "http://127.0.0.1:1/",
-          files: { "1": { file: "x", title: "t" } },
-        },
-      } as any,
-      chapters: {
-        sections: [
-          {
-            id: "x",
-            title: "X",
-            chapters: [{ id: "1", number: "1", title: "X" }],
-          },
-        ],
-      } as any,
-      i18n: {} as any,
+      translations: { xx: { ...translations.xx, githubBase: "http://127.0.0.1:1/" } },
+      chapters,
+      i18n: {},
       credits: { i18n: {}, categories: [] },
+      fetcher: async () => { throw new Error("offline"); },
     });
     expect(result.xx).toEqual([]);
   });

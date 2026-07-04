@@ -1,0 +1,17 @@
+---
+import ReadIndex from "../../../components/ReadIndex.astro";
+import Page from "../../../layouts/Page.astro";
+import { getNonEnglishLangs, type LangCode } from "../../../lib/book-corpus";
+
+const titles: Record<Exclude<LangCode, "en">, string> = { zh: "閱讀", ja: "読む", th: "อ่าน", el: "Διαβάστε", de: "Lesen" };
+
+export function getStaticPaths() {
+  return getNonEnglishLangs().map((lang) => ({ params: { lang }, props: { lang } }));
+}
+
+type Props = { lang: Exclude<LangCode, "en"> };
+const { lang } = Astro.props;
+---
+<Page title={titles[lang]} lang={lang}>
+  <ReadIndex lang={lang} />
+</Page>

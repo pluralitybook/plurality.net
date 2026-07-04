@@ -1,5 +1,5 @@
 import { test, expect, describe } from "bun:test";
-import { parseIndexMarkdown } from "../../src/_data/lib/book-index-parser.js";
+import { parseIndexMarkdown } from "../../src/lib/book-index-parser.ts";
 
 describe("parseIndexMarkdown", () => {
   test("returns [] for empty input", () => {

@@ -1,0 +1,61 @@
+---
+import chapters from "../data/chapters.json";
+import i18n from "../data/i18n.json";
+import translations from "../data/translations.json";
+import Base from "./Base.astro";
+import type { ChapterEntry, LangCode } from "../lib/book-corpus";
+
+type Props = { chapter: ChapterEntry; title: string; chapterLabel: string };
+type Chapter = { id: string; number: string; title: string };
+type Section = { title: string; chapters: Chapter[] };
+type I18nCopy = { toc?: string; prev_chapter?: string; next_chapter?: string; sections?: Record<string, string> };
+type Translation = { prefix?: string; files?: Partial<Record<string, { title: string }>> };
+
+const { chapter, title, chapterLabel } = Astro.props;
+const chapterData = chapters as { sections: Section[] };
+const i18nByLang = i18n as Record<LangCode, I18nCopy>;
+const translationsByLang = translations as Record<LangCode, Translation>;
+const copy = i18nByLang[chapter.lang] || i18nByLang.en;
+const tocPrefix = translationsByLang[chapter.lang]?.prefix || "";
+---
+<Base title={title} lang={chapter.lang}>
+  <div class="book" id="book">
+    <aside class="book__toc" aria-label="Table of contents" id="book-toc">
+      <button class="book__toc-toggle" aria-expanded="false" id="toc-toggle"><span class="book__toc-toggle-icon"></span>{copy.toc || "Contents"}</button>
+      <nav class="book__toc-nav" id="toc-nav">
+        <p class="book__toc-heading">{copy.toc || "Contents"}</p>
+        {chapterData.sections.map((section) => (
+          <>
+            <p class="book__toc-section">{copy.sections?.[section.title] || section.title}</p>
+            <ul class="book__toc-list">
+              {section.chapters.map((item) => {
+                const override = chapter.lang !== "en" ? translationsByLang[chapter.lang]?.files?.[item.id] : undefined;
+                const chTitle = override?.title || item.title;
+                const chUntranslated = chapter.lang !== "en" && !override;
+                return <li><a href={`${tocPrefix}/read/${item.id}/`} class:list={[{ active: chapter.id === item.id }, { "book__toc-untranslated": chUntranslated }]}><span class="book__toc-num">{item.number}</span> {chTitle}</a></li>;
+              })}
+            </ul>
+          </>
+        ))}
+      </nav>
+    </aside>
+    <article class="book__page" id="book-page" data-pagefind-meta={`section:${chapterLabel}`} data-pagefind-filter={`lang:${chapter.lang}`}>
+      <div class="book__page-curl" aria-hidden="true"></div>
+      <header class="book__header">
+        <p class="book__section-label">{chapterLabel}</p>
+        <h1 class="book__title">{title}</h1>
+        {chapter.altLangs.length > 0 && <nav class="book__lang-switch" aria-label="Language versions"><span class="book__lang-current">{chapter.langLabel}</span>{chapter.altLangs.map((alt) => <a href={alt.url} class="book__lang-link" lang={alt.lang}>{alt.label}</a>)}</nav>}
+        <div class="book__header-ornament" aria-hidden="true"><span></span><span></span><span></span></div>
+      </header>
+      <div class:list={["book__body", { "book__body--endorsements": chapter.id === "0-0" }, { "book__body--credits": chapter.id === "0-3" }]} data-pagefind-body>
+        <slot />
+      </div>
+      {(chapter.prevChapter || chapter.nextChapter) && <nav class="book__nav" aria-label="Chapter navigation">
+        {chapter.prevChapter && <a href={chapter.prevChapter.url} class="book__nav-link book__nav-link--prev" data-page-dir="prev"><span class="book__nav-arrow">←</span><span class="book__nav-info"><span class="book__nav-label">{copy.prev_chapter || "Previous"}</span><span class="book__nav-title">{chapter.prevChapter.title}</span></span></a>}
+        {chapter.nextChapter && <a href={chapter.nextChapter.url} class="book__nav-link book__nav-link--next" data-page-dir="next"><span class="book__nav-info"><span class="book__nav-label">{copy.next_chapter || "Next"}</span><span class="book__nav-title">{chapter.nextChapter.title}</span></span><span class="book__nav-arrow">→</span></a>}
+      </nav>}
+      <div class="book__page-number" aria-hidden="true">{chapter.number}</div>
+    </article>
+  </div>
+  <script is:inline src="/assets/js/book.js"></script>
+</Base>
