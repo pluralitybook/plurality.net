@@ -13,6 +13,13 @@
   var askAvailable = false;
   var askLoading = false;
   var askAbort = null;
+  var HISTORY_KEY = 'plurality-ask-history-v1';
+  var askHistoryEl = document.getElementById('plurality-ask-history');
+  var askHints = {
+    en: 'Press Enter \u23ce to ask the AI about the book',
+    zh: '\u6309 Enter \u23ce \u7531 AI \u4f9d\u66f8\u4e2d\u5167\u5bb9\u56de\u7b54',
+    ja: 'Enter \u23ce \u3067 AI \u304c\u672c\u306e\u5185\u5bb9\u304b\u3089\u56de\u7b54\u3057\u307e\u3059',
+  };
 
   function isLocalDevAskHost() {
     var host = window.location.hostname;
@@ -164,6 +171,60 @@
     askAnswer.innerHTML =
       '<div class="plurality-ask-answer__body">' + body + cursor + '</div>' + sourcesHtml;
   }
+
+  function readHistory() {
+    try {
+      var data = JSON.parse(sessionStorage.getItem(HISTORY_KEY));
+      if (!Array.isArray(data)) return [];
+      return data.filter(function (e) {
+        return typeof e.q === 'string' && typeof e.raw === 'string';
+      });
+    } catch (_e) {
+      return [];
+    }
+  }
+
+  function saveToHistory(q, raw) {
+    if (!raw || !raw.trim()) return;
+    var entries = readHistory().filter(function (e) { return e.q !== q; });
+    entries.unshift({ q: q, raw: raw, lang: pageLang, ts: Date.now() });
+    if (entries.length > 10) entries = entries.slice(0, 10);
+    try { sessionStorage.setItem(HISTORY_KEY, JSON.stringify(entries)); } catch (_e) { /* Safari private mode */ }
+    renderHistory();
+  }
+
+  function renderHistory() {
+    if (!askHistoryEl) return;
+    var entries = readHistory();
+    var html = '';
+    if (askAvailable) {
+      html += '<p class="plurality-ask-history__hint">' + escapeHtml(askHints[pageLang] || askHints.en) + '</p>';
+    }
+    if (entries.length) {
+      html += '<div class="plurality-ask-history__chips">';
+      for (var i = 0; i < entries.length; i++) {
+        var q = entries[i].q;
+        var label = q.length > 48 ? q.slice(0, 48) + '\u2026' : q;
+        html += '<button type="button" class="plurality-ask-history__chip" data-idx="' + i +
+          '" title="' + escapeHtml(q).replace(/"/g, '&quot;') + '">' + escapeHtml(label) + '</button>';
+      }
+      html += '</div>';
+    }
+    askHistoryEl.innerHTML = html;
+    askHistoryEl.hidden = !askAvailable && entries.length === 0;
+  }
+
+  if (askHistoryEl) {
+    askHistoryEl.addEventListener('click', function (e) {
+      var btn = e.target.closest && e.target.closest('.plurality-ask-history__chip');
+      if (!btn) return;
+      var idx = Number(btn.getAttribute('data-idx'));
+      var entry = readHistory()[idx];
+      if (!entry) return;
+      renderAsk(entry.raw, false, '');
+      window.dispatchEvent(new CustomEvent('plurality-search-after-ask', { detail: { query: entry.q } }));
+    });
+  }
   function hideAsk() {
     if (askAbort) {
       askAbort.abort();
@@ -189,7 +250,7 @@
     return fetch(askEndpoint(q), { signal: askAbort.signal })
       .then(function (res) {
         if (!res.ok) return res.text().then(function (t) { throw new Error(t || 'Request failed'); });
-        if (!res.body || !res.body.getReader) return res.text().then(function (t) { renderAsk(t, false, ''); });
+        if (!res.body || !res.body.getReader) return res.text().then(function (t) { saveToHistory(q, t); renderAsk(t, false, ''); });
         var reader = res.body.getReader();
         var dec = new TextDecoder();
         var raw = '';
@@ -197,6 +258,7 @@
           return reader.read().then(function (chunk) {
             if (chunk.done) {
               raw += dec.decode();
+              saveToHistory(q, raw);
               renderAsk(raw, false, '');
               return;
             }
@@ -235,13 +297,16 @@
       })
       .catch(function () {
         askAvailable = localDev;
+      })
+      .then(function () {
+        renderHistory();
       });
   }
 
   initCapacity();
 
   var obs = new MutationObserver(function () {
-    if (!overlay.classList.contains('active')) hideAsk();
+    if (!overlay.classList.contains('active')) { hideAsk(); } else { renderHistory(); }
   });
   obs.observe(overlay, { attributes: true, attributeFilter: ['class'] });
 
@@ -272,6 +337,8 @@
     },
     true,
   );
+
+  renderHistory();
 
   window.PluralityBookAsk = { runAsk: runAsk, hideAsk: hideAsk, askBase: ASK_BASE };
 })();

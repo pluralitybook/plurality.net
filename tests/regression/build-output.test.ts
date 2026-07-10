@@ -225,6 +225,10 @@ describe("build output: HTML shape", () => {
     expect(html).toMatch(/<nav[\s>]/);
     expect(html).toMatch(/<main[\s>]/);
   });
+  test("homepage has the ask history container", () => {
+    const html = readFileSync(resolve(DIST, "index.html"), "utf-8");
+    expect(html).toContain('id="plurality-ask-history"');
+  });
 });
 
 describe("build output: search index", () => {
@@ -245,5 +249,32 @@ describe("build output: search index", () => {
     }>;
     expect(records.some((record) => record.url === "/ja/read/5-4/")).toBe(true);
     expect(records.some((record) => record.subsections.some((section) => section.content.length > 0))).toBe(true);
+  });
+
+  test("English Fuse index is emitted and includes Society Library", () => {
+    expect(existsSync(resolve(DIST, "search-index.json"))).toBe(true);
+    const records = JSON.parse(readFileSync(resolve(DIST, "search-index.json"), "utf-8")) as Array<{
+      url: string;
+      subsections: Array<{ content: string }>;
+    }>;
+    expect(
+      records.some((record) =>
+        record.url === "/read/5-4/" &&
+        record.subsections.some((section) => section.content.includes("Society Library")),
+      ),
+ ).toBe(true);
+  });
+
+  test("Japanese search index includes ソーシャル・ライブラリー in /ja/read/5-4/", () => {
+    const records = JSON.parse(readFileSync(resolve(DIST, "ja/search-index.json"), "utf-8")) as Array<{
+      url: string;
+      subsections: Array<{ content: string }>;
+    }>;
+    expect(
+      records.some((record) =>
+        record.url === "/ja/read/5-4/" &&
+        record.subsections.some((section) => section.content.includes("ソーシャル・ライブラリー")),
+      ),
+ ).toBe(true);
   });
 });

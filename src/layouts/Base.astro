@@ -55,7 +55,7 @@ const version = assetVersion();
     <script is:inline src="/assets/js/nav.js"></script>
     <script is:inline src="/assets/js/scroll-reveal.js"></script>
     <script is:inline src="/pagefind/pagefind-ui.js"></script>
-    {(lang === "zh" || lang === "ja") && <script src="https://cdn.jsdelivr.net/npm/fuse.js@7.1.0/dist/fuse.min.js"></script>}
+    {(lang === "zh" || lang === "ja") && <script is:inline src="https://cdn.jsdelivr.net/npm/fuse.js@7.1.0/dist/fuse.min.js"></script>}
     <script is:inline src={`/assets/js/book-ask.js?v=${version}`}></script>
     <script is:inline src={`/assets/js/search.js?v=${version}`}></script>
     <script is:inline type="application/ld+json" set:html={JSON.stringify({

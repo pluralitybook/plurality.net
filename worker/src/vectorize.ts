@@ -113,33 +113,82 @@ export async function retrieveBookChunks(
   const exactTerms = exactQueryTerms(question)
   const embedding = await embedQuery(ai, question)
   if (!embedding?.length) return []
+  const embeddingVec: number[] = embedding
 
-  let matches: Array<{ score: number; metadata?: Record<string, unknown> }> = []
-  try {
-    const result = await vectorize.query(embedding, {
-      topK,
-      returnMetadata: 'all',
-      filter: { lang: { $eq: lang } },
-    })
-    matches = result.matches ?? []
-  } catch (e) {
-    console.error('vectorize query failed', e)
-    return []
+  const cjkPunctStrip = /[・、，。；：！？「」『』（）〔〕【】…—～·]/g
+  const fullQuery = question.trim().toLocaleLowerCase().replace(cjkPunctStrip, '')
+  const isLatinQuery = /^[\x00-\x7F]+$/.test(question.trim())
+
+  function chunkHasFullQuery(chunk: BookChunk): boolean {
+    if (fullQuery.length < 2) return false
+    const hay = [
+      chunk.metadata.heading,
+      chunk.metadata.chapterTitle,
+      chunk.metadata.content,
+    ]
+      .join('\n')
+      .toLocaleLowerCase()
+      .replace(cjkPunctStrip, '')
+    return hay.includes(fullQuery)
   }
 
-  const out: Array<{ chunk: BookChunk; score: number; exact: boolean }> = []
   const seen = new Set<string>()
-  for (const m of matches) {
-    if (!Number.isFinite(m.score)) continue
-    const chunk = metadataToChunk(m.metadata)
-    if (!chunk || seen.has(chunk.id)) continue
-    const exact = chunkHasExactQueryTerm(chunk, exactTerms)
-    if (!exact && m.score < minScore) continue
-    seen.add(chunk.id)
-    out.push({ chunk, score: m.score, exact })
+
+  async function collect(
+    filterLang: string,
+    primary: boolean,
+  ): Promise<
+    Array<{ chunk: BookChunk; score: number; exact: boolean; fullExact: boolean; primary: boolean }>
+  > {
+    let matches: Array<{ score: number; metadata?: Record<string, unknown> }> = []
+    try {
+      const result = await vectorize.query(embeddingVec, {
+        topK,
+        returnMetadata: 'all',
+        filter: { lang: { $eq: filterLang } },
+      })
+      matches = result.matches ?? []
+    } catch (e) {
+      console.error('vectorize query failed', e)
+      return []
+    }
+
+    const out: Array<{
+      chunk: BookChunk
+      score: number
+      exact: boolean
+      fullExact: boolean
+      primary: boolean
+    }> = []
+    for (const m of matches) {
+      if (!Number.isFinite(m.score)) continue
+      const chunk = metadataToChunk(m.metadata)
+      if (!chunk || seen.has(chunk.id)) continue
+      const exact = chunkHasExactQueryTerm(chunk, exactTerms)
+      if (!exact && m.score < minScore) continue
+      seen.add(chunk.id)
+      out.push({ chunk, score: m.score, exact, fullExact: chunkHasFullQuery(chunk), primary })
+    }
+    return out
   }
-  out.sort((a, b) => Number(b.exact) - Number(a.exact) || b.score - a.score)
-  return out.slice(0, 8).map((item) => item.chunk)
+
+  const kept = await collect(lang, true)
+  const hasFullExact = kept.some((k) => k.fullExact)
+  // En fallback: only for Latin queries with no full-phrase exact match in
+  // the primary language.  CJK questions never trigger a second query.
+  if (lang !== 'en' && isLatinQuery && fullQuery.length >= 3 && !hasFullExact) {
+    for (const item of await collect('en', false)) {
+      kept.push(item)
+    }
+  }
+  kept.sort(
+    (a, b) =>
+      Number(b.fullExact) - Number(a.fullExact) ||
+      Number(b.exact) - Number(a.exact) ||
+      Number(b.primary) - Number(a.primary) ||
+      b.score - a.score,
+  )
+  return kept.slice(0, 8).map((item) => item.chunk)
 }
 
 export function truncateForMetadata(content: string, max = METADATA_CONTENT_MAX): string {
