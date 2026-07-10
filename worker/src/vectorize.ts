@@ -174,9 +174,14 @@ export async function retrieveBookChunks(
 
   const kept = await collect(lang, true)
   const hasFullExact = kept.some((k) => k.fullExact)
-  // En fallback: only for Latin queries with no full-phrase exact match in
-  // the primary language.  CJK questions never trigger a second query.
-  if (lang !== 'en' && isLatinQuery && fullQuery.length >= 3 && !hasFullExact) {
+  // En fallback: (1) sparse primary-language retrieval (kept.length < 8),
+  // or (2) Latin query with no full-phrase exact match in primary language
+  // (handles entity names like "Society Library" where bge-m3 fills the cap
+  // with cross-lingual semantic matches that have no full-phrase hit).
+  if (
+    lang !== 'en' &&
+    (kept.length < 8 || (isLatinQuery && fullQuery.length >= 3 && !hasFullExact))
+  ) {
     for (const item of await collect('en', false)) {
       kept.push(item)
     }

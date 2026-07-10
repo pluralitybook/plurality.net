@@ -95,36 +95,58 @@ test('falls back to the English corpus when primary-language retrieval is sparse
   assert.match(chunks[0]?.metadata.content ?? '', /Society Library/)
 })
 
-test('does not query English for CJK queries even when sparse', async () => {
+test('sparse CJK retrieval falls back to English', async () => {
   const ai = {
     async run() {
       return { data: [[0.1, 0.2, 0.3]] }
     },
   }
-  let queryCalls = 0
+  const calls: string[] = []
   const vectorize = {
-    async query(_vector: number[], options?: { topK?: number }) {
-      queryCalls++
-      const matches = [
-        {
-          score: 0.8,
-          metadata: {
-            lang: 'ja',
-            url: 'https://plurality.net/ja/read/6-1/',
-            heading: '見出し0',
-            chapterTitle: '章0',
-            content: '民主主義に関する記述。',
+    async query(_vector: number[], options?: { filter?: Record<string, unknown> }) {
+      const filterLang = (options?.filter as { lang?: { $eq?: string } } | undefined)?.lang?.$eq
+      calls.push(filterLang ?? '')
+      if (filterLang === 'en') {
+        return {
+          matches: [
+            {
+              score: 0.6,
+              metadata: {
+                lang: 'en',
+                url: 'https://plurality.net/read/6-1/',
+                heading: 'Democracy',
+                chapterTitle: 'Foundations',
+                content: 'Democracy is rule by the people.',
+              },
+            },
+          ],
+        }
+      }
+      return {
+        matches: [
+          {
+            score: 0.8,
+            metadata: {
+              lang: 'ja',
+              url: 'https://plurality.net/ja/read/6-1/',
+              heading: '民主主義の基礎',
+              chapterTitle: '基礎',
+              content: '民主主義に関する記述。',
+            },
           },
-        },
-      ]
-      return { matches }
+        ],
+      }
     },
   }
 
   const chunks = await retrieveBookChunks(ai, vectorize, '民主主義', 'ja')
 
-  assert.equal(queryCalls, 1)
-  assert.equal(chunks.length, 1)
+  // Sparse (1 < 8) triggers en fallback even for CJK queries
+  assert.deepEqual(calls, ['ja', 'en'])
+  // Ja full-phrase exact outranks en fuzzy
+  assert.equal(chunks.length, 2)
+  assert.equal(chunks[0]?.metadata.lang, 'ja')
+  assert.equal(chunks[1]?.metadata.lang, 'en')
 })
 
 test('does not query English when the primary language fills the cap', async () => {
