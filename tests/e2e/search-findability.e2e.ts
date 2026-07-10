@@ -132,14 +132,11 @@ test.describe("ask history", () => {
     await input.fill("what is plurality");
     await input.press("Enter");
 
-    // Wait for the answer to render
+    // Wait for the answer text to render (toBeVisible passes on the empty
+    // loading cursor; toContainText waits for the streamed text to arrive)
     await expect(
       page.locator("#plurality-ask-answer .plurality-ask-answer__body"),
-    ).toBeVisible({ timeout: 10_000 });
-    const answerText = await page
-      .locator("#plurality-ask-answer .plurality-ask-answer__body")
-      .textContent();
-    expect(answerText).toContain("Plurality");
+    ).toContainText("Plurality", { timeout: 10_000 });
 
     expect(auCalls).toBe(1);
 
@@ -153,7 +150,12 @@ test.describe("ask history", () => {
     await page.keyboard.press("Escape");
     await expect(page.locator("#search-overlay")).not.toHaveClass(/active/);
 
-    // Reopen overlay
+    // Reopen overlay — on mobile, Escape also closes the nav__overlay, so
+    // re-open the hamburger first to expose the mobile search toggle
+    const hamburger2 = page.locator(".nav__hamburger");
+    if (await hamburger2.isVisible().catch(() => false)) {
+      await hamburger2.click();
+    }
     await page.locator(".search-toggle:visible").first().click();
     await expect(page.locator("#search-overlay.active")).toBeVisible();
 
@@ -166,11 +168,7 @@ test.describe("ask history", () => {
     await chip.click();
     await expect(
       page.locator("#plurality-ask-answer .plurality-ask-answer__body"),
-    ).toBeVisible();
-    const restoredText = await page
-      .locator("#plurality-ask-answer .plurality-ask-answer__body")
-      .textContent();
-    expect(restoredText).toContain("Plurality");
+    ).toContainText("Plurality");
 
     // No additional /au call — still 1
     expect(auCalls).toBe(1);
