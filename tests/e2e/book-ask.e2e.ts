@@ -1,6 +1,15 @@
 import { readFileSync } from "node:fs";
 import { test, expect } from "@playwright/test";
 
+const localizedAskHints = {
+  en: "Press Enter ⏎ to ask the AI about the book",
+  zh: "按 Enter ⏎ 由 AI 依書中內容回答",
+  ja: "Enter ⏎ で AI が本の内容から回答します",
+  th: "กด Enter ⏎ เพื่อถาม AI เกี่ยวกับหนังสือเล่มนี้",
+  el: "Πατήστε Enter ⏎ για να ρωτήσετε την ΤΝ σχετικά με το βιβλίο",
+  de: "Enter ⏎ drücken, um die KI zum Buch zu befragen",
+} as const;
+
 test.describe("book-ask client", () => {
   test("script is versioned, defines hideAsk, no hideAsk ReferenceError on search open", async ({
     page,
@@ -30,6 +39,52 @@ test.describe("book-ask client", () => {
 
     const hideAskErrors = pageErrors.filter((m) => /hideAsk is not defined/i.test(m));
     expect(hideAskErrors).toEqual([]);
+  });
+
+  test("renders the book-AI hint in each supported locale", async ({ page }) => {
+    await page.route("http://plurality.net/**", async (route) => {
+      const url = new URL(route.request().url());
+      let rel = url.pathname;
+      if (rel === "/" || rel.endsWith("/")) rel += "index.html";
+      const filePath = process.cwd() + "/dist" + rel;
+      let contentType = "text/html";
+      if (rel.endsWith(".js")) contentType = "application/javascript";
+      else if (rel.endsWith(".css")) contentType = "text/css";
+      else if (rel.endsWith(".json")) contentType = "application/json";
+      else if (rel.endsWith(".png")) contentType = "image/png";
+      else if (rel.endsWith(".svg")) contentType = "image/svg+xml";
+      let body: Buffer;
+      try {
+        body = readFileSync(filePath);
+      } catch {
+        body = readFileSync(process.cwd() + "/dist/index.html");
+      }
+      await route.fulfill({ status: 200, contentType, body });
+    });
+    await page.route("**/capacity*", (route) =>
+      route.fulfill({
+        status: 200,
+        contentType: "application/json",
+        body: JSON.stringify({ status: "available" }),
+      }),
+    );
+
+    for (const [lang, expectedHint] of Object.entries(localizedAskHints)) {
+      const path = lang === "en" ? "/" : `/${lang}/`;
+      await page.goto(`http://plurality.net${path}`);
+
+      const hamburger = page.locator(".nav__hamburger");
+      if (await hamburger.isVisible().catch(() => false)) {
+        await hamburger.click();
+        await expect(page.locator(".nav__overlay")).toHaveClass(/active/);
+      }
+      await page.locator(".search-toggle:visible").first().click();
+      await expect(page.locator("#search-overlay.active")).toBeVisible();
+
+      const hint = page.locator(".plurality-ask-history__hint");
+      await expect(hint).toHaveText(expectedHint);
+      if (lang !== "en") await expect(hint).not.toHaveText(localizedAskHints.en);
+    }
   });
 
   test("search overlay has tappable magnifier submit, no clear button", async ({

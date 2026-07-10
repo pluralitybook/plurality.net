@@ -19,6 +19,9 @@
     en: 'Press Enter \u23ce to ask the AI about the book',
     zh: '\u6309 Enter \u23ce \u7531 AI \u4f9d\u66f8\u4e2d\u5167\u5bb9\u56de\u7b54',
     ja: 'Enter \u23ce \u3067 AI \u304c\u672c\u306e\u5185\u5bb9\u304b\u3089\u56de\u7b54\u3057\u307e\u3059',
+    de: 'Enter ⏎ drücken, um die KI zum Buch zu befragen',
+    th: 'กด Enter ⏎ เพื่อถาม AI เกี่ยวกับหนังสือเล่มนี้',
+    el: 'Πατήστε Enter ⏎ για να ρωτήσετε την ΤΝ σχετικά με το βιβλίο',
   };
 
   function isLocalDevAskHost() {
