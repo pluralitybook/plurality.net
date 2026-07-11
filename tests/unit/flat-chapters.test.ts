@@ -1,44 +1,39 @@
-import { test, expect, describe, beforeAll } from "bun:test";
-import { readFileSync } from "fs";
-import { resolve } from "path";
-import { getFlatChapters } from "../../src/lib/book-corpus.ts";
+import { test, expect, describe, beforeAll } from 'bun:test';
+import { readFileSync } from 'fs';
+import { resolve } from 'path';
+import { getFlatChapters } from '../../src/lib/book-corpus.ts';
 
-const DATA = resolve(import.meta.dir, "../../src/data");
-const chapters = JSON.parse(readFileSync(resolve(DATA, "chapters.json"), "utf-8"));
-const translations = JSON.parse(
-  readFileSync(resolve(DATA, "translations.json"), "utf-8")
-);
+const DATA = resolve(import.meta.dir, '../../src/data');
+const chapters = JSON.parse(readFileSync(resolve(DATA, 'chapters.json'), 'utf-8'));
+const translations = JSON.parse(readFileSync(resolve(DATA, 'translations.json'), 'utf-8'));
 
 let flat: any[];
 let totalChapters: number;
 
 beforeAll(() => {
   flat = getFlatChapters();
-  totalChapters = chapters.sections.reduce(
-    (n: number, s: any) => n + s.chapters.length,
-    0
-  );
+  totalChapters = chapters.sections.reduce((n: number, s: any) => n + s.chapters.length, 0);
 });
 
-describe("flatChapters", () => {
-  test("returns one entry per (language × chapter)", () => {
+describe('flatChapters', () => {
+  test('returns one entry per (language × chapter)', () => {
     const langCount = Object.keys(translations).length;
     expect(flat.length).toBe(langCount * totalChapters);
   });
 
-  test("every entry has required properties", () => {
+  test('every entry has required properties', () => {
     const required = [
-      "id",
-      "number",
-      "title",
-      "lang",
-      "langLabel",
-      "file",
-      "sectionId",
-      "sectionTitle",
-      "url",
-      "githubUrl",
-      "altLangs",
+      'id',
+      'number',
+      'title',
+      'lang',
+      'langLabel',
+      'file',
+      'sectionId',
+      'sectionTitle',
+      'url',
+      'githubUrl',
+      'altLangs',
     ];
     for (const entry of flat) {
       for (const k of required) {
@@ -51,14 +46,14 @@ describe("flatChapters", () => {
 
   test("URL pattern matches '{prefix}/read/{id}/'", () => {
     for (const entry of flat) {
-      const prefix = translations[entry.lang].prefix || "";
+      const prefix = translations[entry.lang].prefix || '';
       expect(entry.url).toBe(`${prefix}/read/${entry.id}/`);
     }
   });
 
-  test("untranslated flag is true exactly when non-en chapter lacks a file mapping", () => {
+  test('untranslated flag is true exactly when non-en chapter lacks a file mapping', () => {
     for (const entry of flat) {
-      if (entry.lang === "en") {
+      if (entry.lang === 'en') {
         expect(entry.untranslated).toBe(false);
         continue;
       }
@@ -67,13 +62,13 @@ describe("flatChapters", () => {
     }
   });
 
-  test("prev/next chain is correct within each language", () => {
+  test('prev/next chain is correct within each language', () => {
     const byLang = new Map<string, any[]>();
     for (const e of flat) {
       if (!byLang.has(e.lang)) byLang.set(e.lang, []);
       byLang.get(e.lang)!.push(e);
     }
-    for (const [lang, entries] of byLang) {
+    for (const [, entries] of byLang) {
       expect(entries[0].prevChapter).toBeNull();
       expect(entries[entries.length - 1].nextChapter).toBeNull();
       for (let i = 1; i < entries.length; i++) {
@@ -83,7 +78,7 @@ describe("flatChapters", () => {
     }
   });
 
-  test("altLangs lists every other language for the same chapter", () => {
+  test('altLangs lists every other language for the same chapter', () => {
     const langCount = Object.keys(translations).length;
     for (const entry of flat) {
       expect(entry.altLangs.length).toBe(langCount - 1);
@@ -94,15 +89,15 @@ describe("flatChapters", () => {
     }
   });
 
-  test("githubUrl is an https URL to raw.githubusercontent", () => {
+  test('githubUrl is an https URL to raw.githubusercontent', () => {
     for (const entry of flat) {
       expect(entry.githubUrl).toMatch(/^https:\/\/raw\.githubusercontent\.com\//);
     }
   });
 
-  test("localCredits is true only for chapter 0-3", () => {
+  test('localCredits is true only for chapter 0-3', () => {
     for (const entry of flat) {
-      expect(entry.localCredits).toBe(entry.id === "0-3");
+      expect(entry.localCredits).toBe(entry.id === '0-3');
     }
   });
 });

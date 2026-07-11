@@ -2,11 +2,11 @@
   var STORAGE_KEY = "plurality-theme";
 
   function storageGet(key) {
-    try { return localStorage.getItem(key); } catch (e) { return null; }
+    try { return localStorage.getItem(key); } catch { return null; }
   }
 
   function storageSet(key, val) {
-    try { localStorage.setItem(key, val); } catch (e) { /* private browsing */ }
+    try { localStorage.setItem(key, val); } catch { /* private browsing */ }
   }
 
   function getPreferred() {

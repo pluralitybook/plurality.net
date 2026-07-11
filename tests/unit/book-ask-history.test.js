@@ -5,7 +5,7 @@ import path from 'node:path';
 
 const bookAskPath = path.join(
   path.dirname(fileURLToPath(import.meta.url)),
-  '../../public/assets/js/book-ask.js',
+  '../../public/assets/js/book-ask.js'
 );
 const source = readFileSync(bookAskPath, 'utf8');
 

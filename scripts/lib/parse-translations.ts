@@ -1,7 +1,7 @@
 export type ParsedFilename = { id: string; file: string; title: string };
 
 export function parseFilename(name: string): ParsedFilename | null {
-  if (!name.endsWith(".md")) return null;
+  if (!name.endsWith('.md')) return null;
 
   const base = name.slice(0, -3);
 
@@ -25,9 +25,7 @@ export type ParsedGithubBase = {
 };
 
 export function parseGithubBase(url: string): ParsedGithubBase | null {
-  const match = url.match(
-    /raw\.githubusercontent\.com\/([^/]+)\/([^/]+)\/([^/]+)\/(.+?)\/?$/
-  );
+  const match = url.match(/raw\.githubusercontent\.com\/([^/]+)\/([^/]+)\/([^/]+)\/(.+?)\/?$/);
   if (!match) return null;
   return {
     owner: match[1],

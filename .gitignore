@@ -48,3 +48,5 @@ worker/.dev.vars
 
 # Claude Code scratch worktrees (never commit)
 .claude/worktrees
+.vite-hooks/_/
+.astro/settings.json

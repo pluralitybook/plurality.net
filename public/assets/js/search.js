@@ -21,8 +21,8 @@
   }
 
   var pageLang = document.documentElement.lang || 'en';
-  var isLatinQuery = function (q) { return /^[\x00-\x7F]+$/.test(q); };
-  var isLatinTerm = function (t) { return /^[\x00-\x7F]/.test(t); };
+  var isLatinQuery = function (q) { return /^[\x20-\x7E]+$/.test(q); };
+  var isLatinTerm = function (t) { return /^[\x20-\x7E]/.test(t); };
 
   // Detect whether Fuse.js should be used (zh/ja pages with Fuse loaded)
   var useFuse = typeof Fuse !== 'undefined' && (pageLang === 'zh' || pageLang === 'ja');
@@ -34,11 +34,9 @@
   var fuseLoading = false;
   var fuseLoaded = false;
   var fuseSearchInput = null;
-  var fuseSubmitBtn = null;
   var fuseResultsEl = null;
   var fuseMessageEl = null;
   var fuseDebounceTimer = null;
-  var fuseChapters = null;     // raw chapter data for excerpt building
   var enFlat = null;          // en edition flattened subsections (lazy-loaded)
   var enFailed = false;
   var enToken = 0;             // stale-input guard for async en fallback
@@ -187,7 +185,7 @@
     if (!isLatinQuery(q)) {
       return tl.indexOf(q) !== -1;
     }
-    var words = tl.split(/[\s\-\/\(]+/);
+    var words = tl.split(/[\s/(-]+/);
     for (var i = 0; i < words.length; i++) {
       if (words[i].indexOf(q) === 0) return true;
     }
@@ -271,8 +269,7 @@
 
   function selectSuggestion(value) {
     if (!input) return;
-    var nativeSetter = Object.getOwnPropertyDescriptor(HTMLInputElement.prototype, 'value').set;
-    nativeSetter.call(input, value);
+    Object.getOwnPropertyDescriptor(HTMLInputElement.prototype, 'value').set.call(input, value);
     input.dispatchEvent(new Event('input', { bubbles: true }));
     dropdown.hidden = true;
     activeIdx = -1;
@@ -434,11 +431,10 @@
     if (!q) return;
     if (useFuse) {
       if (fuseSearchInput) {
-        var setter = Object.getOwnPropertyDescriptor(
+        Object.getOwnPropertyDescriptor(
           HTMLInputElement.prototype,
           'value',
-        ).set;
-        setter.call(fuseSearchInput, q);
+        ).set.call(fuseSearchInput, q);
       }
       if (fuseIndex && fuseResultsEl) {
         renderFuseResults(q);
@@ -449,11 +445,10 @@
     }
     var pfInput = container.querySelector('input');
     if (pfInput) {
-      var nativeSet = Object.getOwnPropertyDescriptor(
+      Object.getOwnPropertyDescriptor(
         HTMLInputElement.prototype,
         'value',
-      ).set;
-      nativeSet.call(pfInput, q);
+      ).set.call(pfInput, q);
       pfInput.dispatchEvent(new Event('input', { bubbles: true }));
     }
   }
@@ -685,8 +680,6 @@
         return res.json();
       })
       .then(function (data) {
-        fuseChapters = data;
-
         fuseFlat = flattenChapters(data);
 
         fuseIndex = new Fuse(fuseFlat, {
@@ -739,7 +732,6 @@
 
     form.appendChild(fuseSearchInput);
     wrapSearchFormRow(form);
-    fuseSubmitBtn = form.querySelector('.plurality-search__submit');
 
     var drawer = document.createElement('div');
     drawer.className = 'pagefind-ui__drawer';
@@ -886,7 +878,7 @@
   document.addEventListener('keydown', function (e) {
     if ((e.metaKey || e.ctrlKey) && e.key === 'k') {
       e.preventDefault();
-      overlay.classList.contains('active') ? close() : open();
+      if (overlay.classList.contains('active')) close(); else open();
     }
     if (e.key === 'Escape' && overlay.classList.contains('active')) {
       close();

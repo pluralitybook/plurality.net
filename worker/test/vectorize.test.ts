@@ -2,7 +2,7 @@ import assert from 'node:assert/strict'
 import test from 'node:test'
 import { retrieveBookChunks } from '../src/vectorize'
 
-test('retrieveBookChunks keeps and prioritizes exact query term matches below semantic threshold', async () => {
+void test('retrieveBookChunks keeps and prioritizes exact query term matches below semantic threshold', async () => {
   const ai = {
     async run() {
       return { data: [[0.1, 0.2, 0.3]] }
@@ -44,7 +44,7 @@ test('retrieveBookChunks keeps and prioritizes exact query term matches below se
   assert.match(chunks[0]?.metadata.content ?? '', /トラスク/)
 })
 
-test('falls back to the English corpus when primary-language retrieval is sparse', async () => {
+void test('falls back to the English corpus when primary-language retrieval is sparse', async () => {
   const ai = {
     async run() {
       return { data: [[0.1, 0.2, 0.3]] }
@@ -95,7 +95,7 @@ test('falls back to the English corpus when primary-language retrieval is sparse
   assert.match(chunks[0]?.metadata.content ?? '', /Society Library/)
 })
 
-test('sparse CJK retrieval falls back to English', async () => {
+void test('sparse CJK retrieval falls back to English', async () => {
   const ai = {
     async run() {
       return { data: [[0.1, 0.2, 0.3]] }
@@ -149,7 +149,7 @@ test('sparse CJK retrieval falls back to English', async () => {
   assert.equal(chunks[1]?.metadata.lang, 'en')
 })
 
-test('does not query English when the primary language fills the cap', async () => {
+void test('does not query English when the primary language fills the cap', async () => {
   const ai = {
     async run() {
       return { data: [[0.1, 0.2, 0.3]] }

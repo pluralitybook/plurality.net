@@ -1,6 +1,6 @@
 ---
 description: Use Bun instead of Node.js, npm, pnpm, or vite.
-globs: "*.ts, *.tsx, *.html, *.css, *.js, *.jsx, package.json"
+globs: '*.ts, *.tsx, *.html, *.css, *.js, *.jsx, package.json'
 alwaysApply: false
 ---
 
@@ -35,9 +35,16 @@ test("hello world", () => {
 });
 ```
 
-## Frontend
+## Vite+
 
-Use HTML imports with `Bun.serve()`. Don't use `vite`. HTML imports fully support React, CSS, Tailwind.
+This Astro project uses Vite+ for formatting, linting, type checking, and Vite commands. Keep Bun as the package manager, runtime, and authoritative test runner.
+
+- Run `vp install` after dependency changes.
+- Use `vp check` for a fast local composite check; `bun run check` remains the canonical TypeScript gate, and `vp lint`/`vp fmt .` are focused alternatives.
+- Use `vp dev` and `vp build`; `vite.config.ts` contains Vite+ configuration and the Astro build/dev bridge.
+- Run `bun test` for the full test suite. `vp test` is not supported as a complete test runner because tests use Bun-only APIs.
+
+## Frontend
 
 Server:
 

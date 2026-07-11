@@ -2,7 +2,7 @@ import assert from 'node:assert/strict'
 import test from 'node:test'
 import app from '../src/index'
 
-test('GET /au/:question streams text/plain stub', async () => {
+void test('GET /au/:question streams text/plain stub', async () => {
   const res = await app.request('http://localhost/au/hello%20world?lang=zh', {
     headers: { Origin: 'http://localhost:8080' },
   })
@@ -13,7 +13,7 @@ test('GET /au/:question streams text/plain stub', async () => {
   assert.match(text, /Plurality|hello/i)
 })
 
-test('GET /capacity returns available status JSON', async () => {
+void test('GET /capacity returns available status JSON', async () => {
   const res = await app.request('http://localhost/capacity', {
     headers: { Origin: 'https://plurality.net' },
   })
@@ -22,13 +22,13 @@ test('GET /capacity returns available status JSON', async () => {
   assert.equal(res.headers.get('Access-Control-Allow-Origin'), 'https://plurality.net')
 })
 
-test('GET /au rejects question over 100 scalars', async () => {
+void test('GET /au rejects question over 100 scalars', async () => {
   const long = 'a'.repeat(101)
   const res = await app.request(`http://localhost/au/${encodeURIComponent(long)}`)
   assert.equal(res.status, 400)
 })
 
-test('OPTIONS /au returns CORS preflight for plurality.net', async () => {
+void test('OPTIONS /au returns CORS preflight for plurality.net', async () => {
   const res = await app.request('http://localhost/au/x', {
     method: 'OPTIONS',
     headers: {
@@ -40,7 +40,7 @@ test('OPTIONS /au returns CORS preflight for plurality.net', async () => {
   assert.equal(res.headers.get('Access-Control-Allow-Origin'), 'https://plurality.net')
 })
 
-test('GET /capacity allows https://www.plurality.net', async () => {
+void test('GET /capacity allows https://www.plurality.net', async () => {
   const res = await app.request('http://localhost/capacity', {
     headers: { Origin: 'https://www.plurality.net' },
   })

@@ -35,8 +35,10 @@ function decodeRouteParam(value: string): string {
   }
 }
 
+const questionLengthSegmenter = new Intl.Segmenter()
+
 function isQuestionTooLong(question: string): boolean {
-  return [...question.trim()].length > MAX_QUESTION_CHARS
+  return [...questionLengthSegmenter.segment(question.trim())].length > MAX_QUESTION_CHARS
 }
 
 const app = new Hono<{ Bindings: Env }>()

@@ -13,7 +13,7 @@ async function streamToString(stream: ReadableStream<string>): Promise<string> {
   return out
 }
 
-test('bookCitationFootnotes rewrites [n] to caret', async () => {
+void test('bookCitationFootnotes rewrites [n] to caret', async () => {
   const input = new ReadableStream<string>({
     start(c) {
       c.enqueue('Answer [1] and [2].')
@@ -31,7 +31,7 @@ test('bookCitationFootnotes rewrites [n] to caret', async () => {
   assert.match(out, /\[\^2\]: \[Mobilization\]/)
 })
 
-test('bookCitationFootnotes appends all source defs', async () => {
+void test('bookCitationFootnotes appends all source defs', async () => {
   const input = new ReadableStream<string>({
     start(c) {
       c.enqueue('No numeric cite.')

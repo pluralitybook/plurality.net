@@ -1,6 +1,6 @@
-import { createHash } from "node:crypto";
-import { mkdir, readFile, stat, writeFile } from "node:fs/promises";
-import path from "node:path";
+import { createHash } from 'node:crypto';
+import { mkdir, readFile, stat, writeFile } from 'node:fs/promises';
+import path from 'node:path';
 
 export type FetchText = (url: string) => Promise<string>;
 export type FetchTextCachedOptions = {
@@ -19,13 +19,13 @@ async function defaultFetchText(url: string): Promise<string> {
 }
 
 function cachePath(url: string, cacheDir: string): string {
-  const key = createHash("sha256").update(url).digest("hex");
+  const key = createHash('sha256').update(url).digest('hex');
   return path.join(cacheDir, `${key}.txt`);
 }
 
 async function readCached(file: string): Promise<string | null> {
   try {
-    return await readFile(file, "utf8");
+    return await readFile(file, 'utf8');
   } catch {
     return null;
   }
@@ -33,10 +33,10 @@ async function readCached(file: string): Promise<string | null> {
 
 export async function fetchTextCached(
   url: string,
-  options: FetchTextCachedOptions = {},
+  options: FetchTextCachedOptions = {}
 ): Promise<string> {
   const ttlMs = options.ttlMs ?? DAY_MS;
-  const cacheDir = options.cacheDir ?? path.join(".cache", "remote-text");
+  const cacheDir = options.cacheDir ?? path.join('.cache', 'remote-text');
   const staleOnError = options.staleOnError !== false;
   const fetcher = options.fetcher ?? defaultFetchText;
   const file = cachePath(url, cacheDir);
@@ -52,7 +52,7 @@ export async function fetchTextCached(
   try {
     const text = await fetcher(url);
     await mkdir(cacheDir, { recursive: true });
-    await writeFile(file, text, "utf8");
+    await writeFile(file, text, 'utf8');
     return text;
   } catch (error) {
     if (staleOnError) {

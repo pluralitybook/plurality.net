@@ -117,7 +117,7 @@ export async function retrieveBookChunks(
 
   const cjkPunctStrip = /[・、，。；：！？「」『』（）〔〕【】…—～·]/g
   const fullQuery = question.trim().toLocaleLowerCase().replace(cjkPunctStrip, '')
-  const isLatinQuery = /^[\x00-\x7F]+$/.test(question.trim())
+  const isLatinQuery = /^[\x20-\x7E]+$/.test(question.trim())
 
   function chunkHasFullQuery(chunk: BookChunk): boolean {
     if (fullQuery.length < 2) return false

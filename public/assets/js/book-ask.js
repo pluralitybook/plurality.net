@@ -38,7 +38,7 @@
     try {
       var o = new URLSearchParams(window.location.search).get('ask_base');
       if (o) return o.replace(/\/$/, '');
-    } catch (_e) { /* ignore */ }
+    } catch { /* ignore */ }
     return 'http://127.0.0.1:8788';
   }
 
@@ -60,7 +60,7 @@
     try {
       var url = new URL(value);
       return url.protocol === 'http:' || url.protocol === 'https:';
-    } catch (_e) {
+    } catch {
       return false;
     }
   }
@@ -182,7 +182,7 @@
       return data.filter(function (e) {
         return typeof e.q === 'string' && typeof e.raw === 'string';
       });
-    } catch (_e) {
+    } catch {
       return [];
     }
   }
@@ -192,7 +192,7 @@
     var entries = readHistory().filter(function (e) { return e.q !== q; });
     entries.unshift({ q: q, raw: raw, lang: pageLang, ts: Date.now() });
     if (entries.length > 10) entries = entries.slice(0, 10);
-    try { sessionStorage.setItem(HISTORY_KEY, JSON.stringify(entries)); } catch (_e) { /* Safari private mode */ }
+    try { sessionStorage.setItem(HISTORY_KEY, JSON.stringify(entries)); } catch { /* Safari private mode */ }
     renderHistory();
   }
 
@@ -293,7 +293,7 @@
       return;
     }
     var localDev = isLocalDevAskHost();
-    fetch(ASK_BASE + '/capacity', { headers: { Accept: 'application/json' } })
+    void fetch(ASK_BASE + '/capacity', { headers: { Accept: 'application/json' } })
       .then(function (r) { return r.ok ? r.json() : Promise.reject(); })
       .then(function (d) {
         askAvailable = !!(d && d.status === 'available');
@@ -332,7 +332,7 @@
         window.PluralitySearch.submit();
         return;
       }
-      runAsk(q).then(function () {
+      void runAsk(q).then(function () {
         window.dispatchEvent(
           new CustomEvent('plurality-search-after-ask', { detail: { query: q.trim() } }),
         );

@@ -1,16 +1,14 @@
-import { test, expect, describe, beforeAll } from "bun:test";
-import { existsSync, readFileSync, statSync } from "fs";
-import { resolve } from "path";
-import { readdirSync } from "fs";
+import { test, expect, describe, beforeAll } from 'bun:test';
+import { existsSync, readFileSync, statSync } from 'fs';
+import { resolve } from 'path';
+import { readdirSync } from 'fs';
 
-const ROOT = resolve(import.meta.dir, "../..");
-const DIST = resolve(ROOT, "dist");
-const DATA = resolve(ROOT, "src/data");
+const ROOT = resolve(import.meta.dir, '../..');
+const DIST = resolve(ROOT, 'dist');
+const DATA = resolve(ROOT, 'src/data');
 
-const chapters = JSON.parse(readFileSync(resolve(DATA, "chapters.json"), "utf-8"));
-const translations = JSON.parse(
-  readFileSync(resolve(DATA, "translations.json"), "utf-8")
-);
+const chapters = JSON.parse(readFileSync(resolve(DATA, 'chapters.json'), 'utf-8'));
+const translations = JSON.parse(readFileSync(resolve(DATA, 'translations.json'), 'utf-8'));
 
 function allChapterIds(): string[] {
   const ids: string[] = [];
@@ -30,50 +28,48 @@ function walk(dir: string): string[] {
 
 beforeAll(() => {
   if (!existsSync(DIST)) {
-    throw new Error(
-      `dist/ not found. Run \`bun run build\` before regression tests.`
-    );
+    throw new Error(`dist/ not found. Run \`bun run build\` before regression tests.`);
   }
 });
 
-describe("build output: top-level pages", () => {
+describe('build output: top-level pages', () => {
   test.each([
-    "index.html",
-    "404.html",
-    "read/index.html",
-    "about/index.html",
-    "endorsements/index.html",
-    "CNAME",
-  ])("exists: dist/%s", (relPath) => {
+    'index.html',
+    '404.html',
+    'read/index.html',
+    'about/index.html',
+    'endorsements/index.html',
+    'CNAME',
+  ])('exists: dist/%s', (relPath) => {
     expect(existsSync(resolve(DIST, relPath))).toBe(true);
   });
 
-  test("homepage references canonical plurality.net", () => {
-    const html = readFileSync(resolve(DIST, "index.html"), "utf-8");
+  test('homepage references canonical plurality.net', () => {
+    const html = readFileSync(resolve(DIST, 'index.html'), 'utf-8');
     expect(html).toMatch(/<link rel="canonical" href="https:\/\/plurality\.net\//);
   });
 
-  test("homepage contains <html lang=...>", () => {
-    const html = readFileSync(resolve(DIST, "index.html"), "utf-8");
+  test('homepage contains <html lang=...>', () => {
+    const html = readFileSync(resolve(DIST, 'index.html'), 'utf-8');
     expect(html).toMatch(/<html lang="[a-z-]+"/i);
   });
 });
 
-describe("build output: chapter pages per language", () => {
+describe('build output: chapter pages per language', () => {
   const ids = allChapterIds();
 
-  test("every chapter exists in English", () => {
+  test('every chapter exists in English', () => {
     for (const id of ids) {
-      expect(existsSync(resolve(DIST, "read", id, "index.html"))).toBe(true);
+      expect(existsSync(resolve(DIST, 'read', id, 'index.html'))).toBe(true);
     }
   });
 
-  test("every non-English language has a page for every chapter", () => {
+  test('every non-English language has a page for every chapter', () => {
     for (const [lang, data] of Object.entries(translations)) {
-      if (lang === "en") continue;
-      const prefix = (data as any).prefix?.replace(/^\//, "") || lang;
+      if (lang === 'en') continue;
+      const prefix = (data as any).prefix?.replace(/^\//, '') || lang;
       for (const id of ids) {
-        const p = resolve(DIST, prefix, "read", id, "index.html");
+        const p = resolve(DIST, prefix, 'read', id, 'index.html');
         if (!existsSync(p)) {
           throw new Error(`Missing chapter page for ${lang}: ${p}`);
         }
@@ -82,110 +78,112 @@ describe("build output: chapter pages per language", () => {
   });
 
   test("English chapter page has correct <html lang='en'>", () => {
-    const html = readFileSync(resolve(DIST, "read/0-0/index.html"), "utf-8");
+    const html = readFileSync(resolve(DIST, 'read/0-0/index.html'), 'utf-8');
     expect(html).toMatch(/<html lang="en"/);
   });
 
   test("Chinese chapter page has correct <html lang='zh'>", () => {
-    const html = readFileSync(resolve(DIST, "zh/read/0-0/index.html"), "utf-8");
+    const html = readFileSync(resolve(DIST, 'zh/read/0-0/index.html'), 'utf-8');
     expect(html).toMatch(/<html lang="zh"/);
   });
 
-  test("every chapter page links prev/next where applicable", () => {
-    const html = readFileSync(resolve(DIST, "read/2-0/index.html"), "utf-8");
+  test('every chapter page links prev/next where applicable', () => {
+    const html = readFileSync(resolve(DIST, 'read/2-0/index.html'), 'utf-8');
     // Has some kind of chapter navigation anchor
     expect(html).toMatch(/<a[^>]+href="\/read\//);
   });
 
-  test("reader page preserves Pagefind and book script hooks", () => {
-    const html = readFileSync(resolve(DIST, "read/1/index.html"), "utf-8");
-    expect(html).toContain("data-pagefind-body");
+  test('reader page preserves Pagefind and book script hooks', () => {
+    const html = readFileSync(resolve(DIST, 'read/1/index.html'), 'utf-8');
+    expect(html).toContain('data-pagefind-body');
     expect(html).toContain('data-pagefind-filter="lang:en"');
     expect(html).toContain('id="book-toc"');
-    expect(html).toContain("/assets/js/book.js");
+    expect(html).toContain('/assets/js/book.js');
   });
 
-  test("localized credits page renders local credits body", () => {
-    const html = readFileSync(resolve(DIST, "zh/read/0-3/index.html"), "utf-8");
-    expect(html).toContain("book__body--credits");
-    expect(html).toContain("credits__category");
+  test('localized credits page renders local credits body', () => {
+    const html = readFileSync(resolve(DIST, 'zh/read/0-3/index.html'), 'utf-8');
+    expect(html).toContain('book__body--credits');
+    expect(html).toContain('credits__category');
   });
 });
 
-describe("build output: redirects", () => {
-  test("legacy /v/chapters/{id}/{lang}/ produces meta-refresh page", () => {
-    const p = resolve(DIST, "v/chapters/0-0/en/index.html");
+describe('build output: redirects', () => {
+  test('legacy /v/chapters/{id}/{lang}/ produces meta-refresh page', () => {
+    const p = resolve(DIST, 'v/chapters/0-0/en/index.html');
     expect(existsSync(p)).toBe(true);
-    const html = readFileSync(p, "utf-8");
+    const html = readFileSync(p, 'utf-8');
     expect(html).toMatch(/<meta http-equiv="refresh"/);
     expect(html).toMatch(/url=\/read\/0-0\//);
   });
 
-  test("/chapters/ redirects to /read/", () => {
-    const p = resolve(DIST, "chapters/index.html");
+  test('/chapters/ redirects to /read/', () => {
+    const p = resolve(DIST, 'chapters/index.html');
     expect(existsSync(p)).toBe(true);
-    const html = readFileSync(p, "utf-8");
+    const html = readFileSync(p, 'utf-8');
     expect(html).toMatch(/url=\/read\//);
   });
 
-  test("/announcement/ redirects to /", () => {
-    const p = resolve(DIST, "announcement/index.html");
+  test('/announcement/ redirects to /', () => {
+    const p = resolve(DIST, 'announcement/index.html');
     expect(existsSync(p)).toBe(true);
-    const html = readFileSync(p, "utf-8");
+    const html = readFileSync(p, 'utf-8');
     expect(html).toMatch(/url=\//);
   });
 });
 
-describe("build output: assets", () => {
-  test("CSS bundle exists with expected partials", () => {
-    const p = resolve(DIST, "assets/css/main.css");
+describe('build output: assets', () => {
+  test('CSS bundle exists with expected partials', () => {
+    const p = resolve(DIST, 'assets/css/main.css');
     expect(existsSync(p)).toBe(true);
-    const css = readFileSync(p, "utf-8");
+    const css = readFileSync(p, 'utf-8');
     expect(css).toMatch(/@import/);
-    for (const partial of ["tokens.css", "base.css", "nav.css", "reader.css"]) {
-      expect(existsSync(resolve(DIST, "assets/css", partial))).toBe(true);
+    for (const partial of ['tokens.css', 'base.css', 'nav.css', 'reader.css']) {
+      expect(existsSync(resolve(DIST, 'assets/css', partial))).toBe(true);
     }
   });
 
-  test.each(["nav.js", "theme-toggle.js", "search.js", "book-ask.js", "scroll-reveal.js", "book.js"])(
-    "JS asset exists: assets/js/%s",
-    (name) => {
-      const p = resolve(DIST, "assets/js", name);
-      expect(existsSync(p)).toBe(true);
-      expect(statSync(p).size).toBeGreaterThan(0);
-    }
-  );
+  test.each([
+    'nav.js',
+    'theme-toggle.js',
+    'search.js',
+    'book-ask.js',
+    'scroll-reveal.js',
+    'book.js',
+  ])('JS asset exists: assets/js/%s', (name) => {
+    const p = resolve(DIST, 'assets/js', name);
+    expect(existsSync(p)).toBe(true);
+    expect(statSync(p).size).toBeGreaterThan(0);
+  });
 
-  test("Pagefind assets are present", () => {
-    const pfRoot = resolve(DIST, "pagefind");
+  test('Pagefind assets are present', () => {
+    const pfRoot = resolve(DIST, 'pagefind');
     expect(existsSync(pfRoot)).toBe(true);
-    expect(existsSync(resolve(pfRoot, "pagefind.js"))).toBe(true);
-    expect(existsSync(resolve(pfRoot, "pagefind-ui.js"))).toBe(true);
-    expect(existsSync(resolve(pfRoot, "pagefind-ui.css"))).toBe(true);
+    expect(existsSync(resolve(pfRoot, 'pagefind.js'))).toBe(true);
+    expect(existsSync(resolve(pfRoot, 'pagefind-ui.js'))).toBe(true);
+    expect(existsSync(resolve(pfRoot, 'pagefind-ui.css'))).toBe(true);
   });
 
-  test("homepage uses the Plurality mark as favicon", () => {
-    const html = readFileSync(resolve(DIST, "index.html"), "utf-8");
+  test('homepage uses the Plurality mark as favicon', () => {
+    const html = readFileSync(resolve(DIST, 'index.html'), 'utf-8');
     expect(html).toContain('href="/assets/images/favicon.png"');
-    expect(html).not.toContain("%3EP%3C/text%3E");
+    expect(html).not.toContain('%3EP%3C/text%3E');
   });
 
-  test("homepage book-ask.js is cache-busted and defines hideAsk", () => {
-    const html = readFileSync(resolve(DIST, "index.html"), "utf-8");
+  test('homepage book-ask.js is cache-busted and defines hideAsk', () => {
+    const html = readFileSync(resolve(DIST, 'index.html'), 'utf-8');
     expect(html).toMatch(/book-ask\.js\?v=[a-f0-9]+/);
-    const js = readFileSync(resolve(DIST, "assets/js/book-ask.js"), "utf-8");
+    const js = readFileSync(resolve(DIST, 'assets/js/book-ask.js'), 'utf-8');
     expect(js).toMatch(/function hideAsk/);
   });
 });
 
-describe("build output: HTML shape", () => {
-  test("every HTML file has a <title> and <meta description>", () => {
-    const htmls = walk(DIST).filter(
-      (p) => p.endsWith(".html") && !p.includes("/pagefind/")
-    );
+describe('build output: HTML shape', () => {
+  test('every HTML file has a <title> and <meta description>', () => {
+    const htmls = walk(DIST).filter((p) => p.endsWith('.html') && !p.includes('/pagefind/'));
     expect(htmls.length).toBeGreaterThan(300);
     for (const p of htmls) {
-      const html = readFileSync(p, "utf-8");
+      const html = readFileSync(p, 'utf-8');
       // Redirect pages use a shorter shell, also check for either <title> or http-equiv="refresh".
       const isRedirect = /http-equiv="refresh"/.test(html);
       if (!isRedirect) {
@@ -199,12 +197,10 @@ describe("build output: HTML shape", () => {
     }
   });
 
-  test("no HTML pages contain obvious template leaks (raw {{ }} or {% %})", () => {
-    const htmls = walk(DIST).filter(
-      (p) => p.endsWith(".html") && !p.includes("/pagefind/")
-    );
+  test('no HTML pages contain obvious template leaks (raw {{ }} or {% %})', () => {
+    const htmls = walk(DIST).filter((p) => p.endsWith('.html') && !p.includes('/pagefind/'));
     for (const p of htmls) {
-      const html = readFileSync(p, "utf-8");
+      const html = readFileSync(p, 'utf-8');
       // These character sequences should not appear after render.
       if (/\{\{\s|\s\}\}/.test(html)) {
         throw new Error(`Found unresolved template in ${p}`);
@@ -215,66 +211,74 @@ describe("build output: HTML shape", () => {
     }
   });
 
-  test("homepage has the hero section text", () => {
-    const html = readFileSync(resolve(DIST, "index.html"), "utf-8");
+  test('homepage has the hero section text', () => {
+    const html = readFileSync(resolve(DIST, 'index.html'), 'utf-8');
     expect(html).toMatch(/Plurality/);
   });
 
-  test("every chapter page has a nav and a main landmark", () => {
-    const html = readFileSync(resolve(DIST, "read/1/index.html"), "utf-8");
+  test('every chapter page has a nav and a main landmark', () => {
+    const html = readFileSync(resolve(DIST, 'read/1/index.html'), 'utf-8');
     expect(html).toMatch(/<nav[\s>]/);
     expect(html).toMatch(/<main[\s>]/);
   });
-  test("homepage has the ask history container", () => {
-    const html = readFileSync(resolve(DIST, "index.html"), "utf-8");
+  test('homepage has the ask history container', () => {
+    const html = readFileSync(resolve(DIST, 'index.html'), 'utf-8');
     expect(html).toContain('id="plurality-ask-history"');
   });
 });
 
-describe("build output: search index", () => {
-  test("pagefind index has language subdirs", () => {
-    const indexDir = resolve(DIST, "pagefind", "index");
+describe('build output: search index', () => {
+  test('pagefind index has language subdirs', () => {
+    const indexDir = resolve(DIST, 'pagefind', 'index');
     expect(existsSync(indexDir)).toBe(true);
   });
 
-  test("localized Fuse indexes are emitted", () => {
-    expect(existsSync(resolve(DIST, "zh/search-index.json"))).toBe(true);
-    expect(existsSync(resolve(DIST, "ja/search-index.json"))).toBe(true);
+  test('localized Fuse indexes are emitted', () => {
+    expect(existsSync(resolve(DIST, 'zh/search-index.json'))).toBe(true);
+    expect(existsSync(resolve(DIST, 'ja/search-index.json'))).toBe(true);
   });
 
-  test("Japanese search index includes /ja/read/5-4/ content", () => {
-    const records = JSON.parse(readFileSync(resolve(DIST, "ja/search-index.json"), "utf-8")) as Array<{
+  test('Japanese search index includes /ja/read/5-4/ content', () => {
+    const records = JSON.parse(
+      readFileSync(resolve(DIST, 'ja/search-index.json'), 'utf-8')
+    ) as Array<{
       url: string;
       subsections: Array<{ content: string }>;
     }>;
-    expect(records.some((record) => record.url === "/ja/read/5-4/")).toBe(true);
-    expect(records.some((record) => record.subsections.some((section) => section.content.length > 0))).toBe(true);
+    expect(records.some((record) => record.url === '/ja/read/5-4/')).toBe(true);
+    expect(
+      records.some((record) => record.subsections.some((section) => section.content.length > 0))
+    ).toBe(true);
   });
 
-  test("English Fuse index is emitted and includes Society Library", () => {
-    expect(existsSync(resolve(DIST, "search-index.json"))).toBe(true);
-    const records = JSON.parse(readFileSync(resolve(DIST, "search-index.json"), "utf-8")) as Array<{
+  test('English Fuse index is emitted and includes Society Library', () => {
+    expect(existsSync(resolve(DIST, 'search-index.json'))).toBe(true);
+    const records = JSON.parse(readFileSync(resolve(DIST, 'search-index.json'), 'utf-8')) as Array<{
       url: string;
       subsections: Array<{ content: string }>;
     }>;
     expect(
-      records.some((record) =>
-        record.url === "/read/5-4/" &&
-        record.subsections.some((section) => section.content.includes("Society Library")),
-      ),
- ).toBe(true);
+      records.some(
+        (record) =>
+          record.url === '/read/5-4/' &&
+          record.subsections.some((section) => section.content.includes('Society Library'))
+      )
+    ).toBe(true);
   });
 
-  test("Japanese search index includes ソーシャル・ライブラリー in /ja/read/5-4/", () => {
-    const records = JSON.parse(readFileSync(resolve(DIST, "ja/search-index.json"), "utf-8")) as Array<{
+  test('Japanese search index includes ソーシャル・ライブラリー in /ja/read/5-4/', () => {
+    const records = JSON.parse(
+      readFileSync(resolve(DIST, 'ja/search-index.json'), 'utf-8')
+    ) as Array<{
       url: string;
       subsections: Array<{ content: string }>;
     }>;
     expect(
-      records.some((record) =>
-        record.url === "/ja/read/5-4/" &&
-        record.subsections.some((section) => section.content.includes("ソーシャル・ライブラリー")),
-      ),
- ).toBe(true);
+      records.some(
+        (record) =>
+          record.url === '/ja/read/5-4/' &&
+          record.subsections.some((section) => section.content.includes('ソーシャル・ライブラリー'))
+      )
+    ).toBe(true);
   });
 });

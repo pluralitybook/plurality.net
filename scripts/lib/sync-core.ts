@@ -1,11 +1,7 @@
-import { parseFilename, parseGithubBase } from "./parse-translations";
+import { parseFilename, parseGithubBase } from './parse-translations';
 
 export type ApiFile = { name: string; size: number };
-export type ListFiles = (
-  owner: string,
-  repo: string,
-  path: string
-) => Promise<ApiFile[]>;
+export type ListFiles = (owner: string, repo: string, path: string) => Promise<ApiFile[]>;
 export type Logger = {
   log: (msg: string) => void;
   error: (msg: string) => void;
@@ -57,7 +53,7 @@ export async function syncTranslations({
   let total = 0;
 
   for (const [lang, langData] of Object.entries(translations)) {
-    if (lang === "en") continue;
+    if (lang === 'en') continue;
     if (!langData.githubBase) continue;
 
     const parsed = parseGithubBase(langData.githubBase);
@@ -107,7 +103,7 @@ export function makeGithubListFiles(token: string): ListFiles {
   return async (owner, repo, path) => {
     const url = `https://api.github.com/repos/${owner}/${repo}/contents/${encodeURI(path)}`;
     const headers: Record<string, string> = {
-      Accept: "application/vnd.github.v3+json",
+      Accept: 'application/vnd.github.v3+json',
     };
     if (token) headers.Authorization = `Bearer ${token}`;
 
@@ -116,7 +112,7 @@ export function makeGithubListFiles(token: string): ListFiles {
     const data = await res.json();
     if (!Array.isArray(data)) return [];
     return data
-      .filter((f: any) => f.type === "file")
+      .filter((f: any) => f.type === 'file')
       .map((f: any) => ({ name: f.name, size: f.size }));
   };
 }

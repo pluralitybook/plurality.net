@@ -59,7 +59,7 @@
       page.style.transform = flipDir === "next"
         ? "translateX(40px)" : "translateX(-40px)";
       // Force reflow then animate in
-      page.offsetHeight;
+      void page.offsetHeight;
       page.style.transition = "opacity 0.3s ease, transform 0.3s ease";
       page.style.opacity = "1";
       page.style.transform = "translateX(0)";
@@ -68,7 +68,7 @@
         page.style.transform = "";
       }, { once: true });
     }
-  } catch (ex) { /* ignore */ }
+  } catch { /* ignore */ }
 
   // Intercept nav clicks for exit animation then navigate
   var navLinks = document.querySelectorAll(".book__nav-link[data-page-dir]");
@@ -92,7 +92,7 @@
       // Store direction and navigate
       try {
         sessionStorage.setItem("book-flip-dir", dir);
-      } catch (ex) { /* ignore */ }
+      } catch { /* ignore */ }
 
       setTimeout(function () {
         window.location.href = href;

@@ -3,16 +3,12 @@
  * The CLI thin wrapper lives in scripts/sync-translations-bin.ts.
  */
 
-import { resolve } from "path";
-import {
-  makeGithubListFiles,
-  syncTranslations,
-  type ListFiles,
-} from "./lib/sync-core";
+import { resolve } from 'path';
+import { makeGithubListFiles, syncTranslations, type ListFiles } from './lib/sync-core';
 
-const ROOT = resolve(import.meta.dir, "..");
-export const TRANSLATIONS_PATH = resolve(ROOT, "src/data/translations.json");
-export const CHAPTERS_PATH = resolve(ROOT, "src/data/chapters.json");
+const ROOT = resolve(import.meta.dir, '..');
+export const TRANSLATIONS_PATH = resolve(ROOT, 'src/data/translations.json');
+export const CHAPTERS_PATH = resolve(ROOT, 'src/data/chapters.json');
 
 export type MainOptions = {
   translationsPath?: string;
@@ -26,7 +22,7 @@ export async function main({
   translationsPath = TRANSLATIONS_PATH,
   chaptersPath = CHAPTERS_PATH,
   dryRun = false,
-  listFiles = makeGithubListFiles(process.env.GITHUB_TOKEN || ""),
+  listFiles = makeGithubListFiles(process.env.GITHUB_TOKEN || ''),
   logger = { log: (m) => console.log(m), error: (m) => console.error(`  ${m}`) },
 }: MainOptions = {}): Promise<number> {
   const translations = await Bun.file(translationsPath).json();
@@ -43,10 +39,7 @@ export async function main({
     if (dryRun) {
       logger.log(`\nDry run: would update ${total} chapter(s) total`);
     } else {
-      await Bun.write(
-        translationsPath,
-        JSON.stringify(translations, null, 2) + "\n"
-      );
+      await Bun.write(translationsPath, JSON.stringify(translations, null, 2) + '\n');
       logger.log(`\nUpdated translations.json with ${total} new chapter(s)`);
     }
   } else {

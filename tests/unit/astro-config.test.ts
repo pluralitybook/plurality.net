@@ -1,5 +1,5 @@
-import { describe, expect, test } from "bun:test";
-import config from "../../astro.config.mjs";
+import { describe, expect, test } from 'bun:test';
+import config from '../../astro.config.mjs';
 
 type AstroConfig = {
   site?: string;
@@ -12,12 +12,12 @@ type AstroConfig = {
 
 const astroConfig = config as AstroConfig;
 
-describe("astro.config", () => {
-  test("keeps the static GitHub Pages publishing contract", () => {
-    expect(astroConfig.site).toBe("https://plurality.net");
-    expect(astroConfig.output).toBe("static");
-    expect(astroConfig.trailingSlash).toBe("always");
-    expect(astroConfig.build?.format).toBe("directory");
+describe('astro.config', () => {
+  test('keeps the static GitHub Pages publishing contract', () => {
+    expect(astroConfig.site).toBe('https://plurality.net');
+    expect(astroConfig.output).toBe('static');
+    expect(astroConfig.trailingSlash).toBe('always');
+    expect(astroConfig.build?.format).toBe('directory');
     expect(astroConfig.compressHTML).toBe(true);
     expect(astroConfig.fetchFile).toBeNull();
   });

@@ -3,21 +3,16 @@
   "compilerOptions": {
     "allowJs": true,
     "resolveJsonModule": true,
-    "types": [
-      "astro/client",
-      "node",
-      "bun"
-    ]
+    "types": ["astro/client", "node", "bun"]
   },
   "include": [
     "src/**/*.astro",
     "src/**/*.ts",
-    "astro.config.mjs"
-  ],
-  "exclude": [
-    "tests",
-    "scripts",
-    "worker",
+    "astro.config.mjs",
+    "vite.config.ts",
+    "tests/**/*.ts",
+    "scripts/**/*.ts",
     "playwright.config.ts"
-  ]
+  ],
+  "exclude": ["worker"]
 }
