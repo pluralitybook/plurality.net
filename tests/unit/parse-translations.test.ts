@@ -1,4 +1,4 @@
-import { test, expect, describe } from 'bun:test';
+import { test, expect, describe } from 'vite-plus/test';
 import { parseFilename, parseGithubBase } from '../../scripts/lib/parse-translations';
 
 describe('parseFilename', () => {

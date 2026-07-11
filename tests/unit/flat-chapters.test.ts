@@ -1,9 +1,9 @@
-import { test, expect, describe, beforeAll } from 'bun:test';
+import { test, expect, describe, beforeAll } from 'vite-plus/test';
 import { readFileSync } from 'fs';
 import { resolve } from 'path';
 import { getFlatChapters } from '../../src/lib/book-corpus.ts';
 
-const DATA = resolve(import.meta.dir, '../../src/data');
+const DATA = resolve(import.meta.dirname, '../../src/data');
 const chapters = JSON.parse(readFileSync(resolve(DATA, 'chapters.json'), 'utf-8'));
 const translations = JSON.parse(readFileSync(resolve(DATA, 'translations.json'), 'utf-8'));
 

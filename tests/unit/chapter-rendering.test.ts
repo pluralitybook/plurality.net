@@ -1,4 +1,4 @@
-import { describe, expect, test } from 'bun:test';
+import { describe, expect, test } from 'vite-plus/test';
 import credits from '../../src/data/credits.json';
 import i18n from '../../src/data/i18n.json';
 import translations from '../../src/data/translations.json';

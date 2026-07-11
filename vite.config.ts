@@ -31,5 +31,27 @@ export default defineConfig({
     host: '127.0.0.1',
     port: 4321,
   },
+  test: {
+    include: ['tests/unit/**/*.test.{ts,js}', 'tests/regression/**/*.test.{ts,js}'],
+    exclude: ['tests/e2e/**', 'worker/**', 'node_modules/**'],
+    environment: 'node',
+    coverage: {
+      enabled: true,
+      provider: 'v8',
+      reporter: ['text', 'lcov'],
+      reportsDirectory: 'coverage',
+      exclude: [
+        'node_modules/**',
+        'tests/**',
+        'dist/**',
+        'scripts/sync-translations-bin.ts',
+        'worker/**',
+      ],
+      thresholds: {
+        lines: 100,
+        functions: 100,
+      },
+    },
+  },
   plugins: [createAstroBuildBridge(), createAstroDevProxy()],
 });

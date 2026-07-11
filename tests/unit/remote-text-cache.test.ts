@@ -1,4 +1,4 @@
-import { afterEach, describe, expect, test } from 'bun:test';
+import { afterEach, describe, expect, test } from 'vite-plus/test';
 import { mkdtempSync, rmSync } from 'node:fs';
 import { tmpdir } from 'node:os';
 import { join } from 'node:path';
@@ -54,7 +54,7 @@ describe('fetchTextCached', () => {
 
   test('throws refresh failures when stale fallback is disabled', async () => {
     const cacheDir = tempCache();
-    expect(
+    await expect(
       fetchTextCached('https://example.com/c', {
         cacheDir,
         staleOnError: false,
@@ -66,7 +66,7 @@ describe('fetchTextCached', () => {
   });
 
   test('throws when refresh fails and no stale cache exists', async () => {
-    expect(
+    await expect(
       fetchTextCached('https://example.com/miss', {
         cacheDir: tempCache(),
         fetcher: async () => {
@@ -86,7 +86,7 @@ describe('fetchTextCached', () => {
     const originalFetch = globalThis.fetch;
     globalThis.fetch = (async () => new Response('no', { status: 500 })) as unknown as typeof fetch;
     try {
-      expect(
+      await expect(
         fetchTextCached('https://example.com/status', {
           cacheDir: tempCache(),
           staleOnError: false,

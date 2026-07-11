@@ -1,8 +1,8 @@
-import { describe, expect, test } from 'bun:test';
+import { describe, expect, test } from 'vite-plus/test';
 import { readFileSync } from 'node:fs';
 import path from 'node:path';
 
-const root = path.resolve(import.meta.dir, '../..');
+const root = path.resolve(import.meta.dirname, '../..');
 const workflowPaths = [
   '.github/workflows/ci.yml',
   '.github/workflows/deploy.yml',
@@ -64,6 +64,23 @@ describe('Bun-native CI contract', () => {
     expect(scriptText).not.toMatch(/\b(?:node|npm|npx)\b/);
     expect(workerPackageJson.scripts.test).toBe('bun test test/*.test.ts');
     expect(workerScriptText).not.toMatch(/\b(?:node|npm|npx|tsx)\b/);
+  });
+
+  test('routes root tests through the single vp test entry', () => {
+    const packageJson = JSON.parse(readFileSync(path.join(root, 'package.json'), 'utf8'));
+    expect(packageJson.scripts.test).toBe('vp test');
+    expect(packageJson.scripts['test:unit']).toBe('vp test tests/unit');
+    expect(packageJson.scripts['test:regression']).toBe('vp test tests/regression');
+    expect(packageJson.scripts['test:coverage']).toContain('vp test');
+
+    const ci = workflows['.github/workflows/ci.yml'];
+    expect(ci).toContain('bun --bun run test:unit');
+    expect(ci).toContain('bun --bun run test:regression');
+    expect(ci).not.toMatch(/bun\s+--bun\s+test\s+tests\b/);
+
+    // The worker package keeps its own `bun test` runner — root `vp test`
+    // must never swallow it.
+    expect(ci).toContain('cd worker && bun --bun install --frozen-lockfile && bun --bun test');
   });
   test('configures weekly GitHub Actions dependency updates', () => {
     const dependabot = readFileSync(path.join(root, '.github/dependabot.yml'), 'utf8');

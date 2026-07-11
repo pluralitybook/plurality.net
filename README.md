@@ -26,10 +26,10 @@ vp dev
 ```bash
 vp check
 bun run check
-bun test
+vp test
 ```
 
-`bun run check` is the canonical TypeScript gate and `bun test` is the authoritative full test suite because tests use Bun-only APIs; `vp test` is not a replacement.
+`bun run check` is the canonical TypeScript gate. `vp test` is the authoritative test entry for the root suite (`tests/unit` + `tests/regression`, 100% line/function coverage enforced). Bun remains the runtime and package manager; the `worker/` package keeps `bun test` (separate lockfile), and Playwright E2E tests run via `bun run test:e2e`.
 
 ## Build
 

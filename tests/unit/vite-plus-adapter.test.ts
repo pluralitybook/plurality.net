@@ -1,6 +1,6 @@
-import { expect, mock, test } from 'bun:test';
-import * as nodeChildProcess from 'node:child_process';
+import { expect, test, vi } from 'vite-plus/test';
 import type { ConfigEnv, Plugin } from 'vite';
+import type * as NodeChildProcess from 'node:child_process';
 import viteConfig from '../../vite.config';
 import {
   buildAstroSite,
@@ -10,6 +10,13 @@ import {
   runPagefind,
   startAstroDevServer,
 } from '../../src/lib/vitePlusAdapter';
+
+const execFileSyncMock = vi.hoisted(() => vi.fn());
+
+vi.mock('node:child_process', async (importOriginal) => {
+  const actual = await importOriginal<typeof NodeChildProcess>();
+  return { ...actual, execFileSync: execFileSyncMock };
+});
 
 async function resolvePluginConfig(plugin: Plugin, environment: ConfigEnv): Promise<unknown> {
   if (typeof plugin.config !== 'function') {
@@ -178,7 +185,7 @@ test('Astro build bridge propagates a failing Astro build without running Pagefi
   };
   const environments = { client: { isBuilt: false } };
 
-  expect(config.builder.buildApp({ environments })).rejects.toThrow('Astro build failed');
+  await expect(config.builder.buildApp({ environments })).rejects.toThrow('Astro build failed');
   expect(calls).toEqual(['astro']);
   expect(environments.client.isBuilt).toBe(false);
 });
@@ -202,34 +209,15 @@ test('runPagefind defaults to the project root when no directory is given', () =
   expect(calls[0]).toMatch(/plurality\.net\/?$/);
 });
 
-// `mock.module` is a bun:test-specific API with no Vitest equivalent under
-// the "bun:test" -> "vitest" alias `vp test` uses; skip there rather than
-// fail on a runner gap unrelated to the code under test.
-test.skipIf(typeof mock?.module !== 'function')(
-  "runPagefind's default executor shells out to bunx pagefind --site dist",
-  async () => {
-    const calls: unknown[][] = [];
-    await mock.module('node:child_process', () => ({
-      ...nodeChildProcess,
-      execFileSync: (...args: unknown[]) => {
-        calls.push(args);
-      },
-    }));
-    try {
-      runPagefind('/tmp/example-dist');
-    } finally {
-      await mock.module('node:child_process', () => nodeChildProcess);
-    }
+test("runPagefind's default executor shells out to bunx pagefind --site dist", () => {
+  execFileSyncMock.mockClear();
+  runPagefind('/tmp/example-dist');
 
-    expect(calls).toEqual([
-      [
-        'bunx',
-        ['--bun', 'pagefind', '--site', 'dist'],
-        { cwd: '/tmp/example-dist', stdio: 'inherit' },
-      ],
-    ]);
-  }
-);
+  expect(execFileSyncMock).toHaveBeenCalledWith('bunx', ['--bun', 'pagefind', '--site', 'dist'], {
+    cwd: '/tmp/example-dist',
+    stdio: 'inherit',
+  });
+});
 
 test("startAstroDevServer starts Astro's dev server via the injected dev function", async () => {
   const server = await startAstroDevServer(async () => ({

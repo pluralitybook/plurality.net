@@ -1,4 +1,4 @@
-import { test, expect, describe } from 'bun:test';
+import { test, expect, describe } from 'vite-plus/test';
 import { parseIndexMarkdown } from '../../src/lib/book-index-parser.ts';
 
 describe('parseIndexMarkdown', () => {

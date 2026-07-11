@@ -1,9 +1,9 @@
-import { test, expect, describe, beforeAll } from 'bun:test';
+import { test, expect, describe, beforeAll } from 'vite-plus/test';
 import { existsSync, readFileSync, statSync } from 'fs';
 import { resolve } from 'path';
 import { readdirSync } from 'fs';
 
-const ROOT = resolve(import.meta.dir, '../..');
+const ROOT = resolve(import.meta.dirname, '../..');
 const DIST = resolve(ROOT, 'dist');
 const DATA = resolve(ROOT, 'src/data');
 

@@ -3,7 +3,7 @@
   "compilerOptions": {
     "allowJs": true,
     "resolveJsonModule": true,
-    "types": ["astro/client", "node", "bun"]
+    "types": ["astro/client", "node"]
   },
   "include": [
     "src/**/*.astro",

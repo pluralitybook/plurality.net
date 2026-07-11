@@ -1,8 +1,8 @@
-import { test, expect, describe } from 'bun:test';
+import { test, expect, describe } from 'vite-plus/test';
 import { readFileSync } from 'fs';
 import { resolve } from 'path';
 
-const DATA = resolve(import.meta.dir, '../../src/data');
+const DATA = resolve(import.meta.dirname, '../../src/data');
 
 function load<T = any>(name: string): T {
   return JSON.parse(readFileSync(resolve(DATA, name), 'utf-8'));
