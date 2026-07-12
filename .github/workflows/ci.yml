@@ -27,24 +27,11 @@ jobs:
     steps:
       - uses: actions/checkout@v7
 
-      - uses: oven-sh/setup-bun@v2
+      - uses: voidzero-dev/setup-vp@v1
         with:
-          bun-version: ${{ env.BUN_VERSION }}
-
-      - name: Cache Bun install
-        uses: actions/cache@v6
-        with:
-          path: ~/.bun/install/cache
-          key: bun-${{ runner.os }}-${{ hashFiles('bun.lock') }}
-          restore-keys: bun-${{ runner.os }}-
-
-      - name: Install Vite+ CLI
-        run: curl -fsSL https://vite.plus | bash
-        env:
-          VP_NODE_MANAGER: 'yes'
-
-      - name: Add Vite+ to PATH
-        run: echo "$HOME/.vite-plus/bin" >> "$GITHUB_PATH"
+          node-version: '24.18.0'
+          cache: true
+          run-install: false
 
       - run: vp install --frozen-lockfile
 
@@ -83,16 +70,11 @@ jobs:
     steps:
       - uses: actions/checkout@v7
 
-      - uses: oven-sh/setup-bun@v2
+      - uses: voidzero-dev/setup-vp@v1
         with:
-          bun-version: ${{ env.BUN_VERSION }}
-
-      - name: Cache Bun install
-        uses: actions/cache@v6
-        with:
-          path: ~/.bun/install/cache
-          key: bun-${{ runner.os }}-${{ hashFiles('bun.lock') }}
-          restore-keys: bun-${{ runner.os }}-
+          node-version: '24.18.0'
+          cache: true
+          run-install: false
 
       - name: Cache remote text fetch
         uses: actions/cache@v6
@@ -100,14 +82,6 @@ jobs:
           path: .cache
           key: eleventy-fetch-${{ runner.os }}-${{ github.run_id }}
           restore-keys: eleventy-fetch-${{ runner.os }}-
-
-      - name: Install Vite+ CLI
-        run: curl -fsSL https://vite.plus | bash
-        env:
-          VP_NODE_MANAGER: 'yes'
-
-      - name: Add Vite+ to PATH
-        run: echo "$HOME/.vite-plus/bin" >> "$GITHUB_PATH"
 
       - run: vp install --frozen-lockfile
 
@@ -131,23 +105,11 @@ jobs:
     steps:
       - uses: actions/checkout@v7
 
-      - uses: oven-sh/setup-bun@v2
+      - uses: voidzero-dev/setup-vp@v1
         with:
-          bun-version: ${{ env.BUN_VERSION }}
-
-      - name: Cache Bun install
-        uses: actions/cache@v6
-        with:
-          path: ~/.bun/install/cache
-          key: bun-${{ runner.os }}-${{ hashFiles('bun.lock') }}
-
-      - name: Install Vite+ CLI
-        run: curl -fsSL https://vite.plus | bash
-        env:
-          VP_NODE_MANAGER: 'yes'
-
-      - name: Add Vite+ to PATH
-        run: echo "$HOME/.vite-plus/bin" >> "$GITHUB_PATH"
+          node-version: '24.18.0'
+          cache: true
+          run-install: false
 
       - run: vp install --frozen-lockfile
 
@@ -168,23 +130,11 @@ jobs:
     steps:
       - uses: actions/checkout@v7
 
-      - uses: oven-sh/setup-bun@v2
+      - uses: voidzero-dev/setup-vp@v1
         with:
-          bun-version: ${{ env.BUN_VERSION }}
-
-      - name: Cache Bun install
-        uses: actions/cache@v6
-        with:
-          path: ~/.bun/install/cache
-          key: bun-${{ runner.os }}-${{ hashFiles('bun.lock') }}
-
-      - name: Install Vite+ CLI
-        run: curl -fsSL https://vite.plus | bash
-        env:
-          VP_NODE_MANAGER: 'yes'
-
-      - name: Add Vite+ to PATH
-        run: echo "$HOME/.vite-plus/bin" >> "$GITHUB_PATH"
+          node-version: '24.18.0'
+          cache: true
+          run-install: false
 
       - run: vp install --frozen-lockfile
 
@@ -209,23 +159,11 @@ jobs:
     steps:
       - uses: actions/checkout@v7
 
-      - uses: oven-sh/setup-bun@v2
+      - uses: voidzero-dev/setup-vp@v1
         with:
-          bun-version: ${{ env.BUN_VERSION }}
-
-      - name: Cache Bun install
-        uses: actions/cache@v6
-        with:
-          path: ~/.bun/install/cache
-          key: bun-${{ runner.os }}-${{ hashFiles('bun.lock') }}
-
-      - name: Install Vite+ CLI
-        run: curl -fsSL https://vite.plus | bash
-        env:
-          VP_NODE_MANAGER: 'yes'
-
-      - name: Add Vite+ to PATH
-        run: echo "$HOME/.vite-plus/bin" >> "$GITHUB_PATH"
+          node-version: '24.18.0'
+          cache: true
+          run-install: false
 
       - run: vp install --frozen-lockfile
 
@@ -314,17 +252,10 @@ jobs:
     steps:
       - uses: actions/checkout@v7
 
-      - uses: oven-sh/setup-bun@v2
+      - uses: voidzero-dev/setup-vp@v1
         with:
-          bun-version: ${{ env.BUN_VERSION }}
-
-      - name: Install Vite+ CLI
-        run: curl -fsSL https://vite.plus | bash
-        env:
-          VP_NODE_MANAGER: 'yes'
-
-      - name: Add Vite+ to PATH
-        run: echo "$HOME/.vite-plus/bin" >> "$GITHUB_PATH"
+          node-version: '24.18.0'
+          run-install: false
 
       - name: Download dist
         uses: actions/download-artifact@v5

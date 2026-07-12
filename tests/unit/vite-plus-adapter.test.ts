@@ -1,5 +1,6 @@
 import { expect, test, vi } from 'vite-plus/test';
 import type { ConfigEnv, Plugin } from 'vite';
+import path from 'node:path';
 import type * as NodeChildProcess from 'node:child_process';
 import viteConfig from '../../vite.config';
 import {
@@ -236,14 +237,18 @@ test('runPagefind defaults to the project root when no directory is given', () =
   expect(calls[0]).toMatch(/plurality\.net\/?$/);
 });
 
-test("runPagefind's default executor shells out to bunx pagefind --site dist", () => {
+test("runPagefind's default executor runs the local pagefind bin directly", () => {
   execFileSyncMock.mockClear();
   runPagefind('/tmp/example-dist');
 
-  expect(execFileSyncMock).toHaveBeenCalledWith('bunx', ['--bun', 'pagefind', '--site', 'dist'], {
-    cwd: '/tmp/example-dist',
-    stdio: 'inherit',
-  });
+  expect(execFileSyncMock).toHaveBeenCalledWith(
+    path.join('/tmp/example-dist', 'node_modules', '.bin', 'pagefind'),
+    ['--site', 'dist'],
+    {
+      cwd: '/tmp/example-dist',
+      stdio: 'inherit',
+    }
+  );
 });
 
 test("startAstroDevServer starts Astro's dev server via the injected dev function", async () => {

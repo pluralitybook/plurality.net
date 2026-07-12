@@ -1,4 +1,5 @@
 import { execFileSync } from 'node:child_process';
+import path from 'node:path';
 import { fileURLToPath } from 'node:url';
 import { build as astroBuild, dev as astroDev } from 'astro';
 import type { ConfigEnv, Plugin, ViteBuilder } from 'vite';
@@ -92,7 +93,8 @@ export function createAstroDevProxy(dependencies: AstroDevProxyDependencies = {}
 type PagefindExecutor = (cwd: string) => void;
 
 function execPagefind(cwd: string): void {
-  execFileSync('bunx', ['--bun', 'pagefind', '--site', 'dist'], {
+  const pagefindBin = path.join(cwd, 'node_modules', '.bin', 'pagefind');
+  execFileSync(pagefindBin, ['--site', 'dist'], {
     cwd,
     stdio: 'inherit',
   });
@@ -101,8 +103,11 @@ function execPagefind(cwd: string): void {
 /**
  * Indexes `dist/` with Pagefind. `cwd` and `exec` are both injectable so
  * tests can assert the wiring (which directory gets indexed) without
- * spawning a real `bunx pagefind` subprocess; the real invocation is
- * covered end-to-end by `vp build` producing `dist/pagefind`.
+ * spawning a real `pagefind` subprocess; the real invocation is covered
+ * end-to-end by `vp build` producing `dist/pagefind`. Runs the local
+ * `node_modules/.bin/pagefind` binary directly (not `bunx`/`vpx`), so the
+ * pinned Vite+-managed Node.js resolves the tool's `#!/usr/bin/env node`
+ * shebang instead of leaving that to ambient `PATH` resolution.
  */
 export function runPagefind(
   cwd: string = PROJECT_ROOT,

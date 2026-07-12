@@ -47,7 +47,7 @@ The `worker/` package is a separate Bun package with its own lockfile and keeps 
 
 ## Vite+
 
-This Astro project uses Vite+ for formatting, linting, type checking, testing, and Vite commands. Keep Bun as the package manager and runtime.
+This Astro project uses Vite+ for formatting, linting, type checking, testing, and Vite commands. `vp` runs under Vite+'s own managed Node.js runtime (pinned via `package.json#devEngines.runtime`), not Bun — Bun stays pinned as the package manager (`devEngines.packageManager`) and as the runtime for the utility scripts and worker/ package noted above. Never wrap a `vp` lifecycle command in `bun --bun`/`bunx --bun`: it silently forces `vp test`'s Vitest coverage-v8 provider onto Bun, which does not implement the `node:inspector` API coverage collection needs, and the run fails outright.
 
 - Run `vp install` after dependency changes.
 - Use `vp check` for formatting, linting, and type-aware checks; `vp test` is now the canonical TypeScript gate too — its global setup (`tests/global-setup.ts`) regenerates Astro's ambient types and runs a full `tsc --noEmit` before any test executes. `vp lint`/`vp fmt .` remain focused alternatives to `vp check`.
