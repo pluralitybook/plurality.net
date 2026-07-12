@@ -56,3 +56,42 @@ describe('vectorize sync chunking', () => {
     expect(records[0].url).toBe('https://plurality.net/ja/read/x/');
   });
 });
+
+test('handles empty and missing subsection content without records', async () => {
+  const { chunkRecords } = await import(modulePath);
+  expect(
+    chunkRecords({
+      en: [
+        { title: 'x', url: '/x', subsections: [{ content: '   ' }, {}] },
+        { title: 'y', url: '/y' },
+      ],
+    })
+  ).toEqual([]);
+});
+
+test('uses single chunk identity and multi-chunk replacement ids', async () => {
+  const { chunkRecords } = await import(modulePath);
+  const one = chunkRecords({
+    en: [{ title: 'x', url: '/x', subsections: [{ content: 'short' }] }],
+  });
+  expect(one[0].replacesId).toBe('');
+
+  const many = chunkRecords({
+    en: [{ title: 'x', url: '/x', subsections: [{ content: 'a'.repeat(2000) }] }],
+  });
+  expect(many.map((r) => r.logicalId)).toEqual([
+    'en:https://plurality.net/x:intro:1',
+    'en:https://plurality.net/x:intro:2',
+  ]);
+  expect(new Set(many.map((r) => r.id)).size).toBe(many.length);
+  expect(new Set(many.map((r) => r.replacesId)).size).toBe(1);
+  expect(many[0].replacesId).toBeTruthy();
+});
+
+test('chunks a leading oversized paragraph without a current chunk', async () => {
+  const { chunkRecords } = await import(modulePath);
+  const records = chunkRecords({
+    en: [{ title: 'x', url: '/x', subsections: [{ content: 'z'.repeat(2000) }] }],
+  });
+  expect(records.length).toBeGreaterThan(1);
+});

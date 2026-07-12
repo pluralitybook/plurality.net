@@ -148,6 +148,33 @@ test('Astro build bridge runs Astro then Pagefind and marks every environment bu
   expect(Object.values(environments).every((environment) => environment.isBuilt)).toBe(true);
 });
 
+test('Astro build bridge marks environments built when Pagefind runs synchronously', async () => {
+  const calls: string[] = [];
+  const plugin = createAstroBuildBridge({
+    buildAstro: async () => {
+      calls.push('astro');
+    },
+    runPagefind: () => {
+      calls.push('pagefind');
+    },
+  });
+  const config = (await resolvePluginConfig(plugin, {
+    command: 'build',
+    mode: 'production',
+    isPreview: false,
+  } as ConfigEnv)) as {
+    builder: {
+      buildApp(builder: { environments: Record<string, { isBuilt: boolean }> }): Promise<void>;
+    };
+  };
+  const environments = { client: { isBuilt: false } };
+
+  await config.builder.buildApp({ environments });
+
+  expect(calls).toEqual(['astro', 'pagefind']);
+  expect(environments.client.isBuilt).toBe(true);
+});
+
 test('Astro build bridge is inactive for non-build Vite commands', async () => {
   const plugin = createAstroBuildBridge({
     buildAstro: async () => {},

@@ -7,6 +7,7 @@ import {
   buildLangEntries,
   buildSearchIndex,
   buildCreditsChapterEntry,
+  type Chapters,
 } from '../../src/lib/search-builder.ts';
 import { splitByBlockquotes } from '../../src/lib/markdown.ts';
 
@@ -211,6 +212,29 @@ describe('buildSearchIndex', () => {
     expect(Object.keys(result)).toEqual(['th']);
     expect(result.th).toHaveLength(1);
   });
+
+  test('includes the credits entry when localized credits content exists', async () => {
+    const creditsChapters = {
+      sections: [
+        {
+          title: 'Before You Read',
+          chapters: [{ id: '0-3', number: '0-3', title: 'Credits', file: 'x' }],
+        },
+      ],
+    };
+    const result = await buildSearchIndex({
+      targetLangs: ['th'],
+      translations: { th: langData },
+      i18n: {},
+      chapters: creditsChapters,
+      credits: {
+        i18n: { en: { intro: 'Intro.', categories: {} } },
+        categories: [{ name: 'Writing', contributors: [{ name: 'Person' }] }],
+      },
+      fetcher: async () => '# t\n\n## H\n\nbody',
+    });
+    expect(result.th.some((entry) => entry.url === '/th/read/0-3/')).toBe(true);
+  });
 });
 
 describe('buildCreditsChapterEntry', () => {
@@ -254,6 +278,15 @@ describe('buildCreditsChapterEntry', () => {
     );
     expect(entry?.title).toBe('クレジット');
   });
+
+  test('skips category lines when a category has no contributors', () => {
+    const credits = {
+      i18n: { en: { intro: 'Intro.', categories: { Writing: 'Writing' } } },
+      categories: [{ name: 'Writing' }],
+    };
+    const entry = buildCreditsChapterEntry('en', { prefix: '' }, credits, { sections: [] });
+    expect(entry?.subsections[0].content).toBe('Intro.');
+  });
 });
 
 describe('splitByBlockquotes', () => {
@@ -262,4 +295,111 @@ describe('splitByBlockquotes', () => {
     const subs = splitByBlockquotes(raw);
     expect(subs.some((s) => s.content.includes('Richard Garfield'))).toBe(true);
   });
+});
+
+test('handles missing language data, file, credits localization, and empty sections', async () => {
+  const localSection = { title: 'Preface' };
+  const localChapter = { id: '1', number: '1', title: 'Preface' };
+  expect(
+    await buildChapterEntry({
+      langData: undefined,
+      langI18n: {},
+      lang: 'xx',
+      section: localSection,
+      chapter: localChapter,
+      fetcher: async () => 'unused',
+    })
+  ).toBeNull();
+  expect(
+    await buildChapterEntry({
+      lang: 'en',
+      langData: { dir: 'en', files: {} },
+      langI18n: {},
+      section: localSection,
+      chapter: { ...localChapter, file: undefined },
+      fetcher: async () => 'unused',
+    })
+  ).toBeNull();
+  expect(
+    await buildLangEntries({
+      lang: 'en',
+      langData,
+      langI18n: {},
+      chapters: { sections: [{ title: 'empty' }] },
+      fetcher: async () => 'unused',
+    })
+  ).toEqual([]);
+  expect(
+    buildCreditsChapterEntry(
+      'xx',
+      { dir: 'xx', files: {} },
+      { i18n: {}, categories: [] },
+      { sections: [] }
+    )
+  ).toBeNull();
+});
+
+test('covers credits fallbacks and omitted chapter fields', () => {
+  const result = buildCreditsChapterEntry(
+    'xx',
+    { prefix: undefined, files: {} },
+    {
+      i18n: { en: { intro: '', categories: {} } },
+      categories: [{ name: 'Other', contributors: [] }],
+    },
+    { sections: undefined } as unknown as Chapters
+  );
+  expect(result).toBeNull();
+  expect(chapterPageUrl({ prefix: undefined }, 'x')).toBe('/read/x/');
+});
+
+test('exercises credits null and fallback paths', async () => {
+  const missingLocalization = buildCreditsChapterEntry(
+    'xx',
+    { dir: 'xx', files: {} },
+    { i18n: {}, categories: [{ name: 'Other', contributors: [{ name: 'N', pt: 1 }] }] },
+    { sections: [] }
+  );
+  expect(missingLocalization).toBeNull();
+  const fallback = buildCreditsChapterEntry(
+    'en',
+    { dir: 'en', files: {} },
+    {
+      i18n: { en: { intro: 'Intro', categories: {} } },
+      categories: [{ name: 'Other', contributors: [] }],
+    },
+    { sections: [] }
+  );
+  expect(fallback?.url).toBe('/read/0-3/');
+  const index = await buildSearchIndex({
+    targetLangs: ['xx'],
+    translations: { xx: undefined },
+    i18n: {},
+    chapters: { sections: [] },
+    credits: { i18n: {}, categories: [] },
+    fetcher: async () => '',
+  });
+  expect(index.xx).toEqual([]);
+});
+
+test('covers empty contributor names and missing chapter file', async () => {
+  const entry = buildCreditsChapterEntry(
+    'en',
+    { dir: 'en', files: {} },
+    {
+      i18n: { en: { intro: 'Intro', categories: {} } },
+      categories: [{ name: 'Other', contributors: [] }],
+    },
+    { sections: [] }
+  );
+  expect(entry?.subsections[0].content).toBe('Intro');
+  const missingFile = await buildChapterEntry({
+    lang: 'en',
+    langData: { dir: 'en', files: {} },
+    langI18n: {},
+    section: { title: 'x' },
+    chapter: { id: 'x', number: '1', title: 'X', file: '' },
+    fetcher: async () => 'not called',
+  });
+  expect(missingFile).toBeNull();
 });

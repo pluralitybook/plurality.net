@@ -1,8 +1,18 @@
-import { afterEach, describe, expect, test } from 'vite-plus/test';
+import { afterEach, describe, expect, test, vi } from 'vite-plus/test';
+import { createHash } from 'node:crypto';
 import { mkdtempSync, rmSync } from 'node:fs';
+import type * as NodeFsPromises from 'node:fs/promises';
 import { tmpdir } from 'node:os';
 import { join } from 'node:path';
 import { fetchTextCached } from '../../src/lib/remote-text-cache.ts';
+
+const readFileMock = vi.hoisted(() => vi.fn());
+
+vi.mock('node:fs/promises', async (importOriginal) => {
+  const actual = await importOriginal<typeof NodeFsPromises>();
+  readFileMock.mockImplementation(actual.readFile);
+  return { ...actual, readFile: readFileMock };
+});
 
 let dirs: string[] = [];
 function tempCache(): string {
@@ -94,6 +104,32 @@ describe('fetchTextCached', () => {
       ).rejects.toThrow('500');
     } finally {
       globalThis.fetch = originalFetch;
+    }
+  });
+
+  test('refetches when a fresh cache entry cannot be read', async () => {
+    const cacheDir = tempCache();
+    await fetchTextCached('https://example.com/unreadable', {
+      cacheDir,
+      fetcher: async () => 'primed',
+    });
+    readFileMock.mockImplementationOnce(() => Promise.reject(new Error('EACCES')));
+    const result = await fetchTextCached('https://example.com/unreadable', {
+      cacheDir,
+      fetcher: async () => 'refreshed',
+    });
+    expect(result).toBe('refreshed');
+  });
+
+  test('uses the default cache directory when none is provided', async () => {
+    const url = `https://example.com/default-${Date.now()}`;
+    const key = createHash('sha256').update(url).digest('hex');
+    const defaultFile = join('.cache', 'remote-text', `${key}.txt`);
+    try {
+      const text = await fetchTextCached(url, { fetcher: async () => 'default-dir' });
+      expect(text).toBe('default-dir');
+    } finally {
+      rmSync(defaultFile, { force: true });
     }
   });
 });

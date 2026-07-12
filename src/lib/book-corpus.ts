@@ -151,7 +151,7 @@ export function getFlatChapters(): ChapterEntry[] {
     byChapterId.set(entry.id, list);
   }
   for (const entry of allEntries) {
-    entry.altLangs = (byChapterId.get(entry.id) ?? []).filter((alt) => alt.lang !== entry.lang);
+    entry.altLangs = byChapterId.get(entry.id)!.filter((alt) => alt.lang !== entry.lang);
   }
   return allEntries;
 }

@@ -4,6 +4,7 @@ import {
   stripInlineMarkdown,
   cleanFrontMatter,
   splitByHeadings,
+  splitByBlockquotes,
 } from '../../src/lib/markdown.ts';
 
 describe('slugify', () => {
@@ -123,4 +124,10 @@ four`;
     const headings = out.map((s) => s.heading).filter(Boolean);
     expect(headings).toEqual(['A', 'B', 'C']);
   });
+});
+
+test('splitByBlockquotes skips short parts and keeps long parts', () => {
+  const out = splitByBlockquotes('> short\n<br></br>\n> ' + 'long '.repeat(12));
+  expect(out).toHaveLength(1);
+  expect(out[0].anchor).toBe('endorsement-1');
 });

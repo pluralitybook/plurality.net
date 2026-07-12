@@ -29,7 +29,7 @@ function contentChunks(s, max = CONTENT_MAX) {
     }
     const next = current ? `${current}\n\n${paragraph}` : paragraph;
     if (next.length > max) {
-      if (current) chunks.push(current);
+      chunks.push(current);
       current = paragraph;
     } else {
       current = next;
