@@ -35,6 +35,7 @@ export default defineConfig({
     include: ['tests/unit/**/*.test.{ts,js}', 'tests/regression/**/*.test.{ts,js}'],
     exclude: ['tests/e2e/**', 'worker/**', 'node_modules/**'],
     environment: 'node',
+    globalSetup: ['./tests/global-setup.ts'],
     coverage: {
       enabled: true,
       provider: 'v8',

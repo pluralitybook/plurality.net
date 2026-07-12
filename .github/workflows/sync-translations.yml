@@ -19,10 +19,18 @@ jobs:
         with:
           bun-version: latest
 
-      - run: bun --bun install --frozen-lockfile
+      - name: Install Vite+ CLI
+        run: curl -fsSL https://vite.plus | bash
+        env:
+          VP_NODE_MANAGER: 'yes'
+
+      - name: Add Vite+ to PATH
+        run: echo "$HOME/.vite-plus/bin" >> "$GITHUB_PATH"
+
+      - run: vp install --frozen-lockfile
 
       - name: Sync translations from upstream repos
-        run: bun --bun run scripts/sync-translations-bin.ts
+        run: vp run sync-translations
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 

@@ -31,9 +31,17 @@ jobs:
           key: bun-${{ runner.os }}-${{ hashFiles('bun.lock') }}
           restore-keys: bun-${{ runner.os }}-
 
-      - run: bun --bun install --frozen-lockfile
+      - name: Install Vite+ CLI
+        run: curl -fsSL https://vite.plus | bash
+        env:
+          VP_NODE_MANAGER: 'yes'
 
-      - run: bun --bun run build
+      - name: Add Vite+ to PATH
+        run: echo "$HOME/.vite-plus/bin" >> "$GITHUB_PATH"
+
+      - run: vp install --frozen-lockfile
+
+      - run: vp build
 
       - uses: actions/configure-pages@v6
 

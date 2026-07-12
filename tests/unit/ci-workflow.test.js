@@ -19,7 +19,7 @@ function allWorkflowText() {
   return Object.values(workflows).join('\n');
 }
 
-describe('Bun-native CI contract', () => {
+describe('vp-first CI contract', () => {
   test('uses maintained Node 24 action generations', () => {
     const text = allWorkflowText();
     expect(text).not.toMatch(
@@ -40,19 +40,52 @@ describe('Bun-native CI contract', () => {
     expect(text).not.toMatch(/\b(?:node|npm|npx)\b/);
   });
 
-  test('runs repository commands through Bun shebang resolution', () => {
+  test('confines Bun-native shell commands to the separate worker package', () => {
     const commandLines = allWorkflowText()
       .split('\n')
       .filter((line) => /^\s*(?:-\s+)?run:.*\bbun(?:x)?\b/.test(line));
-    expect(commandLines.length).toBeGreaterThan(0);
-    expect(commandLines.filter((line) => !line.includes('bun --bun'))).toEqual([]);
+    expect(commandLines).toEqual([
+      '      - run: cd worker && bun --bun install --frozen-lockfile && bun --bun test',
+    ]);
+    expect(commandLines.every((line) => line.includes('bun --bun'))).toBe(true);
+  });
+
+  test('routes every root lifecycle command through plain vp, never through bunx or vpx', () => {
+    const text = allWorkflowText();
+    expect(text).not.toMatch(/\bbunx\b/);
+    expect(text).not.toMatch(/\bvpx\b/);
+    expect(text).not.toMatch(/\bbun(?:\s+--bun)?\s+run\b/);
+
+    const vpCommandLines = text
+      .split('\n')
+      .filter((line) => /^\s*(?:-\s+)?run:.*\bvp\b/.test(line));
+    expect(vpCommandLines.length).toBeGreaterThan(0);
+    expect(vpCommandLines.every((line) => !/\bbunx?\b/.test(line) && !/\bvpx\b/.test(line))).toBe(
+      true
+    );
+  });
+
+  test('bootstraps vp via the documented installer and PATH before every use', () => {
+    for (const relativePath of workflowPaths) {
+      const text = workflows[relativePath];
+      const usesVp = /^\s*(?:-\s+)?run:.*\bvpx?\b/m.test(text);
+      if (!usesVp) continue;
+      expect(text).toContain('curl -fsSL https://vite.plus | bash');
+      expect(text).toContain('$HOME/.vite-plus/bin');
+      expect(text).toContain('GITHUB_PATH');
+    }
+    expect(workflows['.github/workflows/ci.yml']).toContain('vp install --frozen-lockfile');
+    expect(workflows['.github/workflows/deploy.yml']).toContain('vp install --frozen-lockfile');
+    expect(workflows['.github/workflows/sync-translations.yml']).toContain(
+      'vp install --frozen-lockfile'
+    );
   });
 
   test('keeps hidden files in the Pages artifact', () => {
     expect(workflows['.github/workflows/deploy.yml']).toContain('include-hidden-files: true');
   });
 
-  test('keeps the repository check Bun-native under TypeScript 7', () => {
+  test('folds the TypeScript gate into vp test via a global setup, not a separate check script', () => {
     const packageJson = JSON.parse(readFileSync(path.join(root, 'package.json'), 'utf8'));
     const workerPackageJson = JSON.parse(
       readFileSync(path.join(root, 'worker/package.json'), 'utf8')
@@ -60,28 +93,53 @@ describe('Bun-native CI contract', () => {
     const scriptText = Object.values(packageJson.scripts).join('\n');
     const workerScriptText = Object.values(workerPackageJson.scripts).join('\n');
     expect(JSON.stringify(packageJson)).not.toContain('@astrojs/check');
-    expect(packageJson.scripts.check).toBe('bunx --bun astro sync && tsc --noEmit');
+    expect(packageJson.scripts.check).toBeUndefined();
     expect(scriptText).not.toMatch(/\b(?:node|npm|npx)\b/);
     expect(workerPackageJson.scripts.test).toBe('bun test test/*.test.ts');
     expect(workerScriptText).not.toMatch(/\b(?:node|npm|npx|tsx)\b/);
+
+    const viteConfig = readFileSync(path.join(root, 'vite.config.ts'), 'utf8');
+    expect(viteConfig).toContain("globalSetup: ['./tests/global-setup.ts']");
+
+    const globalSetup = readFileSync(path.join(root, 'tests/global-setup.ts'), 'utf8');
+    expect(globalSetup).toContain("'astro', 'sync'");
+    expect(globalSetup).toContain("'tsc', '--noEmit'");
   });
 
-  test('routes root tests through the single vp test entry', () => {
+  test('routes root tests and the build through vp, keeping the worker on Bun', () => {
     const packageJson = JSON.parse(readFileSync(path.join(root, 'package.json'), 'utf8'));
-    expect(packageJson.scripts.test).toBe('vp test');
+    // No-arg passthroughs for bare `vp test` add nothing over typing the vp
+    // command directly, so they are removed rather than kept as aliases.
+    expect(packageJson.scripts.test).toBeUndefined();
+    expect(packageJson.scripts['test:coverage']).toBeUndefined();
     expect(packageJson.scripts['test:unit']).toBe('vp test tests/unit');
     expect(packageJson.scripts['test:regression']).toBe('vp test tests/regression');
-    expect(packageJson.scripts['test:coverage']).toContain('vp test');
 
     const ci = workflows['.github/workflows/ci.yml'];
-    expect(ci).toContain('bun --bun run test:unit');
-    expect(ci).toContain('bun --bun run test:regression');
+    expect(ci).toContain('vp run test:unit');
+    expect(ci).toContain('vp run test:regression');
+    expect(ci).toContain('vp build');
     expect(ci).not.toMatch(/bun\s+--bun\s+test\s+tests\b/);
+
+    const deploy = workflows['.github/workflows/deploy.yml'];
+    expect(deploy).toContain('vp build');
+
+    const syncTranslations = workflows['.github/workflows/sync-translations.yml'];
+    expect(syncTranslations).toContain('vp run sync-translations');
 
     // The worker package keeps its own `bun test` runner — root `vp test`
     // must never swallow it.
     expect(ci).toContain('cd worker && bun --bun install --frozen-lockfile && bun --bun test');
   });
+
+  test('keeps the root README free of Bun instructions', () => {
+    const readme = readFileSync(path.join(root, 'README.md'), 'utf8');
+    expect(readme).not.toMatch(/\bbun\b/i);
+    expect(readme).toContain('vp check');
+    expect(readme).toContain('vp test');
+    expect(readme).toContain('vp build');
+  });
+
   test('configures weekly GitHub Actions dependency updates', () => {
     const dependabot = readFileSync(path.join(root, '.github/dependabot.yml'), 'utf8');
     expect(dependabot).toMatch(/package-ecosystem:\s+['"]github-actions['"]/);

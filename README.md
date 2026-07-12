@@ -2,7 +2,7 @@
 
 The website for [Plurality: The Future of Collaborative Technology and Democracy](https://plurality.net), a book by E. Glen Weyl, Audrey Tang and the Plurality Community.
 
-Built with [Astro 7](https://astro.build/), [Bun](https://bun.sh/), and [Vite+](https://viteplus.dev/).
+Built with [Astro 7](https://astro.build/) and [Vite+](https://viteplus.dev/).
 
 ## Setup
 
@@ -25,19 +25,15 @@ vp dev
 
 ```bash
 vp check
-bun run check
 vp test
 ```
 
-`bun run check` is the canonical TypeScript gate. `vp test` is the authoritative test entry for the root suite (`tests/unit` + `tests/regression`, 100% line/function coverage enforced). Bun remains the runtime and package manager; the `worker/` package keeps `bun test` (separate lockfile), and Playwright E2E tests run via `bun run test:e2e`.
+`vp check` runs formatting, linting, and type-aware checks. `vp test` is the authoritative test entry for the root suite (`tests/unit` + `tests/regression`, 100% statement/branch/function/line coverage enforced); its global setup also regenerates Astro's ambient types and runs a full TypeScript compile check before any test executes, so `vp test` alone is the canonical gate. The `worker/` package is a separate Cloudflare Worker project with its own lockfile and test runner — see `worker/README.md`. Playwright E2E tests run via `vp run test:e2e`, outside `vp test`.
 
 ## Build
 
-Both build commands are supported:
-
 ```bash
 vp build
-bun run build
 ```
 
 ## License

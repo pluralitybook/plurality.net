@@ -9,8 +9,8 @@ Default to using Bun instead of Node.js.
 - Use `bun <file>` instead of `node <file>` or `ts-node <file>`
 - Use `bun test` instead of `jest` or `vitest` for ad-hoc scripts; this repo's root suite runs via `vp test` (see Testing below)
 - Use `bun build <file.html|file.ts|file.css>` instead of `webpack` or `esbuild`
-- Use `bun install` instead of `npm install` or `yarn install` or `pnpm install`
-- Use `bun run <script>` instead of `npm run <script>` or `yarn run <script>` or `pnpm run <script>`
+- Use `bun install` instead of `npm install` or `yarn install` or `pnpm install` — for implementation scripts and the separate `worker/` package only; this project's own dependency/task entry point is `vp install` and `vp …`/`vp run …` (see Vite+ below), with Bun as the configured underlying engine
+- Use `bun run <script>` instead of `npm run <script>` or `yarn run <script>` or `pnpm run <script>` — same scope restriction as above
 - Bun automatically loads .env, so don't use dotenv.
 
 ## APIs
@@ -25,7 +25,7 @@ Default to using Bun instead of Node.js.
 
 ## Testing
 
-`vp test` is the test entry for this project's root suite (`tests/unit/**` + `tests/regression/**`), running Vitest under Vite+ with a 100% line/function coverage gate always on (`vite.config.ts`'s `test` block).
+`vp test` is the test entry for this project's root suite (`tests/unit/**` + `tests/regression/**`), running Vitest under Vite+ with a 100% statement/branch/function/line coverage gate always on (`vite.config.ts`'s `test` block).
 
 ```bash
 vp test              # full root suite
@@ -43,14 +43,14 @@ test("hello world", () => {
 });
 ```
 
-The `worker/` package is a separate Bun package with its own lockfile and keeps `bun test`. Playwright E2E tests (`tests/e2e/**`) run via `bun run test:e2e`, outside `vp test`.
+The `worker/` package is a separate Bun package with its own lockfile and keeps `bun test`. Playwright E2E tests (`tests/e2e/**`) run via `vp run test:e2e`, outside `vp test`.
 
 ## Vite+
 
 This Astro project uses Vite+ for formatting, linting, type checking, testing, and Vite commands. Keep Bun as the package manager and runtime.
 
 - Run `vp install` after dependency changes.
-- Use `vp check` for a fast local composite check; `bun run check` remains the canonical TypeScript gate, and `vp lint`/`vp fmt .` are focused alternatives.
+- Use `vp check` for formatting, linting, and type-aware checks; `vp test` is now the canonical TypeScript gate too — its global setup (`tests/global-setup.ts`) regenerates Astro's ambient types and runs a full `tsc --noEmit` before any test executes. `vp lint`/`vp fmt .` remain focused alternatives to `vp check`.
 - Use `vp dev` and `vp build`; `vite.config.ts` contains Vite+ configuration and the Astro build/dev bridge.
 - Run `vp test` for the full test suite (root `tests/unit` + `tests/regression`, 100% coverage gate); see the Testing section above.
 

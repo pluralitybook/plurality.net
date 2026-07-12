@@ -28,7 +28,7 @@ function walk(dir: string): string[] {
 
 beforeAll(() => {
   if (!existsSync(DIST)) {
-    throw new Error(`dist/ not found. Run \`bun run build\` before regression tests.`);
+    throw new Error(`dist/ not found. Run \`vp build\` before regression tests.`);
   }
 });
 
