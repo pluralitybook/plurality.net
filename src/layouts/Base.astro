@@ -2,7 +2,7 @@
 import Nav from "../components/Nav.astro";
 import Footer from "../components/Footer.astro";
 import site from "../data/site.json";
-import { assetVersion, type LangCode } from "../lib/book-corpus";
+import { assetVersion, toBcp47, toOgLocale, type LangCode } from "../lib/book-corpus";
 
 type Props = {
   title?: string;
@@ -17,7 +17,7 @@ const canonical = `${site.url}${Astro.url.pathname}`;
 const version = assetVersion();
 ---
 <!doctype html>
-<html lang={lang}>
+<html lang={toBcp47(lang)} data-lang={lang}>
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
@@ -30,7 +30,7 @@ const version = assetVersion();
     <meta property="og:title" content={fullTitle} />
     <meta property="og:description" content={description} />
     <meta property="og:site_name" content={site.name} />
-    <meta property="og:locale" content={lang} />
+    <meta property="og:locale" content={toOgLocale(lang)} />
     <meta property="og:image" content={`${site.url}/assets/images/og-image.jpg`} />
     <meta property="og:image:width" content="1200" />
     <meta property="og:image:height" content="675" />
@@ -41,8 +41,12 @@ const version = assetVersion();
     <link rel="icon" type="image/png" sizes="512x512" href="/assets/images/favicon.png" />
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="anonymous" />
-    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,400;0,700;1,400&family=Cormorant+Garamond:wght@400;700&family=Outfit:wght@300;400;500;600&family=Noto+Sans+TC:wght@400;500&family=Noto+Serif+TC:wght@400;700&family=Noto+Sans+JP:wght@400;500&family=Noto+Serif+JP:wght@400;700&family=Sarabun:wght@400;600;700&display=swap" media="print" onload="this.media='all'" />
-    <noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,400;0,700;1,400&family=Cormorant+Garamond:wght@400;700&family=Outfit:wght@300;400;500;600&family=Noto+Sans+TC:wght@400;500&family=Noto+Serif+TC:wght@400;700&family=Noto+Sans+JP:wght@400;500&family=Noto+Serif+JP:wght@400;700&family=Sarabun:wght@400;600;700&display=swap" /></noscript>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,400;0,700;1,400&family=Cormorant+Garamond:wght@400;700&family=Outfit:wght@300;400;500;600&family=Sarabun:wght@400;600;700&display=swap" media="print" onload="this.media='all'" />
+    <noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,400;0,700;1,400&family=Cormorant+Garamond:wght@400;700&family=Outfit:wght@300;400;500;600&family=Sarabun:wght@400;600;700&display=swap" /></noscript>
+    {lang === "zh" && <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=LXGW+WenKai+TC:wght@400&family=Noto+Sans+TC:wght@400;500;600&family=Noto+Serif+TC:wght@400;600;700&display=optional" media="print" onload="this.media='all'" />}
+    {lang === "zh" && <noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=LXGW+WenKai+TC:wght@400&family=Noto+Sans+TC:wght@400;500;600&family=Noto+Serif+TC:wght@400;600;700&display=optional" /></noscript>}
+    {lang === "ja" && <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;500;600&family=Noto+Serif+JP:wght@400;600;700&display=optional" media="print" onload="this.media='all'" />}
+    {lang === "ja" && <noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;500;600&family=Noto+Serif+JP:wght@400;600;700&display=optional" /></noscript>}
     <link rel="stylesheet" href="/assets/css/main.css" />
     <link rel="stylesheet" href="/pagefind/pagefind-ui.css" />
     <script is:inline src="/assets/js/theme-toggle.js"></script>

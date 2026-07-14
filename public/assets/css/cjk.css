@@ -1,0 +1,273 @@
+/* ============================================================
+   CJK Typography — Plurality
+   Centralised rules for Traditional Chinese (zh / zh-Hant-TW)
+   and Japanese (ja / ja-JP). Imported last so specificity wins.
+   ============================================================ */
+
+/* ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+   SHARED: font-stack tokens + synthesis guard
+   ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ */
+
+:lang(zh) {
+  --serif:         var(--zh-serif);
+  --display-serif: var(--zh-serif);
+  --sans:          var(--zh-sans);
+  font-synthesis: none;
+}
+
+:lang(ja) {
+  --serif:         var(--ja-serif);
+  --display-serif: var(--ja-serif);
+  --sans:          var(--ja-sans);
+  font-synthesis: none;
+}
+
+/* ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+   INVARIANT: every element effectively zh or ja is upright.
+   Subject-language selectors so a nested :lang(en) child
+   is not affected. The !important beat reader.css specifics.
+   ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ */
+
+/* Catch-all upright: use :lang() on the target element */
+*:lang(zh),
+*:lang(ja) {
+  font-style: normal !important;
+  font-synthesis: none;
+}
+
+/* Explicit Latin opt-outs restore true italic */
+em:lang(en),
+em .latin,
+*:lang(en) em,
+cite:lang(en),
+i:lang(en),
+*[lang="en"] em {
+  font-style: italic !important;
+}
+
+/* ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+   SHARED: line-breaking, justification, hyphenation
+   ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ */
+
+:lang(zh),
+:lang(ja) {
+  line-break: strict;
+  word-break: normal;
+  overflow-wrap: anywhere;
+  hyphens: none;
+  -webkit-hyphens: none;
+}
+
+/* text-justify with inter-character always enabled on body */
+.book__body:lang(zh),
+.book__body:lang(ja) {
+  text-align: justify;
+  text-justify: inter-character;
+}
+
+/* Force justify at ≤768px even though reader.css resets to left */
+@media (max-width: 768px) {
+  .book__body:lang(zh),
+  .book__body:lang(ja) {
+    text-align: justify !important;
+    text-justify: inter-character;
+  }
+}
+
+@supports (text-spacing-trim: trim-start) {
+  .book__body:lang(zh),
+  .book__body:lang(ja) {
+    text-spacing-trim: trim-start;
+  }
+}
+
+/* ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+   SHARED: suppress Western drop cap
+   ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ */
+
+.book__body:lang(zh) > p:first-of-type::first-letter,
+.book__body:lang(ja) > p:first-of-type::first-letter {
+  float: none;
+  font-size: inherit;
+  font-family: inherit;
+  line-height: inherit;
+  padding: 0;
+  color: inherit;
+}
+
+/* ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+   SHARED: tracking / text-transform reset on UI labels
+   ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ */
+
+h1:lang(zh), h2:lang(zh), h3:lang(zh), h4:lang(zh),
+h1:lang(ja), h2:lang(ja), h3:lang(ja), h4:lang(ja) {
+  letter-spacing: 0;
+}
+
+.book__toc-heading:lang(zh),
+.book__toc-section:lang(zh),
+.book__nav-label:lang(zh),
+.book__section-label:lang(zh),
+.book__page-number:lang(zh),
+.section-label:lang(zh),
+.book__toc-heading:lang(ja),
+.book__toc-section:lang(ja),
+.book__nav-label:lang(ja),
+.book__section-label:lang(ja),
+.book__page-number:lang(ja),
+.section-label:lang(ja) {
+  letter-spacing: 0;
+  text-transform: none;
+}
+
+/* Proportional East Asian metrics for headings and labels only (not body) */
+@supports (font-feature-settings: "palt") {
+  h1:lang(zh), h2:lang(zh), h3:lang(zh), h4:lang(zh),
+  .book__toc-heading:lang(zh),
+  .book__toc-section:lang(zh),
+  .book__section-label:lang(zh),
+  .section-label:lang(zh),
+  h1:lang(ja), h2:lang(ja), h3:lang(ja), h4:lang(ja),
+  .book__toc-heading:lang(ja),
+  .book__toc-section:lang(ja),
+  .book__section-label:lang(ja),
+  .section-label:lang(ja) {
+    font-feature-settings: "palt";
+  }
+}
+
+/* ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+   LATIN VARIABLE RESET inside CJK pages
+   Ensures an explicit :lang(en) element reverts to Latin stacks.
+   ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ */
+
+/* When a CJK page contains elements explicitly tagged lang=en,
+   restore Latin stacks so Outfit/Lora/Cormorant are used.
+   No font-family override here — each element's own rule uses var(--serif) etc.
+   which now resolves to the Latin stack on this element. */
+:lang(zh) *:lang(en),
+:lang(ja) *:lang(en) {
+  --serif:         var(--latin-serif);
+  --display-serif: var(--latin-display-serif);
+  --sans:          var(--latin-sans);
+}
+
+/* ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+   TRADITIONAL CHINESE (zh / zh-Hant-TW)
+   ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ */
+
+/* Paragraph indent: 2em, preserved at all breakpoints */
+.book__body:lang(zh) p {
+  text-indent: 2em;
+}
+
+/* Near-book line-height */
+.book__body:lang(zh) {
+  line-height: 2;
+}
+
+/* Zero indent after structural elements */
+.book__body:lang(zh) > p:first-of-type,
+.book__body:lang(zh) h2 + p,
+.book__body:lang(zh) h3 + p,
+.book__body:lang(zh) h4 + p,
+.book__body:lang(zh) blockquote + p,
+.book__body:lang(zh) ul + p,
+.book__body:lang(zh) ol + p,
+.book__body:lang(zh) .footnotes + p {
+  text-indent: 0;
+}
+
+/* No indent inside blockquotes or footnotes */
+.book__body:lang(zh) blockquote p,
+.book__body:lang(zh) .footnotes p {
+  text-indent: 0;
+}
+
+/* Inline em: upright, body font, filled dot UNDER (CLREQ/Taiwan convention) */
+em:lang(zh) {
+  font-style: normal !important;
+  font-family: inherit;
+  text-emphasis: filled dot currentColor;
+  -webkit-text-emphasis: filled dot currentColor;
+  text-emphasis-position: under right;
+  -webkit-text-emphasis-position: under right;
+}
+
+/* Latin opt-out: no dots, restore italic for any tagged English descendant */
+em:lang(zh) :lang(en),
+em:lang(zh) .latin {
+  text-emphasis: none;
+  -webkit-text-emphasis: none;
+  font-style: italic !important;
+}
+
+/* Blockquote, endorsement, i/cite, credits category: upright Kai */
+blockquote:lang(zh),
+.endorsement-card__text:lang(zh),
+i:lang(zh),
+cite:lang(zh),
+.credits__category-name:lang(zh) {
+  font-family: var(--zh-kai);
+}
+
+/* ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+   JAPANESE (ja / ja-JP)
+   ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ */
+
+/* Paragraph indent: 1em, preserved at all breakpoints */
+.book__body:lang(ja) p {
+  text-indent: 1em;
+}
+
+/* Near-book line-height */
+.book__body:lang(ja) {
+  line-height: 1.95;
+}
+
+/* Zero indent after structural elements */
+.book__body:lang(ja) > p:first-of-type,
+.book__body:lang(ja) h2 + p,
+.book__body:lang(ja) h3 + p,
+.book__body:lang(ja) h4 + p,
+.book__body:lang(ja) blockquote + p,
+.book__body:lang(ja) ul + p,
+.book__body:lang(ja) ol + p,
+.book__body:lang(ja) .footnotes + p {
+  text-indent: 0;
+}
+
+/* No indent inside blockquotes or footnotes */
+.book__body:lang(ja) blockquote p,
+.book__body:lang(ja) .footnotes p {
+  text-indent: 0;
+}
+
+/* Inline em: sesame dots OVER (JLREQ bōten convention).
+   font-style already forced normal by universal invariant above. */
+em:lang(ja) {
+  font-family: inherit;
+  text-emphasis: filled sesame currentColor;
+  -webkit-text-emphasis: filled sesame currentColor;
+  text-emphasis-position: over right;
+  -webkit-text-emphasis-position: over right;
+}
+
+/* Latin opt-out: no dots, restore italic for any tagged English descendant */
+em:lang(ja) :lang(en),
+em:lang(ja) .latin {
+  text-emphasis: none;
+  -webkit-text-emphasis: none;
+  font-style: italic !important;
+}
+
+/* Blockquote, endorsement: upright Mincho (no Kai shift) */
+blockquote:lang(ja),
+.endorsement-card__text:lang(ja) {
+  font-family: var(--ja-serif);
+}
+
+/* Credits category: sans/Gothic contrast (not Chinese Kai) */
+.credits__category-name:lang(ja) {
+  font-family: var(--ja-sans);
+}

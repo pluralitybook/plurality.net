@@ -20,9 +20,9 @@
     datalist.remove();
   }
 
-  var pageLang = document.documentElement.lang || 'en';
-  var isLatinQuery = function (q) { return /^[\x20-\x7E]+$/.test(q); };
-  var isLatinTerm = function (t) { return /^[\x20-\x7E]/.test(t); };
+  var pageLang = document.documentElement.dataset.lang || document.documentElement.lang || 'en';
+  var isLatinQuery = function (q) { return /^[\x00-\x7F]+$/.test(q); };
+  var isLatinTerm = function (t) { return /^[\x00-\x7F]/.test(t); };
 
   // Detect whether Fuse.js should be used (zh/ja pages with Fuse loaded)
   var useFuse = typeof Fuse !== 'undefined' && (pageLang === 'zh' || pageLang === 'ja');

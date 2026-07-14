@@ -82,9 +82,9 @@ describe('build output: chapter pages per language', () => {
     expect(html).toMatch(/<html lang="en"/);
   });
 
-  test("Chinese chapter page has correct <html lang='zh'>", () => {
+  test("Chinese chapter page has correct <html lang='zh-Hant-TW'>", () => {
     const html = readFileSync(resolve(DIST, 'zh/read/0-0/index.html'), 'utf-8');
-    expect(html).toMatch(/<html lang="zh"/);
+    expect(html).toMatch(/<html lang="zh-Hant-TW"/);
   });
 
   test('every chapter page links prev/next where applicable', () => {

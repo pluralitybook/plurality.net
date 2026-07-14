@@ -15,6 +15,32 @@ import { renderBookMarkdown } from './markdown-renderer';
 import { type FetchText, fetchTextCached } from './remote-text-cache';
 
 export type LangCode = 'en' | 'zh' | 'ja' | 'th' | 'el' | 'de';
+
+/** Map internal lang code to BCP 47 HTML lang attribute value. */
+export function toBcp47(lang: LangCode): string {
+  const map: Record<LangCode, string> = {
+    en: 'en',
+    zh: 'zh-Hant-TW',
+    ja: 'ja-JP',
+    th: 'th',
+    el: 'el',
+    de: 'de',
+  };
+  return map[lang];
+}
+
+/** Map internal lang code to OpenGraph locale string (underscore form). */
+export function toOgLocale(lang: LangCode): string {
+  const map: Record<LangCode, string> = {
+    en: 'en_US',
+    zh: 'zh_TW',
+    ja: 'ja_JP',
+    th: 'th_TH',
+    el: 'el_GR',
+    de: 'de_DE',
+  };
+  return map[lang];
+}
 export type ChapterNav = { url: string; title: string };
 export type AltLang = { lang: LangCode; label: string; url: string };
 export type ChapterEntry = {

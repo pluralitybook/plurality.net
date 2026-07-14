@@ -1,8 +1,8 @@
 import { test, expect } from '@playwright/test';
 
 const LANG_HOMES = [
-  { prefix: '/zh/', tag: 'zh' },
-  { prefix: '/ja/', tag: 'ja' },
+  { prefix: '/zh/', tag: 'zh-Hant-TW' },
+  { prefix: '/ja/', tag: 'ja-JP' },
   { prefix: '/th/', tag: 'th' },
   { prefix: '/el/', tag: 'el' },
   { prefix: '/de/', tag: 'de' },

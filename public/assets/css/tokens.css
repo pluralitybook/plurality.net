@@ -23,10 +23,23 @@
   --plurality-cyan: #0EB1D2;
   --plurality-white: #FFFFFF;
 
-  /* Typography */
-  --serif: 'Lora', 'Noto Serif TC', Georgia, serif;
-  --display-serif: 'Cormorant Garamond', 'Noto Serif TC', Georgia, serif;
-  --sans: 'Outfit', 'Noto Sans TC', system-ui, sans-serif;
+
+  /* Latin (default) stacks */
+  --latin-serif:         'Lora', Georgia, serif;
+  --latin-display-serif: 'Cormorant Garamond', Georgia, serif;
+  --latin-sans:          'Outfit', system-ui, sans-serif;
+
+  /* Resolved tokens (overridden per :lang in cjk.css) */
+  --serif: var(--latin-serif);
+  --display-serif: var(--latin-display-serif);
+  --sans: var(--latin-sans);
+
+  /* CJK font stacks */
+  --zh-serif: 'Noto Serif TC', 'Source Han Serif TC', 'Songti TC', Georgia, serif;
+  --zh-sans:  'Noto Sans TC', 'PingFang TC', 'Microsoft JhengHei', system-ui, sans-serif;
+  --zh-kai:   'LXGW WenKai TC', 'Kaiti TC', 'BiauKai', 'TW-Kai', 'DFKai-SB', 'KaiTi', '標楷體', cursive;
+  --ja-serif: 'Noto Serif JP', 'Yu Mincho', 'Hiragino Mincho ProN', Georgia, serif;
+  --ja-sans:  'Noto Sans JP', 'Hiragino Kaku Gothic ProN', 'Meiryo', system-ui, sans-serif;
 
   /* Spacing */
   --content-max: 1200px;

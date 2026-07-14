@@ -124,22 +124,6 @@ blockquote cite {
   letter-spacing: 0.05em;
 }
 
-/* ---- CJK overrides ---- */
-html[lang="zh"] {
-  --serif: 'Noto Serif TC', 'Songti TC', 'PMingLiU', Georgia, serif;
-  --sans: 'Noto Sans TC', 'PingFang TC', 'Microsoft JhengHei', system-ui, sans-serif;
-}
-
-html[lang="zh"] em,
-html[lang="zh"] blockquote {
-  font-style: normal;
-  font-family: 'Kaiti TC', 'DFKai-SB', 'BiauKai', 'STKaiti', cursive;
-}
-
-html[lang="ja"] {
-  --serif: 'Noto Serif JP', 'Yu Mincho', 'Hiragino Mincho ProN', Georgia, serif;
-  --sans: 'Noto Sans JP', 'Hiragino Kaku Gothic ProN', 'Meiryo', system-ui, sans-serif;
-}
 
 html[lang="th"] {
   --serif: 'Sarabun', 'Noto Serif Thai', Georgia, serif;

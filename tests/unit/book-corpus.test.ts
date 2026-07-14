@@ -7,6 +7,8 @@ import {
   getLocalizedPrefix,
   getNonEnglishLangs,
   getRedirects,
+  toBcp47,
+  toOgLocale,
 } from '../../src/lib/book-corpus.ts';
 
 describe('book corpus helpers', () => {
@@ -170,4 +172,24 @@ test('covers incomplete corpus data fallbacks and local rendering branches', asy
   vi.doUnmock('../../src/data/i18n.json');
   vi.doUnmock('../../src/data/endorsements.json');
   vi.doUnmock('../../src/data/credits.json');
+});
+
+describe('locale helpers', () => {
+  test('toBcp47 maps zh→zh-Hant-TW and ja→ja-JP, others pass through', () => {
+    expect(toBcp47('zh')).toBe('zh-Hant-TW');
+    expect(toBcp47('ja')).toBe('ja-JP');
+    expect(toBcp47('en')).toBe('en');
+    expect(toBcp47('th')).toBe('th');
+    expect(toBcp47('el')).toBe('el');
+    expect(toBcp47('de')).toBe('de');
+  });
+
+  test('toOgLocale maps to underscore locale strings', () => {
+    expect(toOgLocale('zh')).toBe('zh_TW');
+    expect(toOgLocale('ja')).toBe('ja_JP');
+    expect(toOgLocale('en')).toBe('en_US');
+    expect(toOgLocale('th')).toBe('th_TH');
+    expect(toOgLocale('el')).toBe('el_GR');
+    expect(toOgLocale('de')).toBe('de_DE');
+  });
 });

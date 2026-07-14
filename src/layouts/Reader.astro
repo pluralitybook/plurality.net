@@ -3,7 +3,7 @@ import chapters from "../data/chapters.json";
 import i18n from "../data/i18n.json";
 import translations from "../data/translations.json";
 import Base from "./Base.astro";
-import type { ChapterEntry, LangCode } from "../lib/book-corpus";
+import { toBcp47, type ChapterEntry, type LangCode } from "../lib/book-corpus";
 
 type Props = { chapter: ChapterEntry; title: string; chapterLabel: string };
 type Chapter = { id: string; number: string; title: string };
@@ -44,7 +44,7 @@ const tocPrefix = translationsByLang[chapter.lang]?.prefix || "";
       <header class="book__header">
         <p class="book__section-label">{chapterLabel}</p>
         <h1 class="book__title">{title}</h1>
-        {chapter.altLangs.length > 0 && <nav class="book__lang-switch" aria-label="Language versions"><span class="book__lang-current">{chapter.langLabel}</span>{chapter.altLangs.map((alt) => <a href={alt.url} class="book__lang-link" lang={alt.lang}>{alt.label}</a>)}</nav>}
+        {chapter.altLangs.length > 0 && <nav class="book__lang-switch" aria-label="Language versions"><span class="book__lang-current">{chapter.langLabel}</span>{chapter.altLangs.map((alt) => <a href={alt.url} class="book__lang-link" lang={toBcp47(alt.lang)} hreflang={toBcp47(alt.lang)}>{alt.label}</a>)}</nav>}
         <div class="book__header-ornament" aria-hidden="true"><span></span><span></span><span></span></div>
       </header>
       <div class:list={["book__body", { "book__body--endorsements": chapter.id === "0-0" }, { "book__body--credits": chapter.id === "0-3" }]} data-pagefind-body>

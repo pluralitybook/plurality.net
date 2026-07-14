@@ -401,11 +401,6 @@
   padding-bottom: 0;
 }
 
-:lang(zh) .credits__category-name,
-:lang(ja) .credits__category-name {
-  font-style: normal;
-  font-family: 'Kaiti SC', 'Kaiti TC', 'DFKai-SB', STKaiti, KaiTi, serif;
-}
 
 .credits__list {
   list-style: none;

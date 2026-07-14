@@ -19,7 +19,7 @@ const isAbout = path.includes("/0-1/");
 ---
 <nav class:list={["nav", { "nav--hero": navHero }]} role="navigation" aria-label="Main navigation">
   <div class="nav__inner">
-    <a href={lang === "en" ? "/" : `/${lang}/`} class="nav__logo" aria-label="Plurality home">Plurality</a>
+    <a href={lang === "en" ? "/" : `/${lang}/`} class="nav__logo" lang="en" aria-label="Plurality home">Plurality</a>
     <ul class="nav__links">
       <li><a href={`${navPrefix}/read/`} class:list={["nav__link", { "nav__link--active": isRead }]}>{nt.nav_read}</a></li>
       <li><a href={`${navPrefix}/read/0-1/`} class:list={["nav__link", { "nav__link--active": isAbout }]}>{nt.nav_about}</a></li>
