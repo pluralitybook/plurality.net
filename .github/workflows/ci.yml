@@ -59,7 +59,7 @@ jobs:
       - uses: oven-sh/setup-bun@v2
         with:
           bun-version: ${{ env.BUN_VERSION }}
-      - run: cd worker && bun --bun install --frozen-lockfile && bun --bun test
+      - run: cd worker && bun --bun install --frozen-lockfile && bun --bun run typecheck && bun --bun test
 
   # 2. Build the static site and upload as an artifact for downstream jobs.
   build:

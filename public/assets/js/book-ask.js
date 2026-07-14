@@ -6,7 +6,7 @@
   var inner = overlay && overlay.querySelector('.search-overlay__inner');
   if (!overlay || !inner) return;
 
-  var pageLang = document.documentElement.lang || 'en';
+  var pageLang = document.documentElement.dataset.lang || document.documentElement.lang || 'en';
   var askAnswer = document.getElementById('plurality-ask-answer');
   if (!askAnswer) return;
 

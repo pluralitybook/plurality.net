@@ -51,7 +51,7 @@ describe('vp-first CI contract', () => {
   test('confines Bun-native shell commands to the separate worker package', () => {
     const commandLines = runLines(allWorkflowText()).filter((line) => /\bbun(?:x)?\b/.test(line));
     expect(commandLines).toEqual([
-      '      - run: cd worker && bun --bun install --frozen-lockfile && bun --bun test',
+      '      - run: cd worker && bun --bun install --frozen-lockfile && bun --bun run typecheck && bun --bun test',
     ]);
     expect(commandLines.every((line) => line.includes('bun --bun'))).toBe(true);
   });
@@ -60,7 +60,8 @@ describe('vp-first CI contract', () => {
     const text = allWorkflowText();
     expect(text).not.toMatch(/\bbunx\b/);
     expect(text).not.toMatch(/\bvpx\b/);
-    expect(text).not.toMatch(/\bbun(?:\s+--bun)?\s+run\b/);
+    const rootCommandLines = runLines(text).filter((line) => !line.includes('cd worker &&'));
+    expect(rootCommandLines.join('\n')).not.toMatch(/\bbun(?:\s+--bun)?\s+run\b/);
 
     const vpCommandLines = runLines(text).filter((line) => /\bvp\b/.test(line));
     expect(vpCommandLines.length).toBeGreaterThan(0);
@@ -160,9 +161,11 @@ describe('vp-first CI contract', () => {
     const syncTranslations = workflows['.github/workflows/sync-translations.yml'];
     expect(syncTranslations).toContain('vp run sync-translations');
 
-    // The worker package keeps its own `bun test` runner — root `vp test`
-    // must never swallow it.
-    expect(ci).toContain('cd worker && bun --bun install --frozen-lockfile && bun --bun test');
+    // The worker package keeps its own typecheck and Bun test runner — root
+    // `vp test` must never swallow it.
+    expect(ci).toContain(
+      'cd worker && bun --bun install --frozen-lockfile && bun --bun run typecheck && bun --bun test'
+    );
   });
 
   test('keeps the root README free of Bun instructions', () => {
