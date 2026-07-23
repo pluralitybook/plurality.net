@@ -43,7 +43,7 @@ jobs:
 
       - name: Upload coverage LCOV
         if: always()
-        uses: actions/upload-artifact@v5
+        uses: actions/upload-artifact@v7
         with:
           name: coverage
           path: coverage
@@ -89,7 +89,7 @@ jobs:
         run: vp build
 
       - name: Upload dist artifact
-        uses: actions/upload-artifact@v5
+        uses: actions/upload-artifact@v7
         with:
           name: dist
           path: dist
@@ -200,7 +200,7 @@ jobs:
 
       - name: Upload Playwright report
         if: always()
-        uses: actions/upload-artifact@v5
+        uses: actions/upload-artifact@v7
         with:
           name: playwright-report-${{ matrix.project }}
           path: playwright-report
@@ -208,7 +208,7 @@ jobs:
 
       - name: Upload failures
         if: failure()
-        uses: actions/upload-artifact@v5
+        uses: actions/upload-artifact@v7
         with:
           name: playwright-failures-${{ matrix.project }}
           path: test-results
