@@ -176,6 +176,26 @@ describe('build output: assets', () => {
     const js = readFileSync(resolve(DIST, 'assets/js/book-ask.js'), 'utf-8');
     expect(js).toMatch(/function hideAsk/);
   });
+
+  test('zh Kai quote stack is a single face without cursive fallback', () => {
+    const tokens = readFileSync(resolve(DIST, 'assets/css/tokens.css'), 'utf-8');
+    const kai = tokens.match(/--zh-kai:\s*([^;]+);/);
+    expect(kai).not.toBeNull();
+    // Exact contract: one webfont + one system Kai that covers Han+Latin+digits.
+    // Extra fallbacks (or cursive) reintroduce per-glyph splits on WebKit.
+    const normalized = kai![1].trim().replace(/\s+/g, ' ');
+    expect(normalized).toBe("'LXGW WenKai TC', 'Kaiti TC', serif");
+  });
+
+  test('zh chapter loads LXGW with display=swap, not optional', () => {
+    const html = readFileSync(resolve(DIST, 'zh/read/2-0/index.html'), 'utf-8');
+    expect(html).toContain('family=LXGW+WenKai+TC:wght@400&display=swap');
+    // Must not re-bundle LXGW into the optional Noto stylesheet.
+    expect(html).not.toMatch(/LXGW\+WenKai\+TC:wght@400&family=Noto/);
+    expect(html).not.toMatch(/LXGW\+WenKai\+TC[^"']*display=optional/);
+    // Body Noto faces stay optional and separate.
+    expect(html).toMatch(/Noto\+Serif\+TC:wght@400;600;700&display=optional/);
+  });
 });
 
 describe('build output: HTML shape', () => {

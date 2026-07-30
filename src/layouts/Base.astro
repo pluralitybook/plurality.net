@@ -43,8 +43,10 @@ const version = assetVersion();
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="anonymous" />
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,400;0,700;1,400&family=Cormorant+Garamond:wght@400;700&family=Outfit:wght@300;400;500;600&family=Sarabun:wght@400;600;700&display=swap" media="print" onload="this.media='all'" />
     <noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,400;0,700;1,400&family=Cormorant+Garamond:wght@400;700&family=Outfit:wght@300;400;500;600&family=Sarabun:wght@400;600;700&display=swap" /></noscript>
-    {lang === "zh" && <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=LXGW+WenKai+TC:wght@400&family=Noto+Sans+TC:wght@400;500;600&family=Noto+Serif+TC:wght@400;600;700&display=optional" media="print" onload="this.media='all'" />}
-    {lang === "zh" && <noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=LXGW+WenKai+TC:wght@400&family=Noto+Sans+TC:wght@400;500;600&family=Noto+Serif+TC:wght@400;600;700&display=optional" /></noscript>}
+    {lang === "zh" && <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=LXGW+WenKai+TC:wght@400&display=swap" media="print" onload="this.media='all'" />}
+    {lang === "zh" && <noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=LXGW+WenKai+TC:wght@400&display=swap" /></noscript>}
+    {lang === "zh" && <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@400;500;600&family=Noto+Serif+TC:wght@400;600;700&display=optional" media="print" onload="this.media='all'" />}
+    {lang === "zh" && <noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@400;500;600&family=Noto+Serif+TC:wght@400;600;700&display=optional" /></noscript>}
     {lang === "ja" && <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;500;600&family=Noto+Serif+JP:wght@400;600;700&display=optional" media="print" onload="this.media='all'" />}
     {lang === "ja" && <noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;500;600&family=Noto+Serif+JP:wght@400;600;700&display=optional" /></noscript>}
     <link rel="stylesheet" href="/assets/css/main.css" />
