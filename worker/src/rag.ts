@@ -1,10 +1,10 @@
 import {
   DEFAULT_NEMOTRON_MAX_COMPLETION_TOKENS,
-  DEFAULT_NEMOTRON_ULTRA_BASETEN_MODEL,
   openAiChatCompletionsEventStreamToText,
   resolveAudreyAiGateway,
-  streamViaDirectBasetenChatCompletions,
+  resolveWorkersAiChatModel,
   streamViaGatewayChatCompletions,
+  streamViaWorkersAiChat,
   type AudreyGatewayEnv,
 } from '@au/cf-ai-gateway'
 import { bookCitationFootnotes } from './bookCitationFootnotes'
@@ -106,7 +106,10 @@ export async function streamBookAnswer(
     chunks = await retrieveBookChunks(ai, vectorize, question, lang)
   }
   const gateway = resolveAudreyAiGateway(bindings)
-  if (!gateway || gateway.kind !== 'chat') {
+  const gatewayConfig =
+    gateway && gateway.kind === 'chat' ? gateway.config : undefined
+  const workersAiModel = resolveWorkersAiChatModel(bindings.AUDREY_MODEL)
+  if (!gatewayConfig && !(workersAiModel && ai)) {
     const body =
       chunks.length > 0
         ? retrievalStubMarkdown(question, lang, chunks)
@@ -139,31 +142,25 @@ export async function streamBookAnswer(
     })
   }
 
-  const basetenKey = bindings.BASETEN_API_KEY?.trim()
-  const gatewayConfig = gateway.config
   const messages = buildMessages(question, chunks, lang)
-  const basetenModel =
-    bindings.BASETEN_MODEL?.trim() || DEFAULT_NEMOTRON_ULTRA_BASETEN_MODEL
-
-  async function nemotronByteStream(): Promise<ReadableStream<Uint8Array>> {
-    if (basetenKey && !gatewayConfig.gatewayAuthToken) {
-      return streamViaDirectBasetenChatCompletions(basetenKey, basetenModel, messages, DEFAULT_NEMOTRON_MAX_COMPLETION_TOKENS)
-    }
-    if (gatewayConfig.gatewayAuthToken) {
-      return streamViaGatewayChatCompletions(gatewayConfig, messages, DEFAULT_NEMOTRON_MAX_COMPLETION_TOKENS)
-    }
-    if (basetenKey) {
-      return streamViaDirectBasetenChatCompletions(basetenKey, basetenModel, messages, DEFAULT_NEMOTRON_MAX_COMPLETION_TOKENS)
-    }
-    return streamViaGatewayChatCompletions(gatewayConfig, messages, DEFAULT_NEMOTRON_MAX_COMPLETION_TOKENS)
-  }
+  const footnotes = chunks.map((c) => {
+    const label = c.metadata.heading || c.metadata.chapterTitle || 'Section'
+    return `[${label}](${c.metadata.url})`
+  })
 
   try {
-    const byteStream = await nemotronByteStream()
-    const footnotes = chunks.map((c) => {
-      const label = c.metadata.heading || c.metadata.chapterTitle || 'Section'
-      return `[${label}](${c.metadata.url})`
-    })
+    const byteStream = gatewayConfig
+      ? await streamViaGatewayChatCompletions(
+          gatewayConfig,
+          messages,
+          DEFAULT_NEMOTRON_MAX_COMPLETION_TOKENS,
+        )
+      : await streamViaWorkersAiChat(
+          ai,
+          workersAiModel!,
+          messages,
+          DEFAULT_NEMOTRON_MAX_COMPLETION_TOKENS,
+        )
     const textStreamOut = byteStream
       .pipeThrough(openAiChatCompletionsEventStreamToText())
       .pipeThrough(bookCitationFootnotes(footnotes))
@@ -178,35 +175,7 @@ export async function streamBookAnswer(
       },
     })
   } catch (e) {
-    console.error('nemotron stream failed', e)
-    if (basetenKey) {
-      try {
-        const byteStream = await streamViaDirectBasetenChatCompletions(
-          basetenKey,
-          basetenModel,
-          messages,
-          DEFAULT_NEMOTRON_MAX_COMPLETION_TOKENS,
-        )
-        const footnotes = chunks.map((c) => {
-          const label = c.metadata.heading || c.metadata.chapterTitle || 'Section'
-          return `[${label}](${c.metadata.url})`
-        })
-        const textStreamOut = byteStream
-          .pipeThrough(openAiChatCompletionsEventStreamToText())
-          .pipeThrough(bookCitationFootnotes(footnotes))
-          .pipeThrough(new TextEncoderStream())
-        return new Response(textStreamOut, {
-          status: 200,
-          headers: {
-            'Content-Type': 'text/plain; charset=utf-8',
-            'Cache-Control': 'no-store',
-            'X-Accel-Buffering': 'no',
-          },
-        })
-      } catch (e2) {
-        console.error('direct baseten fallback failed', e2)
-      }
-    }
+    console.error('book answer generation failed', e)
     const body =
       chunks.length > 0
         ? retrievalStubMarkdown(question, lang, chunks)

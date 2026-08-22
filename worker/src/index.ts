@@ -4,9 +4,10 @@ import { resolveQueryLang } from './lang'
 import { streamBookAnswer } from './rag'
 import type { VectorizeBinding } from './vectorize'
 
+// The Baseten credential is a stored provider key on the Cloudflare AI Gateway
+// side, so only the gateway run token (`CF_AIG_TOKEN`) is needed here.
 export type Env = {
   AUDREY_MODEL?: string
-  BASETEN_API_KEY?: string
   CF_AIG_TOKEN?: string
   CF_AI_GATEWAY_ACCOUNT_ID?: string
   CF_AI_GATEWAY_ID?: string

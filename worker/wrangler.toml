@@ -10,7 +10,10 @@ workers_dev = true
 # custom_domain = true
 
 [vars]
-AUDREY_MODEL = "nemotron-ultra"
+# "@cf/..." ids generate on the Workers AI binding above — no gateway hop, so
+# no CF_AIG_TOKEN is needed. "nemotron-ultra" / "fugu" remain available via AI
+# Gateway and DO need it (still set as a secret below).
+AUDREY_MODEL = "@cf/deepseek-ai/deepseek-v4-flash-0731"
 
 [ai]
 binding = "AI"
@@ -22,7 +25,9 @@ index_name = "plurality-book"
 # Create index (once): wrangler vectorize create plurality-book --dimensions=1024 --metric=cosine
 # Metadata index (once, BEFORE bulk upsert): wrangler vectorize create-metadata-index plurality-book --propertyName=lang --type=string
 # See scripts/vectorize-sync-book.mjs ensureLangMetadataIndex()
-# Secrets: BASETEN_API_KEY, CF_AIG_TOKEN (wrangler secret put)
+# Secrets: CF_AIG_TOKEN (wrangler secret put) — needed only when AUDREY_MODEL is
+# "nemotron-ultra" or "fugu" (AI Gateway is authenticated; without the token every
+# gateway request 401s). "@cf/..." models generate on Workers AI and need no secret.
 
 [dev]
 port = 8788
